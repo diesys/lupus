@@ -31,16 +31,16 @@ function read_village($file_name) {
         if(array_key_exists($_GET['v'], $db)) {
             $selected = $db[$_GET['v']];
             $village = read_village($selected);
-            var_dump($village);
+            print_r($village);
         } else { ?>
-            <center><h2 style="color:yellow;">"Village not present!"</h2></center>
+            <center><h2 style="color:yellow;">Villaggio non presente!</h2></center>
         <?php }
     } else {
 ?>
     <!-- NO GET => HOME -->
     <center>
-        <h2>Benvenut, su MasterLupus!</h2>
-        <p><a href="login.php">login?</a></p>
+        <h2>Benvenut, su Lupus!</h2>
+        <p><a href="login.php">master?</a></p>
     </center>
 <?php } ?>
 

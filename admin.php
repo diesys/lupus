@@ -10,7 +10,14 @@
         return $randomString;
     }
 
-    function new_village($data, $file_name) {
+    function new_village($file_name) {
+        $data = array(
+            'nome' => $_POST['new_name'],
+            'eventi' => array(array("data" => "", "descrizione" => "Prima notte")),
+            'giocatori' => array_fill(0, $_POST['players'], array("username" => "", "ruolo" => "", "in vita" => TRUE)),
+            'id' => generateRandomString()
+        );
+
         $new_json = 'v/'.$file_name.'.json';
         $new_village = json_encode($data);
         
@@ -30,7 +37,7 @@
             file_put_contents($new_json, $new_village);
             file_put_contents('v/_all.json', json_encode($all));
         } else {
-            $error = "filename exists!";
+            $error = "Il file esiste!";
         }
 
         /////////////////////!!!!!!!!# ######################################################################
@@ -50,7 +57,7 @@
     } else if($_SESSION['logged_in']) {
         $_SESSION['logged_in'] = TRUE;
     } else {
-        $error="Incorrect Password";
+        $error="Password sbagliata!";
         $_SESSION['logged_in'] = FALSE;
     }
 
@@ -61,13 +68,7 @@
  
     // crea partita
     if(isset($_POST['new_name']) and isset($_POST['players'])) {
-        $data = array(
-            'nome' => $_POST['new_name'],
-            'eventi' => array(),
-            'giocatori' => array_fill(0, $_POST['players'], ""),
-            'id' => generateRandomString()
-        );
-        new_village($data, $_POST['new_name']);
+        new_village($_POST['new_name']);
         // header("./admin.php");
     }
 
