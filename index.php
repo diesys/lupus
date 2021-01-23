@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master lupus</title>
+    <title>Lupus</title>
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-    <form action="admin.php" method="post">
-        <input autofocus type="password" name="password" />
-        <button type="submit">entra</button>
-    </form>
+    <center>
+        <form action="admin.php" method="post">
+            <input autofocus type="password" name="password" />
+            <button type="submit">entra</button>
+        </form>
+    </center>
 </body>
 </html>

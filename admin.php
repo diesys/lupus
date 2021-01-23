@@ -36,20 +36,25 @@
     }
 
     //////////////////////
-    
     session_start();
     $error = "";
     $password = "supul";
-
     
-    // funziona MALE # ################################ # # ## # #  ## (se inserisci passwd sbagliata dovrebbe fare logout non usare sessione)
-
-    if(isset($_POST['password']) and $_POST['password'] == $password or $_SESSION['logged_in']) {
+    // LOGIN
+    if($_SESSION['logged_in']) {
+        $_SESSION['logged_in'] = TRUE;
+    }
+    if(isset($_POST['password']) and $_POST['password'] == $password) {
         $_SESSION['logged_in'] = TRUE;
     } else {
         $error="Incorrect Password";
         $_SESSION['logged_in'] = FALSE;
     }
+
+    // logout
+    if(isset($_POST['page_logout'])) {
+        $_SESSION['logged_in'] = FALSE;
+    }    
  
     // crea partita
     if(isset($_POST['new_name']) and isset($_POST['players'])) {
@@ -63,11 +68,6 @@
         header("./admin.php");
     }
 
-    // logout
-    if(isset($_POST['page_logout'])) {
-        $_SESSION['logged_in'] = FALSE;
-    }
-
     // including the index.html
     // $index = file_get_contents('_index.html');
     // echo $index;
@@ -79,6 +79,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Master lupus</title>
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
@@ -88,15 +89,20 @@
 ?> 
 
     <center>
-        <h4>Crea</h4>
         <form action="" method="post">
-            <input name="new_name" placeholder="Nome" type="text" pattern="[A-Za-z0-9]{3-24}" required />
-            <input name="players" type="number" placeholder="Giocatori" min="4" max="30" range="1" required />
+            <h4>Nuovo villaggio</h4>
+            <input name="new_name" placeholder="Nome*" type="text" pattern="[A-Za-z0-9]{4-24}" required />
+            <input name="players" type="number" placeholder="Giocatori**" min="4" max="30" range="1" required />
             <button type="submit" formmethod="post">Crea</button>
+            <p class="legend">
+                <small>* 3-24 caratteri alfanumerici, senza spazi</small>
+                <br>
+                <small>** da 4 a 30 giocatori</small>
+            </p>
         </form>
 
-        <h4>Scegli</h4>
         <form action="" method="post">
+            <h4>Seleziona villaggio</h4>
             <select name="villaggi" id="lista_villaggi">
                 <?php 
                 foreach (glob("v/*.json") as $filename) {

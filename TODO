@@ -1,0 +1,7 @@
+# TODO
+
+- login fix che si salva il logged anche con pwd sbagliata
+- fare db per l'hash/id di quelli presenti
+- la select apre un nuovo file php con metodo post e il value della singola partita option e da li si possono aggiungere delle cose nella lista eventi (data, tipo, contenuto)
+- separare libreria e creare solo css html forse non serve
+- la index.php e' quella che se ha in GET un hash valido lo mostra, cosi i link sono corti
