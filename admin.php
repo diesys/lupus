@@ -39,38 +39,33 @@
     
     session_start();
     $error = "";
-    $_SESSION['password'] = "";
     $password = "supul";
-    $_SESSION['logged_in'] = FALSE;
+
     
-    if(isset($_POST['password'])) {
-        if($_POST['password'] == $password) {
-            // $_SESSION['password'] = $pass;
-            $_SESSION['logged_in'] = TRUE;
-        }
-        else {
-            // $_SESSION['password'] = null;
-            $_SESSION['logged_in'] = FALSE;
-            if($error == "") {
-                $error="Incorrect Password";
-            }
-        }
+    // funziona MALE # ################################ # # ## # #  ## (se inserisci passwd sbagliata dovrebbe fare logout non usare sessione)
+
+    if(isset($_POST['password']) and $_POST['password'] == $password or $_SESSION['logged_in']) {
+        $_SESSION['logged_in'] = TRUE;
+    } else {
+        $error="Incorrect Password";
+        $_SESSION['logged_in'] = FALSE;
     }
  
     // crea partita
-    if(isset($_POST['new_name'])) {
+    if(isset($_POST['new_name']) and isset($_POST['players'])) {
         $data = array(
             'nome' => $_POST['new_name'],
             'eventi' => array(),
+            'giocatori' => array_fill(0, $_POST['players'], ""),
             'id' => generateRandomString()
         );
         new_village($data, $_POST['new_name']);
+        header("./admin.php");
     }
 
     // logout
     if(isset($_POST['page_logout'])) {
         $_SESSION['logged_in'] = FALSE;
-        // unset($_SESSION['password']);
     }
 
     // including the index.html
@@ -88,19 +83,20 @@
 <body>
 
 <?php   
-   if ($_SESSION['logged_in']) { 
+   if ($_SESSION['logged_in'] == TRUE) { 
     //    $_SESSION['password'] = $password;
 ?> 
 
     <center>
+        <h4>Crea</h4>
         <form action="" method="post">
-            <label for="new_name">Nuovo</label>
-            <input name="new_name" type="text" pattern="[A-Za-z0-9]{3-24}" required />
+            <input name="new_name" placeholder="Nome" type="text" pattern="[A-Za-z0-9]{3-24}" required />
+            <input name="players" type="number" placeholder="Giocatori" min="4" max="30" range="1" required />
             <button type="submit" formmethod="post">Crea</button>
         </form>
 
+        <h4>Scegli</h4>
         <form action="" method="post">
-            <label for="villaggi">Scegli</label>
             <select name="villaggi" id="lista_villaggi">
                 <?php 
                 foreach (glob("v/*.json") as $filename) {
