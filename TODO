@@ -1,7 +1,20 @@
 # TODO
 
-- login fix che si salva il logged anche con pwd sbagliata
 - fare db per l'hash/id di quelli presenti
-- la select apre un nuovo file php con metodo post e il value della singola partita option e da li si possono aggiungere delle cose nella lista eventi (data, tipo, contenuto)
-- separare libreria e creare solo css html forse non serve
-- la index.php e' quella che se ha in GET un hash valido lo mostra, cosi i link sono corti
+
+- la index.php
+    // numero di vivi e morti ad esempio in gioco e numero del giorno ad esempio (va deciso con bels questo)
+
+- calendario eventi: flexbox quadratini col wrap e dimensione minima (cosi viene mobile)
+    // la data il tipo (tipi fissati, iconcina e colore cambiano) e il contenuto
+    // lista eventi (data, tipo, contenuto)
+    // gli eventi sono modificabili? se ne aggiungono uno per volta o magari iniziare con un unica textarea (stile pad semplice) e vedere come va?
+
+- lista giocatori, come selezionare i ruoli? scriverli a mano o avere una select? scritti nel json della partita (deve contenere pure vivi e morti bool)
+
+- mettere qualche immagine?
+
+- separare libreria php e resto?
+    // funzione php che preso il json stampa in index.php?v=... nome, num giocatori (e stato), giorno attuale, e lista eventi
+    // funzione php che preso il json stampa in edit.php?v=... con le stesse cose ma tutte modificabili e un bottone per aggingere evento 
+        // + bottone per elimina villaggio/concludi partita.
