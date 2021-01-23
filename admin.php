@@ -49,7 +49,8 @@
             $_SESSION['logged_in'] = TRUE;
         }
         else {
-            $_SESSION['password'] = null;
+            // $_SESSION['password'] = null;
+            $_SESSION['logged_in'] = FALSE;
             if($error == "") {
                 $error="Incorrect Password";
             }
@@ -68,7 +69,8 @@
 
     // logout
     if(isset($_POST['page_logout'])) {
-        unset($_SESSION['password']);
+        $_SESSION['logged_in'] = FALSE;
+        // unset($_SESSION['password']);
     }
 
     // including the index.html
@@ -86,7 +88,7 @@
 <body>
 
 <?php   
-   if ($_SESSION['logged_in'] or $_SESSION['password'] == $password) { 
+   if ($_SESSION['logged_in']) { 
     //    $_SESSION['password'] = $password;
 ?> 
 
