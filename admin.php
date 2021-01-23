@@ -90,18 +90,6 @@
 
     <center>
         <form action="" method="post">
-            <h4>Nuovo villaggio</h4>
-            <input name="new_name" placeholder="Nome*" type="text" pattern="[A-Za-z0-9]{4-24}" required />
-            <input name="players" type="number" placeholder="Giocatori**" min="4" max="30" range="1" required />
-            <button type="submit" formmethod="post">Crea</button>
-            <p class="legend">
-                <small>* 3-24 caratteri alfanumerici, senza spazi</small>
-                <br>
-                <small>** 4-30 giocatori</small>
-            </p>
-        </form>
-
-        <form action="" method="post">
             <h4>Seleziona villaggio</h4>
             <select name="villaggi" id="lista_villaggi">
                 <?php 
@@ -112,6 +100,18 @@
                 }
                 ?>
             </select>
+        </form>
+
+        <form action="" method="post">
+            <h4>Nuovo villaggio</h4>
+            <input name="new_name" placeholder="Nome¹" type="text" pattern="[A-Za-z0-9]{4-24}" required />
+            <input name="players" type="number" placeholder="Giocatori²" min="4" max="30" range="1" required />
+            <button type="submit" formmethod="post">Crea</button>
+            <p class="legend">
+                <small>¹ 3-24 caratteri alfanumerici, senza spazi</small>
+                <br>
+                <small>² 4-30 giocatori</small>
+            </p>
         </form>
     </center>
 
