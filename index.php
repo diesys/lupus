@@ -10,6 +10,25 @@ function read_village($file_name) {
     }
 }
 
+function get_alive($village) {
+    $alive = 0;
+    $dead = 0;
+    foreach($village['giocatori'] as $giocatore) {
+        if($giocatore['in vita']) {
+            $alive += 1;
+        } else {
+            $dead += 1;
+        }
+    } return [$alive, $dead];
+}
+
+function get_events($village) {
+    $events = array();
+    foreach($village['eventi'] as $event) {
+        array_push($events, $event);
+    } return $events;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +40,7 @@ function read_village($file_name) {
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+<center>
 
 <?php
     if (isset($_GET) and isset($_GET['v'])) {
@@ -31,18 +51,43 @@ function read_village($file_name) {
         if(array_key_exists($_GET['v'], $db)) {
             $selected = $db[$_GET['v']];
             $village = read_village($selected);
-            print_r($village);
-        } else { ?>
-            <center><h2 style="color:yellow;">Villaggio non presente!</h2></center>
-        <?php }
-    } else {
+            $alive = get_alive($village);
+            $events = get_events($village);
+            // print_r($village); 
 ?>
-    <!-- NO GET => HOME -->
-    <center>
-        <h2>Benvenut, su Lupus!</h2>
-        <p><a href="login.php">master?</a></p>
-    </center>
-<?php } ?>
 
+    <span id="alive">
+        <h4>Vivi: <?php echo($alive[0]);?></h4>
+        <h4>Morti: <?php echo($alive[1]);?></h4>
+    </span>
+    <div id="events">
+        <?php foreach($events as $event) { ?>
+            <span class="event">
+                <?php 
+                    echo($event['data']);
+                    echo($event['descrizione']);
+                ?>
+            </span>
+        <?php } ?>
+    </div>
+    
+<?php
+    } else { ?>
+        <h2 style="color:yellow;">Villaggio non presente!</h2>
+<?php }
+} else {
+?>
+<!-- NO GET => HOME -->
+    <h2>Benvenut, su Lupus!</h2>
+    <p><a href="login.php">master?</a></p>
+
+    <footer>
+        <p class="legend">
+            Questo sito conserva solamente i dati caricati dai master (chiedendone il consenso agli utenti): informazioni necessarie al fine del gioco (username/nome riconoscibile degli utenti) e le partite stesse. Le pagine pubbliche di consultazione utilizzano un link generato casualmente per essere visto solo da chi lo possiede.
+        </p>
+    </footer>
+<?php } ?>
+        
+</center>
 </body>
 </html>

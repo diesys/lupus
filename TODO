@@ -1,9 +1,5 @@
 # TODO
 
-- fare db per l'hash/id di quelli presenti
-
-- la index.php
-    // numero di vivi e morti ad esempio in gioco e numero del giorno ad esempio (va deciso con bels questo)
 
 - calendario eventi: flexbox quadratini col wrap e dimensione minima (cosi viene mobile)
     // la data il tipo (tipi fissati, iconcina e colore cambiano) e il contenuto
@@ -15,6 +11,5 @@
 - mettere qualche immagine?
 
 - separare libreria php e resto?
-    // funzione php che preso il json stampa in index.php?v=... nome, num giocatori (e stato), giorno attuale, e lista eventi
     // funzione php che preso il json stampa in edit.php?v=... con le stesse cose ma tutte modificabili e un bottone per aggingere evento 
         // + bottone per elimina villaggio/concludi partita.

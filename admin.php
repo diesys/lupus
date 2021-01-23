@@ -13,6 +13,7 @@
     function new_village($file_name) {
         $data = array(
             'nome' => $_POST['new_name'],
+            'telegram' => "",
             'eventi' => array(array("data" => "", "descrizione" => "Prima notte")),
             'giocatori' => array_fill(0, $_POST['players'], array("username" => "", "ruolo" => "", "in vita" => TRUE)),
             'id' => generateRandomString()
@@ -39,11 +40,6 @@
         } else {
             $error = "Il file esiste!";
         }
-
-        /////////////////////!!!!!!!!# ######################################################################
-        // da aggiungere il nuovo villaggio a un file "_all.json" come db
-        // $data['id'];
-        /////////////////////////////////////////////// #####################################################
     }
 
     //////////////////////
@@ -69,12 +65,7 @@
     // crea partita
     if(isset($_POST['new_name']) and isset($_POST['players'])) {
         new_village($_POST['new_name']);
-        // header("./admin.php");
     }
-
-    // including the index.html
-    // $index = file_get_contents('_index.html');
-    // echo $index;
 ?>
 
 <!DOCTYPE html>
@@ -86,26 +77,23 @@
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+<center>
 
 <?php   
    if ($_SESSION['logged_in'] == TRUE) { 
-    //    $_SESSION['password'] = $password;
 ?> 
-
-    <center>
-        <form action="" method="post">
+        <form action="edit.php" method="get">
             <h4>Seleziona villaggio</h4>
-            <select name="villaggi" id="lista_villaggi">
-                <?php 
-                foreach (glob("v/*.json") as $filename) {
-                    // removes dir and format
-                    $village = substr($filename, 2, -5);
-                    if($village != "_all") {
-                        echo("<option value='".$village."'>".$village."</option>");
+            <select name="v" id="lista_villaggi">
+                <?php
+                    $db = file_get_contents('v/_all.json');
+                    $villages = json_decode($db, true);
+                    foreach ($villages as $hash => $name) {
+                        echo("<option value='".$hash."'>".$name."</option>");
                     }
-                }
                 ?>
             </select>
+            <button type="submit" formmethod="get">vai</button>
         </form>
 
         <form action="" method="post">
@@ -113,17 +101,20 @@
             <input name="new_name" placeholder="Nome¹" type="text" pattern="[A-Za-z0-9]{4-24}" required />
             <input name="players" type="number" placeholder="Giocatori²" min="4" max="30" range="1" required />
             <button type="submit" formmethod="post">Crea</button>
-            <p class="legend">
-                <small>¹ alfanumerico, senza spazi</small>
-                <br>
-                <small>² 4-30 giocatori</small>
-            </p>
+            
+            <p class="legend">¹ alfanumerico senza spazi · ² 4-30 giocatori</p>
         </form>
-    </center>
+   
 
 <?php } if ($error != "") { ?>
-    <center><h2 style="color:yellow;"><?php echo($error);?></h2></center>
+    <h2 style="color:yellow;"><?php echo($error);?></h2>
 <?php } ?>
+</center>
 
+<footer>
+    <p class="legend">
+        Questo sito conserva solamente i dati caricati dai master (chiedendone il consenso agli utenti): informazioni necessarie al fine del gioco (username/nome riconoscibile degli utenti) e le partite stesse. Le pagine pubbliche di consultazione utilizzano un link generato casualmente per essere visto solo da chi lo possiede.
+    </p>
+</footer>
 </body>
 </html>
