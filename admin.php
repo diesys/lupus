@@ -100,9 +100,9 @@
             <h4>Nuovo villaggio</h4>
             <input name="new_name" placeholder="Nome¹" type="text" pattern="[A-Za-z0-9]{4-24}" required />
             <input name="players" type="number" placeholder="Giocatori²" min="4" max="30" range="1" required />
-            <button type="submit" formmethod="post">Crea</button>
-            
             <p class="legend">¹ alfanumerico senza spazi · ² 4-30 giocatori</p>
+            
+            <button type="submit" formmethod="post">Crea</button>
         </form>
    
 
