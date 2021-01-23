@@ -97,7 +97,7 @@
             <p class="legend">
                 <small>* 3-24 caratteri alfanumerici, senza spazi</small>
                 <br>
-                <small>** da 4 a 30 giocatori</small>
+                <small>** 4-30 giocatori</small>
             </p>
         </form>
 
