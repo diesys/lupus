@@ -36,7 +36,7 @@ function get_events($village) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lupus</title>
+    <title>Masterus</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -46,14 +46,14 @@ function get_events($village) {
         <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
         Masterus
     </h2>
-    <!-- NO GET => HOME -->
-    <p>
-        In costruzione... leggi i <a href="credits.html">credits</a> (ancora più in costruzione),
-        <a href="login.php">sei un master?</a>
-    </p>
 </header>
 
 <center>
+    <!-- NO GET => HOME -->
+    <p>
+        In costruzione... leggi i <a href="credits.html">credits</a> (ancora più in costruzione) <br><br>
+        Sei un <a href="login.php">master</a>?
+    </p>
 
 <?php
     if (isset($_GET) and isset($_GET['v'])) {
