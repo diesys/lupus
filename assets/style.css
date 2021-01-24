@@ -6,13 +6,14 @@
 
 * {
     box-sizing: content-box;
+    scroll-behavior: smooth;
 }
 
 input, select, button, a {
     transition: background var(--dur), color var(--dur), opacity var(--dur), border var(--dur);
 }
 
-*:not(input, button, select, option) {
+*:not(input, button, select, option, textarea) {
     text-shadow: 0 1px 4px #000d;
 }
 
@@ -26,7 +27,7 @@ html, body {
     padding: 0;
     color: #fff;
     background-color: #333;
-    background: url('img/village.jpg') center center;
+    background: url('img/village.jpg') center center fixed;
     background-size: cover;
 }
 body {
@@ -82,6 +83,11 @@ header ul li {
     flex: 1;
     min-width: 100px;
 }
+
+form {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 footer {
     min-height: var(--footer-height);
     padding: 1.4em 10vw;
@@ -130,4 +136,22 @@ button {
     background: var(--accent-color);
     color: #000;
     cursor: pointer;
+}
+
+/* events */
+#events {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* flex-direction: row-reverse; */
+}
+#events > .event {
+    flex: 1;
+    border-radius: .4em;
+    margin: 1em;
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

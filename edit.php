@@ -19,7 +19,7 @@
         $alive = 0;
         $dead = 0;
         foreach($village['giocatori'] as $giocatore) {
-            if($giocatore['in vita']) {
+            if($giocatore['in_vita']) {
                 $alive += 1;
             } else {
                 $dead += 1;
@@ -46,6 +46,8 @@
         if(array_key_exists($_GET['v'], $db)) {
             $selected = $db[$_GET['v']];
             $village = read_village($selected);
+            // $alive = get_alive($village);
+            // $events = get_events($village);
                 // var_dump($village);
         } else {
             $error = "Village not present!";
@@ -53,9 +55,22 @@
     }
 
     //// aggiungi evento
-    if(isset($village) and isset($_POST) and isset($_POST['datetime']) and isset($_POST['description'])) {
-        array_push($village['eventi'], array($_POST['datetime'] => $_POST['description']));
-    } 
+    if(isset($village) and isset($_POST) and isset($_POST['date']) and isset($_POST['description'])) {
+        // prevent double submits
+        if(isset($_SESSION['last_action'])) {
+            if($_POST['description'] != $_SESSION['last_action']) {
+                array_push($village['eventi'], array('data' => $_POST['date'], 'descrizione' => $_POST['description']));
+                write_village($village, $selected);
+                $_SESSION['last_action'] = $_POST['description'];
+            }
+        } else {
+            array_push($village['eventi'], array('data' => $_POST['date'], 'descrizione' => $_POST['description']));
+            write_village($village, $selected);
+            $_SESSION['last_action'] = $_POST['description'];
+        }
+    }
+    $alive = get_alive($village);
+    $events = get_events($village);
 ?>
 
 <!DOCTYPE html>
@@ -76,27 +91,31 @@
         </h2>
 
         <ul>
-            <li><a href="admin.php">Pannello admin</a></li>
-            <li><a href="./?v=<?php echo($village['id']);?>">Bacheca pubblica</a></li>
+            <li><a href="admin.php">Admin</a></li>
+            <li><a href="./?v=<?php echo($village['id']);?>">Bacheca</a></li>
+        </ul>
+        <br>
+        <ul>
+            <li><a href="#alive">Giocatori</a></li>
+            <li><a href="#events">Calendario</a></li>
         </ul>
     </header>
 
     <center>
-        <form action="" method="post">
-            <h4>Nuovo evento</h4>
-            <input type="datetime" name="date" id="date" required />
-            <textarea name="description" placeholder="descrizione" required></textarea>
-            <p class="legend">legenda</p>
-
-            <button type="submit" formmethod="post">crea</button>
-
-            <?php // var_dump($village); ?>
-        </form>    
-
-        <span id="alive">
-            <h4>Vivi: <?php echo($alive[0]);?></h4>
-            <h4>Morti: <?php echo($alive[1]);?></h4>
-        </span>
+    <span id="alive">
+        <h4>Vivi: <?php echo($alive[0]);?></h4>
+        <h4>Morti: <?php echo($alive[1]);?></h4>
+    </span>
+    <table id="players">
+        <?php foreach($village['giocatori'] as $giocatore) { ?>
+        <tr>
+            <td><?php echo($giocatore['username']); ?></td>
+            <td><?php echo($giocatore['ruolo']); ?></td>
+            <td><?php echo($giocatore['in_vita']); ?></td>                    
+        </tr>
+        <?php } ?>
+    </table>
+       
 
         <div id="events">
             <?php foreach($events as $event) { ?>
@@ -108,6 +127,32 @@
                 </span>
             <?php } ?>
         </div>
+        
+        <form action="" method="post">
+            <h4>Nuova elezione</h4>
+            <input type="date" name="date" id="date" required />
+            <textarea name="description" placeholder="descrizione" required></textarea>
+            <p class="legend">legenda</p>
+
+            <button type="submit" formmethod="post">crea</button>
+
+            <?php // var_dump($village); ?>
+        </form>
+
+        <form action="" method="post">
+            <h4>Nuova morte</h4>
+            <select name="giocatore">
+                <?php
+                    foreach ($village['giocatori'] as $player) {
+                        echo("<option value='".$player['username']."'>".$player['username']."</option>");
+                    }
+                ?>
+            </select>
+            
+            <p class="legend">legenda</p>
+
+            <button type="submit" formmethod="post">uccidi</button>
+        </form>   
 
 <!-- ERRORI -->
 <?php } if ($error != "") { ?>

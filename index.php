@@ -14,7 +14,7 @@ function get_alive($village) {
     $alive = 0;
     $dead = 0;
     foreach($village['giocatori'] as $giocatore) {
-        if($giocatore['in vita']) {
+        if($giocatore['in_vita']) {
             $alive += 1;
         } else {
             $dead += 1;
@@ -46,6 +46,10 @@ function get_events($village) {
         <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
         Masterus
     </h2>
+    <ul>
+        <li><a href="#alive">Giocatori</a></li>
+        <li><a href="#events">Calendario</a></li>
+    </ul>
 </header>
 
 <center>
@@ -73,6 +77,16 @@ function get_events($village) {
         <h4>Vivi: <?php echo($alive[0]);?></h4>
         <h4>Morti: <?php echo($alive[1]);?></h4>
     </span>
+    <table id="players">
+        <?php foreach($village['giocatori'] as $giocatore) { ?>
+        <tr>
+            <td><?php echo($giocatore['username']); ?></td>
+            <td><?php echo($giocatore['ruolo']); ?></td>
+            <td><?php echo($giocatore['in_vita']); ?></td>                    
+        </tr>
+        <?php } ?>
+    </table>
+
     <div id="events">
         <?php foreach($events as $event) { ?>
             <span class="event">

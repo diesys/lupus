@@ -3,8 +3,11 @@
 
 - calendario eventi: flexbox quadratini col wrap e dimensione minima (cosi viene mobile)
     // la data il tipo (tipi fissati, iconcina e colore cambiano) e il contenuto
+    // ordinata in base alla data
     // lista eventi (data, tipo, contenuto)
     // gli eventi sono modificabili? se ne aggiungono uno per volta o magari iniziare con un unica textarea (stile pad semplice) e vedere come va?
+
+- sistemare uccisioni "resurrezioni" con bottoni cosi ci si sbriga
 
 - lista giocatori, come selezionare i ruoli? scriverli a mano o avere una select? scritti nel json della partita (deve contenere pure vivi e morti bool)
 
