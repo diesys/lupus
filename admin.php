@@ -73,12 +73,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master lupus</title>
+    <title>Masterus</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<center>
 
+<header>
+    <h2>
+        <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
+        Masterus
+    </h2>
+</header>
+
+<center>
 <?php   
    if ($_SESSION['logged_in'] == TRUE) { 
 ?> 

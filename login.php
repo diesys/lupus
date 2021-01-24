@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+    <header>
+        <h2>
+            <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
+            Masterus
+        </h2>
+    </header>
+
     <center>
         <form action="admin.php" method="post">
             <input autofocus type="password" name="password" />

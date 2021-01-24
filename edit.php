@@ -39,23 +39,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master lupus</title>
+    <title>edit · masterus</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-    <center>
-
+    
 <?php if(isset($village)) { ?>
-        <header>
-            <h2>Modifica villaggio <u><?php echo($village['nome']); ?></u></h2>
-            <p>
-                <a href="admin.php">Pannello admin</a>
-                <a href="./?v=<?php echo($village['id']);?>">Bacheca pubblica</a>
-            </p>
-        </header>
-        <!-- <form action="" method="post"> -->
-            <?php var_dump($village); ?>
-        <!-- </form> -->    
+    <header>
+        <h2>
+            <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
+            Modifica <?php echo($village['nome']);?>
+        </h2>
+
+        <ul>
+            <li><a href="admin.php">Pannello admin</a></li>
+            <li><a href="./?v=<?php echo($village['id']);?>">Bacheca pubblica</a></li>
+        </ul>
+    </header>
+
+    <center>
+    <!-- <form action="" method="post"> -->
+        <?php var_dump($village); ?>
+    <!-- </form> -->    
 
 <!-- ERRORI -->
 <?php } if ($error != "") { ?>

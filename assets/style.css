@@ -1,14 +1,21 @@
 :root {
     --footer-height: 2em;
     --accent-color: #eeff00;
+    --dur: .4s;
 }
 
 * {
     box-sizing: content-box;
 }
+
+input, select, button, a {
+    transition: background var(--dur), color var(--dur), opacity var(--dur), border var(--dur);
+}
+
 *:not(input, button, select, option) {
     text-shadow: 0 1px 4px #000d;
 }
+
 html, body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
@@ -22,15 +29,18 @@ html, body {
     background: url('img/village.jpg') center center;
     background-size: cover;
 }
+body {
+    display: flex;
+    flex-direction: column;
+}
+body > * {
+    flex: 1;
+}
 
 center {
-    height: calc(100vh - var(--footer-height));
-    width: 100vw;
-    /* position: absolute; */
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around; */
+    height: max-content;
+    max-width: 100%;
+    padding: 2em 10%;
 }
 header, center, form {
     display: flex;
@@ -38,14 +48,43 @@ header, center, form {
     align-items: center;
     justify-content: space-around;
 }
+header {
+    flex-direction: row;
+    background: linear-gradient(#000c, #0000);
+    user-select: none;
+    flex-wrap: wrap;
+}
+
+header h2 {
+    min-width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex: 1;
+}
+header img {
+    margin-right: .5em;
+    margin-top: 2px;
+}
+header ul {
+    flex: 1;
+    list-style: none;
+    display: flex;
+    padding: 1em;
+    /* width: 90%; */
+    text-align: center;
+    align-items: center;
+}
+header ul li {
+    flex: 1;
+    min-width: 100px;
+}
 footer {
     min-height: var(--footer-height);
-    position: absolute;
-    bottom: 0;
-    padding: 1em 1.5em;
-    /* margin-top: 1; */
+    padding: 1.4em 10vw;
     text-align: center;
     background: linear-gradient(#0000, #000c);
+    user-select: none;
 }
 
 .legend {
@@ -62,13 +101,22 @@ input, select, button {
     height: 2em;
     /* border-radius: .3em; */
     border-radius: 2em;
-
+    text-align: center;
     border: none;
     background: #eee;
-    margin: .3em;
+    margin: .65em;
     padding: .4em .6em;
     box-shadow: 0 4px 20px -4px #000b;
     width: 100%;
+    outline: none !important;
+}
+input:active, 
+select:active, 
+button:active,
+input:hover, 
+select:hover, 
+button:hover {
+    opacity: .8;
 }
 button {
     text-transform: uppercase;

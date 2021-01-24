@@ -40,6 +40,19 @@ function get_events($village) {
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+
+<header>
+    <h2>
+        <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
+        Masterus
+    </h2>
+    <!-- NO GET => HOME -->
+    <p>
+        In costruzione... leggi i <a href="credits.html">credits</a> (ancora più in costruzione),
+        <a href="login.php">sei un master?</a>
+    </p>
+</header>
+
 <center>
 
 <?php
@@ -74,20 +87,14 @@ function get_events($village) {
 <?php
     } else { ?>
         <h2 style="color:yellow;">Villaggio non presente!</h2>
-<?php }
-} else {
-?>
-<!-- NO GET => HOME -->
-    <h2>Benvenut, su Lupus!</h2>
-    <p><a href="login.php">master?</a></p>
+<?php }} ?> 
+
+</center>
 
     <footer>
         <p class="legend">
             Questo sito conserva solamente i dati caricati dai master (chiedendone il consenso agli utenti): informazioni necessarie al fine del gioco (username/nome riconoscibile degli utenti) e le partite stesse. Le pagine pubbliche di consultazione utilizzano un link generato casualmente per essere visto solo da chi lo possiede.
         </p>
     </footer>
-<?php } ?>
-        
-</center>
 </body>
 </html>
