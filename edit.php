@@ -102,19 +102,17 @@
     </header>
 
     <center>
-    <span id="alive">
-        <h4>Vivi: <?php echo($alive[0]);?></h4>
-        <h4>Morti: <?php echo($alive[1]);?></h4>
-    </span>
-    <table id="players">
-        <?php foreach($village['giocatori'] as $giocatore) { ?>
-        <tr>
-            <td><?php echo($giocatore['username']); ?></td>
-            <td><?php echo($giocatore['ruolo']); ?></td>
-            <td><?php echo($giocatore['in_vita']); ?></td>                    
-        </tr>
-        <?php } ?>
-    </table>
+        <div id="players">
+            <?php foreach($village['giocatori'] as $giocatore) { ?>
+            <span class="player <?php if(!$giocatore['in_vita']) {echo("dead");} ?>">
+                <span><?php echo($giocatore['username']); ?></span>
+                <span><?php echo($giocatore['ruolo']); ?></span>
+            </span>
+            <?php } ?>
+        </div>
+        <span id="alive">
+            <h4>Vivi: <?php echo($alive[0]);?> - Morti: <?php echo($alive[1]);?></h4>
+        </span>
        
 
         <div id="events">

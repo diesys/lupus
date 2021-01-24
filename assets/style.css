@@ -2,6 +2,7 @@
     --footer-height: 2em;
     --accent-color: #eeff00;
     --dur: .4s;
+    --box-shadow: 0 4px 20px -4px #000b;
 }
 
 * {
@@ -115,7 +116,7 @@ input, select, button {
     background: #eee;
     margin: .65em;
     padding: .4em .6em;
-    box-shadow: 0 4px 20px -4px #000b;
+    box-shadow: var(--box-shadow);
     width: 100%;
     outline: none !important;
 }
@@ -154,4 +155,36 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* 
+
+
+DA UNIFICARE CON QUELLO SOPRAAAAAAAAAAAAA
+
+
+
+*/
+
+#players {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1em;
+}
+#players > .player {
+    justify-content: center;
+    display: flex;
+    padding: .5em;
+    flex: 1;
+    margin: .5em;
+    flex-wrap: wrap;
+    border: 2px solid #000a;
+    background: #222a;
+    border-radius: 4px;
+    box-shadow: var(--box-shadow);
+}
+#players > .player.dead {
+    background: #2223;
+    opacity: .8;
+    color: #ccc;
 }

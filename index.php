@@ -68,19 +68,17 @@ function get_events($village) {
             // print_r($village); 
 ?>
 
-    <span id="alive">
-        <h4>Vivi: <?php echo($alive[0]);?></h4>
-        <h4>Morti: <?php echo($alive[1]);?></h4>
-    </span>
-    <table id="players">
+    <div id="players">
         <?php foreach($village['giocatori'] as $giocatore) { ?>
-        <tr>
-            <td><?php echo($giocatore['username']); ?></td>
-            <td><?php echo($giocatore['ruolo']); ?></td>
-            <td><?php echo($giocatore['in_vita']); ?></td>                    
-        </tr>
+            <span class="player <?php if(!$giocatore['in_vita']) {echo("dead");} ?>">
+                <?php echo($giocatore['username']); ?>
+            </span>
         <?php } ?>
-    </table>
+    </div>
+    <span id="alive">
+        <h4>Vivi: <?php echo($alive[0]);?> - Morti: <?php echo($alive[1]);?></h4>
+    </span>
+    
 
     <div id="events">
         <?php foreach($events as $event) { ?>
