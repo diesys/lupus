@@ -15,6 +15,13 @@
         file_put_contents('v/'.$file_name.'.json', $json);
     }
 
+    // function get_events($village) {
+    //     $events = array();
+    //     foreach($village['eventi'] as $event) {
+    //         array_push($events, $event);
+    //     } return $events;
+    // }
+
     //////////////////////
     session_start();
     $error = "";
@@ -31,6 +38,11 @@
         } else {
             $error = "Village not present!";
         }
+    }
+
+    //// aggiungi evento
+    if(isset($village) and isset($_POST) and isset($_POST['datetime']) and isset($_POST['description'])) {
+        array_push($village['eventi'], array($_POST['datetime'] => $_POST['description']));
     }
 ?>
 
@@ -58,9 +70,16 @@
     </header>
 
     <center>
-    <!-- <form action="" method="post"> -->
-        <?php var_dump($village); ?>
-    <!-- </form> -->    
+    <form action="" method="post">
+        <h4>Nuovo evento</h4>
+        <input type="datetime" name="date" id="date" required />
+        <textarea name="description" placeholder="descrizione" required></textarea>
+        <p class="legend">legenda</p>
+
+        <button type="submit" formmethod="post">crea</button>
+
+        <?php // var_dump($village); ?>
+    </form>    
 
 <!-- ERRORI -->
 <?php } if ($error != "") { ?>
