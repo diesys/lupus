@@ -102,7 +102,6 @@ function get_events($village) {
         Sei un <a href="login.php">master</a>?
     </p>
 <?php } ?> 
-
 </center>
 
     <footer>
