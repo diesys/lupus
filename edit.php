@@ -43,7 +43,7 @@
     //// aggiungi evento
     if(isset($village) and isset($_POST) and isset($_POST['datetime']) and isset($_POST['description'])) {
         array_push($village['eventi'], array($_POST['datetime'] => $_POST['description']));
-    }
+    } 
 ?>
 
 <!DOCTYPE html>
