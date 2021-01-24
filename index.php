@@ -53,11 +53,6 @@ function get_events($village) {
 </header>
 
 <center>
-    <!-- NO GET => HOME -->
-    <p>
-        In costruzione... leggi i <a href="credits.html">credits</a> (ancora più in costruzione) <br><br>
-        Sei un <a href="login.php">master</a>?
-    </p>
 
 <?php
     if (isset($_GET) and isset($_GET['v'])) {
@@ -101,7 +96,12 @@ function get_events($village) {
 <?php
     } else { ?>
         <h2 style="color:yellow;">Villaggio non presente!</h2>
-<?php }} ?> 
+<?php }} else { ?> 
+    <p> <!-- NO GET => HOME -->
+        In costruzione... leggi i <a href="credits.html">credits</a> (ancora più in costruzione) <br><br>
+        Sei un <a href="login.php">master</a>?
+    </p>
+<?php } ?> 
 
 </center>
 
