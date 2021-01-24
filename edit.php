@@ -14,13 +14,25 @@
         $json = json_encode($data);
         file_put_contents('v/'.$file_name.'.json', $json);
     }
+    
+    function get_alive($village) {
+        $alive = 0;
+        $dead = 0;
+        foreach($village['giocatori'] as $giocatore) {
+            if($giocatore['in vita']) {
+                $alive += 1;
+            } else {
+                $dead += 1;
+            }
+        } return [$alive, $dead];
+    }
 
-    // function get_events($village) {
-    //     $events = array();
-    //     foreach($village['eventi'] as $event) {
-    //         array_push($events, $event);
-    //     } return $events;
-    // }
+    function get_events($village) {
+        $events = array();
+        foreach($village['eventi'] as $event) {
+            array_push($events, $event);
+        } return $events;
+    }
 
     //////////////////////
     session_start();
@@ -70,16 +82,32 @@
     </header>
 
     <center>
-    <form action="" method="post">
-        <h4>Nuovo evento</h4>
-        <input type="datetime" name="date" id="date" required />
-        <textarea name="description" placeholder="descrizione" required></textarea>
-        <p class="legend">legenda</p>
+        <form action="" method="post">
+            <h4>Nuovo evento</h4>
+            <input type="datetime" name="date" id="date" required />
+            <textarea name="description" placeholder="descrizione" required></textarea>
+            <p class="legend">legenda</p>
 
-        <button type="submit" formmethod="post">crea</button>
+            <button type="submit" formmethod="post">crea</button>
 
-        <?php // var_dump($village); ?>
-    </form>    
+            <?php // var_dump($village); ?>
+        </form>    
+
+        <span id="alive">
+            <h4>Vivi: <?php echo($alive[0]);?></h4>
+            <h4>Morti: <?php echo($alive[1]);?></h4>
+        </span>
+
+        <div id="events">
+            <?php foreach($events as $event) { ?>
+                <span class="event">
+                    <?php 
+                        echo($event['data']);
+                        echo($event['descrizione']);
+                    ?>
+                </span>
+            <?php } ?>
+        </div>
 
 <!-- ERRORI -->
 <?php } if ($error != "") { ?>
