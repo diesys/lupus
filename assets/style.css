@@ -172,7 +172,7 @@ DA UNIFICARE CON QUELLO SOPRAAAAAAAAAAAAA
     padding: 1em;
 }
 #players > .player {
-    justify-content: center;
+    justify-content: space-around;
     display: flex;
     padding: .5em;
     flex: 1;
