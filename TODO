@@ -2,11 +2,13 @@
 
 ## pagina a parte o con "admin?populate=true" dopo la creazione per assegnare i ruoli, username, etc
 
+
 - colore per ogni ruolo con la classe
 
 - fix select elimina
 
 - calendario eventi: flexbox quadratini col wrap e dimensione minima (cosi viene mobile)
+    - con js mettere required/disabled in base al tipo selezionato
     // sistemare il submit nuovo evento e vedere come son venuti gli eventi ed eventualmente spostare su index.php (forse meglio unificare la libreria php a sto punto?)
 
 - sistemare uccisioni "resurrezioni" con bottoni cosi ci si sbriga

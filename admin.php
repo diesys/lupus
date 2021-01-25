@@ -10,12 +10,27 @@
         return $randomString;
     }
 
+    function read_village($file_name) {
+        if(file_exists('v/'.$file_name.'.json')) {
+            $json = file_get_contents('v/'.$file_name.'.json');
+            $data = json_decode($json, true);
+            return $data;
+        } else {
+            return FALSE;
+        }
+    }
+
+    function write_village($data, $file_name) {
+        $json = json_encode($data);
+        file_put_contents('v/'.$file_name.'.json', $json);
+    }
+
     function new_village($file_name) {
         $data = array(
             'nome' => $_POST['new_name'],
             'telegram' => "",
-            'giorni' => array(array(array("tipo" => "notte", "descrizione" => "Prima notte"))),
-            'giocatori' => array_fill(0, $_POST['players'], array("username" => generateRandomString(), "ruolo" => "giocatore", "in_vita" => TRUE)),
+            'giorni' => array(array(array())),
+            'giocatori' => array_fill(0, $_POST['players'], array("username" => "", "ruolo" => "giocatore", "in_vita" => TRUE)),
             'id' => generateRandomString()
         );
 
@@ -86,15 +101,15 @@
 </header>
 
 <center>
-<?php   
+<?php
    if ($_SESSION['logged_in'] == TRUE) { 
+        $db = file_get_contents('v/_all.json');
+        $villages = json_decode($db, true);
 ?> 
         <form action="edit.php" method="get">
             <h4 class="full-width">Seleziona villaggio</h4>
             <select class="full-width" name="v" id="lista_villaggi">
                 <?php
-                    $db = file_get_contents('v/_all.json');
-                    $villages = json_decode($db, true);
                     foreach ($villages as $hash => $name) {
                         echo("<option value='".$hash."'>".$name."</option>");
                     }
@@ -103,7 +118,7 @@
             <button type="submit" formmethod="get">vai</button>
         </form>
 
-        <form action="" method="post">
+        <form action="populate.php" method="post">
             <h4 class="full-width">Nuovo villaggio</h4>
             <input class="half-width" name="new_name" placeholdxer="Nome¹" type="text" pattern="[A-Za-z0-9]{4-24}" required />
             <input class="half-width" name="players" type="number" placeholder="Giocatori²" min="4" max="30" range="1" required />
@@ -111,6 +126,26 @@
             
             <button type="submit" formmethod="post">Crea</button>
         </form>
+
+    <?php
+        if ($_SESSION['logged_in'] == TRUE and isset($_POST['new_name']) and isset($_GET['populate']) and $_GET['populate'] == "true") {
+            foreach ($villages as $hash => $name) {
+                if($name == $_POST['new_name']) {
+                    $village_hash = $hash;
+                    $village = read_village($name);
+                }
+            }
+            echo("<form action='edit.php?v='".$village_hash."' method='post' id='populate_form'>");
+            foreach ($village['giocatori'] as $player) {
+                echo("<span class='player_input'>");
+                    echo("<input type='text' placeholder='username' value='".$player['username']."'>");
+                    echo("<input type='text' placeholder='ruolo'>");
+                echo("</span>");
+            }
+            echo("<button formmethod='post' type='submit'>salva</button>");
+            echo("</form'>");
+        }
+    ?>
    
 
 <?php } if ($error != "") { ?>

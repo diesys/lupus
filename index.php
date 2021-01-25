@@ -23,10 +23,10 @@ function get_alive($village) {
 }
 
 function get_events($village) {
-    $events = array();
-    foreach($village['eventi'] as $event) {
-        array_push($events, $event);
-    } return $events;
+    $days = array();
+    foreach($village['giorni'] as $day) {
+        array_push($days, $day);
+    } return $days;
 }
 
 ?>
@@ -46,10 +46,12 @@ function get_events($village) {
         <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
         Masterus
     </h2>
+<?php if(isset($_GET) and isset($_GET['v'])) { ?>
     <ul>
         <li><a href="#players">Giocatori</a></li>
-        <li><a href="#events">Calendario</a></li>
+        <li><a href="#days">Calendario</a></li>
     </ul>
+<?php } ?>
 </header>
 
 <center>
@@ -64,13 +66,13 @@ function get_events($village) {
             $selected = $db[$_GET['v']];
             $village = read_village($selected);
             $alive = get_alive($village);
-            $events = get_events($village);
+            $days = get_events($village);
             // print_r($village); 
 ?>
 
     <span id="players">
         <h2>Giocatori</h2>
-        <span>Vivi: <?php echo($alive[0]);?> - Morti: <?php echo($alive[1]);?></span>
+        <span>Vivi: <?php echo($alive[0]."/".intval($alive[0]+$alive[1]));?></span>
     </span>
     <div id="players_list">
         <?php foreach($village['giocatori'] as $giocatore) { ?>
@@ -82,18 +84,22 @@ function get_events($village) {
     
 
     <span id="events">
-        <h2>Calendario</h2>
-        <!-- <span>oggi: <?php// echo($alive[0]);?></span> -->
+        <h2 class="full-width">Calendario</h2>
     </span>
     <div id="events_list">
-        <?php foreach($days as $day) { ?>
-            <span class="event <?php echo($day['tipo']); ?>">
+        <?php foreach ($days as $i => $day) { ?>
+            <span class="day">
                 <span class="date">
-                    <?php echo($day['data']." - ".$day['ora']);?>
+                    Giorno <?php echo(intval($i+1));?>
                 </span>
-                <span class="description">
-                    <?php echo($day['descrizione']);?>
+
+            <?php foreach ($day as $event) { if($event) {?>
+                <span class="event <?php echo($event['tipo']);?>">
+                    <span class="description">
+                        <?php echo($event['descrizione']);?>
+                    </span> 
                 </span>
+            <?php }} ?>
             </span>
         <?php } ?>
     </div>

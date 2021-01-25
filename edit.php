@@ -37,7 +37,7 @@
     //////////////////////
     session_start();
     $error = "";
-    
+
     if ($_SESSION['logged_in'] == TRUE and isset($_GET['v'])) {
         $json = file_get_contents('v/_all.json');
         $db = json_decode($json, true);
@@ -102,6 +102,8 @@
         <ul>
             <li><a href="admin.php">Admin</a></li>
             <li><a href="./?v=<?php echo($village['id']);?>">Bacheca</a></li>
+            <li><a href="v/<?php echo($village['nome']);?>.json" download>Scarica</a></li>
+            <!-- <li><a href="v/<?php// echo($village['nome']);?>.json" download>Carica</a></li> -->
             <li><a href="#players">Giocatori</a></li>
             <li><a href="#events">Calendario</a></li>
         </ul>
@@ -116,10 +118,10 @@
                 } ?>
             </select>
             <select name="type" id="type" required>
-                <option value="notte">Notte</option>
-                <option value="ucciso_notte">Assassinio notturno</option>
-                <option value="ucciso_giorno">Condanna diurna</option>
-                <option value="votazione">Esito votazione</option>
+                <option value="notte">Nuova notte</option>
+                <option value="assassinato">Assassinio notturno</option>
+                <option value="giustiziato">Condanna diurna</option>
+                <option value="votazione">Votazione</option>
             </select>
             <select name="player" required>
                 <option value=" " selected>Nessuno</option>
@@ -129,21 +131,23 @@
             </select>
             <textarea class="full-width" name="description" placeholder="descrizione" col="8" required></textarea>
 
-            <button type="submit" formmethod="post">crea</button>
+            <button type="submit" formmethod="post">aggiungi</button>
         </form>
 
-        <form action="" method="post">
+        <!-- <form action="" method="post">
             <h4 class="full-width">Rimuovi dal calendario</h4>
             <select name="id_evento">
-                <?php foreach ($days as $day) {
-                    foreach ($day as $number => $event) {
-                        echo("<option value='".$number." ".$event['tipo']."'>".intval($number+1).") ".$event['tipo']."</option>");;
-                    }
-                } ?>
+                <?php
+                // foreach ($days as $day) {
+                //     foreach ($day as $number => $event) {
+                //         echo("<option value='".$number." ".$event['tipo']."'>".intval($number+1).") ".$event['tipo']."</option>");;
+                //     }
+                // } 
+                ?>
             </select>
 
             <button type="submit" formmethod="post">elimina</button>
-        </form>
+        </form> -->
 
 
         <span class="full-width" id="players">
@@ -169,13 +173,13 @@
                         Giorno <?php echo(intval($i+1));?>
                     </span>
 
-                <?php foreach ($day as $event) { ?>
+                <?php foreach ($day as $event) { if($event) {?>
                     <span class="event <?php echo($event['tipo']);?>">
                         <span class="description">
                             <?php echo($event['descrizione']);?>
                         </span> 
                     </span>
-                <?php } ?>
+                <?php }} ?>
                 </span>
             <?php } ?>
         </div>
@@ -185,6 +189,10 @@
     <h2 style="color:yellow;"><?php echo $error;?></h2>
 <?php } ?>
 
+
+        <p class="legend">
+            <span class="dot assassinato">assassinati dai lupi</span> - <span class="dot giustiziato">giustiziati dal villaggio</span>
+        </p>
     </center>
     
     <footer>

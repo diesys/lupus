@@ -109,6 +109,15 @@ footer {
     opacity: .75;
     font-size: .8rem;
 }
+.legend .dot {
+    width: max-content;
+    height: min-content;
+    border-radius: 1em;
+    padding: .5em;
+    border: 1px solid #0008;
+    box-shadow: var(--box-shadow);
+    display: inline-block;
+}
 
 a {
     color: var(--accent-color);
@@ -170,7 +179,8 @@ button {
     padding: 1em;
 }
 #events_list {
-    flex-direction: column-reverse;
+    /* flex-direction: column-reverse; */
+    flex-direction: row-reverse;
 }
 #players_list > .player,
 #events_list .description {
@@ -193,26 +203,31 @@ button {
     opacity: .8;
     color: #ddd;
 }
+.player_input {
+    border-radius: 4px;
+    box-shadow: var(--box-shadow);
+    border: 2px solid #000a;
+    background: #222a;
+    margin: .5em;
+}
 #events_list .date {
-    /* background: #ccc9; */
-    /* color: #000e; */
-    /* text-shadow: none !important; */
-    /* border-radius: 1em 1em 0 0; */
     font-weight: 900;
     font-size: .9rem;
     min-width: 100px;
     padding: .4em .8em;
-    /* box-shadow: var(--box-shadow); */
 }
 
 /* eventi colori */
-#events_list .event.notte .description {
+#events_list .event.giustiziato .description,
+.legend .dot.giustiziato {
     background: var(--night-bg);
 }
-#events_list .event.ucciso_giorno .description {
+#events_list .event.giustiziato .description,
+.legend .dot.giustiziato {
     background: var(--daykill-bg);
 }
-#events_list .event.ucciso_notte .description {
+#events_list .event.assassinato .description,
+.legend .dot.assassinato {
     background: var(--nightkill-bg);
 }
 /* #events_list > .event.votazione .description {
