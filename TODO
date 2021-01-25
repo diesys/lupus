@@ -1,19 +1,18 @@
-# TODO
+## TODO
 
-## pagina a parte o con "admin?populate=true" dopo la creazione per assegnare i ruoli, username, etc
+# ruoli
+    - colore per ogni ruolo con la classe
 
+# populate
+    - la funzione populate aggiorna nella stessa pagina telegram e utenti (serializzare i vari input degli utenti?)
 
-- colore per ogni ruolo con la classe
+# admin
+    - fix select elimina evento da calendario
+    - link a populate (serve la post con new_name) per ogni evenienza
 
-- la funzione populate aggiorna nella stessa pagina telegram e utenti (serializzare i vari input degli utenti?)
+# calendario eventi:
+    - gli eventi in automatico determinano la morte dei giocatori, cosi non serve fare altro (casi estremi ci sta il populate)
 
-- fix select elimina
-
-- calendario eventi: flexbox quadratini col wrap e dimensione minima (cosi viene mobile)
-    - con js mettere required/disabled in base al tipo selezionato
-    // sistemare il submit nuovo evento e vedere come son venuti gli eventi ed eventualmente spostare su index.php (forse meglio unificare la libreria php a sto punto?)
-
-- sistemare uccisioni "resurrezioni" con bottoni cosi ci si sbriga
-
-- separare libreria php e resto?
-    // + bottone per elimina villaggio/concludi partita.
+# vario
+    - separare libreria php e resto?
+    - bottone per elimina villaggio/concludi partita.
