@@ -10,53 +10,6 @@
         return $randomString;
     }
 
-    function read_village($file_name) {
-        if(file_exists('v/'.$file_name.'.json')) {
-            $json = file_get_contents('v/'.$file_name.'.json');
-            $data = json_decode($json, true);
-            return $data;
-        } else {
-            return FALSE;
-        }
-    }
-
-    function write_village($data, $file_name) {
-        $json = json_encode($data);
-        file_put_contents('v/'.$file_name.'.json', $json);
-    }
-
-    function new_village($file_name) {
-        $data = array(
-            'nome' => $_POST['new_name'],
-            'telegram' => "",
-            'giorni' => array(array(array())),
-            'giocatori' => array_fill(0, $_POST['players'], array("username" => "", "ruolo" => "giocatore", "in_vita" => TRUE)),
-            'id' => generateRandomString()
-        );
-
-        $new_json = 'v/'.$file_name.'.json';
-        $new_village = json_encode($data);
-        
-        if (!file_exists('v/_all.json')) {
-            file_put_contents('v/_all.json', json_encode(array()));
-        }
-        $db = file_get_contents('v/_all.json');
-        $all = json_decode($db, true);
-
-        if (!file_exists($new_json)) {
-            if(!array_key_exists($data['id'], $all)) {
-                $all[$data['id']] = $data['nome'];
-            } else {
-                $data['id'] = substr($data['id'], 0, -2);
-                $all[$data['id']] = $data['nome'];
-            }
-            file_put_contents($new_json, $new_village);
-            file_put_contents('v/_all.json', json_encode($all));
-        } else {
-            $error = "Il file esiste!";
-        }
-    }
-
     //////////////////////
     session_start();
     $error = "";
@@ -75,11 +28,6 @@
     // logout
     if(isset($_POST['page_logout'])) {
         $_SESSION['logged_in'] = FALSE;
-    }    
- 
-    // crea partita
-    if(isset($_POST['new_name']) and isset($_POST['players'])) {
-        new_village($_POST['new_name']);
     }
 ?>
 
