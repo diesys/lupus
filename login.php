@@ -15,7 +15,7 @@
     </header>
 
     <center>
-        <form action="admin.php" method="post">
+        <form action="admin.php" method="post" class="flex-column">
             <input autofocus type="password" name="password" />
             <button type="submit">entra*</button>
             <p>

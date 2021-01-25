@@ -86,13 +86,13 @@ function get_events($village) {
         <!-- <span>oggi: <?php// echo($alive[0]);?></span> -->
     </span>
     <div id="events_list">
-        <?php foreach($events as $event) { ?>
-            <span class="event <?php echo($event['tipo']); ?>">
+        <?php foreach($days as $day) { ?>
+            <span class="event <?php echo($day['tipo']); ?>">
                 <span class="date">
-                    <?php echo($event['data']." - ".$event['ora']);?>
+                    <?php echo($day['data']." - ".$day['ora']);?>
                 </span>
                 <span class="description">
-                    <?php echo($event['descrizione']);?>
+                    <?php echo($day['descrizione']);?>
                 </span>
             </span>
         <?php } ?>

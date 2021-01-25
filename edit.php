@@ -28,10 +28,10 @@
     }
 
     function get_events($village) {
-        $events = array();
-        foreach($village['eventi'] as $event) {
-            array_push($events, $event);
-        } return $events;
+        $days = array();
+        foreach($village['giorni'] as $day) {
+            array_push($days, $day);
+        } return $days;
     }
 
     //////////////////////
@@ -46,37 +46,40 @@
         if(array_key_exists($_GET['v'], $db)) {
             $selected = $db[$_GET['v']];
             $village = read_village($selected);
-            // $alive = get_alive($village);
-            // $events = get_events($village);
-                // var_dump($village);
         } else {
             $error = "Village not present!";
         }
     }
 
     //// aggiungi evento
-    if(isset($village) and isset($_POST) and isset($_POST['date']) and isset($_POST['description']) and isset($_POST['time']) and isset($_POST['type']) and isset($_POST['player'])) {
+    if(isset($village) and isset($_POST) and isset($_POST['day']) and isset($_POST['description']) and isset($_POST['type']) and isset($_POST['player'])) {
+        // NUOVA NOTTE
+        if($_POST['type'] == "notte") {
+            $_POST['day'] = intval($_POST['day']+1);
+            array_push($village['giorni'], array());
+        }
         // prevent double submits # 1/2
         if(isset($_SESSION['last_action'])) {
-            if(substr($_POST['description'], 0, 20).$_POST['date'].$_POST['time'] != $_SESSION['last_action']) {
-                array_push($village['eventi'], array(
-                                                'data' => $_POST['date'], 
-                                                'ora' => $_POST['time'],
+            if(substr($_POST['description'], 0, 20)."#".$_POST['day']."#".$_POST['type'] != $_SESSION['last_action']) {
+                array_push($village['giorni'][$_POST['day']], array(
                                                 'tipo' => $_POST['type'], 
                                                 'descrizione' => $_POST['description'],
                                                 'giocatore' => $_POST['player']));
                 write_village($village, $selected);
                 // prevent double submits #2/2
-                $_SESSION['last_action'] = substr($_POST['description'], 0, 20).$_POST['date'].$_POST['time'];
+                $_SESSION['last_action'] = substr($_POST['description'], 0, 20)."#".$_POST['day']."#".$_POST['type'];
             }
         } else {
-            array_push($village['eventi'], array('data' => $_POST['date'], 'descrizione' => $_POST['description']));
+            array_push($village['giorni'][$_POST['day']], array(
+                'tipo' => $_POST['type'], 
+                'descrizione' => $_POST['description'],
+                'giocatore' => $_POST['player']));
             write_village($village, $selected);
             $_SESSION['last_action'] = $_POST['description'];
         }
     }
     $alive = get_alive($village);
-    $events = get_events($village);
+    $days = get_events($village);
 ?>
 
 <!DOCTYPE html>
@@ -105,16 +108,18 @@
     </header>
 
     <center>
-
         <form action="" method="post">
             <h4 class="full-width">Aggiungi al calendario</h4>
-            <input type="date" name="date" id="date" min="2020-01-01" max="2025-01-01" required />
-            <input type="time" name="time" id="time" required />
+            <select name="day" required>
+                <?php foreach ($days as $j => $day) {
+                    echo("<option value='".$j."'>Giorno ".intval($j+1)."</option>");
+                } ?>
+            </select>
             <select name="type" id="type" required>
+                <option value="notte">Notte</option>
                 <option value="ucciso_notte">Assassinio notturno</option>
                 <option value="ucciso_giorno">Condanna diurna</option>
                 <option value="votazione">Esito votazione</option>
-                <option value="notte">Notte</option>
             </select>
             <select name="player" required>
                 <option value="_" selected>Nessuno</option>
@@ -130,9 +135,10 @@
         <form action="" method="post">
             <h4 class="full-width">Rimuovi dal calendario</h4>
             <select name="id_evento">
-                <option value="" disabled selected>data e ora</option>
-                <?php foreach ($village['eventi'] as $evento) {
-                   echo("<option value='".$evento['data']."_".$evento['ora']."'>".$evento['data']." | ".$evento['ora']."</option>");
+                <?php foreach ($days as $day) {
+                    foreach ($day as $number => $event) {
+                        echo("<option value='".$number." ".$event['tipo']."'>".intval($number+1).") ".$event['tipo']."</option>");;
+                    }
                 } ?>
             </select>
 
@@ -140,9 +146,9 @@
         </form>
 
 
-        <span id="players">
+        <span class="full-width" id="players">
             <h2>Giocatori</h2>
-            <span>Vivi: <?php echo($alive[0]);?> - Morti: <?php echo($alive[1]);?></span>
+            <span>Vivi: <?php echo($alive[0]."/".intval($alive[0]+$alive[1]));?></span>
         </span>
         <div id="players_list">
             <?php foreach($village['giocatori'] as $giocatore) { ?>
@@ -154,33 +160,25 @@
         </div>
        
         <span id="events">
-            <h2>Calendario</h2>
-            <!-- <span>oggi: <?php //echo($alive[0]);?></span> -->
+            <h2 class="full-width">Calendario</h2>
         </span>
         <div id="events_list">
-            <?php foreach($events as $event) { ?>
-                <span class="event <?php echo($event['tipo']);?>">
+            <?php foreach ($days as $i => $day) { ?>
+                <span class="day">
                     <span class="date">
-                        <?php echo($event['data']." - ".$event['ora']);?>
+                        Giorno <?php echo(intval($i+1));?>
                     </span>
-                    <span class="description">
-                        <?php echo($event['descrizione']);?>
+
+                <?php foreach ($day as $event) { ?>
+                    <span class="event <?php echo($event['tipo']);?>">
+                        <span class="description">
+                            <?php echo($event['descrizione']);?>
+                        </span> 
                     </span>
+                <?php } ?>
                 </span>
             <?php } ?>
         </div>
-         
-
-        <!-- <form action="" method="post">
-            <h4 class="full-width">Giocatori in vita</h4>
-            <select name="giocatore">
-                <?php// foreach ($village['giocatori'] as $player) {
-                       // echo("<option value='".$player['username']."'>".$player['username']."</option>");
-                   // } ?>
-            </select>
-            <button type="submit" class="alivebtn hidden" formmethod="post">resuscita</button>
-            <button type="submit" class="alivebtn" formmethod="post">uccidi</button>
-        </form>    -->
 
 <!-- ERRORI -->
 <?php } if ($error != "") { ?>

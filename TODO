@@ -5,8 +5,7 @@
 - colore per ogni ruolo con la classe
 
 - calendario eventi: flexbox quadratini col wrap e dimensione minima (cosi viene mobile)
-    // fare a giornate, elimina date e time mantieni tipo e giocatore (se qualcuno muore)
-    // ordinata in base alla data
+    // sistemare il submit nuovo evento e vedere come son venuti gli eventi ed eventualmente spostare su index.php (forse meglio unificare la libreria php a sto punto?)
 
 - sistemare uccisioni "resurrezioni" con bottoni cosi ci si sbriga
 

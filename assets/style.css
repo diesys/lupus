@@ -88,11 +88,14 @@ header ul li {
     flex: 1;
     min-width: 100px;
 }
-
+.flex-column {
+    flex-direction: column;
+}
 form {
     flex-direction: row;
     flex-wrap: wrap;
 }
+
 footer {
     min-height: var(--footer-height);
     padding: 1.4em 10vw;
@@ -128,6 +131,7 @@ input, select, button {
 }
 .full-width {
     width: 100%;
+    user-select: none;
 }
 .half-width {
     width: 40%;
@@ -155,6 +159,7 @@ button {
     border: 1px solid var(--accent-color);
     color: #000;
     cursor: pointer;
+    user-select: none;
 }
 
 /* events and players LIST / CALENDAR */
@@ -168,7 +173,7 @@ button {
     flex-direction: column-reverse;
 }
 #players_list > .player,
-#events_list > .event > .description {
+#events_list .description {
     justify-content: space-around;
     display: flex;
     flex: 1;
@@ -188,7 +193,7 @@ button {
     opacity: .8;
     color: #ddd;
 }
-#events_list > .event > .date {
+#events_list .date {
     /* background: #ccc9; */
     /* color: #000e; */
     /* text-shadow: none !important; */
@@ -201,13 +206,13 @@ button {
 }
 
 /* eventi colori */
-#events_list > .event.notte .description {
+#events_list .event.notte .description {
     background: var(--night-bg);
 }
-#events_list > .event.ucciso_giorno .description {
+#events_list .event.ucciso_giorno .description {
     background: var(--daykill-bg);
 }
-#events_list > .event.ucciso_notte .description {
+#events_list .event.ucciso_notte .description {
     background: var(--nightkill-bg);
 }
 /* #events_list > .event.votazione .description {

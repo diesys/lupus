@@ -14,8 +14,8 @@
         $data = array(
             'nome' => $_POST['new_name'],
             'telegram' => "",
-            'eventi' => array(array("data" => "XX-XX-XXXX", "ora" => "XX:XX", "tipo" => "notte", "descrizione" => "Prima notte")),
-            'giocatori' => array_fill(0, $_POST['players'], array("username" => "@user", "ruolo" => "giocatore", "in_vita" => TRUE)),
+            'giorni' => array(array(array("tipo" => "notte", "descrizione" => "Prima notte"))),
+            'giocatori' => array_fill(0, $_POST['players'], array("username" => generateRandomString(), "ruolo" => "giocatore", "in_vita" => TRUE)),
             'id' => generateRandomString()
         );
 
