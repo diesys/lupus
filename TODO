@@ -5,6 +5,8 @@
 
 - colore per ogni ruolo con la classe
 
+- la funzione populate aggiorna nella stessa pagina telegram e utenti (serializzare i vari input degli utenti?)
+
 - fix select elimina
 
 - calendario eventi: flexbox quadratini col wrap e dimensione minima (cosi viene mobile)

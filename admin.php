@@ -1,15 +1,5 @@
 <?php
 
-    function generateRandomString($length = 8) {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
-    }
-
     //////////////////////
     session_start();
     $error = "";
@@ -36,7 +26,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masterus</title>
+    <title>Admin | Masterus</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -51,8 +41,10 @@
 <center>
 <?php
    if ($_SESSION['logged_in'] == TRUE) { 
-        $db = file_get_contents('v/_all.json');
-        $villages = json_decode($db, true);
+       if(file_exists('v/_all.json')){
+           $db = file_get_contents('v/_all.json');
+           $villages = json_decode($db, true);
+       }
 ?> 
         <form action="edit.php" method="get">
             <h4 class="full-width">Seleziona villaggio</h4>
@@ -73,28 +65,7 @@
             <p class="legend">¹ alfanumerico senza spazi · ² 4-30 giocatori</p>
             
             <button type="submit" formmethod="post">Crea</button>
-        </form>
-
-    <?php
-        if ($_SESSION['logged_in'] == TRUE and isset($_POST['new_name']) and isset($_GET['populate']) and $_GET['populate'] == "true") {
-            foreach ($villages as $hash => $name) {
-                if($name == $_POST['new_name']) {
-                    $village_hash = $hash;
-                    $village = read_village($name);
-                }
-            }
-            echo("<form action='edit.php?v='".$village_hash."' method='post' id='populate_form'>");
-            foreach ($village['giocatori'] as $player) {
-                echo("<span class='player_input'>");
-                    echo("<input type='text' placeholder='username' value='".$player['username']."'>");
-                    echo("<input type='text' placeholder='ruolo'>");
-                echo("</span>");
-            }
-            echo("<button formmethod='post' type='submit'>salva</button>");
-            echo("</form'>");
-        }
-    ?>
-   
+        </form>  
 
 <?php } if ($error != "") { ?>
     <h2 style="color:yellow;"><?php echo($error);?></h2>
