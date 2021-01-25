@@ -1,18 +1,14 @@
 # TODO
 
+## pagina a parte o con "admin?populate=true" dopo la creazione per assegnare i ruoli, username, etc
+
+- colore per ogni ruolo con la classe
 
 - calendario eventi: flexbox quadratini col wrap e dimensione minima (cosi viene mobile)
-    // la data il tipo (tipi fissati, iconcina e colore cambiano) e il contenuto
+    // fare a giornate, elimina date e time mantieni tipo e giocatore (se qualcuno muore)
     // ordinata in base alla data
-    // lista eventi (data, tipo, contenuto)
-    // gli eventi sono modificabili? se ne aggiungono uno per volta o magari iniziare con un unica textarea (stile pad semplice) e vedere come va?
 
 - sistemare uccisioni "resurrezioni" con bottoni cosi ci si sbriga
 
-- lista giocatori, come selezionare i ruoli? scriverli a mano o avere una select? scritti nel json della partita (deve contenere pure vivi e morti bool)
-
-- mettere qualche immagine?
-
 - separare libreria php e resto?
-    // funzione php che preso il json stampa in edit.php?v=... con le stesse cose ma tutte modificabili e un bottone per aggingere evento 
-        // + bottone per elimina villaggio/concludi partita.
+    // + bottone per elimina villaggio/concludi partita.

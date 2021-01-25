@@ -47,7 +47,7 @@ function get_events($village) {
         Masterus
     </h2>
     <ul>
-        <li><a href="#alive">Giocatori</a></li>
+        <li><a href="#players">Giocatori</a></li>
         <li><a href="#events">Calendario</a></li>
     </ul>
 </header>
@@ -68,25 +68,32 @@ function get_events($village) {
             // print_r($village); 
 ?>
 
-    <div id="players">
+    <span id="players">
+        <h2>Giocatori</h2>
+        <span>Vivi: <?php echo($alive[0]);?> - Morti: <?php echo($alive[1]);?></span>
+    </span>
+    <div id="players_list">
         <?php foreach($village['giocatori'] as $giocatore) { ?>
             <span class="player <?php if(!$giocatore['in_vita']) {echo("dead");} ?>">
                 <?php echo($giocatore['username']); ?>
             </span>
         <?php } ?>
     </div>
-    <span id="alive">
-        <h4>Vivi: <?php echo($alive[0]);?> - Morti: <?php echo($alive[1]);?></h4>
-    </span>
     
 
-    <div id="events">
+    <span id="events">
+        <h2>Calendario</h2>
+        <!-- <span>oggi: <?php// echo($alive[0]);?></span> -->
+    </span>
+    <div id="events_list">
         <?php foreach($events as $event) { ?>
-            <span class="event">
-                <?php 
-                    echo($event['data']);
-                    echo($event['descrizione']);
-                ?>
+            <span class="event <?php echo($event['tipo']); ?>">
+                <span class="date">
+                    <?php echo($event['data']." - ".$event['ora']);?>
+                </span>
+                <span class="description">
+                    <?php echo($event['descrizione']);?>
+                </span>
             </span>
         <?php } ?>
     </div>

@@ -55,13 +55,19 @@
     }
 
     //// aggiungi evento
-    if(isset($village) and isset($_POST) and isset($_POST['date']) and isset($_POST['description'])) {
-        // prevent double submits
+    if(isset($village) and isset($_POST) and isset($_POST['date']) and isset($_POST['description']) and isset($_POST['time']) and isset($_POST['type']) and isset($_POST['player'])) {
+        // prevent double submits # 1/2
         if(isset($_SESSION['last_action'])) {
-            if($_POST['description'] != $_SESSION['last_action']) {
-                array_push($village['eventi'], array('data' => $_POST['date'], 'descrizione' => $_POST['description']));
+            if(substr($_POST['description'], 0, 20).$_POST['date'].$_POST['time'] != $_SESSION['last_action']) {
+                array_push($village['eventi'], array(
+                                                'data' => $_POST['date'], 
+                                                'ora' => $_POST['time'],
+                                                'tipo' => $_POST['type'], 
+                                                'descrizione' => $_POST['description'],
+                                                'giocatore' => $_POST['player']));
                 write_village($village, $selected);
-                $_SESSION['last_action'] = $_POST['description'];
+                // prevent double submits #2/2
+                $_SESSION['last_action'] = substr($_POST['description'], 0, 20).$_POST['date'].$_POST['time'];
             }
         } else {
             array_push($village['eventi'], array('data' => $_POST['date'], 'descrizione' => $_POST['description']));
@@ -93,64 +99,88 @@
         <ul>
             <li><a href="admin.php">Admin</a></li>
             <li><a href="./?v=<?php echo($village['id']);?>">Bacheca</a></li>
-        </ul>
-        <br>
-        <ul>
-            <li><a href="#alive">Giocatori</a></li>
+            <li><a href="#players">Giocatori</a></li>
             <li><a href="#events">Calendario</a></li>
         </ul>
     </header>
 
     <center>
-        <div id="players">
-            <?php foreach($village['giocatori'] as $giocatore) { ?>
-            <span class="player <?php if(!$giocatore['in_vita']) {echo("dead");} ?>">
-                <span><?php echo($giocatore['username']); ?></span>
-                <span><?php echo($giocatore['ruolo']); ?></span>
-            </span>
-            <?php } ?>
-        </div>
-        <span id="alive">
-            <h4>Vivi: <?php echo($alive[0]);?> - Morti: <?php echo($alive[1]);?></h4>
-        </span>
-       
 
-        <div id="events">
-            <?php foreach($events as $event) { ?>
-                <span class="event">
-                    <?php 
-                        echo($event['data']);
-                        echo($event['descrizione']);
-                    ?>
-                </span>
-            <?php } ?>
-        </div>
-        
         <form action="" method="post">
-            <h4>Nuova elezione</h4>
-            <input type="date" name="date" id="date" required />
-            <textarea name="description" placeholder="descrizione" required></textarea>
-            <p class="legend">legenda</p>
+            <h4 class="full-width">Aggiungi al calendario</h4>
+            <input type="date" name="date" id="date" min="2020-01-01" max="2025-01-01" required />
+            <input type="time" name="time" id="time" required />
+            <select name="type" id="type" required>
+                <option value="ucciso_notte">Assassinio notturno</option>
+                <option value="ucciso_giorno">Condanna diurna</option>
+                <option value="votazione">Esito votazione</option>
+                <option value="notte">Notte</option>
+            </select>
+            <select name="player" required>
+                <option value="_" selected>Nessuno</option>
+                <?php foreach ($village['giocatori'] as $player) {
+                   echo("<option value='".$player['username']."'>".$player['username']."</option>");
+                } ?>
+            </select>
+            <textarea class="full-width" name="description" placeholder="descrizione" col="8" required></textarea>
 
             <button type="submit" formmethod="post">crea</button>
-
-            <?php // var_dump($village); ?>
         </form>
 
         <form action="" method="post">
-            <h4>Nuova morte</h4>
-            <select name="giocatore">
-                <?php
-                    foreach ($village['giocatori'] as $player) {
-                        echo("<option value='".$player['username']."'>".$player['username']."</option>");
-                    }
-                ?>
+            <h4 class="full-width">Rimuovi dal calendario</h4>
+            <select name="id_evento">
+                <option value="" disabled selected>data e ora</option>
+                <?php foreach ($village['eventi'] as $evento) {
+                   echo("<option value='".$evento['data']."_".$evento['ora']."'>".$evento['data']." | ".$evento['ora']."</option>");
+                } ?>
             </select>
-            
-            <p class="legend">legenda</p>
 
-            <button type="submit" formmethod="post">uccidi</button>
-        </form>   
+            <button type="submit" formmethod="post">elimina</button>
+        </form>
+
+
+        <span id="players">
+            <h2>Giocatori</h2>
+            <span>Vivi: <?php echo($alive[0]);?> - Morti: <?php echo($alive[1]);?></span>
+        </span>
+        <div id="players_list">
+            <?php foreach($village['giocatori'] as $giocatore) { ?>
+            <span class="player <?php if(!$giocatore['in_vita']) {echo("dead");} ?>">
+                <span><?php echo($giocatore['username']); ?></span>
+                <span>(<?php echo($giocatore['ruolo']); ?>)</span>
+            </span>
+            <?php } ?>
+        </div>
+       
+        <span id="events">
+            <h2>Calendario</h2>
+            <!-- <span>oggi: <?php //echo($alive[0]);?></span> -->
+        </span>
+        <div id="events_list">
+            <?php foreach($events as $event) { ?>
+                <span class="event <?php echo($event['tipo']);?>">
+                    <span class="date">
+                        <?php echo($event['data']." - ".$event['ora']);?>
+                    </span>
+                    <span class="description">
+                        <?php echo($event['descrizione']);?>
+                    </span>
+                </span>
+            <?php } ?>
+        </div>
+         
+
+        <!-- <form action="" method="post">
+            <h4 class="full-width">Giocatori in vita</h4>
+            <select name="giocatore">
+                <?php// foreach ($village['giocatori'] as $player) {
+                       // echo("<option value='".$player['username']."'>".$player['username']."</option>");
+                   // } ?>
+            </select>
+            <button type="submit" class="alivebtn hidden" formmethod="post">resuscita</button>
+            <button type="submit" class="alivebtn" formmethod="post">uccidi</button>
+        </form>    -->
 
 <!-- ERRORI -->
 <?php } if ($error != "") { ?>

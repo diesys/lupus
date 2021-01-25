@@ -14,7 +14,7 @@
         $data = array(
             'nome' => $_POST['new_name'],
             'telegram' => "",
-            'eventi' => array(array("data" => "XX-XX-XXXX", "descrizione" => "Prima notte")),
+            'eventi' => array(array("data" => "XX-XX-XXXX", "ora" => "XX:XX", "tipo" => "notte", "descrizione" => "Prima notte")),
             'giocatori' => array_fill(0, $_POST['players'], array("username" => "@user", "ruolo" => "giocatore", "in_vita" => TRUE)),
             'id' => generateRandomString()
         );
@@ -90,8 +90,8 @@
    if ($_SESSION['logged_in'] == TRUE) { 
 ?> 
         <form action="edit.php" method="get">
-            <h4>Seleziona villaggio</h4>
-            <select name="v" id="lista_villaggi">
+            <h4 class="full-width">Seleziona villaggio</h4>
+            <select class="full-width" name="v" id="lista_villaggi">
                 <?php
                     $db = file_get_contents('v/_all.json');
                     $villages = json_decode($db, true);
@@ -104,9 +104,9 @@
         </form>
 
         <form action="" method="post">
-            <h4>Nuovo villaggio</h4>
-            <input name="new_name" placeholder="Nome¹" type="text" pattern="[A-Za-z0-9]{4-24}" required />
-            <input name="players" type="number" placeholder="Giocatori²" min="4" max="30" range="1" required />
+            <h4 class="full-width">Nuovo villaggio</h4>
+            <input class="half-width" name="new_name" placeholdxer="Nome¹" type="text" pattern="[A-Za-z0-9]{4-24}" required />
+            <input class="half-width" name="players" type="number" placeholder="Giocatori²" min="4" max="30" range="1" required />
             <p class="legend">¹ alfanumerico senza spazi · ² 4-30 giocatori</p>
             
             <button type="submit" formmethod="post">Crea</button>
