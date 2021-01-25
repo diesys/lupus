@@ -4,6 +4,8 @@
 
 - colore per ogni ruolo con la classe
 
+- fix select elimina
+
 - calendario eventi: flexbox quadratini col wrap e dimensione minima (cosi viene mobile)
     // sistemare il submit nuovo evento e vedere come son venuti gli eventi ed eventualmente spostare su index.php (forse meglio unificare la libreria php a sto punto?)
 

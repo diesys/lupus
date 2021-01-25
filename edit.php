@@ -122,7 +122,7 @@
                 <option value="votazione">Esito votazione</option>
             </select>
             <select name="player" required>
-                <option value="_" selected>Nessuno</option>
+                <option value=" " selected>Nessuno</option>
                 <?php foreach ($village['giocatori'] as $player) {
                    echo("<option value='".$player['username']."'>".$player['username']."</option>");
                 } ?>
