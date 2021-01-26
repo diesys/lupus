@@ -237,7 +237,7 @@
         </p>
         <div id="events_list">
             <?php $n_days = count($days); 
-                foreach (array_reverse($days) as $i => $day) { ?>
+                foreach (array_reverse($days) as $i => $day) { if(count($day) > 0) { ?>
                 <span class="day">
                     <span class="date">
                         Giorno <?php echo(intval($n_days - $i));?>
@@ -252,7 +252,7 @@
                     </span>
                 <?php }} ?>
                 </span>
-            <?php } ?>
+            <?php }} ?>
         </div>
 
 <!-- ERRORI -->

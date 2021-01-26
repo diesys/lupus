@@ -31,30 +31,6 @@ function get_events($village) {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php if(isset($village)) {echo("Villaggio ".$village['nome']);} else { echo("Masterus");}?> | Masterus</title>
-    <link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
-
-<header>
-    <h2>
-        <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
-        <?php if(isset($village)) {echo("Villaggio ".$village['nome']);} else { echo("Masterus");}?>
-    </h2>
-<?php if(isset($_GET) and isset($_GET['v'])) { ?>
-    <ul>
-        <li><a href="#players">Giocatori</a></li>
-        <li><a href="#days">Calendario</a></li>
-    </ul>
-<?php } ?>
-</header>
-
-<center>
 <?php
     $error = "";
     if (isset($_GET) and isset($_GET['v'])) {
@@ -71,7 +47,37 @@ function get_events($village) {
         } else {
             $error = "Villaggio non presente!";
         }
+    } else {
+        unset($village);
+    }
 ?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php if(isset($village)) {echo("Villaggio ".$village['nome']);} else { echo("Home");}?> | Masterus</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header>
+    <h2>
+        <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
+        <?php if(isset($village)) {echo("Villaggio ".$village['nome']);} else { echo("Masterus");}?>
+    </h2>
+<?php if(isset($_GET) and isset($_GET['v'])) { ?>
+    <ul>
+        <li><a href="#players">Giocatori</a></li>
+        <li><a href="#events">Calendario</a></li>
+    </ul>
+<?php } ?>
+</header>
+
+<center>
+<?php if(isset($village)) { ?>
     <span id="players">
         <h2>Giocatori</h2>
         <span>Vivi: <?php echo($alive[0]."/".intval($alive[0]+$alive[1]));?></span>
