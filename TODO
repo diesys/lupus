@@ -11,5 +11,6 @@
     - gli eventi in automatico determinano la morte dei giocatori, cosi non serve fare altro (casi estremi ci sta il populate)
 
 # vario
+    - mettere meglio la roba sensibile tipo i json...
     - separare libreria php e resto?
     - bottone per elimina villaggio/concludi partita.

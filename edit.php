@@ -61,7 +61,11 @@
             write_village($village);
             $_SESSION['last_action'] = substr($_POST['description'], 0, 20)."#".$day."#".$_POST['type'];
         } else {
-            $day = count($village['giorni'])-1;
+            if(!isset($_POST['day'])) {
+                $day = count($village['giorni'])-1;
+            } else {
+                $day = $_POST['day'];
+            }
         }
         if($_POST['type'] == "assassinato" or $_POST['type'] == "giustiziato") {
             // aggiorna il giocatore morto
