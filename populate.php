@@ -8,7 +8,7 @@
     if(isset($_POST['new_name']) and isset($_POST['players'])) {
         new_village($_POST['new_name'], $_GET['v']);
     }
-    
+
     // il DB esiste?
     if(file_exists('v/_all.json')) {
         $json = file_get_contents('v/_all.json');

@@ -1,22 +1,14 @@
 <?php
     include 'assets/masterus.php';
 
-    // ///////////
+    // MAIN ///////////
     $error = "";
-
-    if (isset($_GET) and isset($_GET['v'])) {        
-        // searching village json by id
-        if(isset($_GET['v']) and array_key_exists($_GET['v'], $villages)) {
-            $selected = $villages[$_GET['v']];
-            $village = read_village($selected);
-            $alive = get_alive($village);
-            $days = get_events($village);
-        } else {
-            $error = "Villaggio non presente!";
-        }
-    } else {
-        unset($village);
+    if (isset($_GET) and isset($_GET['v'])) {
+        $village = get_village($_GET['v'], $villages);
+        $alive = get_alive($village);
+        $days = get_events($village);
     }
+
 ?>
 
 
@@ -25,14 +17,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php if(isset($village)) {echo("Villaggio ".$village['nome']);} else { echo("Home");}?> | Masterus</title>
+    <title><?php if($village != NULL) {echo("Villaggio ".$village['nome']);} else { echo("Home");}?> | Masterus</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
     <header>
         <h2>
             <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
-            <?php if(isset($village)) {echo("Villaggio ".$village['nome']);} else { echo("Masterus");}?>
+            <?php if($village != NULL) {echo("Villaggio ".$village['nome']);} else { echo("Masterus");}?>
         </h2>
     <?php if(isset($_GET) and isset($_GET['v'])) { ?>
         <ul>
@@ -43,7 +35,7 @@
     </header>
 
     <center>
-    <?php if(isset($village)) { ?>
+    <?php if($village != NULL) { ?>
         <span id="players">
             <h2>Giocatori</h2>
             <span>Vivi: <?php echo($alive[0]."/".intval($alive[0]+$alive[1]));?></span>

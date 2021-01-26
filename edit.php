@@ -3,20 +3,18 @@
     
     // sessione
     session_start();
-    $error = "";
 
-    if ($_SESSION['logged_in'] == TRUE and isset($_GET['v'])) {
-        // searching village json by id
-        if(array_key_exists($_GET['v'], $villages)) {
-            $selected = $villages[$_GET['v']];
-            $village = read_village($selected);
-        } else {
-            $error = "Village not present!";
-        }
+    // MAIN ///////////
+    $error = "";
+    if (isset($_GET) and isset($_GET['v'])) {
+        $village = get_village($_GET['v'], $villages);
+        $alive = get_alive($village);
+        $days = get_events($village);
     }
+    
 
     //// aggiungi evento
-    if(isset($village) and isset($_POST) and isset($_POST['type'])) {  // and isset($_POST['day']) and isset($_POST['description']) and isset($_POST['player'])
+    if($_SESSION['logged_in'] == TRUE and isset($village) and isset($_POST) and isset($_POST['type'])) {  // and isset($_POST['day']) and isset($_POST['description']) and isset($_POST['player'])
         // NUOVA NOTTE
         // prevent double submits # 1/2
         if($_POST['type'] == "notte" and ($_SESSION['last_action'] != substr($_POST['description'], 0, 20)."#".$_POST['type'])) {
@@ -65,8 +63,6 @@
             $_SESSION['last_action'] = substr($_POST['description'], 0, 20)."#".$_POST['day']."#".$_POST['type'];
         }
     }
-    $alive = get_alive($village);
-    $days = get_events($village);
 ?>
 
 <!DOCTYPE html>
