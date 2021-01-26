@@ -1,13 +1,4 @@
 <?php
-function generateRandomString($length = 8) {
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
-    }
-    return $randomString;
-}
 
 function read_village($file_name) {
     if(file_exists('v/'.$file_name.'.json')) {
@@ -19,30 +10,33 @@ function read_village($file_name) {
     }
 }
 
-function write_village($data, $file_name) {
+function write_village($data) {
     $json = json_encode($data);
-    file_put_contents('v/'.$file_name.'.json', $json);
+    file_put_contents('v/'.$data['nome'].'.json', $json);
 }
 
-function new_village($file_name) {
+function new_village($file_name, $hash) {
     $data = array(
         'nome' => $_POST['new_name'],
         'telegram' => "",
         'giorni' => array(array(array())),
         'giocatori' => array_fill(0, $_POST['players'], array("username" => "", "ruolo" => "", "in_vita" => TRUE)),
-        'id' => generateRandomString()
+        'id' => $hash
     );
 
     $new_json = 'v/'.$file_name.'.json';
     $new_village = json_encode($data);
     
+    // no db
     if (!file_exists('v/_all.json')) {
         file_put_contents('v/_all.json', json_encode(array()));
+        $db = file_get_contents('v/_all.json');
+        $all = json_decode($db, true);
     }
-    $db = file_get_contents('v/_all.json');
-    $all = json_decode($db, true);
 
+    // new file
     if (!file_exists($new_json)) {
+        // not present in db
         if(!array_key_exists($data['id'], $all)) {
             $all[$data['id']] = $data['nome'];
         } else {
@@ -59,9 +53,11 @@ function new_village($file_name) {
     //////////////
     // crea partita
     if(isset($_POST['new_name']) and isset($_POST['players'])) {
-        new_village($_POST['new_name']);
+        new_village($_POST['new_name'], $_GET['v']);
     }
-    $village = read_village($_POST['new_name']);
+    $db = file_get_contents('v/_all.json');
+    $all = json_decode($db, true);
+    $village = read_village($all[$_GET['v']]);
     
     session_start();
     $error = "";
@@ -72,8 +68,16 @@ function new_village($file_name) {
     }
     $db = json_decode($json, true);
 
-    if(isset($_POST)) {
-        //;
+    // update ruoli
+    if(isset($_POST) and isset($_POST['username#0']) and !isset($_POST['new_name'])) {
+        // var_dump($_POST);
+        $giocatori = array(array());
+        foreach($_POST as $key => $value) {
+            $giocatori[explode('#', $key)[1]][explode('#', $key)[0]] = $value;
+        }
+        $village['giocatori'] = $giocatori;
+        write_village($village);
+        // array_push($giocatori, $giocatori);
     }
 
 ?>
@@ -105,23 +109,23 @@ function new_village($file_name) {
 
 <center>
 
-<?php if ($_SESSION['logged_in'] == TRUE and isset($_POST['new_name'])) { ?>
-        <form action="" method="post" name="populate_form">
-        <?php foreach ($village['giocatori'] as $player) { ?>
-            <span class='player_input'>
-                <input type="text" placeholder="username" value="<?php echo($player['username']); ?>" required>
-                <input type="text" placeholder="ruolo" required>
-                <select name="in_vita" required>
-                    <option value="true" selected>vivo</option>
-                    <option value="false">morto</option>
-                </select>
-            </span>
-        <?php } ?>
-            <button class='full-width' formmethod='post' type='submit'>salva</button>
-        </form>
-    <?php } ?>
-            <a href="edit.php?v=<?php echo($village['id']);?>" class="full-width">Gestione villaggio</a>
-    </center>
+<?php if ($_SESSION['logged_in'] == TRUE) { ?>
+    <form action="" method="post" name="populate_form">
+    <?php $i=0; foreach ($village['giocatori'] as $player) { ?>
+        <span class='player_input'>
+            <input type="text" placeholder="username" name="username#<?php echo($i); ?>" value="<?php echo($player['username']); ?>" required>
+            <input type="text" placeholder="ruolo" name="ruolo#<?php echo($i); ?>" value="<?php echo($player['ruolo']); ?>" required>
+            <select name="in_vita#<?php echo($i); ?>" required>
+                <option value="true" <?php if($player['in_vita'] == true) { ?> selected <?php } ?>>vivo</option>
+                <option value="false" <?php if($player['in_vita'] == false) { ?> selected <?php } ?>>morto</option>
+            </select>
+        </span>
+    <?php $i++;} ?>
+        <button class='full-width' formmethod='post' type='submit'>salva</button>
+    </form>
+<?php } ?>
+        <a href="edit.php?v=<?php echo($village['id']);?>" class="full-width">Gestione villaggio</a>
+</center>
     
     <footer>
         <p class="legend">

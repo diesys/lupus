@@ -2,6 +2,7 @@
 
 # ruoli
     - colore per ogni ruolo con la classe
+    - salvati i ruoli possibili e normalmente contadini
 
 # populate
     - la funzione populate aggiorna nella stessa pagina telegram e utenti (serializzare i vari input degli utenti?)

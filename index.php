@@ -76,7 +76,7 @@ function get_events($village) {
     </span>
     <div id="players_list">
         <?php foreach($village['giocatori'] as $giocatore) { ?>
-            <span class="player <?php if(!$giocatore['in_vita']) {echo("dead");} ?>">
+            <span class="player <?php if($giocatore['in_vita'] == "false") {echo("dead");} ?>">
                 <?php echo($giocatore['username']); ?>
             </span>
         <?php } ?>

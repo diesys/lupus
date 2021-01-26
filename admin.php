@@ -1,5 +1,13 @@
 <?php
-
+    function generateRandomString($length = 8) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
     //////////////////////
     session_start();
     $error = "";
@@ -58,7 +66,7 @@
             <button type="submit" formmethod="get">vai</button>
         </form>
 
-        <form action="populate.php" method="post">
+        <form action="populate.php?v=<?php echo(generateRandomString()); ?>" method="post">
             <h4 class="full-width">Nuovo villaggio</h4>
             <input class="half-width" name="new_name" placeholdxer="Nome¹" type="text" pattern="[A-Za-z0-9]{4-24}" required />
             <input class="half-width" name="players" type="number" placeholder="Giocatori²" min="4" max="30" range="1" required />

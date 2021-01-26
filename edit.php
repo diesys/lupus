@@ -118,7 +118,7 @@
                 } ?>
             </select>
             <select name="type" id="type" required>
-                <option value="notte">Nuova notte</option>
+                <option value="notte">Nuovo giorno</option>
                 <option value="assassinato">Assassinio notturno</option>
                 <option value="giustiziato">Condanna diurna</option>
                 <option value="votazione">Votazione</option>
@@ -156,7 +156,7 @@
         </span>
         <div id="players_list">
             <?php foreach($village['giocatori'] as $giocatore) { ?>
-            <span class="player <?php if(!$giocatore['in_vita']) {echo("dead");} ?>">
+            <span class="player <?php if($giocatore['in_vita'] == "false") {echo("dead");} ?>">
                 <span><?php echo($giocatore['username']); ?></span>
                 <span>(<?php echo($giocatore['ruolo']); ?>)</span>
             </span>
