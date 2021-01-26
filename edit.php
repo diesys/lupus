@@ -72,7 +72,7 @@
     if(isset($village) and isset($_POST) and isset($_POST['type'])) {  // and isset($_POST['day']) and isset($_POST['description']) and isset($_POST['player'])
         // NUOVA NOTTE
         // prevent double submits # 1/2
-        if($_POST['type'] == "notte" and ($_SESSION['last_action'] != substr($_POST['description'], 0, 20)."#".$day."#".$_POST['type'])) {
+        if($_POST['type'] == "notte" and ($_SESSION['last_action'] != substr($_POST['description'], 0, 20)."#".$_POST['type'])) {
             $day = count($village['giorni']);
             array_push($village['giorni'], array());
             write_village($village);
@@ -246,7 +246,7 @@
                 <?php foreach ($day as $event) { if($event) {?>
                     <span class="event <?php echo($event['tipo']);?>" data-type="<?php echo(" ".$event['tipo']);?>">
                         <span class="description">
-                            <a target="_blank" href="https://t.me/<?php echo($giocatore['username']); ?>">@<?php echo($giocatore['username']); ?></a>
+                            <a target="_blank" href="https://t.me/<?php echo($event['giocatore']); ?>">@<?php echo($event['giocatore']); ?></a>
                             <?php echo(" ".$event['descrizione']);?>
                         </span> 
                     </span>

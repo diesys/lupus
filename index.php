@@ -99,7 +99,7 @@ function get_events($village) {
             <span class="dot assassinato">assassinati dai lupi</span> - <span class="dot giustiziato">giustiziati dal villaggio</span>
         </p>
 
-        <?php foreach (array_reverse($days) as $i => $day) { ?>
+        <?php foreach (array_reverse($days) as $i => $day) { if(count($day) > 0) { ?>
             <span class="day">
                 <span class="date">
                     Giorno <?php echo(intval($i+1));?>
@@ -115,7 +115,7 @@ function get_events($village) {
                 </span>
             <?php }} ?>
             </span>
-        <?php } ?>
+        <?php }} ?>
     </div>
     
 <?php } else { 
