@@ -52,10 +52,10 @@
     }
 
     //// aggiungi evento
-    if(isset($village) and isset($_POST) and isset($_POST['type'])) {
-        // and isset($_POST['day']) and isset($_POST['description']) and isset($_POST['player'])
+    if(isset($village) and isset($_POST) and isset($_POST['type'])) {  // and isset($_POST['day']) and isset($_POST['description']) and isset($_POST['player'])
         // NUOVA NOTTE
-        if($_POST['type'] == "notte") {
+        // prevent double submits # 1/2¬
+        if($_POST['type'] == "notte" and ($_SESSION['last_action'] != substr($_POST['description'], 0, 20)."#".$day."#".$_POST['type'])) {
             $day = count($village['giorni']);
             array_push($village['giorni'], array());
             write_village($village);
@@ -72,22 +72,22 @@
             foreach ($village['giocatori'] as $player) {
                 if ($player['username'] == $_POST['player']) {
                     $player['in_vita'] = false;
-                    // return null;
-                    // var_dump($player);
                 }
             }
-            write_village($village);
+            // write_village($village);
         }
 
         // prevent double submits # 1/2
         if(isset($_SESSION['last_action'])) {
             if(substr($_POST['description'], 0, 20)."#".$day."#".$_POST['type'] != $_SESSION['last_action']) {
                 if($_POST['type'] != "notte") {
+                    // mettere qui aggiorna giocatore morto
                     array_push($village['giorni'][$day], array(
                         'tipo' => $_POST['type'], 
                         'descrizione' => $_POST['description'],
                         'giocatore' => $_POST['player']));
                 }
+
                 write_village($village);
                 // prevent double submits #2/2
                 $_SESSION['last_action'] = substr($_POST['description'], 0, 20)."#".$_POST['day']."#".$_POST['type'];

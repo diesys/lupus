@@ -4,11 +4,10 @@
     - salvati i ruoli possibili e normalmente contadini? cosi si potrebbero fare le select
     - colore per ogni ruolo con la classe
 
-# admin
-    - fix select elimina evento da calendario
-
 # calendario eventi:
-    - gli eventi in automatico determinano la morte dei giocatori, cosi non serve fare altro (casi estremi ci sta il populate)
+    - FARE MOLTO MEGLIO MAIN di inserisci evento
+    - non conteggia le morti
+    - fix select elimina evento da calendario-
 
 # vario
     - mettere meglio la roba sensibile tipo i json...
