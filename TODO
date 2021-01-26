@@ -1,13 +1,13 @@
 ## TODO
 
 # ruoli
-    - salvati i ruoli possibili e normalmente contadini? cosi si potrebbero fare le select
-    - colore per ogni ruolo con la classe
+    - salvati i ruoli possibili e normalmente contadini? cosi si potrebbero fare le select su populate
+    - colore per ogni ruolo con la classe (magari solo le fazioni?)
 
 # calendario eventi:
     - FARE MOLTO MEGLIO MAIN di inserisci evento
     - non conteggia le morti
-    - fix select elimina evento da calendario-
+    - select elimina evento da calendario
 
 # vario
     - mettere meglio la roba sensibile tipo i json...

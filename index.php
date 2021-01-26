@@ -75,9 +75,9 @@ if (isset($_GET) and isset($_GET['v'])) {
     </span>
     <div id="players_list">
         <?php foreach($village['giocatori'] as $giocatore) { ?>
-            <span class="player <?php if($giocatore['in_vita'] == "false") {echo("dead");} ?>">
+            <a target="_blank" href="https://t.me/<?php echo($giocatore['username']); ?>" class="player <?php if($giocatore['in_vita'] == "false") {echo("dead");} ?>">
                 <?php echo($giocatore['username']); ?>
-            </span>
+            </a>
         <?php } ?>
     </div>
     
