@@ -1,67 +1,14 @@
 <?php
-
-    function read_village($file_name) {
-        if(file_exists('v/'.$file_name.'.json')) {
-            $json = file_get_contents('v/'.$file_name.'.json');
-            $data = json_decode($json, true);
-            return $data;
-        } else {
-            return FALSE;
-        }
-    }
-
-    function write_village($data) {
-        $json = json_encode($data);
-        file_put_contents('v/'.$data['nome'].'.json', $json);
-    }
+    include 'assets/masterus.php';
     
-    function get_alive($village) {
-        $alive = 0;
-        $dead = 0;
-        foreach($village['giocatori'] as $giocatore) {
-            if($giocatore['in_vita'] == "true") {
-                $alive += 1;
-            } else {
-                $dead += 1;
-            }
-        } return [$alive, $dead];
-    }
-
-    function get_events($village) {
-        $days = array();
-        foreach($village['giorni'] as $day) {
-            array_push($days, $day);
-        } return $days;
-    }
-
-    function kill($username, $village) {
-        $giocatori = array();
-        foreach ($village['giocatori'] as $player) {
-            if ($player['username'] == $username) {
-                $in_vita = false;
-            } else {
-                $in_vita = $player['in_vita'];
-            }
-            array_push($giocatori, array(
-                    'username' => $player['username'],
-                    'ruolo' => $player['ruolo'],
-                    'in_vita' => $in_vita
-                ));
-        }
-        return $giocatori;
-    }
-
-    //////////////////////
+    // sessione
     session_start();
     $error = "";
 
     if ($_SESSION['logged_in'] == TRUE and isset($_GET['v'])) {
-        $json = file_get_contents('v/_all.json');
-        $db = json_decode($json, true);
-        
         // searching village json by id
-        if(array_key_exists($_GET['v'], $db)) {
-            $selected = $db[$_GET['v']];
+        if(array_key_exists($_GET['v'], $villages)) {
+            $selected = $villages[$_GET['v']];
             $village = read_village($selected);
         } else {
             $error = "Village not present!";
@@ -237,7 +184,7 @@
         </p>
         <div id="events_list">
             <?php $n_days = count($days); 
-                foreach (array_reverse($days) as $i => $day) { if(count($day) > 0) { ?>
+                foreach (array_reverse($days) as $i => $day) { //if(count($day) > 0) { ?>
                 <span class="day">
                     <span class="date">
                         Giorno <?php echo(intval($n_days - $i));?>
@@ -252,7 +199,7 @@
                     </span>
                 <?php }} ?>
                 </span>
-            <?php }} ?>
+            <?php }//} ?>
         </div>
 
 <!-- ERRORI -->

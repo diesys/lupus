@@ -1,17 +1,9 @@
 <?php
-    function generateRandomString($length = 8) {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
-    }
-    //////////////////////
+    include 'assets/masterus.php';
+
+    // sessione
     session_start();
     $error = "";
-    $password = "supul";
     
     // LOGIN
     if(isset($_POST['password']) and $_POST['password'] == $password) {
@@ -40,23 +32,15 @@
 <body>
 
 <header>
-    <h2>
-        <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
-        Masterus
-    </h2>
+    <h2><img height="40" width="40" src="assets/img/amarok.png" alt="logo">Masterus</h2>
 </header>
 
 <center>
-<?php
-   if ($_SESSION['logged_in'] == TRUE) { 
-       if(file_exists('v/_all.json')){
-           $db = file_get_contents('v/_all.json');
-           $villages = json_decode($db, true);
-       }
-?> 
+<?php if ($_SESSION['logged_in'] == TRUE) { ?> 
         <form action="edit.php" method="get">
-            <h4 class="full-width">Seleziona villaggio</h4>
-            <select class="full-width" name="v" id="lista_villaggi">
+            <h4 class="full-width">Villaggio</h4>
+            <select class="full-width" name="v" id="lista_villaggi" required>
+                <option value="" disabled selected></option>
                 <?php
                     foreach ($villages as $hash => $name) {
                         echo("<option value='".$hash."'>".$name."</option>");

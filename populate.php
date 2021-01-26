@@ -1,83 +1,31 @@
 <?php
+    include 'assets/masterus.php';
 
-function read_village($file_name) {
-    if(file_exists('v/'.$file_name.'.json')) {
-        $json = file_get_contents('v/'.$file_name.'.json');
-        $data = json_decode($json, true);
-        return $data;
-    } else {
-        return FALSE;
-    }
-}
+    // sessione
+    session_start();
 
-function write_village($data) {
-    $json = json_encode($data);
-    file_put_contents('v/'.$data['nome'].'.json', $json);
-}
-
-function new_village($file_name, $hash) {
-    $data = array(
-        'nome' => $_POST['new_name'],
-        'telegram' => "",
-        'giorni' => array(array()),
-        'giocatori' => array_fill(0, $_POST['players'], array("username" => "", "ruolo" => "", "in_vita" => TRUE)),
-        'id' => $hash
-    );
-
-    $new_json = 'v/'.$file_name.'.json';
-    $new_village = json_encode($data);
-    
-    // no db
-    if (!file_exists('v/_all.json')) {
-        file_put_contents('v/_all.json', json_encode(array()));
-    }
-    $db = file_get_contents('v/_all.json');
-    $all = json_decode($db, true);
-    
-    // new file
-    if (!file_exists($new_json)) {
-        // not present in db
-        if(!array_key_exists($data['id'], $all)) {
-            $all[$data['id']] = $data['nome'];
-        } else {
-            $data['id'] = substr($data['id'], 0, -2);
-            $all[$data['id']] = $data['nome'];
-        }
-        file_put_contents($new_json, $new_village);
-        file_put_contents('v/_all.json', json_encode($all));
-    } else {
-        $error = "Il file esiste!";
-    }
-}
-
-    //////////////
     // crea partita
     if(isset($_POST['new_name']) and isset($_POST['players'])) {
         new_village($_POST['new_name'], $_GET['v']);
     }
-    $db = file_get_contents('v/_all.json');
-    $all = json_decode($db, true);
-    $village = read_village($all[$_GET['v']]);
     
-    session_start();
-    $error = "";
+    // il DB esiste?
     if(file_exists('v/_all.json')) {
         $json = file_get_contents('v/_all.json');
     } else {
         $json = "{}";
     }
-    $db = json_decode($json, true);
+    $villages = json_decode($json, true);
+    $village = read_village($villages[$_GET['v']]);
 
     // update ruoli
     if(isset($_POST) and isset($_POST['username#0']) and !isset($_POST['new_name'])) {
-        // var_dump($_POST);
         $giocatori = array(array());
         foreach($_POST as $key => $value) {
             $giocatori[explode('#', $key)[1]][explode('#', $key)[0]] = $value;
         }
         $village['giocatori'] = $giocatori;
         write_village($village);
-        // array_push($giocatori, $giocatori);
     }
 
 ?>

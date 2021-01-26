@@ -131,7 +131,7 @@ a {
     text-decoration: none;
 }
 
-input, select, button, textarea {
+input, select, button, textarea, option {
     border-radius: 2em;
     text-align: center;
     border: none;

@@ -5,10 +5,9 @@
     - colore per ogni ruolo con la classe (magari solo le fazioni?)
 
 # calendario eventi:
-    - FARE MOLTO MEGLIO MAIN di inserisci evento
+    - FARE MOLTO MEGLIO MAIN di inserisci evento (solo questo prende il doppio submit)
     - select elimina evento da calendario
 
 # vario
     - mettere meglio la roba sensibile tipo i json...
-    - separare libreria php e resto?
     - bottone per elimina villaggio/concludi partita.
