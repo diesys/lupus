@@ -180,7 +180,8 @@ button {
 }
 #events_list {
     /* flex-direction: column-reverse; */
-    flex-direction: row-reverse;
+    /* flex-direction: row-reverse; */
+    flex-direction: row;
 }
 #players_list > .player,
 #events_list .description {

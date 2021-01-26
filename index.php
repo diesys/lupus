@@ -29,6 +29,19 @@ function get_events($village) {
     } return $days;
 }
 
+//////////////////
+
+if (isset($_GET) and isset($_GET['v'])) {
+    $json = file_get_contents('v/_all.json');
+    $db = json_decode($json, true);
+    
+    // searching village json by id
+    if(array_key_exists($_GET['v'], $db)) {
+        $selected = $db[$_GET['v']];
+        $village = read_village($selected);
+        $alive = get_alive($village);
+        $days = get_events($village);
+        // print_r($village); 
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +49,7 @@ function get_events($village) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masterus</title>
+    <title>Villaggio <?php echo($village['nome']);?> | Masterus</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -44,7 +57,7 @@ function get_events($village) {
 <header>
     <h2>
         <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
-        Masterus
+        Villaggio <?php echo($village['nome']);?>
     </h2>
 <?php if(isset($_GET) and isset($_GET['v'])) { ?>
     <ul>
@@ -55,20 +68,6 @@ function get_events($village) {
 </header>
 
 <center>
-
-<?php
-    if (isset($_GET) and isset($_GET['v'])) {
-        $json = file_get_contents('v/_all.json');
-        $db = json_decode($json, true);
-        
-        // searching village json by id
-        if(array_key_exists($_GET['v'], $db)) {
-            $selected = $db[$_GET['v']];
-            $village = read_village($selected);
-            $alive = get_alive($village);
-            $days = get_events($village);
-            // print_r($village); 
-?>
 
     <span id="players">
         <h2>Giocatori</h2>
@@ -96,7 +95,7 @@ function get_events($village) {
             <?php foreach ($day as $event) { if($event) {?>
                 <span class="event <?php echo($event['tipo']);?>">
                     <span class="description">
-                        <?php echo($event['descrizione']);?>
+                        <?php echo($event['giocatore']." ".$event['descrizione']);?>
                     </span> 
                 </span>
             <?php }} ?>

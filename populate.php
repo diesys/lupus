@@ -88,7 +88,7 @@ function new_village($file_name, $hash) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Popola | Masterus</title>
+    <title>Popola <?php echo($village['nome']);?> | Masterus</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
