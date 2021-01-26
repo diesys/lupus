@@ -14,7 +14,7 @@
     scroll-behavior: smooth;
 }
 
-input, select, button, a, textarea {
+input, select, button, textarea {
     transition: background var(--dur), color var(--dur), opacity var(--dur), border var(--dur);
 }
 

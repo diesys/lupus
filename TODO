@@ -1,15 +1,11 @@
 ## TODO
 
 # ruoli
+    - salvati i ruoli possibili e normalmente contadini? cosi si potrebbero fare le select
     - colore per ogni ruolo con la classe
-    - salvati i ruoli possibili e normalmente contadini
-
-# populate
-    - la funzione populate aggiorna nella stessa pagina telegram e utenti (serializzare i vari input degli utenti?)
 
 # admin
     - fix select elimina evento da calendario
-    - link a populate (serve la post con new_name) per ogni evenienza
 
 # calendario eventi:
     - gli eventi in automatico determinano la morte dei giocatori, cosi non serve fare altro (casi estremi ci sta il populate)

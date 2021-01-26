@@ -19,7 +19,7 @@ function new_village($file_name, $hash) {
     $data = array(
         'nome' => $_POST['new_name'],
         'telegram' => "",
-        'giorni' => array(array(array())),
+        'giorni' => array(array()),
         'giocatori' => array_fill(0, $_POST['players'], array("username" => "", "ruolo" => "", "in_vita" => TRUE)),
         'id' => $hash
     );
@@ -30,10 +30,10 @@ function new_village($file_name, $hash) {
     // no db
     if (!file_exists('v/_all.json')) {
         file_put_contents('v/_all.json', json_encode(array()));
-        $db = file_get_contents('v/_all.json');
-        $all = json_decode($db, true);
     }
-
+    $db = file_get_contents('v/_all.json');
+    $all = json_decode($db, true);
+    
     // new file
     if (!file_exists($new_json)) {
         // not present in db
@@ -102,7 +102,9 @@ function new_village($file_name, $hash) {
     <ul>
         <li><a href="admin.php">Admin</a></li>
         <li><a href="./?v=<?php echo($village['id']);?>">Bacheca</a></li>
+    <?php if(!isset($_POST['new_name'])) { ?>
         <li><a href="v/<?php echo($village['nome']);?>.json" download>Scarica</a></li>
+    <?php } ?>
         <!-- <li><a href="v/<?php// echo($village['nome']);?>.json" download>Carica</a></li> -->
     </ul>
 </header>
@@ -124,7 +126,9 @@ function new_village($file_name, $hash) {
         <button class='full-width' formmethod='post' type='submit'>salva</button>
     </form>
 <?php } ?>
-        <a href="edit.php?v=<?php echo($village['id']);?>" class="full-width">Gestione villaggio</a>
+
+<p>Salvato i giocatori? Vai alla <a href="edit.php?v=<?php echo($village['id']);?>" class="full-width">pagina di gestione</a> dove potrai aggiungere eventi al calendario ed avere una panoramica da master sul nuovo villaggio!</p>
+
 </center>
     
     <footer>

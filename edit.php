@@ -10,16 +10,16 @@
         }
     }
 
-    function write_village($data, $file_name) {
+    function write_village($data) {
         $json = json_encode($data);
-        file_put_contents('v/'.$file_name.'.json', $json);
+        file_put_contents('v/'.$data['nome'].'.json', $json);
     }
     
     function get_alive($village) {
         $alive = 0;
         $dead = 0;
         foreach($village['giocatori'] as $giocatore) {
-            if($giocatore['in_vita']) {
+            if($giocatore['in_vita'] == "true") {
                 $alive += 1;
             } else {
                 $dead += 1;
@@ -57,25 +57,43 @@
         if($_POST['type'] == "notte") {
             $_POST['day'] = intval($_POST['day']+1);
             array_push($village['giorni'], array());
+            write_village($village);
+            $_SESSION['last_action'] = substr($_POST['description'], 0, 20)."#".$_POST['day']."#".$_POST['type'];
+        } 
+        if($_POST['type'] == "assassinato" or $_POST['type'] == "giustiziato") {
+            // aggiorna il giocatore morto
+            foreach ($village['giocatori'] as $player) {
+                if ($player['username'] == $_POST['player']) {
+                    $player['in_vita'] = false;
+                    // return null;
+                    // var_dump($player);
+                }
+            }
+            write_village($village);
         }
+
         // prevent double submits # 1/2
         if(isset($_SESSION['last_action'])) {
             if(substr($_POST['description'], 0, 20)."#".$_POST['day']."#".$_POST['type'] != $_SESSION['last_action']) {
-                array_push($village['giorni'][$_POST['day']], array(
-                                                'tipo' => $_POST['type'], 
-                                                'descrizione' => $_POST['description'],
-                                                'giocatore' => $_POST['player']));
-                write_village($village, $selected);
+                if($_POST['type'] != "notte") {
+                    array_push($village['giorni'][$_POST['day']], array(
+                        'tipo' => $_POST['type'], 
+                        'descrizione' => $_POST['description'],
+                        'giocatore' => $_POST['player']));
+                }
+                write_village($village);
                 // prevent double submits #2/2
                 $_SESSION['last_action'] = substr($_POST['description'], 0, 20)."#".$_POST['day']."#".$_POST['type'];
             }
         } else {
-            array_push($village['giorni'][$_POST['day']], array(
-                'tipo' => $_POST['type'], 
-                'descrizione' => $_POST['description'],
-                'giocatore' => $_POST['player']));
-            write_village($village, $selected);
-            $_SESSION['last_action'] = $_POST['description'];
+            if($_POST['type'] != "notte") {
+                array_push($village['giorni'][$_POST['day']], array(
+                    'tipo' => $_POST['type'], 
+                    'descrizione' => $_POST['description'],
+                    'giocatore' => $_POST['player']));
+            }
+            write_village($village);
+            $_SESSION['last_action'] = substr($_POST['description'], 0, 20)."#".$_POST['day']."#".$_POST['type'];
         }
     }
     $alive = get_alive($village);
@@ -87,8 +105,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifica | Masterus</title>
+    <title>Gestisci | Masterus</title>
     <link rel="stylesheet" href="assets/style.css">
+
+    <script>
+        function fixSelect() {
+            tipo = document.querySelector('#type_select');
+            if(tipo.options[tipo.selectedIndex].value == "notte") {
+                document.querySelector('#player_select').setAttribute('disabled', '1');
+                document.querySelector('#day_select').setAttribute('disabled', '1');
+            } else {
+                document.querySelector('#player_select').removeAttribute('disabled');
+                document.querySelector('#day_select').removeAttribute('disabled');
+            }
+        }
+    </script>
+
 </head>
 <body>
     
@@ -96,7 +128,7 @@
     <header>
         <h2>
             <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
-            Modifica <?php echo($village['nome']);?>
+            Gestisci <?php echo($village['nome']);?>
         </h2>
 
         <ul>
@@ -112,24 +144,33 @@
     <center>
         <form action="" method="post">
             <h4 class="full-width">Aggiungi al calendario</h4>
-            <select name="day" required>
-                <?php foreach ($days as $j => $day) {
-                    echo("<option value='".$j."'>Giorno ".intval($j+1)."</option>");
-                } ?>
-            </select>
-            <select name="type" id="type" required>
-                <option value="notte">Nuovo giorno</option>
-                <option value="assassinato">Assassinio notturno</option>
-                <option value="giustiziato">Condanna diurna</option>
-                <option value="votazione">Votazione</option>
-            </select>
-            <select name="player" required>
-                <option value=" " selected>Nessuno</option>
-                <?php foreach ($village['giocatori'] as $player) {
-                   echo("<option value='".$player['username']."'>".$player['username']."</option>");
-                } ?>
-            </select>
-            <textarea class="full-width" name="description" placeholder="descrizione" col="8" required></textarea>
+            <span>
+                <label for="type">Tipo</label>
+                <select onchange="fixSelect();" name="type" id="type_select" required>
+                    <option value="notte">Nuovo giorno</option>
+                    <option value="assassinato">Assassinio notturno</option>
+                    <option value="giustiziato">Condanna diurna</option>
+                    <!-- <option value="votazione">Votazione</option> -->
+                </select>
+            </span>
+            <span>
+                <label for="day">Giorno</label>
+                <select name="day" id="day_select" required disabled>
+                    <?php foreach ($days as $j => $day) {
+                        echo("<option value='".$j."'>Giorno ".intval($j+1)."</option>");
+                    } ?>
+                </select>
+            </span>
+            <span>
+                <label for="player">Gicatore</label>
+                <select name="player" id="player_select" required disabled>
+                    <!-- <option value=" " selected>Nessuno</option> -->
+                    <?php foreach ($village['giocatori'] as $player) { if($player['in_vita'] == "true") {
+                    echo("<option value='".$player['username']."'>".$player['username']."</option>");
+                    }} ?>
+                </select>
+            </span>
+            <textarea class="half-width" name="description" placeholder="descrizione (opzionale)" rows="2"></textarea>
 
             <button type="submit" formmethod="post">aggiungi</button>
         </form>
@@ -152,6 +193,9 @@
 
         <span class="full-width" id="players">
             <h2>Giocatori</h2>
+            <p>
+                <a href="populate.php?v=<?php echo($village['id']); ?>">modifica</a>
+            </p>
             <span>Vivi: <?php echo($alive[0]."/".intval($alive[0]+$alive[1]));?></span>
         </span>
         <div id="players_list">
@@ -176,7 +220,7 @@
                 <?php foreach ($day as $event) { if($event) {?>
                     <span class="event <?php echo($event['tipo']);?>">
                         <span class="description">
-                            <?php echo($event['descrizione']);?>
+                            <?php echo($event['giocatore']." ".$event['descrizione']);?>
                         </span> 
                     </span>
                 <?php }} ?>
