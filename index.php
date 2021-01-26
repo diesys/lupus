@@ -29,19 +29,6 @@ function get_events($village) {
     } return $days;
 }
 
-//////////////////
-
-if (isset($_GET) and isset($_GET['v'])) {
-    $json = file_get_contents('v/_all.json');
-    $db = json_decode($json, true);
-    
-    // searching village json by id
-    if(array_key_exists($_GET['v'], $db)) {
-        $selected = $db[$_GET['v']];
-        $village = read_village($selected);
-        $alive = get_alive($village);
-        $days = get_events($village);
-        // print_r($village); 
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +36,7 @@ if (isset($_GET) and isset($_GET['v'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Villaggio <?php echo($village['nome']);?> | Masterus</title>
+    <title><?php if(isset($village)) {echo("Villaggio ".$village['nome']);} else { echo("Masterus");}?> | Masterus</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -57,7 +44,7 @@ if (isset($_GET) and isset($_GET['v'])) {
 <header>
     <h2>
         <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
-        Villaggio <?php echo($village['nome']);?>
+        <?php if(isset($village)) {echo("Villaggio ".$village['nome']);} else { echo("Masterus");}?>
     </h2>
 <?php if(isset($_GET) and isset($_GET['v'])) { ?>
     <ul>
@@ -68,14 +55,30 @@ if (isset($_GET) and isset($_GET['v'])) {
 </header>
 
 <center>
-
+<?php
+    $error = "";
+    if (isset($_GET) and isset($_GET['v'])) {
+        $json = file_get_contents('v/_all.json');
+        $db = json_decode($json, true);
+        
+        // searching village json by id
+        if(isset($_GET['v']) and array_key_exists($_GET['v'], $db)) {
+            $selected = $db[$_GET['v']];
+            $village = read_village($selected);
+            $alive = get_alive($village);
+            $days = get_events($village);
+            // print_r($village); 
+        } else {
+            $error = "Villaggio non presente!";
+        }
+?>
     <span id="players">
         <h2>Giocatori</h2>
         <span>Vivi: <?php echo($alive[0]."/".intval($alive[0]+$alive[1]));?></span>
     </span>
     <div id="players_list">
         <?php foreach($village['giocatori'] as $giocatore) { ?>
-            <a target="_blank" href="https://t.me/<?php echo($giocatore['username']); ?>" class="player <?php if($giocatore['in_vita'] == "false") {echo("dead");} ?>">
+            <a target="_blank" href="https://t.me/<?php echo($giocatore['username']); ?>" class="player <?php if($giocatore['in_vita'] != "true") {echo("dead");} ?>">
                 <?php echo($giocatore['username']); ?>
             </a>
         <?php } ?>
@@ -86,7 +89,7 @@ if (isset($_GET) and isset($_GET['v'])) {
         <h2 class="full-width">Calendario</h2>
     </span>
     <div id="events_list">
-        <?php foreach ($days as $i => $day) { ?>
+        <?php foreach (array_reverse($days) as $i => $day) { ?>
             <span class="day">
                 <span class="date">
                     Giorno <?php echo(intval($i+1));?>
@@ -103,10 +106,10 @@ if (isset($_GET) and isset($_GET['v'])) {
         <?php } ?>
     </div>
     
-<?php
-    } else { ?>
-        <h2 style="color:yellow;">Villaggio non presente!</h2>
-<?php }} else { ?> 
+<?php } else { 
+    if($error != "") { ?>
+        <h2 style="color:yellow;"></h2>
+    <?php } ?> 
     <p> <!-- NO GET => HOME -->
         In costruzione... leggi i <a href="credits.html">credits</a> (ancora più in costruzione) <br><br>
         Sei un <a href="login.php">master</a>?

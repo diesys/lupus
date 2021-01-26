@@ -34,6 +34,23 @@
         } return $days;
     }
 
+    function kill($username, $village) {
+        $giocatori = array();
+        foreach ($village['giocatori'] as $player) {
+            if ($player['username'] == $username) {
+                $in_vita = false;
+            } else {
+                $in_vita = $player['in_vita'];
+            }
+            array_push($giocatori, array(
+                                    'username' => $player['username'],
+                                    'ruolo' => $player['ruolo'],
+                                    'in_vita' => $in_vita
+                                ));
+        }
+        return $giocatori;
+    }
+
     //////////////////////
     session_start();
     $error = "";
@@ -54,7 +71,7 @@
     //// aggiungi evento
     if(isset($village) and isset($_POST) and isset($_POST['type'])) {  // and isset($_POST['day']) and isset($_POST['description']) and isset($_POST['player'])
         // NUOVA NOTTE
-        // prevent double submits # 1/2¬
+        // prevent double submits # 1/2
         if($_POST['type'] == "notte" and ($_SESSION['last_action'] != substr($_POST['description'], 0, 20)."#".$day."#".$_POST['type'])) {
             $day = count($village['giorni']);
             array_push($village['giorni'], array());
@@ -67,14 +84,12 @@
                 $day = $_POST['day'];
             }
         }
-        if($_POST['type'] == "assassinato" or $_POST['type'] == "giustiziato") {
+        // prevent double submits # 1/2
+        if(($_POST['type'] == "assassinato" or $_POST['type'] == "giustiziato") and $_SESSION['last_action'] != substr($_POST['description'], 0, 20)."#".$day."#".$_POST['type']."#".$_POST['player']) {
             // aggiorna il giocatore morto
-            foreach ($village['giocatori'] as $player) {
-                if ($player['username'] == $_POST['player']) {
-                    $player['in_vita'] = false;
-                }
-            }
-            // write_village($village);
+            $village['giocatori'] = kill($_POST['player'], $village);
+            write_village($village);
+            $_SESSION['last_action'] = substr($_POST['description'], 0, 20)."#".$day."#".$_POST['type']."#".$_POST['player'];
         }
 
         // prevent double submits # 1/2
@@ -163,8 +178,9 @@
             <span>
                 <label for="day">Giorno</label>
                 <select name="day" id="day_select" required disabled>
-                    <?php foreach ($days as $j => $day) {
-                        echo("<option value='".$j."'>Giorno ".intval($j+1)."</option>");
+                    <?php $n_days = count($days); 
+                     foreach (array_reverse($days) as $j => $day) {
+                        echo("<option value='".intval($n_days-$j-1)."'>Giorno ".intval($n_days-$j)."</option>");
                     } ?>
                 </select>
             </span>
@@ -207,7 +223,7 @@
         </span>
         <div id="players_list">
             <?php foreach($village['giocatori'] as $giocatore) { ?>
-            <span class="player <?php if($giocatore['in_vita'] == "false") {echo("dead");} ?>">
+            <span class="player <?php if($giocatore['in_vita'] != "true") {echo("dead");} ?>">
                 <a target="_blank" href="https://t.me/<?php echo($giocatore['username']); ?>"><?php echo($giocatore['username']); ?></a>
                 <span>(<?php echo($giocatore['ruolo']); ?>)</span>
             </span>
@@ -218,10 +234,11 @@
             <h2 class="full-width">Calendario</h2>
         </span>
         <div id="events_list">
-            <?php foreach ($days as $i => $day) { ?>
+            <?php $n_days = count($days); 
+                foreach (array_reverse($days) as $i => $day) { ?>
                 <span class="day">
                     <span class="date">
-                        Giorno <?php echo(intval($i+1));?>
+                        Giorno <?php echo(intval($n_days - $i));?>
                     </span>
 
                 <?php foreach ($day as $event) { if($event) {?>
