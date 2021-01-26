@@ -79,7 +79,7 @@ function get_events($village) {
     <div id="players_list">
         <?php foreach($village['giocatori'] as $giocatore) { ?>
             <a target="_blank" href="https://t.me/<?php echo($giocatore['username']); ?>" class="player <?php if($giocatore['in_vita'] != "true") {echo("dead");} ?>">
-                <?php echo($giocatore['username']); ?>
+                @<?php echo($giocatore['username']); ?>
             </a>
         <?php } ?>
     </div>
@@ -89,6 +89,10 @@ function get_events($village) {
         <h2 class="full-width">Calendario</h2>
     </span>
     <div id="events_list">
+        <p class="legend full-width">
+            <span class="dot assassinato">assassinati dai lupi</span> - <span class="dot giustiziato">giustiziati dal villaggio</span>
+        </p>
+
         <?php foreach (array_reverse($days) as $i => $day) { ?>
             <span class="day">
                 <span class="date">
@@ -96,10 +100,12 @@ function get_events($village) {
                 </span>
 
             <?php foreach ($day as $event) { if($event) {?>
-                <span class="event <?php echo($event['tipo']);?>">
+                <span class="event <?php echo($event['tipo']);?>" data-type="<?php echo(" ".$event['tipo']);?>">
                     <span class="description">
-                        <?php echo($event['giocatore']." ".$event['descrizione']);?>
-                    </span> 
+                        <a target="_blank" href="https://t.me/<?php echo($event['giocatore']); ?>">
+                            @<?php echo($event['giocatore']);?>
+                        </a>
+                    </span>
                 </span>
             <?php }} ?>
             </span>

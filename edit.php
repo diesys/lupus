@@ -43,10 +43,10 @@
                 $in_vita = $player['in_vita'];
             }
             array_push($giocatori, array(
-                                    'username' => $player['username'],
-                                    'ruolo' => $player['ruolo'],
-                                    'in_vita' => $in_vita
-                                ));
+                    'username' => $player['username'],
+                    'ruolo' => $player['ruolo'],
+                    'in_vita' => $in_vita
+                ));
         }
         return $giocatori;
     }
@@ -187,9 +187,8 @@
             <span>
                 <label for="player">Gicatore</label>
                 <select name="player" id="player_select" required disabled>
-                    <!-- <option value=" " selected>Nessuno</option> -->
                     <?php foreach ($village['giocatori'] as $player) { if($player['in_vita'] == "true") {
-                    echo("<option value='".$player['username']."'>".$player['username']."</option>");
+                        echo("<option value='".$player['username']."'>".$player['username']."</option>");
                     }} ?>
                 </select>
             </span>
@@ -224,7 +223,7 @@
         <div id="players_list">
             <?php foreach($village['giocatori'] as $giocatore) { ?>
             <span class="player <?php if($giocatore['in_vita'] != "true") {echo("dead");} ?>">
-                <a target="_blank" href="https://t.me/<?php echo($giocatore['username']); ?>"><?php echo($giocatore['username']); ?></a>
+                <a target="_blank" href="https://t.me/<?php echo($giocatore['username']); ?>">@<?php echo($giocatore['username']); ?></a>
                 <span>(<?php echo($giocatore['ruolo']); ?>)</span>
             </span>
             <?php } ?>
@@ -233,6 +232,9 @@
         <span id="events">
             <h2 class="full-width">Calendario</h2>
         </span>
+        <p class="legend full-width">
+            <span class="dot assassinato">assassinati dai lupi</span> - <span class="dot giustiziato">giustiziati dal villaggio</span>
+        </p>
         <div id="events_list">
             <?php $n_days = count($days); 
                 foreach (array_reverse($days) as $i => $day) { ?>
@@ -242,9 +244,10 @@
                     </span>
 
                 <?php foreach ($day as $event) { if($event) {?>
-                    <span class="event <?php echo($event['tipo']);?>">
+                    <span class="event <?php echo($event['tipo']);?>" data-type="<?php echo(" ".$event['tipo']);?>">
                         <span class="description">
-                            <?php echo($event['giocatore']." ".$event['descrizione']);?>
+                            <a target="_blank" href="https://t.me/<?php echo($giocatore['username']); ?>">@<?php echo($giocatore['username']); ?></a>
+                            <?php echo(" ".$event['descrizione']);?>
                         </span> 
                     </span>
                 <?php }} ?>
@@ -257,10 +260,6 @@
     <h2 style="color:yellow;"><?php echo $error;?></h2>
 <?php } ?>
 
-
-        <p class="legend">
-            <span class="dot assassinato">assassinati dai lupi</span> - <span class="dot giustiziato">giustiziati dal villaggio</span>
-        </p>
     </center>
     
     <footer>
