@@ -37,7 +37,7 @@
         <form action="edit.php" method="get">
             <h4 class="full-width">Villaggio</h4>
             <select class="full-width" name="v" id="lista_villaggi" required>
-                <option value="" disabled selected></option>
+                <option value="Seleziona il villaggio" disabled selected></option>
                 <?php
                     foreach ($villages as $hash => $name) {
                         echo("<option value='".$hash."'>".$name."</option>");
@@ -48,7 +48,7 @@
         </form>
 
         <form action="populate.php?v=<?php echo(generateRandomString()); ?>" method="post">
-            <h4 class="full-width">Nuovo villaggio cazzo</h4>
+            <h4 class="full-width">Nuovo villaggio</h4>
             <input class="half-width" name="new_name" placeholdxer="Nome¹" type="text" pattern="[A-Za-z0-9]{4-24}" required />
             <input class="half-width" name="players" type="number" placeholder="Giocatori²" min="2" max="40" range="1" required />
             <p class="legend">¹ alfanumerico senza spazi · ² 4-30 giocatori</p>

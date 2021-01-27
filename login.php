@@ -1,7 +1,7 @@
 <?php
     include 'assets/masterus.php';
     
-    if($_SESSION['logged_in'] == TRUE) {
+    if(isset($_SESSION['logged_in']) and $_SESSION['logged_in'] == TRUE) {
         header("Location: admin.php");
     }
 ?>
