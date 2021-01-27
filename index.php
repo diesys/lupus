@@ -58,9 +58,10 @@
                 <span class="dot assassinato">assassinati dai lupi</span> - <span class="dot giustiziato">giustiziati dal villaggio</span>
             </p>
 
-            <?php foreach (array_reverse($days) as $i => $day) { //if(count($day) > 0) { ?>
+            <?php $n_days = count($days);
+                 foreach (array_reverse($days) as $i => $day) { //if(count($day) > 0) { ?>
                 <span class="day">
-                    <span class="date">Giorno <?php echo(intval($i+1));?></span>
+                    <span class="date">Giorno <?php echo(intval($n_days - $i));?></span>
                 <?php foreach ($day as $event) { if($event) {?>
                     <span class="event <?php echo($event['tipo']);?>" data-type="<?php echo(" ".$event['tipo']);?>">
                         <span class="description">
