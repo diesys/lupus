@@ -2,7 +2,7 @@
     include 'assets/masterus.php';
 
     $error = "";
-    
+
     // LOGIN
     if(isset($_POST['password']) and $_POST['password'] == $password) {
         $_SESSION['logged_in'] = TRUE;
@@ -49,9 +49,9 @@
         </form>
 
         <form action="populate.php?v=<?php echo(generateRandomString()); ?>" method="post">
-            <h4 class="full-width">Nuovo villaggio</h4>
+            <h4 class="full-width">Nuovo villaggio cazzo</h4>
             <input class="half-width" name="new_name" placeholdxer="Nome¹" type="text" pattern="[A-Za-z0-9]{4-24}" required />
-            <input class="half-width" name="players" type="number" placeholder="Giocatori²" min="4" max="30" range="1" required />
+            <input class="half-width" name="players" type="number" placeholder="Giocatori²" min="2" max="40" range="1" required />
             <p class="legend">¹ alfanumerico senza spazi · ² 4-30 giocatori</p>
             
             <button type="submit" formmethod="post">Crea</button>

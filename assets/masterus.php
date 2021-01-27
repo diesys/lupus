@@ -108,10 +108,7 @@ function kill($username, $village) {
 // MAIN ////////////////////////////////////////////////////////////////
 
 // sessione
-if(!isset($_SESSION)){
-    session_start();
-    $_SESSION['key'] = generateRandomString(6);
-}
+session_start();
 
 // DB
 $db_path = 'v/_all.json';

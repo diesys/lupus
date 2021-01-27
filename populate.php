@@ -2,7 +2,7 @@
     include 'assets/masterus.php';
 
     // crea partita
-    if(isset($_POST['new_name']) and isset($_POST['players'])) {
+    if((isset($_POST['new_name']) and isset($_POST['players']))) {
         new_village($_POST['new_name'], $_GET['v']);
     }
 
@@ -16,7 +16,7 @@
     $village = read_village($villages[$_GET['v']]);
 
     // update ruoli
-    if(isset($_POST) and isset($_POST['username#0']) and !isset($_POST['new_name'])) {
+    if((isset($_POST) and isset($_POST['username#0']) and !isset($_POST['new_name']))) {
         $giocatori = array(array());
         foreach($_POST as $key => $value) {
             $giocatori[explode('#', $key)[1]][explode('#', $key)[0]] = $value;
@@ -26,7 +26,6 @@
     }
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="it">
@@ -50,7 +49,7 @@
     <?php if(!isset($_POST['new_name'])) { ?>
         <li><a href="v/<?php echo($village['nome']);?>.json" download>Scarica</a></li>
     <?php } ?>
-        <!-- <li><a href="v/<?php// echo($village['nome']);?>.json" download>Carica</a></li> -->
+        <!-- <li><?php// echo($village['nome']);?> Carica</li> -->
     </ul>
 </header>
 

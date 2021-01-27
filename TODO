@@ -1,9 +1,7 @@
 ## TODO
 
 # BUG
-    - stringa random, salvata in _SESSION['key'], cosi non ci sono submit ripetuti (molto molto probabilmente)
-    - salvata in una variabile locale last_key di ogni file e confrontata con quella nuova, funziona?
-    - e si puo' snellire
+    - TOGLIERE TUTTE LE ACTION="", spedire tutto in file esterni (per edit, usarne uno che fa solo funzioni e poi reindirizza)
 
 # ruoli
     - salvati i ruoli possibili e normalmente contadini? cosi si potrebbero fare le select su populate

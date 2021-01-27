@@ -3,6 +3,7 @@
 
     // MAIN ///////////
     $error = "";
+
     if (isset($_GET) and isset($_GET['v'])) {
         $village = get_village($_GET['v'], $villages);
         $alive = get_alive($village);
@@ -11,54 +12,32 @@
     
 
     //// aggiungi evento
-    if($_SESSION['logged_in'] == TRUE and isset($village) and isset($_POST) and isset($_POST['type'])) {  // and isset($_POST['day']) and isset($_POST['description']) and isset($_POST['player'])
+    if($_SESSION['logged_in'] == TRUE and isset($village) and isset($_POST) and isset($_POST['type'])) {
         // NUOVA NOTTE
-        // prevent double submits # 1/2
-        if($_POST['type'] == "notte" and ($_SESSION['last_action'] != substr($_POST['description'], 0, 20)."#".$_POST['type'])) {
+        if($_POST['type'] == "notte") {
             $day = count($village['giorni']);
             array_push($village['giorni'], array());
-            write_village($village);
-            $_SESSION['last_action'] = substr($_POST['description'], 0, 20)."#".$day."#".$_POST['type'];
-        } else {
+        } elseif(($_POST['type'] == "assassinato" or $_POST['type'] == "giustiziato")) {
             if(!isset($_POST['day'])) {
                 $day = count($village['giorni'])-1;
             } else {
                 $day = $_POST['day'];
             }
-        }
-        // prevent double submits # 1/2
-        if(($_POST['type'] == "assassinato" or $_POST['type'] == "giustiziato") and $_SESSION['last_action'] != substr($_POST['description'], 0, 20)."#".$day."#".$_POST['type']."#".$_POST['player']) {
             // aggiorna il giocatore morto
             $village['giocatori'] = kill($_POST['player'], $village);
-            write_village($village);
-            $_SESSION['last_action'] = substr($_POST['description'], 0, 20)."#".$day."#".$_POST['type']."#".$_POST['player'];
         }
 
-        // prevent double submits # 1/2
-        if(isset($_SESSION['last_action'])) {
-            if(substr($_POST['description'], 0, 20)."#".$day."#".$_POST['type'] != $_SESSION['last_action']) {
-                if($_POST['type'] != "notte") {
-                    // mettere qui aggiorna giocatore morto
-                    array_push($village['giorni'][$day], array(
-                        'tipo' => $_POST['type'], 
-                        'descrizione' => $_POST['description'],
-                        'giocatore' => $_POST['player']));
-                }
-
-                write_village($village);
-                // prevent double submits #2/2
-                $_SESSION['last_action'] = substr($_POST['description'], 0, 20)."#".$_POST['day']."#".$_POST['type'];
-            }
-        } else {
+        if(isset($_POST['description']) and isset($_POST['player'])) {
             if($_POST['type'] != "notte") {
-                array_push($village['giorni'][$_POST['day']], array(
+                // mettere qui aggiorna giocatore morto
+                array_push($village['giorni'][$day], array(
                     'tipo' => $_POST['type'], 
                     'descrizione' => $_POST['description'],
                     'giocatore' => $_POST['player']));
             }
-            write_village($village);
-            $_SESSION['last_action'] = substr($_POST['description'], 0, 20)."#".$_POST['day']."#".$_POST['type'];
         }
+        
+        write_village($village);
     }
 ?>
 
@@ -135,6 +114,7 @@
             <textarea class="half-width" name="description" placeholder="descrizione (opzionale)" rows="2"></textarea>
 
             <button type="submit" formmethod="post">aggiungi</button>
+
         </form>
 
         <!-- <form action="" method="post">
@@ -155,9 +135,7 @@
 
         <span class="full-width" id="players">
             <h2>Giocatori</h2>
-            <p>
-                <a href="populate.php?v=<?php echo($village['id']); ?>">modifica</a>
-            </p>
+            <p><a href="populate.php?v=<?php echo($village['id']); ?>">modifica</a></p>
             <span>Vivi: <?php echo($alive[0]."/".intval($alive[0]+$alive[1]));?></span>
         </span>
         <div id="players_list">
