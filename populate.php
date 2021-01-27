@@ -61,8 +61,6 @@
     </form>
 <?php } ?>
 
-<p>Salvato i giocatori? Vai alla <a href="edit.php?v=<?php echo($village['id']);?>" class="full-width">pagina di gestione</a> dove potrai aggiungere eventi al calendario ed avere una panoramica da master sul nuovo villaggio!</p>
-
 </center>
     
     <footer>
