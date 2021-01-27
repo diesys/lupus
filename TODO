@@ -1,14 +1,10 @@
 ## TODO
 
-# BUG
-    - TOGLIERE TUTTE LE ACTION="", spedire tutto in file esterni (per edit, usarne uno che fa solo funzioni e poi reindirizza)
-
 # ruoli
     - salvati i ruoli possibili e normalmente contadini? cosi si potrebbero fare le select su populate
     - colore per ogni ruolo con la classe (magari solo le fazioni?)
 
 # calendario eventi:
-    - FARE MOLTO MEGLIO MAIN di inserisci evento (solo questo prende il doppio submit)
     - select elimina evento da calendario
 
 # vario

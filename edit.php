@@ -9,36 +9,17 @@
         $alive = get_alive($village);
         $days = get_events($village);
     }
-    
 
-    //// aggiungi evento
-    if($_SESSION['logged_in'] == TRUE and isset($village) and isset($_POST) and isset($_POST['type'])) {
-        // NUOVA NOTTE
-        if($_POST['type'] == "notte") {
-            $day = count($village['giorni']);
-            array_push($village['giorni'], array());
-        } elseif(($_POST['type'] == "assassinato" or $_POST['type'] == "giustiziato")) {
-            if(!isset($_POST['day'])) {
-                $day = count($village['giorni'])-1;
-            } else {
-                $day = $_POST['day'];
-            }
-            // aggiorna il giocatore morto
-            $village['giocatori'] = kill($_POST['player'], $village);
+    // update giocatori da populate.php
+    if((isset($_POST) and isset($_POST['username#0']) and !isset($_POST['new_name']))) {
+        $giocatori = array(array());
+        foreach($_POST as $key => $value) {
+            $giocatori[explode('#', $key)[1]][explode('#', $key)[0]] = $value;
         }
-
-        if(isset($_POST['description']) and isset($_POST['player'])) {
-            if($_POST['type'] != "notte") {
-                // mettere qui aggiorna giocatore morto
-                array_push($village['giorni'][$day], array(
-                    'tipo' => $_POST['type'], 
-                    'descrizione' => $_POST['description'],
-                    'giocatore' => $_POST['player']));
-            }
-        }
-        
+        $village['giocatori'] = $giocatori;
         write_village($village);
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +64,7 @@
     </header>
 
     <center>
-        <form action="" method="post">
+        <form action="update.php?v=<?php echo($village['id']); ?>" method="post">
             <h4 class="full-width">Aggiungi al calendario</h4>
             <span>
                 <label for="type">Tipo</label>
@@ -117,7 +98,7 @@
 
         </form>
 
-        <!-- <form action="" method="post">
+        <!-- <form action="update.php?v=<?php echo($village['id']); ?>" method="post">
             <h4 class="full-width">Rimuovi dal calendario</h4>
             <select name="id_evento">
                 <?php

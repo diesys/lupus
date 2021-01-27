@@ -2,7 +2,7 @@
     include 'assets/masterus.php';
 
     // crea partita
-    if((isset($_POST['new_name']) and isset($_POST['players']))) {
+    if(isset($_POST['new_name']) and isset($_POST['players']) and isset($_GET['v'])) {
         new_village($_POST['new_name'], $_GET['v']);
     }
 
@@ -14,16 +14,6 @@
     }
     $villages = json_decode($json, true);
     $village = read_village($villages[$_GET['v']]);
-
-    // update ruoli
-    if((isset($_POST) and isset($_POST['username#0']) and !isset($_POST['new_name']))) {
-        $giocatori = array(array());
-        foreach($_POST as $key => $value) {
-            $giocatori[explode('#', $key)[1]][explode('#', $key)[0]] = $value;
-        }
-        $village['giocatori'] = $giocatori;
-        write_village($village);
-    }
 
 ?>
 
@@ -56,7 +46,7 @@
 <center>
 
 <?php if ($_SESSION['logged_in'] == TRUE) { ?>
-    <form action="" method="post" name="populate_form">
+    <form action="edit.php?v=<?php echo($village['id']); ?>" method="post" name="populate_form">
     <?php $i=0; foreach ($village['giocatori'] as $player) { ?>
         <span class='player_input'>
             <input type="text" placeholder="username" name="username#<?php echo($i); ?>" value="<?php echo($player['username']); ?>" required>
