@@ -4,19 +4,18 @@
     $error = "";
 
     // LOGIN
-    if(isset($_POST['password']) and $_POST['password'] == $password) {
-        $_SESSION['logged_in'] = TRUE;
-    } else if($_SESSION['logged_in']) {
-        $_SESSION['logged_in'] = TRUE;
+    if((isset($_POST['password']) and $_POST['password'] == $password) or $_SESSION['logged_in']) {
+        $logged = TRUE;
     } else {
         $error="Password sbagliata!";
-        $_SESSION['logged_in'] = FALSE;
+        $logged = FALSE;
     }
+    $_SESSION['logged_in'] = $logged
 
     // logout
-    if(isset($_POST['page_logout'])) {
-        $_SESSION['logged_in'] = FALSE;
-    }
+    // if(isset($_POST['page_logout'])) {
+    //     $_SESSION['logged_in'] = FALSE;
+    // }
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +33,7 @@
 </header>
 
 <center>
-<?php if ($_SESSION['logged_in'] == TRUE) { ?> 
+<?php if ($logged == TRUE) { ?> 
         <form action="edit.php" method="get">
             <h4 class="full-width">Villaggio</h4>
             <select class="full-width" name="v" id="lista_villaggi" required>

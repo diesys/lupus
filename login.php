@@ -1,3 +1,11 @@
+<?php
+    include 'assets/masterus.php';
+    
+    if($_SESSION['logged_in'] == TRUE) {
+        header("Location: admin.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
