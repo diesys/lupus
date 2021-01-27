@@ -1,5 +1,10 @@
 ## TODO
 
+# BUG
+    - stringa random, salvata in _SESSION['key'], cosi non ci sono submit ripetuti (molto molto probabilmente)
+    - salvata in una variabile locale last_key di ogni file e confrontata con quella nuova, funziona?
+    - e si puo' snellire
+
 # ruoli
     - salvati i ruoli possibili e normalmente contadini? cosi si potrebbero fare le select su populate
     - colore per ogni ruolo con la classe (magari solo le fazioni?)
@@ -11,3 +16,6 @@
 # vario
     - mettere meglio la roba sensibile tipo i json...
     - bottone per elimina villaggio/concludi partita.
+
+# populate (sembra ok, anche se non previene i doppi submit dovrebbe nn creare probl)
+    - vanno inseriti da qualche parte il gruppo telegram? o no?

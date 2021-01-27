@@ -1,9 +1,6 @@
 <?php
     include 'assets/masterus.php';
 
-    // sessione
-    session_start();
-
     // crea partita
     if(isset($_POST['new_name']) and isset($_POST['players'])) {
         new_village($_POST['new_name'], $_GET['v']);

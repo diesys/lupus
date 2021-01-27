@@ -7,6 +7,8 @@
         $village = get_village($_GET['v'], $villages);
         $alive = get_alive($village);
         $days = get_events($village);
+    } else {
+        $village = NULL;
     }
 
 ?>

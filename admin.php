@@ -1,8 +1,6 @@
 <?php
     include 'assets/masterus.php';
 
-    // sessione
-    session_start();
     $error = "";
     
     // LOGIN
