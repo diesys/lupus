@@ -11,7 +11,6 @@
     }
 
     // update giocatori da populate.php
-    var_dump($_POST);
     if((isset($_POST) and isset($_POST['username#0']) and !isset($_POST['new_name']))) {
         $giocatori = array(array());
         foreach($_POST as $key => $value) {
