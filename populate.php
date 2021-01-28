@@ -52,7 +52,7 @@
             <input type="text" placeholder="username" name="username#<?php echo($i); ?>" value="<?php echo($player['username']); ?>" required>
             <!-- <input type="text" placeholder="ruolo" name="ruolo#<?php echo($i); ?>" value="<?php echo($player['ruolo']); ?>" required> -->
             <select name="name="ruolo#<?php echo($i); ?>" required>
-                <option value="" disabled selected></option>
+                <!-- <option value="" disabled selected></option> -->
                 <?php
                     foreach ($roles as $role) {
                         echo("<option value='".$role."'>".$role."</option>");
