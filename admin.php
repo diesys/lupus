@@ -58,6 +58,7 @@
 
 <?php } if ($error != "") { ?>
     <h2 style="color:yellow;"><?php echo($error);?></h2>
+    <p>Torna alla pagina di <a href="login.php">login</a></p>
 <?php } ?>
 </center>
 
