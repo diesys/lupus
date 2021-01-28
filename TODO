@@ -1,13 +1,8 @@
 ## TODO
 
-# ruoli
-    - salvati i ruoli possibili e normalmente contadini? cosi si potrebbero fare le select su populate
-    - colore per ogni ruolo con la classe (magari solo le fazioni?)
-
 # calendario eventi:
     - select elimina evento da calendario
 
 # vario
     - mettere meglio la roba sensibile tipo i json...
     - bottone per elimina villaggio/concludi partita.
-    - vanno inseriti da qualche parte il gruppo telegram? o no?

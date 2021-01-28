@@ -1,4 +1,6 @@
 <?php 
+// LIB ////////////////////////////////////////////////////////////////
+
 function generateRandomString($length = 8) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
@@ -107,13 +109,20 @@ function kill($username, $village) {
 
 // MAIN ////////////////////////////////////////////////////////////////
 
-// sessione
+// GAME
+$roles = array( 'contadino', 
+                    'veggente', 
+                    'medium',
+                    'guardia',
+                    'lupo'
+            );
+
+// SESSION
 session_start();
 
 // DB
 $db_path = 'v/_all.json';
 $password = "supul";
-
 if(file_exists($db_path)) {
     $db = file_get_contents('v/_all.json');
     $villages = json_decode($db, true);

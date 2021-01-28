@@ -4,7 +4,7 @@
     $error = "";
 
     // LOGIN
-    if((isset($_POST['password']) and $_POST['password'] == $password) or $_SESSION['logged_in']) {
+    if((isset($_POST['password']) and $_POST['password'] == $password) or (isset($_SESSION['logged_in']) and $_SESSION['logged_in'])) {
         $logged = TRUE;
     } else {
         $error="Password sbagliata!";
@@ -37,12 +37,10 @@
         <form action="edit.php" method="get">
             <h4 class="full-width">Villaggio</h4>
             <select class="full-width" name="v" id="lista_villaggi" required>
-                <option value="Seleziona il villaggio" disabled selected></option>
-                <?php
-                    foreach ($villages as $hash => $name) {
-                        echo("<option value='".$hash."'>".$name."</option>");
-                    }
-                ?>
+                <option value="" disabled selected></option>
+                <?php foreach ($villages as $hash => $name) {
+                    echo("<option value='".$hash."'>".$name."</option>");
+                } ?>
             </select>
             <button type="submit" formmethod="get">vai</button>
         </form>
@@ -58,6 +56,7 @@
 
 <?php } if ($error != "") { ?>
     <h2 style="color:yellow;"><?php echo($error);?></h2>
+    <p>Torna alla pagina di <a href="login.php">login</a></p>
 <?php } ?>
 </center>
 
