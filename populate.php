@@ -45,12 +45,20 @@
 
 <center>
 
-<?php if ($_SESSION['logged_in'] == TRUE) { ?>
+<?php if (isset($_SESSION['logged_in']) and $_SESSION['logged_in'] == TRUE) { ?>
     <form action="edit.php?v=<?php echo($village['id']); ?>" method="post" name="populate_form">
     <?php $i=0; foreach ($village['giocatori'] as $player) { ?>
         <span class='player_input'>
             <input type="text" placeholder="username" name="username#<?php echo($i); ?>" value="<?php echo($player['username']); ?>" required>
-            <input type="text" placeholder="ruolo" name="ruolo#<?php echo($i); ?>" value="<?php echo($player['ruolo']); ?>" required>
+            <!-- <input type="text" placeholder="ruolo" name="ruolo#<?php echo($i); ?>" value="<?php echo($player['ruolo']); ?>" required> -->
+            <select name="name="ruolo#<?php echo($i); ?>" required>
+                <option value="" disabled selected></option>
+                <?php
+                    foreach ($roles as $role) {
+                        echo("<option value='".$role."'>".$role."</option>");
+                    }
+                ?>
+            </select>
             <select name="in_vita#<?php echo($i); ?>" required>
                 <option value="true" <?php if($player['in_vita'] == true) { ?> selected <?php } ?>>vivo</option>
                 <option value="false" <?php if($player['in_vita'] == false) { ?> selected <?php } ?>>morto</option>
