@@ -38,11 +38,9 @@
             <h4 class="full-width">Villaggio</h4>
             <select class="full-width" name="v" id="lista_villaggi" required>
                 <option value="" disabled selected></option>
-                <?php
-                    foreach ($villages as $hash => $name) {
-                        echo("<option value='".$hash."'>".$name."</option>");
-                    }
-                ?>
+                <?php foreach ($villages as $hash => $name) {
+                    echo("<option value='".$hash."'>".$name."</option>");
+                } ?>
             </select>
             <button type="submit" formmethod="get">vai</button>
         </form>

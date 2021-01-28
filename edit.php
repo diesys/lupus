@@ -11,6 +11,7 @@
     }
 
     // update giocatori da populate.php
+    var_dump($_POST);
     if((isset($_POST) and isset($_POST['username#0']) and !isset($_POST['new_name']))) {
         $giocatori = array(array());
         foreach($_POST as $key => $value) {
@@ -121,7 +122,7 @@
         </span>
         <div id="players_list">
             <?php foreach($village['giocatori'] as $giocatore) { ?>
-            <span class="player <?php if($giocatore['in_vita'] != "true") {echo("dead");} ?>">
+            <span class="player <?php if($giocatore['in_vita'] != "true") {echo("dead");} if($giocatore['ruolo'] == "lupo") {echo("wolf");} ?>">
                 <a target="_blank" href="https://t.me/<?php echo($giocatore['username']); ?>">@<?php echo($giocatore['username']); ?></a>
                 <span>(<?php echo($giocatore['ruolo']); ?>)</span>
             </span>
