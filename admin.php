@@ -4,7 +4,7 @@
     $error = "";
 
     // LOGIN
-    if((isset($_POST['password']) and $_POST['password'] == $password) or $_SESSION['logged_in']) {
+    if((isset($_POST['password']) and $_POST['password'] == $password) or (isset($_SESSION['logged_in']) and $_SESSION['logged_in'])) {
         $logged = TRUE;
     } else {
         $error="Password sbagliata!";
