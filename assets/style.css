@@ -9,6 +9,7 @@
     /* --daykill-bg: #439d339e; */
     --daykill-bg: #2c3b899e;
     --nightkill-bg: #8c1f1f9e;
+    --nightkill-bg-alpha: #7321214a;
 }
 
 * {
@@ -204,7 +205,7 @@ button {
     border-radius: 4px;
     min-width: 100px;
     box-shadow: var(--box-shadow);
-    border: 2px solid #0007;
+    border: 1px solid #0007;
     background: #222a;
     flex-direction: column;
     color: #fff;
@@ -217,10 +218,14 @@ button {
 #players_list > .player.wolf {
     background: var(--nightkill-bg);
 }
+#players_list > .player.dead.wolf {
+    background: var(--nightkill-bg-alpha);
+    border-color: #0007;
+}
 .player_input {
     border-radius: 4px;
     box-shadow: var(--box-shadow);
-    border: 2px solid #000a;
+    border: 1px solid #000a;
     background: #222a;
     margin: .5em;
 }
