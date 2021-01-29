@@ -17,7 +17,7 @@
     scroll-behavior: smooth;
 }
 
-input, select, button, textarea,.event::after {
+input, select, button, textarea,.event::after, .player.dead {
     transition: background var(--dur), color var(--dur), opacity var(--dur), border var(--dur);
 }
 
@@ -211,16 +211,18 @@ button {
     color: #fff;
 }
 #players_list > .player.dead {
-    background: var(--dark-grayalpha);
     border-color: var(--dark-graybitalpha);
-    color: #ccc;
+    opacity: .5;
+}
+#players_list > .player.dead > .username {
+    text-decoration: line-through;
 }
 #players_list > .player.wolf {
     background: var(--nightkill-bg);
 }
-#players_list > .player.dead.wolf {
-    background: var(--nightkill-bg-alpha);
-    border-color: #0007;
+#players_list > .player.dead:hover,
+#players_list > .player.dead:active {
+    opacity: .9;
 }
 .player_input {
     border-radius: 4px;
