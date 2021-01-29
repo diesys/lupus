@@ -16,7 +16,7 @@
         $error = "Sicuro di essere un <a href='login.php'>master</a>?";
     }
 
-    // update giocatori da populate.php
+    // update giocatori da populate.php$_POST['id_evento']
     if($_SESSION['logged_in'] == TRUE and (isset($_POST) and isset($_POST['username#0']) and !isset($_POST['new_name']))) {
         $giocatori = array(array());
         foreach($_POST as $key => $value) {

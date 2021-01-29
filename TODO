@@ -1,8 +1,7 @@
 ## TODO
 
 # calendario eventi:
-    - select elimina evento da calendario (tipo+username sufficiente, con il numero della notte)
-    - evento annullato => un morto deve resuscitare
+    - select elimina eventi di tutto il giorno...
     
 # gestione partita
     - bottone per elimina villaggio/concludi partita.
