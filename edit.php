@@ -4,10 +4,12 @@
     // MAIN ///////////
     $error = "";
 
-    if (isset($_GET) and isset($_GET['v'])) {
+    if (isset($_GET) and isset($_GET['v']) and array_key_exists($_GET['v'], $villages)) {
         $village = get_village($_GET['v'], $villages);
         $alive = get_alive($village);
         $days = get_events($village);
+    } else {
+        $error = "Villaggio non trovato!";
     }
 
     // update giocatori da populate.php
@@ -46,24 +48,27 @@
 </head>
 <body>
     
-<?php if(isset($village)) { ?>
     <header>
         <h2>
             <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
-            Gestisci <?php echo($village['nome']);?>
+            Gestisci <?php if(isset($village['nome'])) echo($village['nome']);?>
         </h2>
 
         <ul>
             <li><a href="admin.php">Admin</a></li>
-            <li><a href="./?v=<?php echo($village['id']);?>">Bacheca</a></li>
-            <li><a href="v/<?php echo($village['nome']);?>.json" download>Scarica</a></li>
+        <?php if(isset($village['id']) and isset($village['nome'])) { ?>
+            <li><a href="./?v=<?php echo($village['id']); ?>">Bacheca</a></li>
+            <li><a href="v/<?php echo($village['nome']); ?>.json" download>Scarica</a></li>
             <!-- <li><a href="v/<?php// echo($village['nome']);?>.json" download>Carica</a></li> -->
             <li><a href="#players">Giocatori</a></li>
             <li><a href="#events">Calendario</a></li>
+        <?php } ?>
         </ul>
     </header>
 
     <center>
+    
+    <?php if(isset($village) and $error == "") { ?>
         <form action="update.php?v=<?php echo($village['id']); ?>" method="post">
             <h4 class="full-width">Aggiungi al calendario</h4>
             <span>
@@ -121,9 +126,9 @@
         </span>
         <div id="players_list">
             <?php foreach($village['giocatori'] as $giocatore) { ?>
-            <span class="player <?php if($giocatore['in_vita'] != "true") {echo("dead");} if($giocatore['ruolo'] == "lupo") {echo("wolf");} ?>">
-                <a target="_blank" href="https://t.me/<?php echo($giocatore['username']); ?>">@<?php echo($giocatore['username']); ?></a>
-                <span>(<?php echo($giocatore['ruolo']); ?>)</span>
+            <span class="player <?php if($giocatore['in_vita'] != "true") {echo("dead ");} if($giocatore['ruolo'] == "lupo") {echo("wolf");} ?>">
+                <a class="username" target="_blank" href="https://t.me/<?php echo($giocatore['username']); ?>">@<?php echo($giocatore['username']); ?></a>
+                <span class="role">(<?php echo($giocatore['ruolo']); ?>)</span>
             </span>
             <?php } ?>
         </div>
@@ -155,7 +160,7 @@
         </div>
 
 <!-- ERRORI -->
-<?php } if ($error != "") { ?>
+<?php } elseif ($error != "") { ?>
     <h2 style="color:yellow;"><?php echo $error;?></h2>
 <?php } ?>
 

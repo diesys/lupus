@@ -9,6 +9,7 @@
     /* --daykill-bg: #439d339e; */
     --daykill-bg: #2c3b899e;
     --nightkill-bg: #8c1f1f9e;
+    --nightkill-bg-alpha: #7321214a;
 }
 
 * {
@@ -16,7 +17,7 @@
     scroll-behavior: smooth;
 }
 
-input, select, button, textarea,.event::after {
+input, select, button, textarea,.event::after, .player.dead {
     transition: background var(--dur), color var(--dur), opacity var(--dur), border var(--dur);
 }
 
@@ -204,23 +205,29 @@ button {
     border-radius: 4px;
     min-width: 100px;
     box-shadow: var(--box-shadow);
-    border: 2px solid #0007;
+    border: 1px solid #0007;
     background: #222a;
     flex-direction: column;
     color: #fff;
 }
 #players_list > .player.dead {
-    background: var(--dark-grayalpha);
     border-color: var(--dark-graybitalpha);
-    color: #ccc;
+    opacity: .5;
+}
+#players_list > .player.dead > .username {
+    text-decoration: line-through;
 }
 #players_list > .player.wolf {
     background: var(--nightkill-bg);
 }
+#players_list > .player.dead:hover,
+#players_list > .player.dead:active {
+    opacity: .9;
+}
 .player_input {
     border-radius: 4px;
     box-shadow: var(--box-shadow);
-    border: 2px solid #000a;
+    border: 1px solid #000a;
     background: #222a;
     margin: .5em;
 }

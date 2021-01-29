@@ -3,16 +3,16 @@
 
     // MAIN ///////////
     $error = "";
-    if (isset($_GET) and isset($_GET['v'])) {
+
+    if (isset($_GET) and isset($_GET['v']) and array_key_exists($_GET['v'], $villages)) {
         $village = get_village($_GET['v'], $villages);
         $alive = get_alive($village);
         $days = get_events($village);
     } else {
         $village = NULL;
+        $error = "Villaggio non trovato!";
     }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +28,7 @@
             <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
             <?php if($village != NULL) {echo("Villaggio ".$village['nome']);} else { echo("Masterus");}?>
         </h2>
-    <?php if(isset($_GET) and isset($_GET['v'])) { ?>
+    <?php if($village != NULL) { ?>
         <ul>
             <li><a href="#players">Giocatori</a></li>
             <li><a href="#events">Calendario</a></li>
@@ -79,7 +79,7 @@
 
         // ERRORE
         if($error != "") { ?>
-            <h2 style="color:yellow;"></h2>
+            <h2 style="color:yellow;"><?php echo($error); ?></h2>
         <?php } ?> 
 
         <!-- HOMEPAGE -->

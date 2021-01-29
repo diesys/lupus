@@ -1,8 +1,9 @@
 <?php
     include 'assets/masterus.php';
+    $error = "";
 
     // crea partita
-    if(isset($_POST['new_name']) and isset($_POST['players']) and isset($_GET['v'])) {
+    if(isset($_POST) and isset($_POST['new_name']) and isset($_POST['players']) and isset($_GET) and isset($_GET['v'])) {
         new_village($_POST['new_name'], $_GET['v']);
     }
 
@@ -13,8 +14,12 @@
         $json = "{}";
     }
     $villages = json_decode($json, true);
-    $village = read_village($villages[$_GET['v']]);
-
+    if(isset($_GET) and isset($_GET['v']) and (array_key_exists($_GET['v'], $villages))) {
+        $village = read_village($villages[$_GET['v']]);
+    } else {
+        $village = NULL;
+        $error = "Villaggio non trovato!";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +27,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Popola <?php echo($village['nome']);?> | Masterus</title>
+    <title>Popola <?php if(isset($village['nome'])) {echo($village['nome']);} ?> | Masterus</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -30,14 +35,16 @@
 <header>
     <h2>
         <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
-        Popola <?php echo($village['nome']);?>
+        Popola <?php if(isset($village['nome'])) {echo($village['nome']);} ?>
     </h2>
 
     <ul>
         <li><a href="admin.php">Admin</a></li>
-        <li><a href="./?v=<?php echo($village['id']);?>">Bacheca</a></li>
-    <?php if(!isset($_POST['new_name'])) { ?>
-        <li><a href="v/<?php echo($village['nome']);?>.json" download>Scarica</a></li>
+    <?php if(isset($village['id'])) { ?>
+        <li><a href="./?v=<?php echo($village['id']); ?>">Bacheca</a></li>
+    <?php } ?>
+    <?php if(!isset($_POST['new_name']) and isset($village['nome'])) { ?>
+        <li><a href="v/<?php echo($village['nome']); ?>.json" download>Scarica</a></li>
     <?php } ?>
         <!-- <li><?php// echo($village['nome']);?> Carica</li> -->
     </ul>
@@ -45,7 +52,7 @@
 
 <center>
 
-<?php if (isset($_SESSION['logged_in']) and $_SESSION['logged_in'] == TRUE) { ?>
+<?php if ($village != NULL and $error == "" and isset($_SESSION['logged_in']) and $_SESSION['logged_in'] == TRUE) { ?>
     <form action="edit.php?v=<?php echo($village['id']); ?>" method="post" name="populate_form" class="flex-column">
     <?php $i=0; foreach ($village['giocatori'] as $player) { ?>
         <span class='player_input'>
@@ -64,7 +71,11 @@
         <br>
         <button class='full-width' formmethod='post' type='submit'>salva</button>
     </form>
-<?php } ?>
+<?php } else {
+    if ($error != "") { ?>
+        <h2 style="color:yellow;"><?php echo($error);?></h2>
+        <p>Torna alla pagina di <a href="admin.php">admin</a></p>
+    <?php }} ?>
 
 </center>
     
