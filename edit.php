@@ -4,16 +4,20 @@
     // MAIN ///////////
     $error = "";
 
-    if (isset($_GET) and isset($_GET['v']) and array_key_exists($_GET['v'], $villages)) {
-        $village = get_village($_GET['v'], $villages);
-        $alive = get_alive($village);
-        $days = get_events($village);
+    if ($_SESSION['logged_in'] == TRUE) {
+        if ($_SESSION['logged_in'] == TRUE and isset($_GET) and isset($_GET['v']) and array_key_exists($_GET['v'], $villages)) {
+            $village = get_village($_GET['v'], $villages);
+            $alive = get_alive($village);
+            $days = get_events($village);
+        } else {
+            $error = "Villaggio non trovato!";
+        }
     } else {
-        $error = "Villaggio non trovato!";
+        $error = "Sicuro di essere un <a href='login.php'>master</a>?";
     }
 
     // update giocatori da populate.php
-    if((isset($_POST) and isset($_POST['username#0']) and !isset($_POST['new_name']))) {
+    if($_SESSION['logged_in'] == TRUE and (isset($_POST) and isset($_POST['username#0']) and !isset($_POST['new_name']))) {
         $giocatori = array(array());
         foreach($_POST as $key => $value) {
             $giocatori[explode('#', $key)[1]][explode('#', $key)[0]] = $value;
