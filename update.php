@@ -38,6 +38,11 @@
         write_village($village);
     }
 
+
+    //// elimina evento
+    //$village['giocatori'] = kill($_POST['player'], $village, TRUE);
+    
+
     header("Location: edit.php?v=".$village['id']);
 
 ?>

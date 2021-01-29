@@ -1,8 +1,12 @@
 ## TODO
 
 # calendario eventi:
-    - select elimina evento da calendario
-
-# vario
-    - mettere meglio la roba sensibile tipo i json...
+    - select elimina evento da calendario (tipo+username sufficiente, con il numero della notte)
+    - evento annullato => un morto deve resuscitare
+    
+# gestione partita
     - bottone per elimina villaggio/concludi partita.
+    - serve link gruppo telegram?
+
+# sicurezza
+    - mettere meglio la roba sensibile tipo i json...

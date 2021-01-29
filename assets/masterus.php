@@ -89,11 +89,11 @@ function get_events($village) {
     } return $days;
 }
 
-function kill($username, $village) {
+function kill($username, $village, $undo = FALSE) {
     $giocatori = array();
     foreach ($village['giocatori'] as $player) {
         if ($player['username'] == $username) {
-            $in_vita = false;
+            $in_vita = $undo;  // normalmente uccide, se metti parametro undo TRUE resuscita ?
         } else {
             $in_vita = $player['in_vita'];
         }
