@@ -1,7 +1,11 @@
 ## TODO
 
 # calendario eventi:
-    - select elimina evento da calendario
+    - select elimina eventi di tutto il giorno...
+    
+# gestione partita
+    - bottone per elimina villaggio/concludi partita.
+    - serve link gruppo telegram?
 
 # vario
     - mettere meglio la roba sensibile tipo i json...

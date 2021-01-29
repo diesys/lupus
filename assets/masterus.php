@@ -89,11 +89,28 @@ function get_events($village) {
     } return $days;
 }
 
-function kill($username, $village) {
+function remove_event($village, $day_n, $type, $user) {
+    // PERCHE CANCELLA TUTTO IL GIORNO????
+    $giorno = array();
+    if(isset($user) and ($type == 'assassinato' or $type == 'giustiziato')) {
+        foreach($village[$day_n] as $n => $event) {
+            // if(!($type == $event['tipo'] and $user == $event['giocatore'])) {
+                // unset($village[$day_n][$n]);
+                array_push($giorno, $event);
+            // }
+        }
+    } else {
+        $giorno = array("tipo" => "dio", "giocatore" => "dio");
+    }
+    // else {} utile per le notti in caso
+    return $giorno;
+}
+
+function kill($username, $village, $undo = FALSE) {
     $giocatori = array();
     foreach ($village['giocatori'] as $player) {
         if ($player['username'] == $username) {
-            $in_vita = false;
+            $in_vita = $undo;  // normalmente uccide, se metti parametro undo TRUE resuscita ?
         } else {
             $in_vita = $player['in_vita'];
         }

@@ -16,7 +16,7 @@
         $error = "Sicuro di essere un <a href='login.php'>master</a>?";
     }
 
-    // update giocatori da populate.php
+    // update giocatori da populate.php$_POST['id_evento']
     if($_SESSION['logged_in'] == TRUE and (isset($_POST) and isset($_POST['username#0']) and !isset($_POST['new_name']))) {
         $giocatori = array(array());
         foreach($_POST as $key => $value) {
@@ -111,11 +111,11 @@
             <h4 class="full-width">Rimuovi dal calendario</h4>
             <select name="id_evento">
                 <?php
-                // foreach ($days as $day) {
-                //     foreach ($day as $number => $event) {
-                //         echo("<option value='".$number." ".$event['tipo']."'>".intval($number+1).") ".$event['tipo']."</option>");;
-                //     }
-                // } 
+                foreach ($days as $n => $day) {
+                    foreach ($day as $event) {
+                        echo("<option value='".$n."#".$event['tipo']."#".$event['giocatore']."'>".intval($n+1).") ".$event['giocatore']." (".$event['tipo'].")</option>");;
+                    }
+                } 
                 ?>
             </select>
 
