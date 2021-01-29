@@ -28,7 +28,7 @@
             <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
             <?php if($village != NULL) {echo("Villaggio ".$village['nome']);} else { echo("Masterus");}?>
         </h2>
-    <?php if(isset($_GET) and isset($_GET['v'])) { ?>
+    <?php if($village != NULL) { ?>
         <ul>
             <li><a href="#players">Giocatori</a></li>
             <li><a href="#events">Calendario</a></li>
