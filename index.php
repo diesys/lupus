@@ -70,6 +70,7 @@
                             <a target="_blank" href="https://t.me/<?php echo($event['giocatore']); ?>">
                                 @<?php echo($event['giocatore']);?>
                             </a>
+                            <?php echo(" ".$event['descrizione']);?>
                         </span>
                     </span>
                 <?php }} ?>
