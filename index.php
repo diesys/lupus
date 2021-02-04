@@ -84,7 +84,7 @@
 
         // ERRORE
         if($error != "") { ?>
-            <h2 style="color:yellow;"><?php echo($error); ?></h2>
+            <h2 class="error"><?php echo($error); ?></h2>
         <?php } ?> 
 
         <!-- HOMEPAGE -->

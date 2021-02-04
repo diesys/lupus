@@ -7,7 +7,7 @@
     if((isset($_POST['password']) and $_POST['password'] == $password) or (isset($_SESSION['logged_in']) and $_SESSION['logged_in'])) {
         $logged = TRUE;
     } else {
-        $error="Password sbagliata!";
+        $error="Password errata o assente!";
         $logged = FALSE;
     }
     $_SESSION['logged_in'] = $logged
@@ -60,7 +60,7 @@
             </form>  
 
     <?php } if ($error != "") { ?>
-        <h2 style="color:yellow;"><?php echo($error);?></h2>
+        <h2 class="error"><?php echo($error);?></h2>
         <p>Torna alla pagina di <a href="login.php">login</a></p>
     <?php } ?>
     </center>

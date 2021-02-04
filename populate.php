@@ -74,7 +74,7 @@
     </form>
 <?php } else {
     if ($error != "") { ?>
-        <h2 style="color:yellow;"><?php echo($error);?></h2>
+        <h2 class="error"><?php echo($error);?></h2>
         <p>Torna alla pagina di <a href="admin.php">admin</a></p>
     <?php }} ?>
 
