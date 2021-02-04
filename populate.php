@@ -31,8 +31,8 @@
     <title>Popola <?php if(isset($village['nome'])) {echo($village['nome']);} ?> | CyberLupus</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
-<body>
 
+<body style="background-image: url('assets/img/bg/<?php echo random_int(0, 5) ?>.jpg')">
 <header>
     <h2>
         <img height="40" width="40" src="assets/img/amarok.png" alt="logo">

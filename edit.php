@@ -50,26 +50,24 @@
                 
                 if(tipo.options[tipo.selectedIndex].value != "assassinato") {
                     document.querySelector('#poll_url').removeAttribute('disabled');
-                }
-                
+                }   
             }
         }
     </script>
-
 </head>
-<body>
-    
+
+<body style="background-image: url('assets/img/bg/<?php echo random_int(0, 5) ?>.jpg')">    
     <header>
         <h2>
             <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
-            Gestisci <?php if(isset($village['nome'])) echo($village['nome']);?>
+            Villaggio <?php if(isset($village['nome'])) echo($village['nome']);?>
         </h2>
 
         <ul>
-            <li><a href="admin.php">Admin</a></li>
+            <li><a href="admin.php">Villaggi</a></li>
         <?php if(isset($village['id']) and isset($village['nome'])) { ?>
             <li><a href="./?v=<?php echo($village['id']); ?>">Bacheca</a></li>
-            <li><a href="v/<?php echo($village['nome']); ?>.json" download>Scarica</a></li>
+            <li><a href="v/<?php echo($village['nome']); ?>.json" download>Download</a></li>
             <!-- <li><a href="v/<?php// echo($village['nome']);?>.json" download>Carica</a></li> -->
             <li><a href="#players">Giocatori</a></li>
             <li><a href="#events">Calendario</a></li>
@@ -110,7 +108,7 @@
                 </select>
             </span>
             <textarea class="half-width" name="description" placeholder="descrizione (opzionale)" rows="2"></textarea>
-            <input type="text" id="poll_url" name="poll_url" value="" placeholder="URL poll" disabled>
+            <input type="text" id="poll_url" name="poll_url" value="" placeholder="URL poll">
             
             <button type="submit" formmethod="post">aggiungi</button>
         </form>
@@ -132,8 +130,8 @@
 
 
         <span class="full-width" id="players">
-            <h2>Giocatori</h2>
-            <p><a href="populate.php?v=<?php echo($village['id']); ?>">modifica</a></p>
+            <h2><a href="populate.php?v=<?php echo($village['id']); ?>">Giocatori</a></h2>
+            <!-- <p><a href="populate.php?v=<?php echo($village['id']); ?>">modifica</a></p> -->
             <span>Vivi: <?php echo($alive[0]."/".intval($alive[0]+$alive[1]));?></span>
         </span>
         <div id="players_list">

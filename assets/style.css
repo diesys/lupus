@@ -1,8 +1,19 @@
 :root {
     --footer-height: 2em;
-    --accent-color: #eeff00c0;
+    --accent-color: #f64e7ef0;
+    --accent-color2: #e3235ad8;
+    --accent-color2-alpha: #e3235aa0;
+    --accent-color3: #1b72c3f0;
+    --accent-color3-alpha: #1b72c3a0;
+    /* --accent-color: #eeff00c0; */
     --dur: .4s;
     --box-shadow: 0 4px 20px -4px #000b;
+    --box-shadow-accent2: 0 2px 20px 2px var(--accent-color2-alpha);
+    --box-shadow-accent3: 0 2px 20px 2px var(--accent-color3-alpha);
+    
+    --border-light: #fff3;
+    --border-dark: #0008;
+
     --dark-grayalpha: #4446;
     --dark-graybitalpha: #111a;
     /* --night-bg: #2c3b899e; */
@@ -12,9 +23,18 @@
     --nightkill-bg-alpha: #7321214a;
 }
 
+
 * {
     box-sizing: content-box;
     scroll-behavior: smooth;
+}
+::selection {
+    background: var(--accent-color2);
+    color: white;
+}
+::moz-selection {
+    background: var(--accent-color2);
+    color: white;
 }
 
 *:disabled {
@@ -41,8 +61,11 @@ html, body {
     background-color: #302919;
 }
 body {
-    background: url('img/village.jpg') center center fixed;
+    background: url('img/bg/1.jpg');
+    background-position: center center;
+    background-attachment: fixed;
     background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
 }
@@ -65,7 +88,10 @@ center.regolamento h1 {
 center.regolamento h3 {
     margin: 1em auto 0;
     text-decoration: underline;
+}
+a, h1, h2, h3 {
     color: var(--accent-color);
+    text-shadow: 0 1px 10px var(--accent-color2);
 }
 header, center, form {
     display: flex;
@@ -131,16 +157,13 @@ footer {
 .legend .dot {
     width: max-content;
     height: min-content;
-    border-radius: 1em;
+    /* border-radius: 1em; */
     padding: .5em;
-    border: 1px solid #0008;
+    border: 1px solid var(--border-light);
     box-shadow: var(--box-shadow);
     display: inline-block;
 }
 
-a {
-    color: var(--accent-color);
-}
 .player a,
 .event a {
     color: #fffd;
@@ -190,7 +213,7 @@ button {
     width: max-content;
     /* border-radius: .5em; */
     background: var(--accent-color);
-    border: 1px solid var(--accent-color);
+    border: 1px solid var(--border-light);
     color: #000;
     cursor: pointer;
     user-select: none;
@@ -218,10 +241,10 @@ button {
     align-items: center;
     padding: .9em;
     margin: .5em;
-    border-radius: 4px;
+    /* border-radius: 4px; */
     min-width: 100px;
     box-shadow: var(--box-shadow);
-    border: 1px solid #0007;
+    border: 1px solid var(--border-light);
     background: #222a;
     flex-direction: column;
     color: #fff;
@@ -234,7 +257,9 @@ button {
     text-decoration: line-through;
 }
 #players_list > .player.wolf {
-    background: var(--nightkill-bg);
+    /* background: var(--nightkill-bg); */
+    background: var(--accent-color2-alpha);
+    box-shadow: var(--box-shadow-accent2);
 }
 #players_list > .player.dead:hover,
 #players_list > .player.dead:active {
@@ -264,7 +289,6 @@ button {
     padding: .3em .5em .4em .5em;
     background: #111e;
     z-index: 20;
-    /* text-transform: uppercase; */
     font-size: .9rem;
     border-radius: 1em;
     box-shadow: var(--box-shadow);
@@ -281,11 +305,13 @@ button {
 }
 #events_list .event.giustiziato .description,
 .legend .dot.giustiziato {
-    background: var(--daykill-bg);
+    /* background: var(--daykill-bg); */
+    background: var(--accent-color3-alpha);
+    box-shadow: var(--box-shadow-accent3);
 }
 #events_list .event.assassinato .description,
 .legend .dot.assassinato {
-    background: var(--nightkill-bg);
+    /* background: var(--nightkill-bg); */
+    background: var(--accent-color2-alpha);
+    box-shadow: var(--box-shadow-accent2);
 }
-/* #events_list > .event.votazione .description {
-} */
