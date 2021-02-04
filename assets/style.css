@@ -245,6 +245,7 @@ button:hover {
 
 textarea {
     resize: vertical;
+    min-height: 2em !important;
 }
 
 button {
