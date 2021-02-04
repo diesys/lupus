@@ -1,5 +1,5 @@
 <?php
-    include 'assets/masterus.php';
+    include 'assets/cyberlupus.php';
     $error = "";
 
     // crea partita
@@ -27,7 +27,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Popola <?php if(isset($village['nome'])) {echo($village['nome']);} ?> | Masterus</title>
+    <title>Popola <?php if(isset($village['nome'])) {echo($village['nome']);} ?> | CyberLupus</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>

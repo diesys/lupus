@@ -1,11 +1,12 @@
 ## TODO
 
-# possibilita di mettere a capo nella descrizione degli eventi (per votazioni)
+# possibilita di mettere a capo nella descrizione degli eventi (per votazioni "###" convertire in newline)
 
 # calendario eventi:
-    - select elimina eventi di tutto il giorno...
+    - select elimina eventi di tutto il giorno... :(
     - evento nullo con comunicazioni
     - magari raggruppare morti diurne, notturne, comunicazioni
+    - embed della poll? -> meglio link a poll finita evento e mandato in chat x iniziarla
     
 # bacheca
     - elenco ruoli disponibili da salvare dopo il populate e mostrare senza essere invasivo

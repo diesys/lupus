@@ -1,5 +1,5 @@
 <?php
-    include 'assets/masterus.php';
+    include 'assets/cyberlupus.php';
     
     if(isset($_SESSION['logged_in']) and $_SESSION['logged_in'] == TRUE) {
         header("Location: admin.php");

@@ -1,5 +1,5 @@
 <?php
-    include 'assets/masterus.php';
+    include 'assets/cyberlupus.php';
 
     // MAIN ///////////
     $error = "";
@@ -21,14 +21,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php if($village != NULL) {echo("Villaggio ".$village['nome']);} else { echo("Home");}?> | Masterus</title>
+    <title><?php if($village != NULL) {echo("Villaggio ".$village['nome']);} else { echo("Home");}?> | CyberLupus</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
     <header>
         <h2>
             <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
-            <?php if($village != NULL) {echo("Villaggio ".$village['nome']);} else { echo("Masterus");}?>
+            <?php if($village != NULL) {echo("Villaggio ".$village['nome']);} else { echo("CyberLupus");}?>
         </h2>
     <?php if($village != NULL) { ?>
         <ul>
@@ -90,6 +90,7 @@
             In costruzione... leggi i <a href="credits.html">credits</a> (ancora più in costruzione) <br><br>
             Sei un <a href="login.php">master</a>?
         </p>
+        <p>Leggi il <a href="regolamento.html">regolamento</a>.</p>
     <?php } ?> 
     </center>
 

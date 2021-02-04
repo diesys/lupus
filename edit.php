@@ -1,5 +1,5 @@
 <?php
-    include 'assets/masterus.php';
+    include 'assets/cyberlupus.php';
 
     // MAIN ///////////
     $error = "";
@@ -33,7 +33,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestisci <?php echo($village['nome']);?> | Masterus</title>
+    <title>Gestisci <?php echo($village['nome']);?> | CyberLupus</title>
     <link rel="stylesheet" href="assets/style.css">
 
     <script>
@@ -42,9 +42,15 @@
             if(tipo.options[tipo.selectedIndex].value == "notte") {
                 document.querySelector('#player_select').setAttribute('disabled', '1');
                 document.querySelector('#day_select').setAttribute('disabled', '1');
+                document.querySelector('#poll_url').setAttribute('disabled', '1');
             } else {
                 document.querySelector('#player_select').removeAttribute('disabled');
                 document.querySelector('#day_select').removeAttribute('disabled');
+                
+                if(tipo.options[tipo.selectedIndex].value != "assassinato") {
+                    document.querySelector('#poll_url').removeAttribute('disabled');
+                }
+                
             }
         }
     </script>
@@ -102,9 +108,9 @@
                 </select>
             </span>
             <textarea class="half-width" name="description" placeholder="descrizione (opzionale)" rows="2"></textarea>
-
+            <input type="text" id="poll_url" name="poll_url" value="" placeholder="URL poll" disabled>
+            
             <button type="submit" formmethod="post">aggiungi</button>
-
         </form>
 
         <form action="update.php?v=<?php echo($village['id']); ?>" method="post">

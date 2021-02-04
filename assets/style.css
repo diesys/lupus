@@ -17,6 +17,10 @@
     scroll-behavior: smooth;
 }
 
+*:disabled {
+    cursor: not-allowed;
+}
+
 input, select, button, textarea,.event::after, .player.dead {
     transition: background var(--dur), color var(--dur), opacity var(--dur), border var(--dur);
 }
