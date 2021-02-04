@@ -33,6 +33,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/img/favicon.ico" />
     <title>Gestisci <?php echo($village['nome']);?> | CyberLupus</title>
     <link rel="stylesheet" href="assets/style.css">
 
@@ -84,6 +85,7 @@
             <span>
                 <label for="type">Tipo</label>
                 <select onchange="fixSelect();" name="type" id="type_select" required>
+                    <option value="comunicazione">Comunicazione</option>
                     <option value="notte">Nuovo giorno</option>
                     <option value="assassinato">Assassinio notturno</option>
                     <option value="giustiziato">Condanna diurna</option>
@@ -113,7 +115,7 @@
             <button type="submit" formmethod="post">aggiungi</button>
         </form>
 
-        <form action="update.php?v=<?php echo($village['id']); ?>" method="post">
+        <!-- <form action="update.php?v=<?php echo($village['id']); ?>" method="post">
             <h4 class="full-width">Rimuovi dal calendario</h4>
             <select name="id_evento">
                 <?php
@@ -126,7 +128,7 @@
             </select>
 
             <button type="submit" formmethod="post">elimina</button>
-        </form>
+        </form> -->
 
 
         <span class="full-width" id="players">

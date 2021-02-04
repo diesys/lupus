@@ -21,7 +21,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php if($village != NULL) {echo("Villaggio ".$village['nome']);} else { echo("Home");}?> | CyberLupus</title>
+    <link rel="shortcut icon" href="assets/img/favicon.ico" />
+    <title><?php if($village != NULL) {echo("Villaggio ".$village['nome']." | ");}?>CyberLupus</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
