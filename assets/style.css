@@ -137,7 +137,7 @@ header ul {
     flex: 1;
     list-style: none;
     display: flex;
-    padding: 1em;
+    /* padding: 1em; */
     text-align: center;
     align-items: center;
     background: var(--accent-color2-alpha);
@@ -146,6 +146,7 @@ header ul {
 }
 
 header ul li {
+    padding: 1em;
     flex: 1;
     min-width: 100px;
 }
