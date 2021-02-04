@@ -12,15 +12,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/favicon.ico" />
-    <title>Master lupus login</title>
+    <title>Login | CyberLupus</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body style="background-image: url('assets/img/bg/<?php echo random_int(0, 5) ?>.jpg')">
     <header>
         <h2>
-            <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
-            Masterus
+            <a href="."><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
+            CyberLupus login
         </h2>
     </header>
 

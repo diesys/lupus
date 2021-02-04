@@ -35,8 +35,8 @@
 <body style="background-image: url('assets/img/bg/<?php echo random_int(0, 5) ?>.jpg')">
 <header>
     <h2>
-        <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
-        Popola <?php if(isset($village['nome'])) {echo($village['nome']);} ?>
+        <a href="admin.php"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
+        Giocatori del villaggio <?php if(isset($village['nome'])) {echo($village['nome']);} ?>
     </h2>
 
     <ul>

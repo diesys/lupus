@@ -5,33 +5,30 @@
     --accent-color2-alpha: #e3235aa0;
     --accent-color3: #1b72c3f0;
     --accent-color3-alpha: #1b72c3a0;
-    /* --accent-color: #eeff00c0; */
     --dur: .4s;
     --box-shadow: 0 4px 20px -4px #000b;
     --box-shadow-accent2: 0 2px 20px 2px var(--accent-color2-alpha);
     --box-shadow-accent3: 0 2px 20px 2px var(--accent-color3-alpha);
-    
     --border-light: #fff3;
     --border-dark: #0008;
-
     --dark-grayalpha: #4446;
     --dark-graybitalpha: #111a;
-    /* --night-bg: #2c3b899e; */
-    /* --daykill-bg: #439d339e; */
+
     --daykill-bg: #2c3b899e;
     --nightkill-bg: #8c1f1f9e;
     --nightkill-bg-alpha: #7321214a;
 }
 
-
 * {
     box-sizing: content-box;
     scroll-behavior: smooth;
 }
+
 ::selection {
     background: var(--accent-color2);
     color: white;
 }
+
 ::moz-selection {
     background: var(--accent-color2);
     color: white;
@@ -41,7 +38,12 @@
     cursor: not-allowed;
 }
 
-input, select, button, textarea,.event::after, .player.dead {
+input,
+select,
+button,
+textarea,
+.event::after,
+.player.dead {
     transition: background var(--dur), color var(--dur), opacity var(--dur), border var(--dur);
 }
 
@@ -49,7 +51,8 @@ input, select, button, textarea,.event::after, .player.dead {
     text-shadow: 0 1px 4px #000d;
 }
 
-html, body {
+html,
+body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
     width: 100vw;
@@ -60,6 +63,7 @@ html, body {
     color: #fff;
     background-color: #302919;
 }
+
 body {
     background: url('img/bg/1.jpg');
     background-position: center center;
@@ -69,7 +73,8 @@ body {
     display: flex;
     flex-direction: column;
 }
-body > * {
+
+body>* {
     flex: 1;
 }
 
@@ -78,27 +83,35 @@ center {
     max-width: 100%;
     padding: 2em 10%;
 }
+
 center.regolamento {
     text-align: justify !important;
     text-shadow: 0 1px 4px #000 !important;
 }
+
 center.regolamento h1 {
     margin: 1em auto;
 }
+
 center.regolamento h3 {
     margin: 1em auto 0;
     text-decoration: underline;
 }
-a, h1, h2, h3 {
+
+a,h1, h2, h3 {
     color: var(--accent-color);
     text-shadow: 0 1px 10px var(--accent-color2);
 }
-header, center, form {
+
+header,
+center,
+form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
 }
+
 header {
     flex-direction: row;
     background: linear-gradient(#000c, #0000);
@@ -107,35 +120,43 @@ header {
 }
 
 header h2 {
-    /* min-width: 200px; */
     width: max-content;
     min-width: 40%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     margin: 1em;
-    /* flex: 1; */
 }
+
 header img {
     margin-right: .5em;
     margin-top: 2px;
 }
+
 header ul {
     flex: 1;
     list-style: none;
     display: flex;
     padding: 1em;
-    /* width: 90%; */
     text-align: center;
     align-items: center;
+    background: var(--accent-color2-alpha);
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
 }
+
 header ul li {
     flex: 1;
     min-width: 100px;
 }
+header ul li a {
+    color: #fff !important;
+}
+
 .flex-column {
     flex-direction: column;
 }
+
 form {
     flex-direction: row;
     flex-wrap: wrap;
@@ -151,13 +172,13 @@ footer {
 
 .legend {
     font-style: italic;
-    opacity: .75;
+    opacity: .8;
     font-size: .8rem;
 }
+
 .legend .dot {
     width: max-content;
     height: min-content;
-    /* border-radius: 1em; */
     padding: .5em;
     border: 1px solid var(--border-light);
     box-shadow: var(--box-shadow);
@@ -171,11 +192,19 @@ footer {
     text-decoration: none;
 }
 
-input, select, button, textarea, option {
-    border-radius: 2em;
+input,
+select,
+button,
+textarea,
+option {
+    /* border-radius: 2em; */
     text-align: center;
     border: none;
-    background: #eee;
+    /* border: 1px solid var(--border-light); */
+    border-bottom: 1px solid var(--accent-color2);
+    background: var(--dark-graybitalpha);
+    color: #fff;
+    /* background: #eee; */
     margin: .65em;
     padding: .4em .6em;
     box-shadow: var(--box-shadow);
@@ -183,56 +212,62 @@ input, select, button, textarea, option {
     min-width: 8em;
     opacity: .8;
 }
-input, select, button {
+
+input,
+select,
+button {
     height: 2em;
 }
+
 .full-width {
     width: 100%;
     user-select: none;
 }
+
 .half-width {
     width: 40%;
 }
-input:active, 
-select:active, 
+
+input:active,
+select:active,
 button:active,
 textarea:active,
-textarea:hover, 
+textarea:hover,
 input:hover,
-select:hover, 
+select:hover,
 button:hover {
     opacity: 1;
 }
+
 textarea {
     resize: vertical;
 }
+
 button {
     text-transform: uppercase;
     font-weight: bold;
     max-width: 50%;
     width: max-content;
-    /* border-radius: .5em; */
     background: var(--accent-color);
     border: 1px solid var(--border-light);
-    color: #000;
+    /* color: #000; */
     cursor: pointer;
     user-select: none;
 }
 
-/* events and players LIST / CALENDAR */
-
-#players_list, #events_list {
+#players_list,
+#events_list {
     display: flex;
     flex-wrap: wrap;
     padding: 1em;
     justify-content: space-around;
 }
+
 #events_list {
-    /* flex-direction: column-reverse; */
-    /* flex-direction: row-reverse; */
     flex-direction: row;
 }
-#players_list > .player,
+
+#players_list>.player,
 #events_list .description {
     justify-content: space-around;
     display: flex;
@@ -241,30 +276,37 @@ button {
     align-items: center;
     padding: .9em;
     margin: .5em;
-    /* border-radius: 4px; */
     min-width: 100px;
+    /* box-shadow: var(--box-shadow); */
+    /* background: var(--dark-graybitalpha); */
     box-shadow: var(--box-shadow);
     border: 1px solid var(--border-light);
-    background: #222a;
-    flex-direction: column;
     color: #fff;
+    flex-direction: column;
+    
+    background: var(--accent-color3-alpha);
+    box-shadow: var(--box-shadow-accent3);
 }
-#players_list > .player.dead {
+
+#players_list>.player.dead {
     border-color: var(--dark-graybitalpha);
     opacity: .5;
 }
-#players_list > .player.dead > .username {
+
+#players_list>.player.dead>.username {
     text-decoration: line-through;
 }
-#players_list > .player.wolf {
-    /* background: var(--nightkill-bg); */
+
+#players_list>.player.wolf {
     background: var(--accent-color2-alpha);
     box-shadow: var(--box-shadow-accent2);
 }
-#players_list > .player.dead:hover,
-#players_list > .player.dead:active {
+
+#players_list>.player.dead:hover,
+#players_list>.player.dead:active {
     opacity: .9;
 }
+
 .player_input {
     border-radius: 4px;
     box-shadow: var(--box-shadow);
@@ -272,6 +314,7 @@ button {
     background: #222a;
     margin: .5em;
 }
+
 #events_list .date {
     font-weight: 900;
     font-size: .9rem;
@@ -293,25 +336,25 @@ button {
     border-radius: 1em;
     box-shadow: var(--box-shadow);
 }
+
 .event:hover::after,
 .event:active::after {
     opacity: 1;
 }
 
-/* eventi colori */
 #events_list .event.giustiziato .description,
 .legend .dot.giustiziato {
     background: var(--night-bg);
 }
+
 #events_list .event.giustiziato .description,
 .legend .dot.giustiziato {
-    /* background: var(--daykill-bg); */
     background: var(--accent-color3-alpha);
     box-shadow: var(--box-shadow-accent3);
 }
+
 #events_list .event.assassinato .description,
 .legend .dot.assassinato {
-    /* background: var(--nightkill-bg); */
     background: var(--accent-color2-alpha);
     box-shadow: var(--box-shadow-accent2);
 }

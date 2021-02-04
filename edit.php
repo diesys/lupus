@@ -59,7 +59,7 @@
 <body style="background-image: url('assets/img/bg/<?php echo random_int(0, 5) ?>.jpg')">    
     <header>
         <h2>
-            <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
+            <a href="admin.php"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
             Villaggio <?php if(isset($village['nome'])) echo($village['nome']);?>
         </h2>
 
@@ -71,6 +71,7 @@
             <!-- <li><a href="v/<?php// echo($village['nome']);?>.json" download>Carica</a></li> -->
             <li><a href="#players">Giocatori</a></li>
             <li><a href="#events">Calendario</a></li>
+            <li><a href="logout.php">Logout</a></li>
         <?php } ?>
         </ul>
     </header>

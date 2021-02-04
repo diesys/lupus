@@ -56,7 +56,5 @@
     }
         
 
-
     header("Location: edit.php?v=".$village['id']);
-
 ?>
