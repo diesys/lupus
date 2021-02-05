@@ -1,14 +1,26 @@
 :root {
     --footer-height: 2em;
+    
     --accent-color: #f64e7ef0;
-    --accent-color2: #e3235ad8;
+    --accent-color2: #e3235af0;
     --accent-color2-alpha: #e3235aa0;
     --accent-color3: #1b72c3f0;
     --accent-color3-alpha: #1b72c3a0;
-    --dur: .4s;
+    --accent-color4: #609b0ef0;
+    --accent-color4-alpha: #65a011a0;
+    --accent-color5: #19a994f0;
+    --accent-color5-alpha: #19a994a0;
+    --accent-color6: #9d1bc5f0;
+    --accent-color6-alpha: #a11bc5a0;
+
     --box-shadow: 0 4px 20px -4px #000b;
     --box-shadow-accent2: 0 2px 20px 2px var(--accent-color2-alpha);
     --box-shadow-accent3: 0 2px 20px 2px var(--accent-color3-alpha);
+    --box-shadow-accent4: 0 2px 20px 2px var(--accent-color4-alpha);
+    --box-shadow-accent5: 0 2px 20px 2px var(--accent-color5-alpha);
+    --box-shadow-accent6: 0 2px 20px 2px var(--accent-color6-alpha);
+
+    --dur: .4s;
     --border-light: #fff3;
     --border-dark: #0008;
     --dark-grayalpha: #4446;
@@ -42,6 +54,7 @@ input,
 select,
 button,
 textarea,
+header ul li,
 .event::after,
 .player.dead {
     transition: background var(--dur), color var(--dur), opacity var(--dur), border var(--dur);
@@ -98,7 +111,7 @@ center.regolamento h3 {
     text-decoration: underline;
 }
 
-a, h1, h2, h3 {
+a:not(.username), h1, h2, h3 {
     color: var(--accent-color);
     text-shadow: 0 1px 10px var(--accent-color2);
 }
@@ -137,7 +150,7 @@ header ul {
     flex: 1;
     list-style: none;
     display: flex;
-    /* padding: 1em; */
+    padding: 0;
     text-align: center;
     align-items: center;
     background: var(--accent-color2-alpha);
@@ -149,8 +162,15 @@ header ul li {
     padding: 1em;
     flex: 1;
     min-width: 100px;
+    background: #0000;
+    cursor: pointer;
+}
+header ul li:hover,
+header ul li:active {
+    background: var(--accent-color3-alpha);
 }
 header ul li a {
+    text-decoration: none;
     color: #fff !important;
 }
 
