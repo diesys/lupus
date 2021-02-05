@@ -156,11 +156,11 @@ header ul {
     text-align: center;
     align-items: center;
     background: var(--accent-color2-alpha);
-    box-shadow: 5px 4px 30px 4px #000b;
+    box-shadow: 50px 6px 30px 3px #000b;
     /* border-top: 1px solid var(--border-light); */
     /* border-bottom: 1px solid var(--border-light); */
     flex-wrap: wrap;
-    background: linear-gradient(220deg, var(--accent-color2-alpha),var(--accent-color3-alpha), #0000 85%);
+    background: linear-gradient(220deg, var(--accent-color2-alpha),var(--accent-color3-alpha), #0000 80%);
 }
 
 header ul li {

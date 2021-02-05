@@ -1,21 +1,21 @@
 ## TODO
 
-# possibilita di mettere a capo nella descrizione degli eventi (per votazioni "###" convertire in newline)
+# IMPORTANTI
+    - possibilita di mettere a capo nella descrizione degli eventi (per votazioni "###" convertire in newline)
+    - select elimina eventi di tutto il giorno... :(
+    - evento nullo con comunicazioni (da testare)
+
 
 # calendario eventi:
-    - select elimina eventi di tutto il giorno... :(
-    - evento nullo con comunicazioni
-    - magari raggruppare morti diurne, notturne, comunicazioni
+    - magari raggruppare morti diurne, notturne, comunicazioni?
     - embed della poll? -> meglio link a poll finita evento e mandato in chat x iniziarla
     
 # bacheca
     - elenco ruoli disponibili da salvare dopo il populate e mostrare senza essere invasivo
     - possibilita in futuro di aggiungere anche ruoli in surplus nell'elenco per confondere
-    - mettere descrizione eventi in bacheca
 
 # gestione partita
     - bottone per elimina villaggio/concludi partita.
-    - serve link gruppo telegram?
 
 # sicurezza
     - mettere meglio la roba sensibile tipo i json...
