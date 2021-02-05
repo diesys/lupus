@@ -60,12 +60,17 @@
             <input type="text" placeholder="username" name="username#<?php echo($i); ?>" value="<?php echo($player['username']); ?>" required>
             <select name="ruolo#<?php echo($i); ?>" required>
                 <?php foreach ($roles as $role) {
-                    echo("<option value='".$role."'>".$role."</option>");
+                    if(isset($player['ruolo']) and $player['ruolo'] == $role) {
+                        $selected = "selected";
+                    } else {
+                        $selected = "";
+                    }
+                    echo("<option value='".$role."'".$selected.">".$role."</option>");
                 } ?>
             </select>
             <select name="in_vita#<?php echo($i); ?>" required>
-                <option value="true" <?php if($player['in_vita'] == true) { ?> selected <?php } ?>>vivo</option>
-                <option value="false" <?php if($player['in_vita'] == false) { ?> selected <?php } ?>>morto</option>
+                <option value="true" <?php if($player['in_vita'] == "true") { ?> selected <?php } ?>>vivo</option>
+                <option value="false" <?php if($player['in_vita'] == "false") { ?> selected <?php } ?>>morto</option>
             </select>
         </span>
     <?php $i++;} ?>

@@ -48,7 +48,7 @@
         </span>
         <div id="players_list">
             <?php foreach($village['giocatori'] as $giocatore) { ?>
-                <a target="_blank" href="https://t.me/<?php echo($giocatore['username']); ?>" class="player <?php if($giocatore['in_vita'] != "true") {echo("dead");} ?>">
+                <a target="_blank" href="https://t.me/<?php echo($giocatore['username']); ?>" class="player username <?php if($giocatore['in_vita'] != "true") {echo("dead");} ?>">
                     @<?php echo($giocatore['username']); ?>
                 </a>
             <?php } ?>
@@ -59,7 +59,7 @@
         </span>
         <div id="events_list">
             <p class="legend full-width">
-                <span class="dot assassinato">assassinati dai lupi</span> - <span class="dot giustiziato">giustiziati dal villaggio</span>
+                <span class="dot assassinato">assassati di notte</span> - <span class="dot giustiziato">giustiziati di giorno</span>
             </p>
 
             <?php $n_days = count($days);

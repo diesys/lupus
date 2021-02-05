@@ -148,7 +148,7 @@
             <h2 class="full-width">Calendario</h2>
         </span>
         <p class="legend full-width">
-            <span class="dot assassinato">assassinati dai lupi</span> - <span class="dot giustiziato">giustiziati dal villaggio</span>
+            <span class="dot assassinato">assassati di notte</span> - <span class="dot giustiziato">giustiziati di giorno</span>
         </p>
         <div id="events_list">
             <?php $n_days = count($days); 
