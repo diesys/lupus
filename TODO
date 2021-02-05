@@ -5,6 +5,7 @@
     - select elimina eventi di tutto il giorno... :(
     - sistemare la fixSelect (in edit.php)!!!
 
+    - evento comunicazione va rivista la funzione di update che sembra poco pulita
 
 # calendario eventi:
     - magari raggruppare morti diurne, notturne, comunicazioni?

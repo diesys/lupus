@@ -38,6 +38,9 @@
     <link rel="stylesheet" href="assets/style.css">
 
     <script>
+
+        // DA RIVEDERE TUTTA!!!! //////////////////////////////////////////////////////////////
+
         function fixSelect() {
             tipo = document.querySelector('#type_select');
             if(tipo.options[tipo.selectedIndex].value == "notte") {
@@ -53,6 +56,8 @@
                 }   
             }
         }
+
+        ///////////////////////////////////////////////////////////////////////////////////////
     </script>
 </head>
 
