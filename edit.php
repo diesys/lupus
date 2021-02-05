@@ -93,7 +93,7 @@
             </span>
             <span>
                 <label for="day">Giorno</label>
-                <select name="day" id="day_select" required disabled>
+                <select name="day" id="day_select" required>
                     <?php $n_days = count($days); 
                      foreach (array_reverse($days) as $j => $day) {
                         echo("<option value='".intval($n_days-$j-1)."'>Giorno ".intval($n_days-$j)."</option>");
@@ -161,7 +161,8 @@
                 <?php foreach ($day as $event) { if($event) {?>
                     <span class="event <?php echo($event['tipo']);?>" data-type="<?php echo(" ".$event['tipo']);?>">
                         <span class="description">
-                            <a target="_blank" href="https://t.me/<?php echo($event['giocatore']); ?>">@<?php echo($event['giocatore']); ?></a>
+                        <?php if(isset($event['giocatore'])) { ?>
+                            <a target="_blank" href="https://t.me/<?php echo($event['giocatore']); ?>">@<?php echo($event['giocatore']); }?></a>
                             <?php echo(" ".$event['descrizione']);?>
                         </span> 
                     </span>

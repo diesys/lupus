@@ -17,14 +17,21 @@
         if($_POST['type'] == "notte") {
             $day = count($village['giorni']);
             array_push($village['giorni'], array());
-        } elseif(($_POST['type'] == "assassinato" or $_POST['type'] == "giustiziato")) {
+        } else {
             if(!isset($_POST['day'])) {
                 $day = count($village['giorni'])-1;
             } else {
                 $day = $_POST['day'];
             }
-            // aggiorna il giocatore morto
-            $village['giocatori'] = kill($_POST['player'], $village);
+
+            if(($_POST['type'] == "assassinato" or $_POST['type'] == "giustiziato")) {
+                // aggiorna il giocatore morto
+                $village['giocatori'] = kill($_POST['player'], $village);
+            } elseif($_POST['type'] == "comunicazione" and isset($_POST['description'])) {
+                array_push($village['giorni'][$day], array(
+                    'tipo' => $_POST['type'],
+                    'descrizione' => $_POST['description']));
+            }
         }
 
         // NUOVA UCCISIONE

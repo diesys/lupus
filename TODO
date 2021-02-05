@@ -3,7 +3,7 @@
 # IMPORTANTI
     - possibilita di mettere a capo nella descrizione degli eventi (per votazioni "###" convertire in newline)
     - select elimina eventi di tutto il giorno... :(
-    - evento nullo con comunicazioni (da testare)
+    - sistemare la fixSelect (in edit.php)!!!
 
 
 # calendario eventi:
