@@ -38,26 +38,30 @@
     <link rel="stylesheet" href="assets/style.css">
 
     <script>
-
-        // DA RIVEDERE TUTTA!!!! //////////////////////////////////////////////////////////////
-
-        function fixSelect() {
+        function fixSelect() { // da fare meglio magari..
             tipo = document.querySelector('#type_select');
             if(tipo.options[tipo.selectedIndex].value == "notte") {
-                document.querySelector('#player_select').setAttribute('disabled', '1');
                 document.querySelector('#day_select').setAttribute('disabled', '1');
+                document.querySelector('#player_select').setAttribute('disabled', '1');
+                document.querySelector('#description').setAttribute('disabled', '1');
                 document.querySelector('#poll_url').setAttribute('disabled', '1');
-            } else {
-                document.querySelector('#player_select').removeAttribute('disabled');
+            } else if(tipo.options[tipo.selectedIndex].value == "assassinato") {
                 document.querySelector('#day_select').removeAttribute('disabled');
-                
-                if(tipo.options[tipo.selectedIndex].value != "assassinato") {
-                    document.querySelector('#poll_url').removeAttribute('disabled');
-                }   
-            }
+                document.querySelector('#player_select').removeAttribute('disabled');
+                document.querySelector('#description').removeAttribute('disabled');
+                document.querySelector('#poll_url').setAttribute('disabled', '1');
+            } else if(tipo.options[tipo.selectedIndex].value == "giustiziato") {
+                document.querySelector('#day_select').removeAttribute('disabled');
+                document.querySelector('#player_select').removeAttribute('disabled');
+                document.querySelector('#description').removeAttribute('disabled');
+                document.querySelector('#poll_url').removeAttribute('disabled');
+            } else if(tipo.options[tipo.selectedIndex].value == "comunicazione") {
+                document.querySelector('#day_select').removeAttribute('disabled');
+                document.querySelector('#player_select').setAttribute('disabled', '1');
+                document.querySelector('#description').removeAttribute('disabled');
+                document.querySelector('#poll_url').removeAttribute('disabled');
+            }       
         }
-
-        ///////////////////////////////////////////////////////////////////////////////////////
     </script>
 </head>
 
@@ -113,7 +117,7 @@
                     }} ?>
                 </select>
             </span>
-            <textarea class="half-width" name="description" placeholder="descrizione (opzionale)" rows="2"></textarea>
+            <textarea id="description" class="half-width" name="description" placeholder="descrizione (opzionale)" rows="2"></textarea>
             <input type="text" id="poll_url" name="poll_url" value="" placeholder="URL poll">
             
             <button type="submit" formmethod="post">aggiungi</button>
