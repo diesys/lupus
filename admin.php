@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="assets/style.css">
 </head>
 
-<body style="background-image: url('assets/img/bg/<?php echo random_int(0, 5) ?>.jpg')">
+<body style="background-image: url('assets/img/bg/<?php echo rand(0, 5) ?>.jpg')">
 
     <header>
         <h2>
