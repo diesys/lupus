@@ -70,8 +70,8 @@
             <li><a href="v/<?php echo($village['nome']); ?>.json" download>Download</a></li>
             <!-- <li><a href="v/<?php// echo($village['nome']);?>.json" download>Carica</a></li> -->
             <li><a href="logout.php">Logout</a></li>
-            <li><a href="#players">Giocatori</a></li>
-            <li><a href="#events">Calendario</a></li>
+            <!-- <li><a href="#players">Giocatori</a></li>
+            <li><a href="#events">Calendario</a></li> -->
         <?php } ?>
         </ul>
     </header>
