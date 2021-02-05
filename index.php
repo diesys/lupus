@@ -66,12 +66,15 @@
                  foreach (array_reverse($days) as $i => $day) { //if(count($day) > 0) { ?>
                 <span class="day">
                     <span class="date">Giorno <?php echo(intval($n_days - $i));?></span>
-                    <?php foreach ($day as $event) { if($event) {?>
+                <?php foreach ($day as $event) { if($event) {?>
                     <span class="event <?php echo($event['tipo']);?>" data-type="<?php echo(" ".$event['tipo']);?>">
                         <span class="description">
                         <?php if(isset($event['giocatore'])) { ?>
                             <a target="_blank" href="https://t.me/<?php echo($event['giocatore']); ?>">@<?php echo($event['giocatore']); }?></a>
                             <?php echo(" ".$event['descrizione']);?>
+                            <?php if(isset($event['sondaggio']) and $event['sondaggio'] != "") { 
+                                echo("<small>voti: <a target='_blank' href='".$event['sondaggio']."'>".$event['sondaggio']."</a></small>"); 
+                            }?>
                         </span> 
                     </span>
                 <?php }} ?>

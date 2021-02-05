@@ -173,6 +173,9 @@
                         <?php if(isset($event['giocatore'])) { ?>
                             <a target="_blank" href="https://t.me/<?php echo($event['giocatore']); ?>">@<?php echo($event['giocatore']); }?></a>
                             <?php echo(" ".$event['descrizione']);?>
+                            <?php if(isset($event['sondaggio']) and $event['sondaggio'] != "") { 
+                                echo("<small>voti: <a target='_blank' href='".$event['sondaggio']."'>".$event['sondaggio']."</a></small>"); 
+                            }?>
                         </span> 
                     </span>
                 <?php }} ?>
