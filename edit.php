@@ -4,8 +4,8 @@
     // MAIN ///////////
     $error = "";
 
-    if ($_SESSION['logged_in'] == TRUE) {
-        if ($_SESSION['logged_in'] == TRUE and isset($_GET) and isset($_GET['v']) and array_key_exists($_GET['v'], $villages)) {
+    if ($_SESSION['logged_in'] == TRUE and isset($_GET) and isset($_GET['v']) and isset($villages)) {
+        if (array_key_exists($_GET['v'], $villages)) {
             $village = get_village($_GET['v'], $villages);
             $alive = get_alive($village);
             $days = get_events($village);
@@ -13,7 +13,7 @@
             $error = "Villaggio non trovato!";
         }
     } else {
-        $error = "Sicuro di essere un <a href='login.php'>master</a>?";
+        $error = "Sicuro di essere un <a href='login.php'>master</a> o che il villaggio <a href='admin.php'>esista</a>?";
     }
 
     // update giocatori da populate.php$_POST['id_evento']
@@ -123,20 +123,21 @@
             <button type="submit" formmethod="post">aggiungi</button>
         </form>
 
-        <!-- <form action="update.php?v=<?php echo($village['id']); ?>" method="post">
+        <form action="update.php?v=<?php echo($village['id']); ?>" method="post">
             <h4 class="full-width">Rimuovi dal calendario</h4>
             <select name="id_evento">
                 <?php
                 foreach ($days as $n => $day) {
-                    foreach ($day as $event) {
-                        echo("<option value='".$n."#".$event['tipo']."#".$event['giocatore']."'>".intval($n+1).") ".$event['giocatore']." (".$event['tipo'].")</option>");;
+                    foreach ($day as $i => $event) {
+                        // echo("<option value='".$n."#".$event['tipo']."#".$event['giocatore']."'>".intval($n+1).") ".$event['giocatore']." (".$event['tipo'].")</option>");;
+                        echo("<option value='".$n."#".$i."'>".intval($n+1).".".intval($i+1)." ".$event['tipo']."</option>");
                     }
                 } 
                 ?>
             </select>
 
             <button type="submit" formmethod="post">elimina</button>
-        </form> -->
+        </form>
 
 
         <span class="full-width" id="players">
@@ -167,8 +168,8 @@
                         Giorno <?php echo(intval($n_days - $i));?>
                     </span>
 
-                <?php foreach ($day as $event) { if($event) {?>
-                    <span class="event <?php echo($event['tipo']);?>" data-type="<?php echo(" ".$event['tipo']);?>">
+                <?php foreach ($day as $j => $event) { if($event) {?>
+                    <span class="event <?php echo($event['tipo']);?>" data-type="<?php echo("id: ".intval($n_days - $i).".".intval($j+1)." (".$event['tipo'].")");?>">
                         <span class="description">
                         <?php if(isset($event['giocatore'])) { ?>
                             <a target="_blank" href="https://t.me/<?php echo($event['giocatore']); ?>">@<?php echo($event['giocatore']); }?></a>

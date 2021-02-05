@@ -6,8 +6,6 @@
 
     if (isset($_GET) and isset($_GET['v'])) {
         $village = get_village($_GET['v'], $villages);
-        // $alive = get_alive($village);
-        // $days = get_events($village);
     }
 
     // AGGIUNGI/RIMUOVI EVENTO
@@ -43,16 +41,12 @@
 
     //// elimina evento
     if(array_key_exists('id_evento',$_POST)) {
-        // as: $giorno # $tipo # $username
+        // as: " $indice_giorno # $indice_evento "
         $id = explode('#', $_POST['id_evento']);
-        if(count($id) > 2) { // giustiziato o assassinato
+        if(count($id) > 1) { // giustiziato o assassinato
             // elimina evento
-            $village['giorni'][$id[0]] = remove_event($village, $id[0], $id[1], $id[2]);
-            // resuscita giocatore
-            $village['giocatori'] = kill($id[2], $village, TRUE);
-            write_village($village);
+            $village['giorni'] = remove_event($village, $id[0], $id[1]);
         }
-        //} // else { // notte? }    
         // notte come si fa? si puo' anche ignorare... unico problema coi voti e ballottaggio?
     }
         

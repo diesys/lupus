@@ -69,8 +69,13 @@
                 } ?>
             </select>
             <select name="in_vita#<?php echo($i); ?>" required>
-                <option value="true" <?php if($player['in_vita'] == "true") { ?> selected <?php } ?>>vivo</option>
-                <option value="false" <?php if($player['in_vita'] == "false") { ?> selected <?php } ?>>morto</option>
+            <?php if($player['in_vita'] == "true") { ?>
+                <option value="true" selected>vivo</option>
+                <option value="false">morto</option>
+            <?php } else { ?>
+                <option value="true">vivo</option>
+                <option value="false" selected>morto</option>
+            <?php } ?>
             </select>
         </span>
     <?php $i++;} ?>
