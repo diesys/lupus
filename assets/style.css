@@ -126,7 +126,7 @@ form {
 }
 
 header {
-    flex-direction: row;
+    flex-direction: column-reverse;
     background: linear-gradient(#000c, #0000);
     user-select: none;
     flex-wrap: wrap;
@@ -138,7 +138,7 @@ header h2 {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    padding: .5em;
+    padding: 1em .5em .5em .5em;
     margin: 0;
 }
 
@@ -148,6 +148,8 @@ header img {
 }
 
 header ul {
+    position: relative;
+    width: 100%;
     flex: 1;
     list-style: none;
     display: flex;
@@ -160,11 +162,12 @@ header ul {
     /* border-top: 1px solid var(--border-light); */
     /* border-bottom: 1px solid var(--border-light); */
     flex-wrap: wrap;
-    background: linear-gradient(220deg, var(--accent-color2-alpha),var(--accent-color3-alpha), #0000 80%);
+    background: linear-gradient(130deg, var(--accent-color2-alpha),var(--accent-color3-alpha), #0000 95%);
 }
 
 header ul li {
-    padding: 1em;
+    padding: .7em;
+    margin: .3em;
     flex: 1;
     min-width: 100px;
     background: #0000;
@@ -172,7 +175,7 @@ header ul li {
 }
 header ul li:hover,
 header ul li:active {
-    background: #0006;
+    background: #0007;
 }
 header ul li a {
     text-decoration: none;
