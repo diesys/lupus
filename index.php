@@ -25,18 +25,25 @@
     <title><?php if($village != NULL) {echo("Villaggio ".$village['nome']." | ");}?>Lupus</title>
     
     <link rel="stylesheet" href="assets/css/style.css">
-    <?php if($village != NULL and $village['variante'] == "space") { ?>
+    <?php $seed = rand(0,1);
+
+        if($village != NULL and $village['variante'] == "space") { ?>
         <link rel="stylesheet" href="assets/css/space.css">
     <?php } elseif($village != NULL and $village['variante'] == "classic") { ?>
         <link rel="stylesheet" href="assets/css/classic.css">
-    <?php } elseif(rand(0,1)%2 == 0) { ?>
+    <?php } elseif($seed == 0) { ?>
         <link rel="stylesheet" href="assets/css/space.css">
     <?php } else { ?>
         <link rel="stylesheet" href="assets/css/classic.css">
     <?php } ?>
 </head>
 
-<body style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')">
+<?php if(isset($village)) { ?>
+    <body style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')">
+<?php } else { ?>
+    <body style="background-image: url('assets/img/bg/<?php if($seed == 0) {echo("space/");} else {echo("classic/");} echo(rand(0, 5)); ?>.jpg')">
+<?php } ?>
+
     <header>
         <h2>
             <a href="#"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
