@@ -23,11 +23,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/favicon.ico" />
     <title><?php if($village != NULL) {echo("Villaggio ".$village['nome']." | ");}?>Lupus</title>
-    <link rel="stylesheet" href="assets/css/style.css">
     
+    <link rel="stylesheet" href="assets/css/style.css">
     <?php if($village != NULL and $village['variante'] == "space") { ?>
         <link rel="stylesheet" href="assets/css/space.css">
     <?php } elseif($village != NULL and $village['variante'] == "classic") { ?>
+        <link rel="stylesheet" href="assets/css/classic.css">
+    <?php } elseif(rand(0,1)%2 == 0) { ?>
+        <link rel="stylesheet" href="assets/css/space.css">
+    <?php } else { ?>
         <link rel="stylesheet" href="assets/css/classic.css">
     <?php } ?>
 </head>
@@ -42,6 +46,11 @@
         <ul>
             <li><a href="#players">Giocatori</a></li>
             <li><a href="#events">Calendario</a></li>
+        <?php if($village['variante'] == "space") { ?>
+            <li><a href="regolamento.php?v=space">Regolamento</a></li>
+        <?php } else { ?>
+            <li><a href="regolamento.php?v=classic">Regolamento</a></li>
+        <?php } ?>
         </ul>
     <?php } ?>
     </header>

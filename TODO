@@ -1,13 +1,12 @@
 ## TODO
 
 # gioco
-    - scindere il sito dalla variante, includere lupus in space e altre varianti coi relativi regolamenti e temi css (quindi va reso meglio il php)
     - se diventa una cosa giocabile far creare un db e metterlo come servizio vero
     - pagina di help che spiega come funziona (tramite telegram etc)
-    - mettere il link al regolamento ed help in index
 
 # php
-    - funzioni sputa header e footer, per compattarlo
+    - funzioni sputa header
+        - footer sicuro, per compattarlo
 
 # calendario eventi:
     - mettere piu' a portata di mano il link a framadate?

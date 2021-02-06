@@ -29,7 +29,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/favicon.ico" />
     <title>Popola <?php if(isset($village['nome'])) {echo($village['nome']);} ?> | Lupus</title>
+    
     <link rel="stylesheet" href="assets/css/style.css">
+    <?php if($village['variante'] == "space") { ?>
+        <link rel="stylesheet" href="assets/css/space.css">
+    <?php } elseif($village['variante'] == "classic") { ?>
+        <link rel="stylesheet" href="assets/css/classic.css">
+    <?php } ?>
 </head>
 
 <body style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')">

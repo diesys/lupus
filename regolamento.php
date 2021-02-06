@@ -27,6 +27,15 @@
     
     <!-- general css -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <?php if($variant == "classic") { ?>
+        <link rel="stylesheet" href="assets/css/classic.css">
+    <?php } elseif($variant == "space") { ?>
+        <link rel="stylesheet" href="assets/css/space.css">
+    <?php } elseif(rand(0,1)%2 == 0) { ?>
+        <link rel="stylesheet" href="assets/css/classic.css">
+    <?php } else { ?>
+        <link rel="stylesheet" href="assets/css/space.css">
+    <?php } ?>
 </head>
 
 <body style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')">

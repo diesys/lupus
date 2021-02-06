@@ -35,8 +35,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/favicon.ico" />
     <title>Gestisci <?php echo($village['nome']);?> | Lupus</title>
+    
     <link rel="stylesheet" href="assets/css/style.css">
-
     <?php if($village['variante'] == "space") { ?>
         <link rel="stylesheet" href="assets/css/space.css">
     <?php } elseif($village['variante'] == "classic") { ?>

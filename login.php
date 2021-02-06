@@ -13,8 +13,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/favicon.ico" />
     <title>Login | Lupus</title>
+    
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/space.css">
+    <?php if(rand(0,1)%2 == 0) { ?>
+        <link rel="stylesheet" href="assets/css/space.css">
+    <?php } else { ?>
+        <link rel="stylesheet" href="assets/css/classic.css">
+    <?php } ?>
 </head>
 
 <body style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')">
