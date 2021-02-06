@@ -32,7 +32,7 @@
     <?php } ?>
 </head>
 
-<body style="background-image: url('assets/img/bg/<?php echo rand(0, 5) ?>.jpg')">
+<body style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')">
     <header>
         <h2>
             <a href="#"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>

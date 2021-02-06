@@ -1,13 +1,7 @@
 :root {
     --footer-height: 2em;
-    --border-light: #fff3;
-    --border-dark: #0008;
-    --dark-grayalpha: #4446;
-    --dark-graybitalpha: #111a;
-    --box-shadow: 0 4px 20px -4px #000b;
-    --dur: .4s;
     
-    /* --accent-color: #f64e7ef0;
+    --accent-color: #f64e7ef0;
     --accent-color2: #e3235af0;
     --accent-color2-alpha: #e3235aa0;
     --accent-color3: #1b72c3f0;
@@ -24,16 +18,17 @@
     --box-shadow-accent3: 0 2px 20px 2px var(--accent-color3-alpha);
     --box-shadow-accent4: 0 2px 20px 2px var(--accent-color4-alpha);
     --box-shadow-accent5: 0 2px 20px 2px var(--accent-color5-alpha);
-    --box-shadow-accent6: 0 2px 20px 2px var(--accent-color6-alpha); */
+    --box-shadow-accent6: 0 2px 20px 2px var(--accent-color6-alpha);
 
-    /* --border-light: #fff3;
+    --dur: .4s;
+    --border-light: #fff3;
     --border-dark: #0008;
     --dark-grayalpha: #4446;
     --dark-graybitalpha: #111a;
 
     --daykill-bg: #2c3b899e;
     --nightkill-bg: #8c1f1f9e;
-    --nightkill-bg-alpha: #7321214a; */
+    --nightkill-bg-alpha: #7321214a;
 }
 
 * {
@@ -84,7 +79,7 @@ body {
 }
 
 body {
-    background: url('../img/bg/space/1.jpg');
+    background: url('../img/bg/1.jpg');
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;

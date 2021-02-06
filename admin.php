@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="assets/css/space.css">
 </head>
 
-<body style="background-image: url('assets/img/bg/<?php echo rand(0, 5) ?>.jpg')">
+<body style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')">
     <header>
         <h2>
             <a href="."><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
@@ -34,41 +34,41 @@
 
     <center>
     <?php if ($logged == TRUE) { ?> 
-            <form action="edit.php" method="get">
-                <h4 class="full-width">Modifica villaggio</h4>
-                <!-- <label for="v">Villaggio</label> -->
-                <select name="v" id="lista_villaggi" required>
-                    <option value="" disabled selected></option>
-                    <?php foreach ($villages as $hash => $name) {
-                        echo("<option value='".$hash."'>".$name."</option>");
-                    } ?>
+        <form action="edit.php" method="get">
+            <h4 class="full-width">Modifica villaggio</h4>
+            <!-- <label for="v">Villaggio</label> -->
+            <select name="v" id="lista_villaggi" required>
+                <option value="" disabled selected></option>
+                <?php foreach ($villages as $hash => $name) {
+                    echo("<option value='".$hash."'>".$name."</option>");
+                } ?>
+            </select>
+            <button type="submit" formmethod="get">vai</button>
+        </form>
+
+        <form action="populate.php?v=<?php echo(generateRandomString()); ?>" method="post">
+            <h4 class="full-width">Crea un nuovo villaggio</h4>
+
+            <span>
+                <label for="new_name">Nome</label>
+                <input name="new_name" placeholdxer="Nome" type="text" pattern="[A-Za-z0-9]{4-24}" required />
+            </span>
+            
+            <span>
+                <label for="variant">Variante</label>
+                <select name="variant" id="variant" required>
+                    <option value="space" selected>Lupus in Space</option>
+                    <option value="classic">Classico</option>
                 </select>
-                <button type="submit" formmethod="get">vai</button>
-            </form>
+            </span>
+            <span>
+                <label for="players">Giocatori</label>
+                <input name="players" type="number" placeholder="Giocatori" min="2" max="40" range="1" required />
+            </span>
 
-            <form action="populate.php?v=<?php echo(generateRandomString()); ?>" method="post">
-                <h4 class="full-width">Crea un nuovo villaggio</h4>
-
-                <span>
-                    <label for="new_name">Nome</label>
-                    <input name="new_name" placeholdxer="Nome" type="text" pattern="[A-Za-z0-9]{4-24}" required />
-                </span>
-                
-                <span>
-                    <label for="variant">Variante</label>
-                    <select name="variant" id="variant" required>
-                        <option value="space" selected>Lupus in Space</option>
-                        <option value="classic">Classico</option>
-                    </select>
-                </span>
-                <span>
-                    <label for="players">Giocatori</label>
-                    <input name="players" type="number" placeholder="Giocatori" min="2" max="40" range="1" required />
-                </span>
-
-                <!-- <p class="legend">¹ alfanumerico senza spazi · ² 4-30 giocatori</p> -->
-                <button type="submit" formmethod="post">Crea</button>
-            </form>  
+            <!-- <p class="legend">¹ alfanumerico senza spazi · ² 4-30 giocatori</p> -->
+            <button type="submit" formmethod="post">Crea</button>
+        </form>  
 
     <?php } if ($error != "") { ?>
         <h2 class="error"><?php echo($error);?></h2>
