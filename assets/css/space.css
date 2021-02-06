@@ -1,84 +1,41 @@
 :root {
     /* base color */
-    --accent-color: #f64e7ef0;
-    /* assassinato - cattivi */
-    --accent-color2: #e3235af0;
-    --accent-color2-alpha: #e3235aa0;
-    --box-shadow-accent2: 0 2px 20px 2px var(--accent-color2-alpha);
+    --color: #f64e7ef0;
+    /* base-color saturo: assassinato - cattivi */
+    --color2: #e3235af0;
+    --color2-alpha: #e3235aa0;
+    --shadow-color2: 0 2px 20px 2px var(--color2-alpha);
     /* giustiziato - villaggio */
-    --accent-color3: #1b72c3f0;
-    --accent-color3-alpha: #1b72c3a0;
-    --box-shadow-accent3: 0 2px 20px 2px var(--accent-color3-alpha);
+    --color3: #1b72c3f0;
+    --color3-alpha: #1b72c3a0;
+    --shadow-color3: 0 2px 20px 2px var(--color3-alpha);
     /*  */
-    --accent-color4: #609b0ef0;
-    --accent-color4-alpha: #65a011a0;
-    --box-shadow-accent4: 0 2px 20px 2px var(--accent-color4-alpha);
+    --color4: #609b0ef0;
+    --color4-alpha: #65a011a0;
+    --shadow-color4: 0 2px 20px 2px var(--color4-alpha);
     /*  */
-    --accent-color5: #19a994f0;
-    --accent-color5-alpha: #19a994a0;
-    --box-shadow-accent5: 0 2px 20px 2px var(--accent-color5-alpha);
+    --color5: #19a994f0;
+    --color5-alpha: #19a994a0;
+    --shadow-color5: 0 2px 20px 2px var(--color5-alpha);
     /*  */
-    --accent-color6: #9d1bc5f0;
-    --accent-color6-alpha: #a11bc5a0;
-    --box-shadow-accent6: 0 2px 20px 2px var(--accent-color6-alpha);
-}
-
-
-::selection {
-    background: var(--accent-color2);
-    color: white;
-}
-
-::moz-selection {
-    background: var(--accent-color2);
-    color: white;
+    --color6: #9d1bc5f0;
+    --color6-alpha: #a11bc5a0;
+    --shadow-color6: 0 2px 20px 2px var(--color6-alpha);
 }
 
 body {
-    background: url('../img/bg/space/1.jpg');
+    background-image: url('../img/bg/space/1.jpg');
 }
 
 a:not(.username), h1, h2, h3 {
-    color: var(--accent-color);
-    text-shadow: 0 1px 10px var(--accent-color2);
+    color: var(--color);
+    text-shadow: 0 1px 10px var(--color2);
 }
 
 header ul {
-    background: var(--accent-color2-alpha);
+    background: var(--color2-alpha);
     box-shadow: 50px 6px 30px 3px #000b;
-    /* border-top: 1px solid var(--border-light); */
-    /* border-bottom: 1px solid var(--border-light); */
-    background: linear-gradient(130deg, var(--accent-color2-alpha),var(--accent-color3-alpha), #0000 95%);
-}
-
-header ul li {
-    background: #0000;
-}
-header ul li:hover,
-header ul li:active {
-    background: #0007;
-}
-header ul li a {
-    text-decoration: none;
-    color: #fff !important;
-}
-
-.error {
-    color: #fffd;
-}
-
-footer {
-    background: linear-gradient(#0000, #000c);
-}
-
-.legend .dot {
-    border: 1px solid var(--border-light);
-    box-shadow: var(--box-shadow);
-}
-
-.player a,
-.event a {
-    color: #fffd;
+    background: linear-gradient(130deg, var(--color2-alpha),var(--color3-alpha), #0000 95%);
 }
 
 input,
@@ -86,60 +43,28 @@ select,
 button,
 textarea,
 option {
-    /* border: 1px solid var(--border-light); */
-    border-bottom: 1px solid var(--accent-color2);
+    border-bottom: 1px solid var(--color2);
     background: var(--dark-graybitalpha);
     color: #fff;
-    /* background: #eee; */
     box-shadow: var(--box-shadow);
 }
 
 button {
-    background: var(--accent-color);
+    background: var(--color);
     border: 1px solid var(--border-light);
-    /* color: #000; */
 }
 
+#events_list .event.giustiziato .description,
+.legend .dot.giustiziato,
 #players_list>.player,
 #events_list .description {
-    /* box-shadow: var(--box-shadow); */
-    /* background: var(--dark-graybitalpha); */
-    box-shadow: var(--box-shadow);
-    border: 1px solid var(--border-light);
-    color: #fff;
-
-    background: var(--accent-color3-alpha);
-    box-shadow: var(--box-shadow-accent3);
-}
-
-#players_list>.player.wolf {
-    background: var(--accent-color2-alpha);
-    box-shadow: var(--box-shadow-accent2);
-}
-
-.event::after {
-    background: #111e;
-    box-shadow: var(--box-shadow);
-}
-
-#events_list .event.giustiziato .description,
-.legend .dot.giustiziato {
-    background: var(--night-bg);
-}
-
-#events_list .event.giustiziato .description,
-.legend .dot.giustiziato {
-    background: var(--accent-color3-alpha);
-    box-shadow: var(--box-shadow-accent3);
+    background: var(--color3-alpha);
+    box-shadow: var(--shadow-color3);
 }
 
 #events_list .event.assassinato .description,
-.legend .dot.assassinato {
-    background: var(--accent-color2-alpha);
-    box-shadow: var(--box-shadow-accent2);
-}
-
-#events_list .event.comunicazione .description {
-    background: var(--dark-graybitalpha);
-    box-shadow: var(--box-shadow);
+.legend .dot.assassinato,
+#players_list>.player.wolf {
+    background: var(--color2-alpha);
+    box-shadow: var(--shadow-color2);
 }

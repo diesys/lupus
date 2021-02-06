@@ -6,34 +6,6 @@
     --dark-graybitalpha: #111a;
     --box-shadow: 0 4px 20px -4px #000b;
     --dur: .4s;
-    
-    /* --accent-color: #f64e7ef0;
-    --accent-color2: #e3235af0;
-    --accent-color2-alpha: #e3235aa0;
-    --accent-color3: #1b72c3f0;
-    --accent-color3-alpha: #1b72c3a0;
-    --accent-color4: #609b0ef0;
-    --accent-color4-alpha: #65a011a0;
-    --accent-color5: #19a994f0;
-    --accent-color5-alpha: #19a994a0;
-    --accent-color6: #9d1bc5f0;
-    --accent-color6-alpha: #a11bc5a0;
-
-    --box-shadow: 0 4px 20px -4px #000b;
-    --box-shadow-accent2: 0 2px 20px 2px var(--accent-color2-alpha);
-    --box-shadow-accent3: 0 2px 20px 2px var(--accent-color3-alpha);
-    --box-shadow-accent4: 0 2px 20px 2px var(--accent-color4-alpha);
-    --box-shadow-accent5: 0 2px 20px 2px var(--accent-color5-alpha);
-    --box-shadow-accent6: 0 2px 20px 2px var(--accent-color6-alpha); */
-
-    /* --border-light: #fff3;
-    --border-dark: #0008;
-    --dark-grayalpha: #4446;
-    --dark-graybitalpha: #111a;
-
-    --daykill-bg: #2c3b899e;
-    --nightkill-bg: #8c1f1f9e;
-    --nightkill-bg-alpha: #7321214a; */
 }
 
 * {
@@ -42,12 +14,12 @@
 }
 
 ::selection {
-    background: var(--accent-color2);
+    background: var(--color2);
     color: white;
 }
 
 ::moz-selection {
-    background: var(--accent-color2);
+    background: var(--color2);
     color: white;
 }
 
@@ -80,15 +52,15 @@ body {
     margin: 0;
     padding: 0;
     color: #fff;
-    background-color: #302919;
+    background-color: #111;
 }
 
 body {
     background: url('../img/bg/space/1.jpg');
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-position: center center !important;
+    background-attachment: fixed !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
     display: flex;
     flex-direction: column;
 }
@@ -119,8 +91,8 @@ center.regolamento h3 {
 }
 
 a:not(.username), h1, h2, h3 {
-    color: var(--accent-color);
-    text-shadow: 0 1px 10px var(--accent-color2);
+    color: var(--color);
+    text-shadow: 0 1px 10px var(--color2);
 }
 
 header,
@@ -164,12 +136,7 @@ header ul {
     margin: 0;
     text-align: center;
     align-items: center;
-    background: var(--accent-color2-alpha);
-    box-shadow: 50px 6px 30px 3px #000b;
-    /* border-top: 1px solid var(--border-light); */
-    /* border-bottom: 1px solid var(--border-light); */
     flex-wrap: wrap;
-    background: linear-gradient(130deg, var(--accent-color2-alpha),var(--accent-color3-alpha), #0000 95%);
 }
 
 header ul li {
@@ -177,12 +144,11 @@ header ul li {
     margin: .3em;
     flex: 1;
     min-width: 100px;
-    background: #0000;
     cursor: pointer;
 }
 header ul li:hover,
 header ul li:active {
-    background: #0007;
+    background: #0008;
 }
 header ul li a {
     text-decoration: none;
@@ -227,7 +193,7 @@ footer {
 
 .player a,
 .event a {
-    color: #fffd;
+    color: #fffd !important;
     font-weight: bold;
     text-decoration: none;
 }
@@ -237,14 +203,8 @@ select,
 button,
 textarea,
 option {
-    /* border-radius: 2em; */
     text-align: center;
     border: none;
-    /* border: 1px solid var(--border-light); */
-    border-bottom: 1px solid var(--accent-color2);
-    background: var(--dark-graybitalpha);
-    color: #fff;
-    /* background: #eee; */
     margin: .65em;
     padding: .4em .6em;
     box-shadow: var(--box-shadow);
@@ -289,9 +249,7 @@ button {
     font-weight: bold;
     max-width: 50%;
     width: max-content;
-    background: var(--accent-color);
     border: 1px solid var(--border-light);
-    /* color: #000; */
     cursor: pointer;
     user-select: none;
 }
@@ -318,19 +276,12 @@ button {
     padding: .9em;
     margin: .5em;
     min-width: 100px;
-    /* box-shadow: var(--box-shadow); */
-    /* background: var(--dark-graybitalpha); */
-    box-shadow: var(--box-shadow);
     border: 1px solid var(--border-light);
     color: #fff;
     flex-direction: column;
-
-    background: var(--accent-color3-alpha);
-    box-shadow: var(--box-shadow-accent3);
 }
 
 #players_list>.player.dead {
-    /* border-color: var(--dark-graybitalpha); */
     opacity: .5;
 }
 
@@ -339,21 +290,13 @@ button {
 }
 
 #players_list>.player.wolf {
-    background: var(--accent-color2-alpha);
-    box-shadow: var(--box-shadow-accent2);
+    background: var(--color2-alpha);
+    box-shadow: var(--box-shadow);
 }
 
 #players_list>.player.dead:hover,
 #players_list>.player.dead:active {
     opacity: .9;
-}
-
-.player_input {
-    /* border-radius: 4px; */
-    /* box-shadow: var(--box-shadow); */
-    /* border: 1px solid #000a; */
-    /* background: #222a; */
-    /* margin: .5em; */
 }
 
 #events_list .date {
@@ -383,24 +326,7 @@ button {
     opacity: 1;
 }
 
-#events_list .event.giustiziato .description,
-.legend .dot.giustiziato {
-    background: var(--night-bg);
-}
-
-#events_list .event.giustiziato .description,
-.legend .dot.giustiziato {
-    background: var(--accent-color3-alpha);
-    box-shadow: var(--box-shadow-accent3);
-}
-
-#events_list .event.assassinato .description,
-.legend .dot.assassinato {
-    background: var(--accent-color2-alpha);
-    box-shadow: var(--box-shadow-accent2);
-}
-
-#events_list .event.comunicazione .description {
+#events_list .event .description {
     background: var(--dark-graybitalpha);
     box-shadow: var(--box-shadow);
 }
