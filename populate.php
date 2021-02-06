@@ -1,10 +1,10 @@
 <?php
-    include 'assets/cyberlupus.php';
+    include 'assets/lupus.php';
     $error = "";
 
     // crea partita
-    if(isset($_POST) and isset($_POST['new_name']) and isset($_POST['players']) and isset($_GET) and isset($_GET['v'])) {
-        new_village($_POST['new_name'], $_GET['v']);
+    if(isset($_POST) and isset($_POST['new_name']) and isset($_POST['players']) and isset($_GET) and isset($_GET['v']) and isset($_POST['variant'])) {
+        new_village($_POST['new_name'], $_GET['v'], $_POST['variant']);
     }
 
     // il DB esiste?
@@ -28,8 +28,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/favicon.ico" />
-    <title>Popola <?php if(isset($village['nome'])) {echo($village['nome']);} ?> | CyberLupus</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <title>Popola <?php if(isset($village['nome'])) {echo($village['nome']);} ?> | Lupus</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body style="background-image: url('assets/img/bg/<?php echo rand(0, 5) ?>.jpg')">
@@ -59,7 +59,7 @@
         <span class='player_input'>
             <input type="text" placeholder="username" name="username#<?php echo($i); ?>" value="<?php echo($player['username']); ?>" required>
             <select name="ruolo#<?php echo($i); ?>" required>
-                <?php foreach ($roles as $role) {
+                <?php foreach ($roles[$village['variante']] as $role) {
                     if(isset($player['ruolo']) and $player['ruolo'] == $role) {
                         $selected = "selected";
                     } else {

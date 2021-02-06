@@ -1,5 +1,5 @@
 <?php
-    include 'assets/cyberlupus.php';
+    include 'assets/lupus.php';
 
     // MAIN ///////////
     $error = "";

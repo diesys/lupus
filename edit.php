@@ -1,5 +1,5 @@
 <?php
-    include 'assets/cyberlupus.php';
+    include 'assets/lupus.php';
 
     // MAIN ///////////
     $error = "";
@@ -34,8 +34,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/favicon.ico" />
-    <title>Gestisci <?php echo($village['nome']);?> | CyberLupus</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <title>Gestisci <?php echo($village['nome']);?> | Lupus</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <?php if($village['variante'] == "space") { ?>
+        <link rel="stylesheet" href="assets/css/space.css">
+    <?php } elseif($village['variante'] == "classic") { ?>
+        <link rel="stylesheet" href="assets/css/classic.css">
+    <?php } ?>
 
     <script>
         function fixSelect() { // da fare meglio magari..
@@ -78,7 +84,7 @@
             <li><a href="./?v=<?php echo($village['id']); ?>">Bacheca</a></li>
             <li><a href="v/<?php echo($village['nome']); ?>.json" download>Download</a></li>
             <!-- <li><a href="v/<?php// echo($village['nome']);?>.json" download>Carica</a></li> -->
-            <li><a href="logout.php">Logout</a></li>
+            <li><a href="assets/logout.php">Logout</a></li>
             <!-- <li><a href="#players">Giocatori</a></li>
             <li><a href="#events">Calendario</a></li> -->
         <?php } ?>

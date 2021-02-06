@@ -79,7 +79,7 @@ body {
 }
 
 body {
-    background: url('img/bg/1.jpg');
+    background: url('../img/bg/1.jpg');
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;

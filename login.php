@@ -1,5 +1,5 @@
 <?php
-    include 'assets/cyberlupus.php';
+    include 'assets/lupus.php';
     
     if(isset($_SESSION['logged_in']) and $_SESSION['logged_in'] == TRUE) {
         header("Location: admin.php");
@@ -12,15 +12,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/favicon.ico" />
-    <title>Login | CyberLupus</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <title>Login | Lupus</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/space.css">
 </head>
 
 <body style="background-image: url('assets/img/bg/<?php echo rand(0, 5) ?>.jpg')">
     <header>
         <h2>
             <a href="."><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
-            CyberLupus login
+            Lupus login
         </h2>
     </header>
 

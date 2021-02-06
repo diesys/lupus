@@ -1,18 +1,31 @@
 ## TODO
 
-# IMPORTANTI
-    - possibilita di mettere a capo nella descrizione degli eventi (per votazioni "###" convertire in newline)
+# gioco
+    - scindere il sito dalla variante, includere lupus in space e altre varianti coi relativi regolamenti e temi css (quindi va reso meglio il php)
+    - se diventa una cosa giocabile far creare un db e metterlo come servizio vero
+    - pagina di help che spiega come funziona (tramite telegram etc)
+    - mettere il link al regolamento ed help in index
+
+# php
+    - funzioni sputa header e footer, per compattarlo
 
 # calendario eventi:
-    - magari raggruppare morti diurne, notturne, comunicazioni?
-    - embed della poll? -> meglio link a poll finita evento e mandato in chat x iniziarla
+    - mettere piu' a portata di mano il link a framadate?
+    - poll no url ma iconcina o semplice "voti"
     
 # bacheca
     - elenco ruoli disponibili da salvare dopo il populate e mostrare senza essere invasivo
-    - possibilita in futuro di aggiungere anche ruoli in surplus nell'elenco per confondere
+        - magari con un link relativo al regolamento!
+    - possibilita in futuro di aggiungere anche ruoli in surplus nell'elenco per confondere ?
 
 # gestione partita
     - bottone per elimina villaggio/concludi partita.
+    - creazione: scelta di ambientazione (al momento cyberlupus, lupus classico e magari mafia)
 
 # sicurezza
     - mettere meglio la roba sensibile tipo i json...
+
+# altro
+    - possibilita' di integrare  chat vocale di jitsi?
+    - fare meglio i credits
+    - mettere pagina howto e possibilita' di attivare disattivare telegram? (nel link degli utenti semplicemente se uno vuole...)

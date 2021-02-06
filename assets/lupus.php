@@ -35,10 +35,11 @@ function write_village($data) {
     file_put_contents('v/'.$data['nome'].'.json', $json);
 }
 
-function new_village($file_name, $hash) {
+function new_village($file_name, $hash, $variante) {
     $data = array(
         'nome' => $_POST['new_name'],
-        'telegram' => "",
+        // 'telegram' => "",
+        'variante' => $variante,
         'giorni' => array(array()),
         'giocatori' => array_fill(0, $_POST['players'], array("username" => "", "ruolo" => "", "in_vita" => TRUE)),
         'id' => $hash
@@ -119,12 +120,59 @@ function kill($username, $village, $undo = FALSE) {
 // MAIN ////////////////////////////////////////////////////////////////
 
 // GAME
-$roles = array( 'contadino', 
+$roles = array('classic' => array(
+                    'contadino',
+                    'lupo',
                     'veggente', 
                     'medium',
-                    'guardia',
-                    'lupo'
-            );
+                    'guardia del corpo',
+                    'gufo',
+                    'massone',
+                    'indemoniato',
+                    'criceto mannaro',
+                    'mitomane',
+                    'angelo dei villici',
+                    'condannato',
+                    'maga'
+            ), 'space' => array(
+                    'hacker',
+                    'apotecario',
+                    'coroner',
+                    'cartello droghe',
+                    'cyborg',
+                    'ingegnere',
+                    'archivista',
+                    'panopticon',
+                    'bioconvertito',
+                    'tecnochirurgo',
+                    'carceriere',
+                    'sentinelle',
+                    'coloni',
+
+                    'burocrate',
+                    'capo partito',
+                    'portavoce',
+                    'ceo',
+
+                    'ia',
+                    'virus',
+                    'collaboratore',
+                    'replicante',
+                    'sosia',
+                    'cancellatore',
+                    'coordinatore',
+                    'infiltrato',
+                    'man in the middle',
+                    'lurker',
+                    'simbionte',
+
+                    'backup',
+                    'malware',
+                    'rookit',
+                    'swapper',
+                    'backdoor'
+            )
+        );
 
 // SESSION
 session_start();

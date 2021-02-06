@@ -1,5 +1,5 @@
 <?php
-    include 'assets/cyberlupus.php';
+    include 'assets/lupus.php';
 
     // MAIN ///////////
     $error = "";
@@ -22,15 +22,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/favicon.ico" />
-    <title><?php if($village != NULL) {echo("Villaggio ".$village['nome']." | ");}?>CyberLupus</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <title><?php if($village != NULL) {echo("Villaggio ".$village['nome']." | ");}?>Lupus</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <?php if($village != NULL and $village['variante'] == "space") { ?>
+        <link rel="stylesheet" href="assets/css/space.css">
+    <?php } elseif($village != NULL and $village['variante'] == "classic") { ?>
+        <link rel="stylesheet" href="assets/css/classic.css">
+    <?php } ?>
 </head>
 
 <body style="background-image: url('assets/img/bg/<?php echo rand(0, 5) ?>.jpg')">
     <header>
         <h2>
             <a href="#"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
-            <?php if($village != NULL) {echo("Villaggio ".$village['nome']);} else { echo("CyberLupus");}?>
+            <?php if($village != NULL) {echo("Villaggio ".$village['nome']);} else { echo("Lupus");}?>
         </h2>
     <?php if($village != NULL) { ?>
         <ul>
@@ -63,7 +69,7 @@
             </p>
 
             <?php $n_days = count($days);
-                 foreach (array_reverse($days) as $i => $day) { //if(count($day) > 0) { ?>
+                 foreach (array_reverse($days) as $i => $day) { ?>
                 <span class="day">
                     <span class="date">Giorno <?php echo(intval($n_days - $i));?></span>
                 <?php foreach ($day as $event) { if($event) {?>
@@ -79,7 +85,7 @@
                     </span>
                 <?php }} ?>
                 </span>
-            <?php }//} ?>
+            <?php } ?>
         </div>
         
     <?php } else { 
@@ -94,7 +100,7 @@
             In costruzione... leggi i <a href="credits.html">credits</a> (ancora più in costruzione) <br><br>
             Sei un <a href="login.php">master</a>?
         </p>
-        <p>Leggi il <a href="regolamento.html">regolamento</a>.</p>
+        <p>Vedi la nuovissima variante <a href="regolamento.php?v=space">Lupus in Space</a> o la <a href="regolamento.php?v=classic">Classica</a></p>
     <?php } ?> 
     </center>
 
