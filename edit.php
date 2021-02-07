@@ -17,10 +17,18 @@
     }
 
     // update giocatori da populate.php$_POST['id_evento']
+    // le chiavi sono della forma: key#n , con n ordinale
     if($_SESSION['logged_in'] == TRUE and (isset($_POST) and isset($_POST['username#0']) and !isset($_POST['new_name']))) {
         $giocatori = array(array());
         foreach($_POST as $key => $value) {
-            $giocatori[explode('#', $key)[1]][explode('#', $key)[0]] = $value;
+            $chiave = explode('#', $key)[0];
+            $giocatore_n = explode('#', $key)[1];
+            $giocatori[$giocatore_n][$chiave] = $value;
+            // aggiorna le fazioni
+            if($chiave == "ruolo") {
+                $giocatori[$giocatore_n]['fazione'] = $roles[$village['variante']][$value];
+            }
+            // $giocatori[explode('#', $key)[1]][explode('#', $key)[0]] = $value;
         }
         $village['giocatori'] = $giocatori;
         write_village($village);
@@ -151,9 +159,16 @@
             <!-- <p><a href="populate.php?v=<?php echo($village['id']); ?>">modifica</a></p> -->
             <span>Vivi: <?php echo($alive[0]."/".intval($alive[0]+$alive[1]));?></span>
         </span>
+        <p class="legend full-width">
+            <span class="dot colonia">colonia</span> ·
+            <span class="dot ribelli">ribelli</span> ·
+            <span class="dot software">software</span> ·
+            <span class="dot simbionti">simbionti</span> ·
+            <span class="dot programmatori">programmatori</span>
+        </p>
         <div id="players_list">
             <?php foreach($village['giocatori'] as $giocatore) { ?>
-            <span class="player <?php echo($giocatore['ruolo']); if($giocatore['in_vita'] != "true") {echo(" dead");} ?>">
+            <span class="player <?php echo($giocatore['ruolo']." ".$giocatore['fazione']); if($giocatore['in_vita'] != "true") {echo(" dead");} ?>">
                 <a class="username" target="_blank" href="https://t.me/<?php echo($giocatore['username']); ?>">@<?php echo($giocatore['username']); ?></a>
                 <small class="role">(<?php echo($giocatore['ruolo']); ?>)</small>
             </span>
@@ -164,7 +179,7 @@
             <h2 class="full-width">Calendario</h2>
         </span>
         <p class="legend full-width">
-            <span class="dot assassinato">assassati di notte</span> - <span class="dot giustiziato">giustiziati di giorno</span>
+            <span class="dot assassinato">assassati di notte</span> · <span class="dot giustiziato">giustiziati di giorno</span>
         </p>
         <div id="events_list">
             <?php $n_days = count($days); 

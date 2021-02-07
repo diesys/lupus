@@ -9,6 +9,7 @@
 # gioco
     - se diventa una cosa giocabile far creare un db e metterlo come servizio vero
     - pagina di help che spiega come funziona (tramite telegram etc)
+    - come implementare tipo l'indemoniato?? - direttamente nella kill?
 
 # php
     - funzioni sputa header

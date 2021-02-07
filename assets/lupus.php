@@ -42,7 +42,7 @@ function new_village($file_name, $hash, $variante) {
         // 'telegram' => "",
         'variante' => $variante,
         'giorni' => array(array()),
-        'giocatori' => array_fill(0, $_POST['players'], array("username" => "", "ruolo" => "", "in_vita" => TRUE)),
+        'giocatori' => array_fill(0, $_POST['players'], array("username" => "", "ruolo" => "","fazione" => "", "in_vita" => TRUE)),
         'id' => $hash
     );
 
@@ -121,59 +121,77 @@ function kill($username, $village, $undo = FALSE) {
 // MAIN ////////////////////////////////////////////////////////////////
 
 // GAME
-$roles = array('classic' => array(
-                    'contadino',
-                    'lupo',
-                    'veggente', 
-                    'medium',
-                    'guardia del corpo',
-                    'gufo',
-                    'massone',
-                    'indemoniato',
-                    'criceto mannaro',
-                    'mitomane',
-                    'angelo dei villici',
-                    'condannato',
-                    'maga'
-            ), 'space' => array(
-                    'hacker',
-                    'apotecario',
-                    'coroner',
-                    'cartello droghe',
-                    'cyborg',
-                    'ingegnere',
-                    'archivista',
-                    'panopticon',
-                    'bioconvertito',
-                    'tecnochirurgo',
-                    'carceriere',
-                    'sentinelle',
-                    'colono',
+$roles = array(
+    'classic' => array(
+            // umani
+            //array('angelo dei villici' => 'umani'),
+            //array('condannato' => 'umani'),
+            'contadino' => 'umani',
+            'guardia del corpo' => 'umani',
+            'gufo' => 'umani',
+            //array('maga' => 'umani'),
+            'massone' => 'umani',
+            'medium' => 'umani',
+            'mitomane' => 'umani',
+            'romeo (+giulietta)' => 'umani',
+            'giulietta (+romeo)' => 'umani',
+            'veggente' => 'umani',
+            
+            // lupi
+            'lupo' => 'lupi',
+            'indemoniato' => 'lupi',
 
-                    'burocrate',
-                    'capo partito',
-                    'portavoce',
-                    'ceo',
+            // criceto
+            'criceto mannaro' => 'criceti'
+    ), 
+    
+    'space' => array(
+            // colonia
+            'apotecario' => 'colonia',
+            'archivista' => 'colonia',
+            'bioconvertito' => 'colonia',
+            'carceriere' => 'colonia',
+            'cartello droghe' => 'colonia',
+            'colono' => 'colonia',
+            'coroner' => 'colonia',
+            'cyborg' => 'colonia',
+            'hacker' => 'colonia',
+            'ingegnere' => 'colonia',
+            'panopticon' => 'colonia',
+            'tecnochirurgo' => 'colonia',
+            'sentinelle' => 'colonia',
+            // amministrazione
+            'burocrate' => 'amministrazione',
+            'capo partito' => 'amministrazione',
+            'ceo' => 'amministrazione',
+            'portavoce' => 'amministrazione',
+            
+            // ribelli
+            'cancellatore' => 'ribelli',
+            'collaboratore' => 'ribelli',
+            'coordinatore' => 'ribelli',
+            'I.A.' => 'ribelli',
+            'infiltrato' => 'ribelli',
+            'virus' => 'ribelli',
+            'lurker' => 'ribelli',
+            'man in the middle' => 'ribelli',
+            'replicante' => 'ribelli',
+            'sosia' => 'ribelli',
+            
+            // programmatori
+            'programmatore' => 'programmatori',
+            
+            // simbionti
+            'simbionte' => 'simbionti',
 
-                    'ia',
-                    'virus',
-                    'collaboratore',
-                    'replicante',
-                    'sosia',
-                    'cancellatore',
-                    'coordinatore',
-                    'infiltrato',
-                    'man in the middle',
-                    'lurker',
-                    'simbionte',
-
-                    'backup',
-                    'malware',
-                    'rookit',
-                    'swapper',
-                    'backdoor'
-            )
-        );
+            // software
+            'backdoor' => 'software',
+            'backup' => 'software',
+            'malware' => 'software',
+            'rookit' => 'software',
+            'swapper' => 'software'
+    )
+);
 
 // SESSION
 session_start();
