@@ -1,5 +1,5 @@
 <?php
-    include 'assets/masterus.php';
+    include 'assets/lupus.php';
     
     if(isset($_SESSION['logged_in']) and $_SESSION['logged_in'] == TRUE) {
         header("Location: admin.php");
@@ -11,14 +11,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master lupus login</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico" />
+    <title>Login | Lupus</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <?php $seed = rand(0,1);
+    
+    if($seed == 0) { ?>
+        <link rel="stylesheet" href="assets/css/space.css">
+    <?php } else { ?>
+        <link rel="stylesheet" href="assets/css/classic.css">
+    <?php } ?>
 </head>
-<body>
+
+<body style="background-image: url('assets/img/bg/<?php if($seed == 0) {echo("space/");} else {echo("classic/");} echo(rand(0, 5)); ?>.jpg')">
     <header>
         <h2>
-            <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
-            Masterus
+            <a href="."><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
+            Lupus login
         </h2>
     </header>
 

@@ -1,0 +1,70 @@
+:root {
+    /* base color */
+    --color: #f64e7ef0;
+    /* base-color saturo: assassinato - cattivi */
+    --color2: #e3235af0;
+    --color2-alpha: #e3235aa0;
+    --shadow-color2: 0 2px 20px 2px var(--color2-alpha);
+    /* giustiziato - villaggio */
+    --color3: #1b72c3f0;
+    --color3-alpha: #1b72c3a0;
+    --shadow-color3: 0 2px 20px 2px var(--color3-alpha);
+    /*  */
+    --color4: #609b0ef0;
+    --color4-alpha: #65a011a0;
+    --shadow-color4: 0 2px 20px 2px var(--color4-alpha);
+    /*  */
+    --color5: #19a994f0;
+    --color5-alpha: #19a994a0;
+    --shadow-color5: 0 2px 20px 2px var(--color5-alpha);
+    /*  */
+    --color6: #9d1bc5f0;
+    --color6-alpha: #a11bc5a0;
+    --shadow-color6: 0 2px 20px 2px var(--color6-alpha);
+}
+
+body {
+    background-image: url('../img/bg/space/1.jpg');
+}
+
+a:not(.username), h1, h2, h3 {
+    color: var(--color);
+    text-shadow: 0 1px 10px var(--color2);
+}
+
+header ul {
+    background: var(--color2-alpha);
+    box-shadow: 50px 6px 30px 3px #000b;
+    background: linear-gradient(130deg, var(--color2-alpha),var(--color3-alpha), #0000 95%);
+}
+
+input,
+select,
+button,
+textarea,
+option {
+    border-bottom: 1px solid var(--color2);
+    background: var(--dark-graybitalpha);
+    color: #fff;
+    box-shadow: var(--box-shadow);
+}
+
+button {
+    background: var(--color);
+    border: 1px solid var(--border-light);
+}
+
+#events_list .event.giustiziato .description,
+.legend .dot.giustiziato,
+#players_list>.player,
+#events_list .description {
+    background: var(--color3-alpha);
+    box-shadow: var(--shadow-color3);
+}
+
+#events_list .event.assassinato .description,
+.legend .dot.assassinato,
+#players_list>.player.wolf {
+    background: var(--color2-alpha);
+    box-shadow: var(--shadow-color2);
+}

@@ -1,4 +1,5 @@
 <?php
+
 // LIB ////////////////////////////////////////////////////////////////
 function generateRandomString($length = 8) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -35,10 +36,11 @@ function write_village($data) {
     file_put_contents('v/'.$data['nome'].'.json', $json);
 }
 
-function new_village($file_name, $hash) {
+function new_village($file_name, $hash, $variante) {
     $data = array(
         'nome' => $_POST['new_name'],
-        'telegram' => "",
+        // 'telegram' => "",
+        'variante' => $variante,
         'giorni' => array(array()),
         'giocatori' => array_fill(0, $_POST['players'], array("username" => "", "ruolo" => "", "in_vita" => TRUE)),
         'id' => $hash
@@ -89,21 +91,14 @@ function get_events($village) {
     } return $days;
 }
 
-function remove_event($village, $day_n, $type, $user) {
-    // PERCHE CANCELLA TUTTO IL GIORNO????
-    $giorno = array();
-    if(isset($user) and ($type == 'assassinato' or $type == 'giustiziato')) {
-        foreach($village[$day_n] as $n => $event) {
-            // if(!($type == $event['tipo'] and $user == $event['giocatore'])) {
-                // unset($village[$day_n][$n]);
-                array_push($giorno, $event);
-            // }
-        }
-    } else {
-        $giorno = array("tipo" => "dio", "giocatore" => "dio");
+function remove_event($village, $day_n, $event_i) {
+    if(array_key_exists('giocatore', $village['giorni'][$day_n][$event_i])) {
+        $village['giocatori'] = kill($village['giorni'][$day_n][$event_i]['giocatore'], $village, TRUE);
     }
-    // else {} utile per le notti in caso
-    return $giorno;
+    unset($village['giorni'][$day_n][$event_i]);
+    write_village($village);
+
+    // per le notti in caso che si fa?
 }
 
 function kill($username, $village, $undo = FALSE) {
@@ -126,12 +121,59 @@ function kill($username, $village, $undo = FALSE) {
 // MAIN ////////////////////////////////////////////////////////////////
 
 // GAME
-$roles = array( 'contadino', 
+$roles = array('classic' => array(
+                    'contadino',
+                    'lupo',
                     'veggente', 
                     'medium',
-                    'guardia',
-                    'lupo'
-            );
+                    'guardia del corpo',
+                    'gufo',
+                    'massone',
+                    'indemoniato',
+                    'criceto mannaro',
+                    'mitomane',
+                    'angelo dei villici',
+                    'condannato',
+                    'maga'
+            ), 'space' => array(
+                    'hacker',
+                    'apotecario',
+                    'coroner',
+                    'cartello droghe',
+                    'cyborg',
+                    'ingegnere',
+                    'archivista',
+                    'panopticon',
+                    'bioconvertito',
+                    'tecnochirurgo',
+                    'carceriere',
+                    'sentinelle',
+                    'colono',
+
+                    'burocrate',
+                    'capo partito',
+                    'portavoce',
+                    'ceo',
+
+                    'ia',
+                    'virus',
+                    'collaboratore',
+                    'replicante',
+                    'sosia',
+                    'cancellatore',
+                    'coordinatore',
+                    'infiltrato',
+                    'man in the middle',
+                    'lurker',
+                    'simbionte',
+
+                    'backup',
+                    'malware',
+                    'rookit',
+                    'swapper',
+                    'backdoor'
+            )
+        );
 
 // SESSION
 session_start();

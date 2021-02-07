@@ -1,11 +1,11 @@
 <?php
-    include 'assets/masterus.php';
+    include 'assets/lupus.php';
 
     // MAIN ///////////
     $error = "";
 
-    if ($_SESSION['logged_in'] == TRUE) {
-        if ($_SESSION['logged_in'] == TRUE and isset($_GET) and isset($_GET['v']) and array_key_exists($_GET['v'], $villages)) {
+    if ($_SESSION['logged_in'] == TRUE and isset($_GET) and isset($_GET['v']) and isset($villages)) {
+        if (array_key_exists($_GET['v'], $villages)) {
             $village = get_village($_GET['v'], $villages);
             $alive = get_alive($village);
             $days = get_events($village);
@@ -13,7 +13,7 @@
             $error = "Villaggio non trovato!";
         }
     } else {
-        $error = "Sicuro di essere un <a href='login.php'>master</a>?";
+        $error = "Sicuro di essere un <a href='login.php'>master</a> o che il villaggio <a href='admin.php'>esista</a>?";
     }
 
     // update giocatori da populate.php$_POST['id_evento']
@@ -33,39 +33,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestisci <?php echo($village['nome']);?> | Masterus</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico" />
+    <title>Gestisci <?php echo($village['nome']);?> | Lupus</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <?php if($village['variante'] == "space") { ?>
+        <link rel="stylesheet" href="assets/css/space.css">
+    <?php } elseif($village['variante'] == "classic") { ?>
+        <link rel="stylesheet" href="assets/css/classic.css">
+    <?php } ?>
 
     <script>
-        function fixSelect() {
+        function fixSelect() { // da fare meglio magari..
             tipo = document.querySelector('#type_select');
             if(tipo.options[tipo.selectedIndex].value == "notte") {
-                document.querySelector('#player_select').setAttribute('disabled', '1');
                 document.querySelector('#day_select').setAttribute('disabled', '1');
-            } else {
-                document.querySelector('#player_select').removeAttribute('disabled');
+                document.querySelector('#player_select').setAttribute('disabled', '1');
+                document.querySelector('#description').setAttribute('disabled', '1');
+                document.querySelector('#poll_url').setAttribute('disabled', '1');
+            } else if(tipo.options[tipo.selectedIndex].value == "assassinato") {
                 document.querySelector('#day_select').removeAttribute('disabled');
-            }
+                document.querySelector('#player_select').removeAttribute('disabled');
+                document.querySelector('#description').removeAttribute('disabled');
+                document.querySelector('#poll_url').setAttribute('disabled', '1');
+            } else if(tipo.options[tipo.selectedIndex].value == "giustiziato") {
+                document.querySelector('#day_select').removeAttribute('disabled');
+                document.querySelector('#player_select').removeAttribute('disabled');
+                document.querySelector('#description').removeAttribute('disabled');
+                document.querySelector('#poll_url').removeAttribute('disabled');
+            } else if(tipo.options[tipo.selectedIndex].value == "comunicazione") {
+                document.querySelector('#day_select').removeAttribute('disabled');
+                document.querySelector('#player_select').setAttribute('disabled', '1');
+                document.querySelector('#description').removeAttribute('disabled');
+                document.querySelector('#poll_url').removeAttribute('disabled');
+            }       
         }
     </script>
-
 </head>
-<body>
-    
+
+<body style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')">
     <header>
         <h2>
-            <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
-            Gestisci <?php if(isset($village['nome'])) echo($village['nome']);?>
+            <a href="#"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
+            Villaggio <?php if(isset($village['nome'])) echo($village['nome']);?>
         </h2>
 
         <ul>
-            <li><a href="admin.php">Admin</a></li>
+            <li><a href="admin.php">Villaggi</a></li>
         <?php if(isset($village['id']) and isset($village['nome'])) { ?>
             <li><a href="./?v=<?php echo($village['id']); ?>">Bacheca</a></li>
-            <li><a href="v/<?php echo($village['nome']); ?>.json" download>Scarica</a></li>
+            <li><a href="v/<?php echo($village['nome']); ?>.json" download>Download</a></li>
             <!-- <li><a href="v/<?php// echo($village['nome']);?>.json" download>Carica</a></li> -->
-            <li><a href="#players">Giocatori</a></li>
-            <li><a href="#events">Calendario</a></li>
+            <li><a href="assets/logout.php">Logout</a></li>
+            <!-- <li><a href="#players">Giocatori</a></li>
+            <li><a href="#events">Calendario</a></li> -->
         <?php } ?>
         </ul>
     </header>
@@ -78,6 +99,7 @@
             <span>
                 <label for="type">Tipo</label>
                 <select onchange="fixSelect();" name="type" id="type_select" required>
+                    <option value="comunicazione">Comunicazione</option>
                     <option value="notte">Nuovo giorno</option>
                     <option value="assassinato">Assassinio notturno</option>
                     <option value="giustiziato">Condanna diurna</option>
@@ -86,7 +108,7 @@
             </span>
             <span>
                 <label for="day">Giorno</label>
-                <select name="day" id="day_select" required disabled>
+                <select name="day" id="day_select" required>
                     <?php $n_days = count($days); 
                      foreach (array_reverse($days) as $j => $day) {
                         echo("<option value='".intval($n_days-$j-1)."'>Giorno ".intval($n_days-$j)."</option>");
@@ -101,10 +123,10 @@
                     }} ?>
                 </select>
             </span>
-            <textarea class="half-width" name="description" placeholder="descrizione (opzionale)" rows="2"></textarea>
-
+            <textarea id="description" class="half-width" name="description" placeholder="descrizione (opzionale)" rows="2"></textarea>
+            <input type="text" id="poll_url" name="poll_url" value="" placeholder="URL poll">
+            
             <button type="submit" formmethod="post">aggiungi</button>
-
         </form>
 
         <!-- <form action="update.php?v=<?php echo($village['id']); ?>" method="post">
@@ -112,8 +134,9 @@
             <select name="id_evento">
                 <?php
                 foreach ($days as $n => $day) {
-                    foreach ($day as $event) {
-                        echo("<option value='".$n."#".$event['tipo']."#".$event['giocatore']."'>".intval($n+1).") ".$event['giocatore']." (".$event['tipo'].")</option>");;
+                    foreach ($day as $i => $event) {
+                        // echo("<option value='".$n."#".$event['tipo']."#".$event['giocatore']."'>".intval($n+1).") ".$event['giocatore']." (".$event['tipo'].")</option>");;
+                        echo("<option value='".$n."#".$i."'>".intval($n+1).".".intval($i+1)." ".$event['tipo']."</option>");
                     }
                 } 
                 ?>
@@ -124,8 +147,8 @@
 
 
         <span class="full-width" id="players">
-            <h2>Giocatori</h2>
-            <p><a href="populate.php?v=<?php echo($village['id']); ?>">modifica</a></p>
+            <h2><a href="populate.php?v=<?php echo($village['id']); ?>">Giocatori</a></h2>
+            <!-- <p><a href="populate.php?v=<?php echo($village['id']); ?>">modifica</a></p> -->
             <span>Vivi: <?php echo($alive[0]."/".intval($alive[0]+$alive[1]));?></span>
         </span>
         <div id="players_list">
@@ -141,7 +164,7 @@
             <h2 class="full-width">Calendario</h2>
         </span>
         <p class="legend full-width">
-            <span class="dot assassinato">assassinati dai lupi</span> - <span class="dot giustiziato">giustiziati dal villaggio</span>
+            <span class="dot assassinato">assassati di notte</span> - <span class="dot giustiziato">giustiziati di giorno</span>
         </p>
         <div id="events_list">
             <?php $n_days = count($days); 
@@ -151,11 +174,15 @@
                         Giorno <?php echo(intval($n_days - $i));?>
                     </span>
 
-                <?php foreach ($day as $event) { if($event) {?>
-                    <span class="event <?php echo($event['tipo']);?>" data-type="<?php echo(" ".$event['tipo']);?>">
+                <?php foreach ($day as $j => $event) { if($event) {?>
+                    <span class="event <?php echo($event['tipo']);?>" data-type="<?php echo("id: ".intval($n_days - $i).".".intval($j+1)." (".$event['tipo'].")");?>">
                         <span class="description">
-                            <a target="_blank" href="https://t.me/<?php echo($event['giocatore']); ?>">@<?php echo($event['giocatore']); ?></a>
+                        <?php if(isset($event['giocatore'])) { ?>
+                            <a target="_blank" href="https://t.me/<?php echo($event['giocatore']); ?>">@<?php echo($event['giocatore']); }?></a>
                             <?php echo(" ".$event['descrizione']);?>
+                            <?php if(isset($event['sondaggio']) and $event['sondaggio'] != "") { 
+                                echo("<small>voti: <a target='_blank' href='".$event['sondaggio']."'>voti</a></small>"); 
+                            }?>
                         </span> 
                     </span>
                 <?php }} ?>
@@ -165,7 +192,7 @@
 
 <!-- ERRORI -->
 <?php } elseif ($error != "") { ?>
-    <h2 style="color:yellow;"><?php echo $error;?></h2>
+    <h2 class="error"><?php echo $error;?></h2>
 <?php } ?>
 
     </center>

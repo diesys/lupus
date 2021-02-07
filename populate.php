@@ -1,10 +1,10 @@
 <?php
-    include 'assets/masterus.php';
+    include 'assets/lupus.php';
     $error = "";
 
     // crea partita
-    if(isset($_POST) and isset($_POST['new_name']) and isset($_POST['players']) and isset($_GET) and isset($_GET['v'])) {
-        new_village($_POST['new_name'], $_GET['v']);
+    if(isset($_POST) and isset($_POST['new_name']) and isset($_POST['players']) and isset($_GET) and isset($_GET['v']) and isset($_POST['variant'])) {
+        new_village($_POST['new_name'], $_GET['v'], $_POST['variant']);
     }
 
     // il DB esiste?
@@ -27,15 +27,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Popola <?php if(isset($village['nome'])) {echo($village['nome']);} ?> | Masterus</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico" />
+    <title>Popola <?php if(isset($village['nome'])) {echo($village['nome']);} ?> | Lupus</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <?php if($village['variante'] == "space") { ?>
+        <link rel="stylesheet" href="assets/css/space.css">
+    <?php } elseif($village['variante'] == "classic") { ?>
+        <link rel="stylesheet" href="assets/css/classic.css">
+    <?php } ?>
 </head>
-<body>
 
+<body style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')">
 <header>
     <h2>
-        <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
-        Popola <?php if(isset($village['nome'])) {echo($village['nome']);} ?>
+        <a href="admin.php"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
+        Giocatori del villaggio <?php if(isset($village['nome'])) {echo($village['nome']);} ?>
     </h2>
 
     <ul>
@@ -58,13 +65,23 @@
         <span class='player_input'>
             <input type="text" placeholder="username" name="username#<?php echo($i); ?>" value="<?php echo($player['username']); ?>" required>
             <select name="ruolo#<?php echo($i); ?>" required>
-                <?php foreach ($roles as $role) {
-                    echo("<option value='".$role."'>".$role."</option>");
+                <?php foreach ($roles[$village['variante']] as $role) {
+                    if(isset($player['ruolo']) and $player['ruolo'] == $role) {
+                        $selected = "selected";
+                    } else {
+                        $selected = "";
+                    }
+                    echo("<option value='".$role."'".$selected.">".$role."</option>");
                 } ?>
             </select>
             <select name="in_vita#<?php echo($i); ?>" required>
-                <option value="true" <?php if($player['in_vita'] == true) { ?> selected <?php } ?>>vivo</option>
-                <option value="false" <?php if($player['in_vita'] == false) { ?> selected <?php } ?>>morto</option>
+            <?php if($player['in_vita'] == "true") { ?>
+                <option value="true" selected>vivo</option>
+                <option value="false">morto</option>
+            <?php } else { ?>
+                <option value="true">vivo</option>
+                <option value="false" selected>morto</option>
+            <?php } ?>
             </select>
         </span>
     <?php $i++;} ?>
@@ -73,7 +90,7 @@
     </form>
 <?php } else {
     if ($error != "") { ?>
-        <h2 style="color:yellow;"><?php echo($error);?></h2>
+        <h2 class="error"><?php echo($error);?></h2>
         <p>Torna alla pagina di <a href="admin.php">admin</a></p>
     <?php }} ?>
 
