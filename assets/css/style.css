@@ -32,10 +32,12 @@ input,
 select,
 button,
 textarea,
-header ul li,
 .event::after,
 .player.dead {
-    transition: background var(--dur), color var(--dur), opacity var(--dur), border var(--dur);
+    transition: background var(--dur), color var(--dur), opacity var(--dur);
+}
+header ul li a {
+    transition: background var(--dur), opacity var(--dur);
 }
 
 *:not(input, button, select, option, textarea) {
@@ -132,27 +134,28 @@ header ul {
     flex: 1;
     list-style: none;
     display: flex;
-    padding: .5em;
+    padding: 1em;
     margin: 0;
     text-align: center;
     align-items: center;
     flex-wrap: wrap;
+    height: auto;
 }
 
 header ul li {
-    padding: .7em;
-    margin: .3em;
     flex: 1;
     min-width: 100px;
-    cursor: pointer;
-}
-header ul li:hover,
-header ul li:active {
-    background: #0008;
 }
 header ul li a {
+    /* margin: .2em; */
+    cursor: pointer;
+    padding: 1em;
     text-decoration: none;
     color: #fff !important;
+}
+header ul li a:hover,
+header ul li a:active {
+    background: #0008;
 }
 
 .flex-column {
@@ -279,6 +282,7 @@ button {
     border: 1px solid var(--border-light);
     color: #fff;
     flex-direction: column;
+    cursor: default;
 }
 #events_list .event .description small {
     margin-top: .9em;
@@ -295,6 +299,9 @@ button {
 #players_list>.player.dead:hover,
 #players_list>.player.dead:active {
     opacity: .9;
+}
+#players_list>.player>.role {
+    text-shadow: none !important;
 }
 
 #events_list .date {

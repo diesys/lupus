@@ -5,19 +5,19 @@
     --color2: #e3235af0;
     --color2-alpha: #e3235aa0;
     --shadow-color2: 0 2px 20px 2px var(--color2-alpha);
-    /* giustiziato - villaggio */
+    /* giustiziato - colonia */
     --color3: #1b72c3f0;
     --color3-alpha: #1b72c3a0;
     --shadow-color3: 0 2px 20px 2px var(--color3-alpha);
-    /*  */
+    /* software */
     --color4: #609b0ef0;
     --color4-alpha: #65a011a0;
     --shadow-color4: 0 2px 20px 2px var(--color4-alpha);
-    /*  */
+    /* simbionti */
     --color5: #19a994f0;
     --color5-alpha: #19a994a0;
     --shadow-color5: 0 2px 20px 2px var(--color5-alpha);
-    /*  */
+    /* programmatori */
     --color6: #9d1bc5f0;
     --color6-alpha: #a11bc5a0;
     --shadow-color6: 0 2px 20px 2px var(--color6-alpha);
@@ -54,25 +54,56 @@ button {
     border: 1px solid var(--border-light);
 }
 
-#players_list>.player,
+
+/* COLORI FAZIONI */
+/* colonia e default */
+.player,
+.colonia,
+.amministrazione,
 .legend .dot.giustiziato,
 #events_list .event.giustiziato .description {
     background: var(--color3-alpha);
     box-shadow: var(--shadow-color3);
 }
-#players_list>.player a,    
+.player a,
+.colonia a,
+.amministrazione a,
 .legend .dot.giustiziato,
 #events_list .event.giustiziato .description a {
     text-shadow: 0 1px 10px var(--color3);
 }
 
+.ribelli,
 .legend .dot.assassinato,
-#players_list>.player.replicante,
 #events_list .event.assassinato .description {
     background: var(--color2-alpha);
     box-shadow: var(--shadow-color2);
 }
-#players_list>.player.replicante a,
+.ribelli a,
 #events_list .event.assassinato .description a {
     text-shadow: 0 1px 10px var(--color2);
+}
+
+.software {
+    background: var(--color4-alpha);
+    box-shadow: var(--shadow-color4);
+}
+.software a {
+    text-shadow: 0 1px 10px var(--color4);
+}
+
+.simbionti {
+    background: var(--color5-alpha);
+    box-shadow: var(--shadow-color5);
+}
+.simbionti a {
+    text-shadow: 0 1px 10px var(--color5);
+}
+
+.programmatori {
+    background: var(--color6-alpha);
+    box-shadow: var(--shadow-color6);
+}
+.programmatori a {
+    text-shadow: 0 1px 10px var(--color6);
 }
