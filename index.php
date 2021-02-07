@@ -26,7 +26,6 @@
     
     <link rel="stylesheet" href="assets/css/style.css">
     <?php $seed = rand(0,1);
-
         if($village != NULL and $village['variante'] == "space") { ?>
         <link rel="stylesheet" href="assets/css/space.css">
     <?php } elseif($village != NULL and $village['variante'] == "classic") { ?>
