@@ -34,7 +34,7 @@ button,
 textarea,
 .event::after,
 .player.dead {
-    transition: background var(--dur), color var(--dur), opacity var(--dur);
+    transition: color var(--dur), opacity var(--dur);
 }
 header ul li a {
     transition: background var(--dur), opacity var(--dur);
