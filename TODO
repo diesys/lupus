@@ -1,5 +1,11 @@
 ## TODO
 
+# sicurezza
+    - mettere meglio la roba sensibile tipo i json...
+    - DISABLITARE WARNING IN PRODUZIONE
+
+# icone
+
 # gioco
     - se diventa una cosa giocabile far creare un db e metterlo come servizio vero
     - pagina di help che spiega come funziona (tramite telegram etc)
@@ -10,19 +16,15 @@
 
 # calendario eventi:
     - mettere piu' a portata di mano il link a framadate?
-    - poll no url ma iconcina o semplice "voti"
     
 # bacheca
     - elenco ruoli disponibili da salvare dopo il populate e mostrare senza essere invasivo
         - magari con un link relativo al regolamento!
-    - possibilita in futuro di aggiungere anche ruoli in surplus nell'elenco per confondere ?
+    -? possibilita in futuro di aggiungere anche ruoli in surplus nell'elenco per confondere
 
 # gestione partita
     - bottone per elimina villaggio/concludi partita.
-    - creazione: scelta di ambientazione (al momento cyberlupus, lupus classico e magari mafia)
 
-# sicurezza
-    - mettere meglio la roba sensibile tipo i json...
 
 # altro
     - possibilita' di integrare  chat vocale di jitsi?

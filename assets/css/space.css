@@ -54,17 +54,25 @@ button {
     border: 1px solid var(--border-light);
 }
 
-#events_list .event.giustiziato .description,
-.legend .dot.giustiziato,
 #players_list>.player,
-#events_list .description {
+.legend .dot.giustiziato,
+#events_list .event.giustiziato .description {
     background: var(--color3-alpha);
     box-shadow: var(--shadow-color3);
 }
+#players_list>.player a,    
+.legend .dot.giustiziato,
+#events_list .event.giustiziato .description a {
+    text-shadow: 0 1px 10px var(--color3);
+}
 
-#events_list .event.assassinato .description,
 .legend .dot.assassinato,
-#players_list>.player.replicante {
+#players_list>.player.replicante,
+#events_list .event.assassinato .description {
     background: var(--color2-alpha);
     box-shadow: var(--shadow-color2);
+}
+#players_list>.player.replicante a,
+#events_list .event.assassinato .description a {
+    text-shadow: 0 1px 10px var(--color2);
 }

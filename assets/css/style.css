@@ -280,6 +280,9 @@ button {
     color: #fff;
     flex-direction: column;
 }
+#events_list .event .description small {
+    margin-top: .9em;
+}
 
 #players_list>.player.dead {
     opacity: .5;
