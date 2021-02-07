@@ -148,7 +148,7 @@ $roles = array('classic' => array(
                     'tecnochirurgo',
                     'carceriere',
                     'sentinelle',
-                    'colone',
+                    'colono',
 
                     'burocrate',
                     'capo partito',
