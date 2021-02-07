@@ -153,9 +153,9 @@
         </span>
         <div id="players_list">
             <?php foreach($village['giocatori'] as $giocatore) { ?>
-            <span class="player <?php if($giocatore['in_vita'] != "true") {echo("dead ");} if($giocatore['ruolo'] == "lupo") {echo("wolf");} ?>">
+            <span class="player <?php echo($giocatore['ruolo']); if($giocatore['in_vita'] != "true") {echo(" dead");} ?>">
                 <a class="username" target="_blank" href="https://t.me/<?php echo($giocatore['username']); ?>">@<?php echo($giocatore['username']); ?></a>
-                <span class="role">(<?php echo($giocatore['ruolo']); ?>)</span>
+                <small class="role">(<?php echo($giocatore['ruolo']); ?>)</small>
             </span>
             <?php } ?>
         </div>
@@ -181,7 +181,7 @@
                             <a target="_blank" href="https://t.me/<?php echo($event['giocatore']); ?>">@<?php echo($event['giocatore']); }?></a>
                             <?php echo(" ".$event['descrizione']);?>
                             <?php if(isset($event['sondaggio']) and $event['sondaggio'] != "") { 
-                                echo("<small><a target='_blank' href='".$event['sondaggio']."'>voti</a></small>"); 
+                                echo("<small>(<a target='_blank' href='".$event['sondaggio']."'>voti</a>)</small>"); 
                             }?>
                         </span> 
                     </span>

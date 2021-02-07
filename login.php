@@ -16,7 +16,6 @@
     
     <link rel="stylesheet" href="assets/css/style.css">
     <?php $seed = rand(0,1);
-    
     if($seed == 0) { ?>
         <link rel="stylesheet" href="assets/css/space.css">
     <?php } else { ?>

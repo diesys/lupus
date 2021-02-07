@@ -280,6 +280,9 @@ button {
     color: #fff;
     flex-direction: column;
 }
+#events_list .event .description small {
+    margin-top: .9em;
+}
 
 #players_list>.player.dead {
     opacity: .5;
@@ -287,11 +290,6 @@ button {
 
 #players_list>.player.dead>.username {
     text-decoration: line-through;
-}
-
-#players_list>.player.wolf {
-    background: var(--color2-alpha);
-    box-shadow: var(--box-shadow);
 }
 
 #players_list>.player.dead:hover,
