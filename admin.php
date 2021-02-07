@@ -21,7 +21,16 @@
     <link rel="shortcut icon" href="assets/img/favicon.ico" />
     <title>Villaggi | Lupus</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/space.css">
+    <?php $seed = rand(0,1);
+        if($village != NULL and $village['variante'] == "space") { ?>
+        <link rel="stylesheet" href="assets/css/space.css">
+    <?php } elseif($village != NULL and $village['variante'] == "classic") { ?>
+        <link rel="stylesheet" href="assets/css/classic.css">
+    <?php } elseif($seed == 0) { ?>
+        <link rel="stylesheet" href="assets/css/space.css">
+    <?php } else { ?>
+        <link rel="stylesheet" href="assets/css/classic.css">
+    <?php } ?>
 </head>
 
 <body style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')">

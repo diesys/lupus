@@ -38,7 +38,12 @@
     <?php } ?>
 </head>
 
-<body style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')">
+<?php if(isset($village)) { ?>
+    <body style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')">
+<?php } else { ?>
+    <body style="background-image: url('assets/img/bg/<?php if($seed == 0) {echo("space/");} else {echo("classic/");} echo(rand(0, 5)); ?>.jpg')">
+<?php } ?>
+
 <header>
     <h2>
         <a href="admin.php"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
