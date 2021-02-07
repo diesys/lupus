@@ -55,7 +55,7 @@ button {
 }
 
 #players_list>.player,
-#players_list>.player.wolf,
+#players_list>.player.lupo,
 .legend .dot.giustiziato, 
 .legend .dot.assassinato, 
 #events_list .description,
@@ -71,6 +71,7 @@ button {
     background: var(--color3-alpha);
 }
 
+#players_list>.player.lupo,
 #events_list .event.assassinato .description,
 .legend .dot.assassinato {
     background: var(--color2-alpha);

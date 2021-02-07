@@ -289,11 +289,6 @@ button {
     text-decoration: line-through;
 }
 
-#players_list>.player.wolf {
-    background: var(--color2-alpha);
-    box-shadow: var(--box-shadow);
-}
-
 #players_list>.player.dead:hover,
 #players_list>.player.dead:active {
     opacity: .9;

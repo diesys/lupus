@@ -64,7 +64,7 @@ button {
 
 #events_list .event.assassinato .description,
 .legend .dot.assassinato,
-#players_list>.player.wolf {
+#players_list>.player.replicante {
     background: var(--color2-alpha);
     box-shadow: var(--shadow-color2);
 }
