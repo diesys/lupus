@@ -160,11 +160,17 @@
             <span>Vivi: <?php echo($alive[0]."/".intval($alive[0]+$alive[1]));?></span>
         </span>
         <p class="legend full-width">
+        <?php if($village['variante'] == "space") { ?>
             <span class="dot colonia">colonia</span> ·
             <span class="dot ribelli">ribelli</span> ·
             <span class="dot software">software</span> ·
             <span class="dot simbionti">simbionti</span> ·
             <span class="dot programmatori">programmatori</span>
+        <?php } else { ?>
+            <span class="dot umani">umani</span> ·
+            <span class="dot lupi">lupi</span> ·
+            <span class="dot criceti">criceti</span>
+        <?php } ?>
         </p>
         <div id="players_list">
             <?php foreach($village['giocatori'] as $giocatore) { ?>
