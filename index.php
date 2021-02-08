@@ -22,7 +22,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/favicon.ico" />
-    <title><?php if($village != NULL) {echo("Villaggio ".$village['nome']." | ");}?>Lupus</title>
+    <title><?php if($village != NULL) {echo($village['nome']." | ");}?>Lupus</title>
     
     <link rel="stylesheet" href="assets/css/style.css">
     <?php $seed = rand(0,1);
@@ -45,11 +45,14 @@
 
     <header>
         <h2>
-            <a href="#"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
-            <?php if($village != NULL) {echo("Villaggio ".$village['nome']);} else { echo("Lupus");}?>
+        <?php if($village == NULL) { ?>
+            <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
+        <?php } ?>
+            <?php if($village != NULL) {echo($village['nome']);} else { echo("Lupus");}?>
         </h2>
     <?php if($village != NULL) { ?>
         <ul>
+            <li><a href="#" class="logo"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a></li>
             <li><a href="#players">Giocatori</a></li>
             <li><a href="#events">Calendario</a></li>
         <?php if($village['variante'] == "space") { ?>

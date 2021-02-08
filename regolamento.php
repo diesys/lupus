@@ -49,10 +49,10 @@
             <a href="."><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
             <?php if($variant == "space") { ?>
                 Regolamento <i>Lupus in Space</i> <br> 
-                <small><a href="docs/Regolamento_LupusInSpace.pdf" download="">scarica PDF</a></small>
+                <small><a href="regolamenti/Regolamento_LupusInSpace.pdf" download="">scarica PDF</a></small>
             <?php } elseif($variant == "classic") { ?>
                 Regolamento <i>Classico</i> <br> 
-                <small><a href="docs/Regolamento_Classic.pdf" download="">scarica PDF</a></small>
+                <small><a href="regolamenti/Regolamento_Classic.pdf" download="">scarica PDF</a></small>
             <?php } else { ?>
                 Regolamenti 
             <?php } ?>

@@ -115,23 +115,25 @@ header h2 {
     min-width: 40%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
+    justify-content: center;
     padding: 1em .5em .5em .5em;
     margin: 0;
+    text-transform: capitalize;
 }
 
 header img {
     margin-right: .5em;
-    margin-top: 2px;
+    margin-top: .5rem;
 }
 
 header ul {
-    position: relative;
+    /* position: relative; */
     width: 100%;
     flex: 1;
     list-style: none;
     display: flex;
-    padding: 1em;
+    padding: 0;
     margin: 0;
     text-align: center;
     align-items: center;
@@ -141,17 +143,23 @@ header ul {
 
 header ul li {
     flex: 1;
-    min-width: 100px;
+    position: relative;
+    margin: .4em;
+    display: flex;
 }
 header ul li a {
-    /* margin: .2em; */
-    cursor: pointer;
+    flex: 1;
     padding: 1em;
+    cursor: pointer;
     text-decoration: none;
     color: #fff !important;
 }
-header ul li a:hover,
-header ul li a:active {
+header ul li a.logo {
+    padding: 0;
+    margin: 0;
+}
+header ul li a:not(.logo):hover,
+header ul li a:not(.logo):active {
     background: #0008;
 }
 

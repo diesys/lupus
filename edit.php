@@ -82,11 +82,11 @@
 <body style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')">
     <header>
         <h2>
-            <a href="#"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
-            Villaggio <?php if(isset($village['nome'])) echo($village['nome']);?>
+            <?php if(isset($village['nome'])) echo($village['nome']);?>
         </h2>
-
+        
         <ul>
+            <li><a href="#" class="logo"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a></li>
             <li><a href="admin.php">Villaggi</a></li>
         <?php if(isset($village['id']) and isset($village['nome'])) { ?>
             <li><a href="./?v=<?php echo($village['id']); ?>">Bacheca</a></li>
