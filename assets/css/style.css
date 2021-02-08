@@ -129,7 +129,7 @@ header h2 {
 
 header img {
     margin-right: .5em;
-    margin-top: .5rem;
+    /* margin-top: .5rem; */
 }
 header a {
     text-shadow: none !important;
@@ -160,6 +160,12 @@ header ul li a {
     cursor: pointer;
     text-decoration: none;
     color: #fff !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: .9rem;
+    font-weight: 600;
 }
 header ul li a.logo {
     padding: 0;
@@ -348,4 +354,16 @@ button {
 #events_list .event .description {
     background: var(--dark-graybitalpha);
     box-shadow: var(--box-shadow);
+}
+
+@media (max-width: 700px) {
+    header ul li a {
+        flex-direction: column;
+        font-size: .8rem;
+    }
+    header img {
+        max-width: 24px;
+        max-height: 24px;
+        margin-right: 0;
+    }
 }

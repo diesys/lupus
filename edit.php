@@ -87,12 +87,24 @@
         
         <ul>
             <li><a href="#" class="logo"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a></li>
-            <li><a href="admin.php">Villaggi</a></li>
+            <li><a href="admin.php">
+                <img src="assets/img/icons/view_list-24px.svg" alt="·" height="28" width="28">
+                Villaggi</a>
+            </li>
         <?php if(isset($village['id']) and isset($village['nome'])) { ?>
-            <li><a href="./?v=<?php echo($village['id']); ?>">Bacheca</a></li>
-            <li><a href="v/<?php echo($village['nome']); ?>.json" download>Download</a></li>
+            <li><a href="./?v=<?php echo($village['id']); ?>">
+                <img src="assets/img/icons/public-24px.svg" alt="·" height="28" width="28">    
+                Bacheca</a>
+            </li>
+            <li><a href="v/<?php echo($village['nome']); ?>.json" download>
+                <img src="assets/img/icons/download-24px.svg" alt="·" height="28" width="28">
+                Download</a>
+            </li>
             <!-- <li><a href="v/<?php// echo($village['nome']);?>.json" download>Carica</a></li> -->
-            <li><a href="assets/logout.php">Logout</a></li>
+            <li><a href="assets/logout.php">
+                <img src="assets/img/icons/logout-24px.svg" alt="·" height="28" width="28">
+                Logout</a>
+            </li>
             <!-- <li><a href="#players">Giocatori</a></li>
             <li><a href="#events">Calendario</a></li> -->
         <?php } ?>
