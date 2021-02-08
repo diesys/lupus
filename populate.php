@@ -46,17 +46,28 @@
 
 <header>
     <h2>
-        <a href="admin.php"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
-        Giocatori di <?php if(isset($village['nome'])) {echo($village['nome']);} ?>
+        <?php if(isset($village['nome'])) {echo($village['nome']);} ?>
     </h2>
 
     <ul>
-        <li><a href="admin.php">Admin</a></li>
+        <li>
+            <a class="logo" href="admin.php"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
+        </li>
+        <li><a href="admin.php">
+            <img src="assets/img/icons/view_list-24px.svg" alt="·" height="28" width="28">
+            Villaggi</a>
+        </li>
     <?php if(isset($village['id'])) { ?>
-        <li><a href="./?v=<?php echo($village['id']); ?>">Bacheca</a></li>
+        <li><a href="./?v=<?php echo($village['id']); ?>">
+            <img src="assets/img/icons/public-24px.svg" alt="·" height="28" width="28">
+            Bacheca</a>
+        </li>
     <?php } ?>
     <?php if(!isset($_POST['new_name']) and isset($village['nome'])) { ?>
-        <li><a href="v/<?php echo($village['nome']); ?>.json" download>Scarica</a></li>
+        <li><a href="v/<?php echo($village['nome']); ?>.json" download>
+            <img src="assets/img/icons/download-24px.svg" alt="·" height="28" width="28">
+            Scarica</a>
+        </li>
     <?php } ?>
         <!-- <li><?php// echo($village['nome']);?> Carica</li> -->
     </ul>
