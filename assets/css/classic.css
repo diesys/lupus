@@ -59,6 +59,7 @@ button {
 }
 
 .umani,
+#players_list>.player,
 #events_list .event.giustiziato .description,
 .legend .dot.giustiziato,
 #players_list>.player.umani {

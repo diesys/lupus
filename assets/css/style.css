@@ -210,6 +210,7 @@ footer {
     border: 1px solid var(--border-light);
     box-shadow: var(--box-shadow);
     display: inline-block;
+    margin: .5em;
 }
 
 .player a,
