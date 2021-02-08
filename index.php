@@ -88,7 +88,8 @@
         </span>
         <div id="events_list">
             <p class="legend full-width">
-                <span class="dot assassinato">assassati di notte</span> - <span class="dot giustiziato">giustiziati di giorno</span>
+                <span class="dot assassinato">assassati di notte</span>
+                <span class="dot giustiziato">giustiziati di giorno</span>
             </p>
 
             <?php $n_days = count($days);
