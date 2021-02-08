@@ -28,6 +28,11 @@
     filter: opacity(.8) saturate(0);
 }
 
+.no-padd-marg {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
 input,
 select,
 button,
@@ -126,7 +131,9 @@ header img {
     margin-right: .5em;
     margin-top: .5rem;
 }
-
+header a {
+    text-shadow: none !important;
+}
 header ul {
     /* position: relative; */
     width: 100%;
