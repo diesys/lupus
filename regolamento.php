@@ -45,18 +45,26 @@
 <?php } ?>
 
     <header>
-        <h2>
-            <a href="."><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
-            <?php if($variant == "space") { ?>
-                Regolamento <i>Lupus in Space</i> <br> 
-                <small><a href="docs/Regolamento_LupusInSpace.pdf" download="">scarica PDF</a></small>
-            <?php } elseif($variant == "classic") { ?>
-                Regolamento <i>Classico</i> <br> 
-                <small><a href="docs/Regolamento_Classic.pdf" download="">scarica PDF</a></small>
-            <?php } else { ?>
-                Regolamenti 
+        <ul>
+            <li>
+                <a class="logo" href="."><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
+                <h2 class="no-padd-marg">Regolamento</h2>
+            </li>
+            <li>
+                <?php if($variant == "space") { ?>
+                    <a href="regolamenti/Regolamento_LupusInSpace.pdf" download="">
+                        <img src="assets/img/icons/download-24px.svg" alt="Scarica" height="28" width="28">
+                        PDF
+                    </a>
+                <?php } elseif($variant == "classic") { ?>
+                    <a href="regolamenti/Regolamento_Classic.pdf" download="">
+                        <img src="assets/img/icons/download-24px.svg" alt="Scarica" height="28" width="28">
+                        PDF
+                    </a>
+            </li>
             <?php } ?>
-        </h2>
+        </ul>
+        
     </header>
 
 

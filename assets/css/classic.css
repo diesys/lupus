@@ -1,6 +1,6 @@
 :root {
     /* base color */
-    --color: hsla(90, 90%, 64%, 0.941);
+    --color: hsla(80, 80%, 60%, 0.95);
     
     /* base-color saturo: assassinato - cattivi */
     --color2: hsla(2, 77%, 51%, 0.941);
@@ -14,22 +14,15 @@
     --color4: #1b72c3f0;
     --color4-alpha: #1b72c3a0;
     --shadow-color4: 0 2px 20px 2px var(--color4-alpha);
-    /*  */
-    --color5: #19a994f0;
-    --color5-alpha: #19a994a0;
-    --shadow-color5: 0 2px 20px 2px var(--color5-alpha);
-    /*  */
-    --color6: #9d1bc5f0;
-    --color6-alpha: #a11bc5a0;
-    --shadow-color6: 0 2px 20px 2px var(--color6-alpha);
 }
 
 body {
     background-image: url('../img/bg/classic/1.jpg');
 }
 
+*:not(input, button, select, option, textarea),
 a:not(.username), h1, h2, h3 {
-    text-shadow: 0 1px 10px var(--dark-gray);
+    text-shadow: 0 1px 10px #000b;
 }
 
 header ul {
@@ -55,7 +48,7 @@ button {
 }
 
 #players_list>.player,
-#players_list>.player.lupo,
+#players_list>.player.lupi,
 .legend .dot.giustiziato, 
 .legend .dot.assassinato, 
 #events_list .description,
@@ -65,14 +58,20 @@ button {
     box-shadow: var(--box-shadow) !important;
 }
 
+.umani,
 #events_list .event.giustiziato .description,
 .legend .dot.giustiziato,
-#players_list>.player {
+#players_list>.player.umani {
     background: var(--color3-alpha);
 }
 
-#players_list>.player.lupo,
+.lupi,
+#players_list>.player.lupi,
 #events_list .event.assassinato .description,
 .legend .dot.assassinato {
     background: var(--color2-alpha);
+}
+
+.criceti {
+    background: var(--color4-alpha);
 }

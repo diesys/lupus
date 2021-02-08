@@ -28,18 +28,22 @@
     filter: opacity(.8) saturate(0);
 }
 
+.no-padd-marg {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
 input,
 select,
 button,
 textarea,
-header ul li,
 .event::after,
 .player.dead {
-    transition: background var(--dur), color var(--dur), opacity var(--dur), border var(--dur);
+    transition: opacity var(--dur);
 }
-
-*:not(input, button, select, option, textarea) {
-    text-shadow: 0 1px 4px #000d;
+/* color var(--dur), background var(--dur); */
+header ul li a {
+    transition: background var(--dur), opacity var(--dur);
 }
 
 html,
@@ -116,43 +120,60 @@ header h2 {
     min-width: 40%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
+    justify-content: center;
     padding: 1em .5em .5em .5em;
     margin: 0;
+    text-transform: capitalize;
 }
 
 header img {
     margin-right: .5em;
-    margin-top: 2px;
+    /* margin-top: .5rem; */
 }
-
+header a {
+    text-shadow: none !important;
+}
 header ul {
-    position: relative;
+    /* position: relative; */
     width: 100%;
     flex: 1;
     list-style: none;
     display: flex;
-    padding: .5em;
+    padding: 0;
     margin: 0;
     text-align: center;
     align-items: center;
     flex-wrap: wrap;
+    height: auto;
 }
 
 header ul li {
-    padding: .7em;
-    margin: .3em;
     flex: 1;
-    min-width: 100px;
-    cursor: pointer;
-}
-header ul li:hover,
-header ul li:active {
-    background: #0008;
+    position: relative;
+    margin: .4em;
+    display: flex;
 }
 header ul li a {
+    flex: 1;
+    padding: 1em;
+    cursor: pointer;
     text-decoration: none;
     color: #fff !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: .9rem;
+    font-weight: 600;
+}
+header ul li a.logo {
+    padding: 0;
+    margin: 0;
+}
+header ul li a:not(.logo):hover,
+header ul li a:not(.logo):active {
+    background: #0008;
 }
 
 .flex-column {
@@ -192,10 +213,12 @@ footer {
 }
 
 .player a,
+a.player,
 .event a {
     color: #fffd !important;
     font-weight: bold;
     text-decoration: none;
+    cursor: pointer !important;
 }
 
 input,
@@ -279,6 +302,7 @@ button {
     border: 1px solid var(--border-light);
     color: #fff;
     flex-direction: column;
+    cursor: default;
 }
 #events_list .event .description small {
     margin-top: .9em;
@@ -295,6 +319,9 @@ button {
 #players_list>.player.dead:hover,
 #players_list>.player.dead:active {
     opacity: .9;
+}
+#players_list>.player>.role {
+    text-shadow: none !important;
 }
 
 #events_list .date {
@@ -327,4 +354,16 @@ button {
 #events_list .event .description {
     background: var(--dark-graybitalpha);
     box-shadow: var(--box-shadow);
+}
+
+@media (max-width: 700px) {
+    header ul li a {
+        flex-direction: column;
+        font-size: .8rem;
+    }
+    header img {
+        max-width: 24px;
+        max-height: 24px;
+        margin-right: 0;
+    }
 }

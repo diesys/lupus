@@ -47,7 +47,7 @@
 <header>
     <h2>
         <a href="admin.php"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
-        Giocatori del villaggio <?php if(isset($village['nome'])) {echo($village['nome']);} ?>
+        Giocatori di <?php if(isset($village['nome'])) {echo($village['nome']);} ?>
     </h2>
 
     <ul>
@@ -70,13 +70,13 @@
         <span class='player_input'>
             <input type="text" placeholder="username" name="username#<?php echo($i); ?>" value="<?php echo($player['username']); ?>" required>
             <select name="ruolo#<?php echo($i); ?>" required>
-                <?php foreach ($roles[$village['variante']] as $role) {
+                <?php foreach ($roles[$village['variante']] as $role => $faction) {
                     if(isset($player['ruolo']) and $player['ruolo'] == $role) {
                         $selected = "selected";
                     } else {
                         $selected = "";
                     }
-                    echo("<option value='".$role."'".$selected.">".$role."</option>");
+                    echo("<option value='".$role."'".$selected.">".$role." (".$faction.")</option>");
                 } ?>
             </select>
             <select name="in_vita#<?php echo($i); ?>" required>
