@@ -93,6 +93,9 @@ center.regolamento h3 {
     margin: 1em auto 0;
     text-decoration: underline;
 }
+center.regolamento section {
+    min-width: 100%;
+}
 
 a:not(.username), h1, h2, h3 {
     color: var(--color);
