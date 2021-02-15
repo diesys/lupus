@@ -149,7 +149,7 @@
             <button type="submit" formmethod="post">aggiungi</button>
         </form>
 
-        <form action="update.php?v=<?php echo($village['id']); ?>" method="post">
+        <!-- <form action="update.php?v=<?php echo($village['id']); ?>" method="post">
             <h4 class="full-width">Rimuovi dal calendario</h4>
             <select name="id_evento">
                 <?php
@@ -163,7 +163,7 @@
             </select>
 
             <button type="submit" formmethod="post">elimina</button>
-        </form>
+        </form> -->
 
 
         <span class="full-width" id="players">
