@@ -179,7 +179,7 @@
             <span class="dot ribelli">ribelli</span>
             <span class="dot software">software</span>
             <span class="dot simbionti">simbionti</span>
-            <span class="dot programmatori">programmatori</span>
+            <!-- <span class="dot programmatori">programmatori</span> -->
         <?php } else { ?>
             <span class="dot umani">umani</span>
             <span class="dot lupi">lupi</span>
