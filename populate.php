@@ -38,10 +38,11 @@
     <?php } ?>
 </head>
 
-<?php if(isset($village)) { ?>
-    <body style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')">
+<body class="<?php $color = rand(0,4); echo("clr-".$color); ?>">
+<?php if(isset($village)) { ?>    
+    <div id="bg" style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')"></div>
 <?php } else { ?>
-    <body style="background-image: url('assets/img/bg/<?php if($seed == 0) {echo("space/");} else {echo("classic/");} echo(rand(0, 5)); ?>.jpg')">
+    <div id="bg" style="background-image: url('assets/img/bg/<?php if($seed == 0) {echo("space/");} else {echo("classic/");} echo(rand(0, 5)); ?>.jpg')"></div>
 <?php } ?>
 
 <header>

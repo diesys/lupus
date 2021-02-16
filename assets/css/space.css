@@ -23,21 +23,6 @@
     --shadow-color6: 0 2px 20px 2px var(--color6-alpha);
 }
 
-body {
-    background-image: url('../img/bg/space/1.jpg');
-}
-
-a:not(.username), h1, h2, h3 {
-    color: var(--color);
-    text-shadow: 0 1px 10px var(--color2);
-}
-
-header ul {
-    background: var(--color2-alpha);
-    box-shadow: 50px 6px 30px 3px #000b;
-    background: linear-gradient(130deg, var(--color2-alpha),var(--color3-alpha), #0000 95%);
-}
-
 input,
 select,
 button,
@@ -54,58 +39,205 @@ button {
     border: 1px solid var(--border-light);
 }
 
+/* TEMI */
+body.clr-0>#bg {filter: blur(2px) hue-rotate(0deg);}
+body.clr-1>#bg {filter: blur(2px) hue-rotate(70deg);}
+body.clr-2>#bg {filter: blur(2px) hue-rotate(220deg);}
+body.clr-3>#bg {filter: blur(2px) hue-rotate(-70deg);}
+body.clr-4>#bg {filter: blur(2px) hue-rotate(-60deg);}
 
-/* COLORI FAZIONI */
-/* colonia e default */
+a:not(.username), h1, h2, h3 {
+    color: var(--color);
+    text-shadow: 0 1px 10px var(--color2);
+}
+body.clr-0 a:not(.username), body.clr-0 h1, body.clr-0 h2, body.clr-0 h3 {
+    color: var(--color);
+    text-shadow: 0 1px 10px var(--color2);
+}
+body.clr-1 a:not(.username), body.clr-1 h1, body.clr-1 h2, body.clr-1 h3 {
+    color: var(--color4);
+    text-shadow: 0 1px 10px var(--color4);
+}
+body.clr-2 a:not(.username), body.clr-2 h1, body.clr-2 h2, body.clr-2 h3 {
+    color: var(--color5);
+    text-shadow: 0 1px 10px var(--color5);
+}
+body.clr-3 a:not(.username), body.clr-3 h1, body.clr-3 h2, body.clr-3 h3 {
+    color: var(--color6);
+    text-shadow: 0 1px 10px var(--color6);
+}
+body.clr-4 a:not(.username), body.clr-4 h1, body.clr-4 h2, body.clr-4 h3 {
+    color: var(--color3);
+    text-shadow: 0 1px 10px var(--color3);
+}
+
+header ul {
+    background: var(--color2-alpha);
+    box-shadow: 50px 6px 30px 3px #000b;
+    background: linear-gradient(130deg, var(--color2-alpha),var(--color3-alpha), #0000 95%);
+}
+header ul h2,
+header ul h3 {
+    color: #fffd !important;
+}
+
+body.clr-0 header ul {background: linear-gradient(130deg, var(--color2-alpha),var(--color3-alpha), #0000 95%);}
+body.clr-1 header ul {background: linear-gradient(130deg, var(--color4-alpha),var(--color2-alpha), #0000 95%);}
+body.clr-2 header ul {background: linear-gradient(130deg, var(--color5-alpha),var(--color4-alpha), #0000 95%);}
+body.clr-3 header ul {background: linear-gradient(130deg, var(--color6-alpha),var(--color5-alpha), #0000 95%);}
+body.clr-4 header ul {background: linear-gradient(130deg, var(--color3-alpha),var(--color6-alpha), #0000 95%);}
+
+
+body.clr-0 .player, 
+body.clr-0 .legend .dot.giustiziato,
+body.clr-0 #events_list .event.giustiziato .description {
+    background: var(--color3-alpha) !important;
+    box-shadow: var(--shadow-color3) !important;
+}
+body.clr-0 .legend .dot.assassinato,
+body.clr-0 #events_list .event.assassinato .description {
+    background: var(--color2-alpha) !important;
+    box-shadow: var(--shadow-color2) !important;
+}
+body.clr-0 .player a {
+    text-shadow: 0 1px 10px var(--color3);
+}
+
+body.clr-1 .player, 
+body.clr-1 .legend .dot.giustiziato,
+body.clr-1 #events_list .event.giustiziato .description {
+    background: var(--color2-alpha) !important;
+    box-shadow: var(--shadow-color2) !important;
+}
+body.clr-1 .legend .dot.assassinato,
+body.clr-1 #events_list .event.assassinato .description {
+    background: var(--color4-alpha) !important;
+    box-shadow: var(--shadow-color4) !important;
+}
+body.clr-1 .player a {
+    text-shadow: 0 1px 10px var(--color2);
+}
+
+body.clr-2 .player, 
+body.clr-2 .legend .dot.giustiziato,
+body.clr-2 #events_list .event.giustiziato .description {
+    background: var(--color4-alpha) !important;
+    box-shadow: var(--shadow-color4) !important;
+}
+body.clr-2 .legend .dot.assassinato,
+body.clr-2 #events_list .event.assassinato .description {
+    background: var(--color5-alpha) !important;
+    box-shadow: var(--shadow-color5) !important;
+}
+body.clr-2 .player a {
+    text-shadow: 0 1px 10px var(--color4);
+}
+
+body.clr-3 .player, 
+body.clr-3 .legend .dot.giustiziato,
+body.clr-3 #events_list .event.giustiziato .description {
+    background: var(--color5-alpha) !important;
+    box-shadow: var(--shadow-color5) !important;
+}
+body.clr-3 .dot.assassinato,
+body.clr-3 #events_list .event.assassinato .description {
+    background: var(--color6-alpha) !important;
+    box-shadow: var(--shadow-color6) !important;
+}
+body.clr-3 .player a {
+    text-shadow: 0 1px 10px var(--color5);
+}
+
+body.clr-4 .player, 
+body.clr-4 .legend .dot.giustiziato,
+body.clr-4 #events_list .event.giustiziato .description {
+    background: var(--color6-alpha) !important;
+    box-shadow: var(--shadow-color6) !important;
+}
+body.clr-4 .legend .dot.assassinato,
+body.clr-4 #events_list .event.assassinato .description {
+    background: var(--color3-alpha) !important;
+    box-shadow: var(--shadow-color3) !important;
+}
+body.clr-4 .player a {
+    text-shadow: 0 1px 10px var(--color6);
+}
+
+
+/* COLORI FAZIONI
+colonia e default */
+/* #events_list .event .description.clr-0, */
+/* body.clr-0 .legend .dot, */
+/* body.clr-0 .player, */
 .player,
 .colonia,
 .amministrazione,
-.legend .dot.giustiziato,
+.dot.giustiziato,
 #events_list .event.giustiziato .description {
-    background: var(--color3-alpha);
-    box-shadow: var(--shadow-color3);
+    background: var(--color3-alpha) !important;
+    box-shadow: var(--shadow-color3) !important;
 }
+/* #events_list .event .description.clr-0 a, */
+/* body.clr-0 .player a */
+/* .player.clr-0 a, */
 .player a,
 .colonia a,
 .amministrazione a,
-.legend .dot.giustiziato,
+.dot.giustiziato,
 #events_list .event.giustiziato .description a {
     text-shadow: 0 1px 10px var(--color3);
 }
 #players_list>.player.amministrazione {
     border: 1px solid #fff9 !important;
 }
+/* .legend .dot.clr-1, */
+/* .player.clr-1, */
+/* #events_list .event .description.clr-1, */
 .ribelli,
-.legend .dot.assassinato,
+.dot.assassinato,
 #events_list .event.assassinato .description {
-    background: var(--color2-alpha);
-    box-shadow: var(--shadow-color2);
+    background: var(--color2-alpha) !important;
+    box-shadow: var(--shadow-color2) !important;
 }
+/* .player.clr-1 a, */
+/* #events_list .event .description.clr-1 a, */
 .ribelli a,
 #events_list .event.assassinato .description a {
     text-shadow: 0 1px 10px var(--color2);
 }
-
+/* #events_list .event .description.clr-2, */
+/* .legend .dot.clr-2, */
+/* .player.clr-2, */
 .software {
-    background: var(--color4-alpha);
-    box-shadow: var(--shadow-color4);
+    background: var(--color4-alpha) !important;
+    box-shadow: var(--shadow-color4) !important;
 }
+/* #events_list .event .description.clr-2 a, */
+/* .player.clr-2 a, */
 .software a {
     text-shadow: 0 1px 10px var(--color4);
 }
-
+/* #events_list .event .description.clr-3, */
+/* .legend .dot.clr-3, */
+/* .player.clr-3, */
 .simbionti {
-    background: var(--color5-alpha);
-    box-shadow: var(--shadow-color5);
+    background: var(--color5-alpha) !important;
+    box-shadow: var(--shadow-color5) !important;
 }
+/* #events_list .event .description.clr-3 a, */
+/* .player.clr-3 a, */
 .simbionti a {
     text-shadow: 0 1px 10px var(--color5);
 }
-
+/* #events_list .event .description.clr-4, */
+/* .legend .dot.clr-4, */
+/* .player.clr-4, */
 .programmatori {
-    background: var(--color6-alpha);
-    box-shadow: var(--shadow-color6);
+    background: var(--color6-alpha) !important;
+    box-shadow: var(--shadow-color6) !important;
 }
+/* #events_list .event .description.clr-4 a, */
+/* .player.clr-4 a, */
 .programmatori a {
     text-shadow: 0 1px 10px var(--color6);
 }

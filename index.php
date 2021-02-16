@@ -38,7 +38,8 @@
 </head>
 
 <?php if(isset($village)) { ?>
-    <body style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')">
+    <body class="<?php $color = rand(0,4); echo("clr-".$color); ?>">
+        <div id="bg" style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')"></div>
 <?php } else { ?>
     <body style="background-image: url('assets/img/bg/<?php if($seed == 0) {echo("space/");} else {echo("classic/");} echo(rand(0, 5)); ?>.jpg')">
 <?php } ?>
@@ -81,7 +82,7 @@
         </span>
         <div id="players_list">
             <?php foreach($village['giocatori'] as $giocatore) { ?>
-                <a target="_blank" href="https://t.me/<?php echo($giocatore['username']); ?>" class="player username <?php if($giocatore['in_vita'] != "true") {echo("dead");} ?>">
+                <a target="_blank" href="https://t.me/<?php echo($giocatore['username']); ?>" class="player username <?php if($giocatore['in_vita'] != "true") {echo(" dead");} ?>">
                     @<?php echo($giocatore['username']); ?>
                 </a>
             <?php } ?>

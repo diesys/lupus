@@ -16,7 +16,7 @@
     --shadow-color4: 0 2px 20px 2px var(--color4-alpha);
 }
 
-body {
+body>#bg {
     background-image: url('../img/bg/classic/1.jpg');
 }
 
