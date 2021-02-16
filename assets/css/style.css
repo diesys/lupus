@@ -109,6 +109,9 @@ center.regolamento h3 {
 center.regolamento section {
     min-width: 100%;
 }
+center.regolamento section img {
+    vertical-align: middle;
+}
 
 a:not(.username), h1, h2, h3 {
     color: var(--color);
