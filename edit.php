@@ -18,8 +18,10 @@
 
     // update giocatori da populate.php$_POST['id_evento']
     // le chiavi sono della forma: key#n , con n ordinale
-    if($_SESSION['logged_in'] == TRUE and (isset($_POST) and isset($_POST['username#0']) and !isset($_POST['new_name']))) {
+    if($_SESSION['logged_in'] == TRUE and (isset($_POST) and isset($_POST['master']) and isset($_POST['username#0']) and !isset($_POST['new_name']))) {
         $giocatori = array(array());
+        $village['master'] = $_POST['master'];
+        unset($_POST['master']);
         foreach($_POST as $key => $value) {
             $chiave = explode('#', $key)[0];
             $giocatore_n = explode('#', $key)[1];

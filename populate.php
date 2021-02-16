@@ -77,6 +77,11 @@
 
 <?php if ($village != NULL and $error == "" and isset($_SESSION['logged_in']) and $_SESSION['logged_in'] == TRUE) { ?>
     <form action="edit.php?v=<?php echo($village['id']); ?>" method="post" name="populate_form" class="flex-column">
+        <div class='player_input'>
+            <label for="master">Master</label>
+            <input type="text" placeholder="master" name="master" placeholder="master" value="<?php if(isset($village['master'])) {echo($village['master']);} ?>" required>
+        </div>
+        <h3>Giocatori</h3>
     <?php $i=0; foreach ($village['giocatori'] as $player) { ?>
         <span class='player_input'>
             <input type="text" placeholder="username" name="username#<?php echo($i); ?>" value="<?php echo($player['username']); ?>" required>

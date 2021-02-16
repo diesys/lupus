@@ -61,9 +61,13 @@
                 <img src="assets/img/icons/event-24px.svg" alt="·" height="28" width="28">
                 Calendario</a>
             </li>
-            <li><a href="regolamento.php?v=<?php if(isset($village['variante']) == "space") {echo($village['variante']);} ?>">
+            <li><a href="regolamento.php?v=<?php if($village['variante'] == "space") {echo($village['variante']);} ?>">
                 <img src="assets/img/icons/menu_book-24px.svg" alt="·" height="28" width="28">
                 Regolamento</a>
+            </li>
+            <li><a target="_blank" href="https://t.me/<?php if(isset($village['master'])) {echo($village['master']);} ?>">
+                <img src="assets/img/icons/chat-24px.svg" alt="·" height="28" width="28">
+                Master</a>
             </li>
         </ul>
     <?php } ?>
