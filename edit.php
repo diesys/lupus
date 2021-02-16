@@ -98,7 +98,7 @@
                 <img src="assets/img/icons/public-24px.svg" alt="·" height="28" width="28">    
                 Bacheca</a>
             </li>
-            <li><a href="v/<?php echo($village['nome']); ?>.json" download>
+            <li><a target="_blank" href="v/<?php echo($village['nome']); ?>.json" download>
                 <img src="assets/img/icons/download-24px.svg" alt="·" height="28" width="28">
                 Download</a>
             </li>
@@ -151,7 +151,7 @@
             <button type="submit" formmethod="post">aggiungi</button>
         </form>
 
-        <!-- <form action="update.php?v=<?php echo($village['id']); ?>" method="post">
+        <form action="update.php?v=<?php echo($village['id']); ?>" method="post">
             <h4 class="full-width">Rimuovi dal calendario</h4>
             <select name="id_evento">
                 <?php
@@ -165,7 +165,7 @@
             </select>
 
             <button type="submit" formmethod="post">elimina</button>
-        </form> -->
+        </form>
 
 
         <span class="full-width" id="players">
@@ -199,7 +199,7 @@
             <h2 class="full-width">Calendario</h2>
         </span>
         <p class="legend full-width">
-            <span class="dot assassinato">assassati di notte</span> · <span class="dot giustiziato">giustiziati di giorno</span>
+            <span class="dot assassinato">assassati di notte</span><span class="dot giustiziato">giustiziati di giorno</span>
         </p>
         <div id="events_list">
             <?php $n_days = count($days); 
