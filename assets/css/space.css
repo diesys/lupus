@@ -166,9 +166,6 @@ body.clr-4 .player a {
 
 /* COLORI FAZIONI
 colonia e default */
-/* #events_list .event .description.clr-0, */
-/* body.clr-0 .legend .dot, */
-/* body.clr-0 .player, */
 .player,
 .colonia,
 .amministrazione,
@@ -177,9 +174,6 @@ colonia e default */
     background: var(--color3-alpha) !important;
     box-shadow: var(--shadow-color3) !important;
 }
-/* #events_list .event .description.clr-0 a, */
-/* body.clr-0 .player a */
-/* .player.clr-0 a, */
 .player a,
 .colonia a,
 .amministrazione a,
@@ -190,54 +184,34 @@ colonia e default */
 #players_list>.player.amministrazione {
     border: 1px solid #fff9 !important;
 }
-/* .legend .dot.clr-1, */
-/* .player.clr-1, */
-/* #events_list .event .description.clr-1, */
 .ribelli,
 .dot.assassinato,
 #events_list .event.assassinato .description {
     background: var(--color2-alpha) !important;
     box-shadow: var(--shadow-color2) !important;
 }
-/* .player.clr-1 a, */
-/* #events_list .event .description.clr-1 a, */
 .ribelli a,
 #events_list .event.assassinato .description a {
     text-shadow: 0 1px 10px var(--color2);
 }
-/* #events_list .event .description.clr-2, */
-/* .legend .dot.clr-2, */
-/* .player.clr-2, */
 .software {
     background: var(--color4-alpha) !important;
     box-shadow: var(--shadow-color4) !important;
 }
-/* #events_list .event .description.clr-2 a, */
-/* .player.clr-2 a, */
 .software a {
     text-shadow: 0 1px 10px var(--color4);
 }
-/* #events_list .event .description.clr-3, */
-/* .legend .dot.clr-3, */
-/* .player.clr-3, */
 .simbionti {
     background: var(--color5-alpha) !important;
     box-shadow: var(--shadow-color5) !important;
 }
-/* #events_list .event .description.clr-3 a, */
-/* .player.clr-3 a, */
 .simbionti a {
     text-shadow: 0 1px 10px var(--color5);
 }
-/* #events_list .event .description.clr-4, */
-/* .legend .dot.clr-4, */
-/* .player.clr-4, */
 .programmatori {
     background: var(--color6-alpha) !important;
     box-shadow: var(--shadow-color6) !important;
 }
-/* #events_list .event .description.clr-4 a, */
-/* .player.clr-4 a, */
 .programmatori a {
     text-shadow: 0 1px 10px var(--color6);
 }
