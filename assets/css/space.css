@@ -110,13 +110,17 @@ body.clr-1 #events_list .event.giustiziato .description {
     background: var(--color2-alpha) !important;
     box-shadow: var(--shadow-color2) !important;
 }
+body.clr-1 .player a,
+body.clr-1 #events_list .event.giustiziato .description a {
+    text-shadow: 0 1px 10px var(--color2);
+}
 body.clr-1 .legend .dot.assassinato,
 body.clr-1 #events_list .event.assassinato .description {
     background: var(--color4-alpha) !important;
     box-shadow: var(--shadow-color4) !important;
 }
-body.clr-1 .player a {
-    text-shadow: 0 1px 10px var(--color2);
+body.clr-1 #events_list .event.assassinato .description a {
+    text-shadow: 0 1px 10px var(--color4) !important;
 }
 
 body.clr-2 .player, 
@@ -125,13 +129,17 @@ body.clr-2 #events_list .event.giustiziato .description {
     background: var(--color4-alpha) !important;
     box-shadow: var(--shadow-color4) !important;
 }
+body.clr-2 .player a,
+body.clr-2 #events_list .event.giustiziato .description a {
+    text-shadow: 0 1px 10px var(--color4) !important;
+}
 body.clr-2 .legend .dot.assassinato,
 body.clr-2 #events_list .event.assassinato .description {
     background: var(--color5-alpha) !important;
     box-shadow: var(--shadow-color5) !important;
 }
-body.clr-2 .player a {
-    text-shadow: 0 1px 10px var(--color4);
+body.clr-2 #events_list .event.assassinato .description a {
+    text-shadow: 0 1px 10px var(--color5) !important;
 }
 
 body.clr-3 .player, 
@@ -140,13 +148,17 @@ body.clr-3 #events_list .event.giustiziato .description {
     background: var(--color5-alpha) !important;
     box-shadow: var(--shadow-color5) !important;
 }
+body.clr-3 .player a,
+body.clr-3 #events_list .event.giustiziato .description a {
+    text-shadow: 0 1px 10px var(--color5) !important;
+}
 body.clr-3 .dot.assassinato,
 body.clr-3 #events_list .event.assassinato .description {
     background: var(--color6-alpha) !important;
     box-shadow: var(--shadow-color6) !important;
 }
-body.clr-3 .player a {
-    text-shadow: 0 1px 10px var(--color5);
+body.clr-3 #events_list .event.assassinato .description a {
+    text-shadow: 0 1px 10px var(--color6) !important;
 }
 
 body.clr-4 .player, 
@@ -155,13 +167,17 @@ body.clr-4 #events_list .event.giustiziato .description {
     background: var(--color6-alpha) !important;
     box-shadow: var(--shadow-color6) !important;
 }
+body.clr-4 .player a,
+body.clr-4 #events_list .event.giustiziato .description a {
+    text-shadow: 0 1px 10px var(--color6) !important;
+}
 body.clr-4 .legend .dot.assassinato,
 body.clr-4 #events_list .event.assassinato .description {
     background: var(--color3-alpha) !important;
     box-shadow: var(--shadow-color3) !important;
 }
-body.clr-4 .player a {
-    text-shadow: 0 1px 10px var(--color6);
+body.clr-4 #events_list .event.assassinato .description a {
+    text-shadow: 0 1px 10px var(--color3) !important;
 }
 
 
@@ -172,8 +188,8 @@ colonia e default */
 .amministrazione,
 .dot.giustiziato,
 #events_list .event.giustiziato .description {
-    background: var(--color3-alpha) !important;
-    box-shadow: var(--shadow-color3) !important;
+    background: var(--color3-alpha);
+    box-shadow: var(--shadow-color3);
 }
 .player a,
 .colonia a,
@@ -183,35 +199,35 @@ colonia e default */
     text-shadow: 0 1px 10px var(--color3);
 }
 #players_list>.player.amministrazione {
-    border: 1px solid #fff9 !important;
+    border: 1px solid #fff9;
 }
 .ribelli,
 .dot.assassinato,
 #events_list .event.assassinato .description {
-    background: var(--color2-alpha) !important;
-    box-shadow: var(--shadow-color2) !important;
+    background: var(--color2-alpha);
+    box-shadow: var(--shadow-color2);
 }
 .ribelli a,
 #events_list .event.assassinato .description a {
     text-shadow: 0 1px 10px var(--color2);
 }
 .software {
-    background: var(--color4-alpha) !important;
-    box-shadow: var(--shadow-color4) !important;
+    background: var(--color4-alpha);
+    box-shadow: var(--shadow-color4);
 }
 .software a {
     text-shadow: 0 1px 10px var(--color4);
 }
 .simbionti {
-    background: var(--color5-alpha) !important;
-    box-shadow: var(--shadow-color5) !important;
+    background: var(--color5-alpha);
+    box-shadow: var(--shadow-color5);
 }
 .simbionti a {
     text-shadow: 0 1px 10px var(--color5);
 }
 .programmatori {
-    background: var(--color6-alpha) !important;
-    box-shadow: var(--shadow-color6) !important;
+    background: var(--color6-alpha);
+    box-shadow: var(--shadow-color6);
 }
 .programmatori a {
     text-shadow: 0 1px 10px var(--color6);
