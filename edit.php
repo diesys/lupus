@@ -176,6 +176,7 @@
         <p class="legend full-width">
         <?php if($village['variante'] == "space") { ?>
             <span class="dot colonia">colonia</span>
+            <span class="dot ribelli">replicanti</span>
             <span class="dot ribelli">ribelli</span>
             <span class="dot software">software</span>
             <span class="dot simbionti">simbionti</span>
