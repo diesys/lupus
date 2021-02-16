@@ -179,7 +179,7 @@ $roles = array(
             'sosia' => 'ribelli',
             
             // programmatori
-            'programmatore' => 'programmatori',
+            // 'programmatore' => 'programmatori',
             
             // simbionti
             'simbionte' => 'simbionti',
