@@ -165,17 +165,19 @@ $roles = array(
             'capo partito' => 'amministrazione',
             'ceo' => 'amministrazione',
             'portavoce' => 'amministrazione',
+
+            // replicanti
+            'collaboratore' => 'replicanti',
+            'I.A.' => 'replicanti',
+            'virus' => 'replicanti',
+            'replicante' => 'replicanti',
             
             // ribelli
             'cancellatore' => 'ribelli',
-            'collaboratore' => 'ribelli',
             'coordinatore' => 'ribelli',
-            'I.A.' => 'ribelli',
-            'infiltrato' => 'ribelli',
-            'virus' => 'ribelli',
+            'informatore' => 'ribelli',
             'lurker' => 'ribelli',
             'man in the middle' => 'ribelli',
-            'replicante' => 'ribelli',
             'sosia' => 'ribelli',
             
             // programmatori
