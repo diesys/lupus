@@ -32,7 +32,7 @@
 <body class="<?php $color = rand(0,4); echo("clr-".$color); ?>">
     <div id="bg" style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')"></div>
     <header>
-        <h2>
+        <h2 class="title">
             <a class="logo" href="."><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
             Lupus
         </h2>

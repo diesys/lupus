@@ -73,7 +73,7 @@
         <?php 
             if($variant != "") {echo($content);} 
             else { ?>
-                <p>Vedi la nuovissima variante <a href="regolamento.php?v=space">Lupus in Space</a> o la <a href="regolamento.php?v=classic">Classica</a></p>
+                <p>Vedi la nuovissima variante <a href="regolamento.php?v=space">Lupus in Space</a> o la <a href="regolamento.php?v=classic">Classica</a> (al momento non presente)</p>
         <?php } ?>
     </center>
 

@@ -46,10 +46,6 @@
 <?php } ?>
 
 <header>
-    <h2>
-        <?php if(isset($village['nome'])) {echo($village['nome']);} ?>
-    </h2>
-
     <ul>
         <li>
             <a class="logo" href="admin.php"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
@@ -75,6 +71,9 @@
 </header>
 
 <center>
+    <h2 class="title">
+        <?php if(isset($village['nome'])) {echo($village['nome']);} ?>
+    </h2>
 
 <?php if ($village != NULL and $error == "" and isset($_SESSION['logged_in']) and $_SESSION['logged_in'] == TRUE) { ?>
     <form action="edit.php?v=<?php echo($village['id']); ?>" method="post" name="populate_form" class="flex-column">
