@@ -126,16 +126,19 @@
 
         <!-- HOMEPAGE -->
         <p>
-            In costruzione... leggi i <a href="credits.html">credits</a> (ancora più in costruzione) <br><br>
-            Sei un <a href="login.php">master</a>?
+            In costruzione... sei un <a href="login.php">master</a>?
         </p>
-        <p>Vedi la nuovissima variante <a href="regolamento.php?v=space">Lupus in Space</a> o la <a href="regolamento.php?v=classic">Classica</a></p>
+        <p>
+            Vedi il regolamento della nuovissima variante <a href="regolamento.php?v=space">Lupus in Space</a> 
+            <!-- o la <a href="regolamento.php?v=classic">Classica</a> -->
+        </p>
     <?php } ?> 
     </center>
 
     <footer>
         <p class="legend">
-            Questo sito conserva solamente i dati caricati dai master (chiedendone il consenso agli utenti): informazioni necessarie al fine del gioco (username/nome riconoscibile degli utenti) e le partite stesse. Le pagine pubbliche di consultazione utilizzano un link generato casualmente per essere visto solo da chi lo possiede.
+            Questo sito conserva solamente i dati caricati dai master (chiedendone il consenso agli utenti): informazioni necessarie al fine del gioco (username/nome riconoscibile degli utenti) e le partite stesse. Le pagine pubbliche di consultazione utilizzano un link generato casualmente per essere visto solo da chi lo possiede. <br>
+            Leggi i <a href="credits.html">credits</a> (in costruzione)
         </p>
     </footer>
 </body>
