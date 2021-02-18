@@ -225,10 +225,10 @@ colonia e default */
 .simbionti a {
     text-shadow: 0 1px 10px var(--color5);
 }
-.programmatori {
+.replicanti {
     background: var(--color6-alpha);
     box-shadow: var(--shadow-color6);
 }
-.programmatori a {
+.replicanti a {
     text-shadow: 0 1px 10px var(--color6);
 }
