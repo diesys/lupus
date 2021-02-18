@@ -45,12 +45,6 @@
 <?php } ?>
 
     <header>
-        <h2>
-        <?php if($village == NULL) { ?>
-            <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
-        <?php } ?>
-            <?php if($village != NULL) {echo($village['nome']);} else { echo("Lupus");}?>
-        </h2>
     <?php if($village != NULL) { ?>
         <ul>
             <li><a href="#" class="logo"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a></li>
@@ -80,7 +74,14 @@
     <?php } ?>
     </header>
 
+    
     <center>
+        <h2 class="title">
+            <?php if($village == NULL) { ?>
+                <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
+            <?php } ?>
+                <?php if($village != NULL) {echo($village['nome']);} else { echo("Lupus");}?>
+        </h2>
     <?php if($village != NULL) { ?>
         <span id="players">
             <h2>

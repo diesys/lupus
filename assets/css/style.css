@@ -91,7 +91,11 @@ center {
     max-width: 100%;
     padding: 2em 10%;
 }
-
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 center.regolamento {
     text-align: justify !important;
     text-shadow: 0 1px 4px #000 !important;
@@ -128,10 +132,16 @@ form {
 }
 
 header {
+    position: fixed;
     flex-direction: column-reverse;
     background: linear-gradient(#000c, #0000);
     user-select: none;
     flex-wrap: wrap;
+    width: 100vw;
+    z-index: 5 !important;
+}
+header + * {
+    margin-top: 8em;
 }
 
 header h2 {
@@ -146,7 +156,7 @@ header h2 {
     text-transform: capitalize;
 }
 
-header img {
+header img, .title img {
     margin-right: .5em;
     /* margin-top: .5rem; */
 }
