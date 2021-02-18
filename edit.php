@@ -169,7 +169,16 @@
 
 
         <span class="full-width" id="players">
-            <h2><a href="populate.php?v=<?php echo($village['id']); ?>">Giocatori</a></h2>
+            <h2>
+                <a href="populate.php?v=<?php echo($village['id']); ?>">
+                    <?php 
+                        if($village['variante'] == "space") 
+                            {echo("Colonia");}
+                        elseif($village['variante'] == "classic") 
+                            {echo("Villaggio");}
+                    ?>
+                </a>
+            </h2>
             <!-- <p><a href="populate.php?v=<?php echo($village['id']); ?>">modifica</a></p> -->
             <span>Vivi: <?php echo($alive[0]."/".intval($alive[0]+$alive[1]));?></span>
         </span>

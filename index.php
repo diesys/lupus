@@ -56,7 +56,13 @@
             <li><a href="#" class="logo"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a></li>
             <li><a href="#players">
                 <img src="assets/img/icons/people-24px.svg" alt="·" height="28" width="28">
-                Giocatori</a>
+                    <?php 
+                        if($village['variante'] == "space") 
+                            {echo("Colonia");}
+                        elseif($village['variante'] == "classic") 
+                            {echo("Villaggio");}
+                    ?>
+                </a>
             </li>
             <li><a href="#events">
                 <img src="assets/img/icons/event-24px.svg" alt="·" height="28" width="28">
@@ -77,7 +83,14 @@
     <center>
     <?php if($village != NULL) { ?>
         <span id="players">
-            <h2>Giocatori</h2>
+            <h2>
+                <?php 
+                    if($village['variante'] == "space") 
+                        {echo("Colonia");}
+                    elseif($village['variante'] == "classic") 
+                        {echo("Villaggio");}
+                ?>
+            </h2>
             <span>Vivi: <?php echo($alive[0]."/".intval($alive[0]+$alive[1]));?></span>
         </span>
         <div id="players_list">
