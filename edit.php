@@ -82,11 +82,7 @@
 </head>
 
 <body style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')">
-    <header>
-        <h2>
-            <?php if(isset($village['nome'])) echo($village['nome']);?>
-        </h2>
-        
+    <header>       
         <ul>
             <li><a href="#" class="logo"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a></li>
             <li><a href="admin.php">
@@ -114,6 +110,9 @@
     </header>
 
     <center>
+        <h2 class="title">
+            <?php if(isset($village['nome'])) echo($village['nome']);?>
+        </h2>
     
     <?php if(isset($village) and $error == "") { ?>
         <form action="update.php?v=<?php echo($village['id']); ?>" method="post">
