@@ -30,10 +30,12 @@
     <link rel="shortcut icon" href="assets/img/favicon.ico" />
     <title>Popola <?php if(isset($village['nome'])) {echo($village['nome']);} ?> | Lupus</title>
     
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="assets/css/style.css">
     <?php if($village['variante'] == "space") { ?>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="assets/css/space.css">
     <?php } elseif($village['variante'] == "classic") { ?>
         <link rel="stylesheet" href="assets/css/classic.css">

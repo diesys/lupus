@@ -27,10 +27,6 @@
     --shadow-color7: 0 2px 20px 2px var(--color6-alpha);
 }
 
-* {
-    font-family: 'Righteous', cursive !important;
-}
-
 input,
 select,
 button,

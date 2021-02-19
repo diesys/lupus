@@ -26,18 +26,18 @@
     <?php } ?>
     
     <!-- general css -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="assets/css/style.css">
     <?php if($variant == "classic") { ?>
         <link rel="stylesheet" href="assets/css/classic.css">
     <?php } elseif($variant == "space") { ?>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="assets/css/space.css">
     <?php } elseif(rand(0,1) == 0) { ?>
         <link rel="stylesheet" href="assets/css/classic.css">
     <?php } else { ?>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="assets/css/space.css">
     <?php } ?>
 </head>

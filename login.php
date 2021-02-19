@@ -14,11 +14,12 @@
     <link rel="shortcut icon" href="assets/img/favicon.ico" />
     <title>Login | Lupus</title>
     
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <?php $seed = rand(0,1);
     if($seed == 0) { ?>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="assets/css/space.css">
     <?php } else { ?>
         <link rel="stylesheet" href="assets/css/classic.css">

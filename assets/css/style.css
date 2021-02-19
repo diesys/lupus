@@ -48,7 +48,11 @@ header ul li a {
 
 html,
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    /* font-family: 'Righteous', cursive !important; */
+    font-family: 'Londrina Solid', cursive !important;
+    font-weight: 300;
+    font-size: 1.1rem;
     min-height: 100vh;
     width: 100vw;
     overflow-x: hidden;
@@ -144,6 +148,7 @@ form {
 }
 
 header {
+    /* font-size: 1rem; */
     position: fixed;
     flex-direction: column-reverse;
     background: linear-gradient(#000c, #0000);
@@ -206,7 +211,7 @@ header ul li a {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    font-size: .9rem;
+    /* font-size: .9rem; */
     font-weight: 600;
 }
 header ul li a.logo {
@@ -278,6 +283,8 @@ option {
     outline: none !important;
     min-width: 8em;
     opacity: .8;
+    font-family: 'Londrina Solid', cursive !important;
+    font-size: 1rem;
 }
 
 input,
