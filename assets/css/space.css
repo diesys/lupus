@@ -98,11 +98,11 @@ body.clr-3 header ul, body.bs-clr-3 header ul {background: linear-gradient(130de
 body.clr-4 header ul, body.bs-clr-4 header ul {background: linear-gradient(130deg, var(--color3-alpha),var(--color6-alpha), #0000 95%);}
 
 /* only admin form class */
-body.bs-clr-0 center form {box-shadow: var(--shadow-color3) !important; border-color:var(--color3) !important;}
-body.bs-clr-1 center form {box-shadow: var(--shadow-color2) !important; border-color:var(--color2) !important;}
-body.bs-clr-2 center form {box-shadow: var(--shadow-color4) !important; border-color:var(--color4) !important;}
-body.bs-clr-3 center form {box-shadow: var(--shadow-color5) !important; border-color:var(--color5) !important;}
-body.bs-clr-4 center form {box-shadow: var(--shadow-color6) !important; border-color:var(--color6) !important;}
+body.bs-clr-0 center form {box-shadow: 0 -10px 20px -10px var(--color3-alpha) !important; border-color:var(--color3) !important;}
+body.bs-clr-1 center form {box-shadow: 0 -10px 20px -10px var(--color2-alpha) !important; border-color:var(--color2) !important;}
+body.bs-clr-2 center form {box-shadow: 0 -10px 20px -10px var(--color4-alpha) !important; border-color:var(--color4) !important;}
+body.bs-clr-3 center form {box-shadow: 0 -10px 20px -10px var(--color5-alpha) !important; border-color:var(--color5) !important;}
+body.bs-clr-4 center form {box-shadow: 0 -10px 20px -10px var(--color6-alpha) !important; border-color:var(--color6) !important;}
 
 body.clr-0 .player, 
 body.clr-0 .legend .dot.giustiziato,

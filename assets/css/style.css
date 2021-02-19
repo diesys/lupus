@@ -96,15 +96,22 @@ center {
     padding: 2em 10%;
 }
 
-center form {
+body:not(.login) center form {
     background: #0006;
     box-shadow: 0 -10px 20px -10px #9997;
     border-top: 1px solid #aaa9;
-    padding: 0 5% 3% 5%;
+    margin: 1% 2%;
+    padding: 1% 4% 1% 4%;
     margin-bottom: 1em;
 }
 center form button {
     margin-bottom: .8em;
+}
+form .half-flex.collapsed {
+    display: none;
+}
+form .half-flex:not(.collapsed) {
+    display: flex;
 }
 
 .title {
@@ -207,6 +214,7 @@ header ul li a {
     cursor: pointer;
     text-decoration: none;
     color: #fff !important;
+    width: max-content;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -265,7 +273,8 @@ footer {
 a.player,
 .event a {
     color: #fffd !important;
-    font-weight: bold;
+    /* font-weight: bold; */
+    font-weight: 400;
     text-decoration: none;
     cursor: pointer !important;
 }
@@ -306,6 +315,9 @@ button {
     flex: 0;
     flex-direction: column;
     flex-wrap: nowrap !important;
+}
+h4.half-flex {
+    flex: 1;
 }
 
 input:active,

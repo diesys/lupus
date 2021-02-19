@@ -31,9 +31,18 @@
     <?php } else { ?>
         <link rel="stylesheet" href="assets/css/classic.css">
     <?php } ?>
+
+    <script>
+        function uncollapse() {
+            document.querySelectorAll('.collapsed').forEach(element => {
+                element.classList.remove('collapsed');
+            })
+            document.querySelector('#titolo_crea').className = "full-width";
+        }
+    </script>
 </head>
 
-<body class="<?php $color = rand(0,4); echo("clr-".$color); ?>">
+<body class="admin <?php $color = rand(0,4); echo("clr-".$color." bs-clr-".$color); ?>">
     <div id="bg" style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')"></div>
     <header>
         <h2 class="title">
@@ -46,46 +55,46 @@
     <?php if ($logged == TRUE) { ?> 
         <h2>Benvenuto Master!</h2>
 
-        <form action="populate.php?v=<?php echo(generateRandomString()); ?>" method="post">
-            <h4 class="full-width">Crea partita</h4>
-
-            <span class="half-flex">
-                <label for="new_name">Nome</label>
-                <input name="new_name" placeholdxer="Nome" type="text" pattern="[A-Za-z0-9]{4-24}" required />
-            </span>
-            
-            <span class="half-flex">
-                <label for="variant">Variante</label>
-                <select name="variant" id="variant" required>
-                    <option value="space" selected>Lupus in Space</option>
-                    <option value="classic">Classico</option>
-                </select>
-            </span>
-
-            <span class="half-flex">
-                <label for="players">Giocatori</label>
-                <input name="players" type="number" placeholder="Giocatori" min="2" max="40" range="1" required />
-            </span>
-
-            <!-- <p class="legend">¹ alfanumerico senza spazi · ² 4-30 giocatori</p> -->
-
-            <span class="half-flex">
-                <button class="half-width" type="submit" formmethod="post">Crea</button>
-            </span>
-        </form>  
-
-        
         <form action="edit.php" id="select_village" method="get">
             <h4 class="half-flex">Modifica</h4>
             <!-- <label for="v">Villaggio</label> -->
             <select class="half-flex" name="v" id="lista_villaggi" onchange="document.querySelector('#select_village').submit()" required>
-        z        <option value="" disabled selected></option>
+                <option value="" disabled selected></option>
                 <?php foreach ($villages as $hash => $name) {
                     echo("<option value='".$hash."'>".$name."</option>");
                 } ?>
             </select>
             <!-- <button type="submit" formmethod="get">vai</button> -->
         </form>
+
+        <form action="populate.php?v=<?php echo(generateRandomString()); ?>" method="post">
+            <h4 class="half-flex" id="titolo_crea">Crea partita</h4>
+            
+            <span class="half-flex">
+                <!-- <label for="variant">Variante</label> -->
+                <select onchange="uncollapse();" name="variant" id="variant" required>
+                    <option value="" disabled selected>variante</option>
+                    <option value="space">Lupus in Space</option>
+                    <option value="classic">Classico</option>
+                </select>
+            </span>
+            
+            <span class="half-flex collapsed">
+                <label for="new_name">Nome</label>
+                <input name="new_name" placeholdxer="Nome" type="text" pattern="[A-Za-z0-9]{4-24}" required />
+            </span>
+            
+            <span class="half-flex collapsed">
+                <label for="players">Giocatori</label>
+                <input name="players" type="number" placeholder="Giocatori" min="2" max="40" range="1" required />
+            </span>
+
+            <!-- <p class="legend">¹ alfanumerico senza spazi · ² 4-30 giocatori</p> -->
+
+            <span class="half-flex collapsed">
+                <button class="half-width" type="submit" formmethod="post">Crea</button>
+            </span>
+        </form>  
 
     <?php } if ($error != "") { ?>
         <h3 class="error"><?php echo($error);?>, torna alla pagina di <a href="login.php">login</a>?</h3>

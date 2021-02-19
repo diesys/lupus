@@ -26,7 +26,7 @@
     <?php } ?>
 </head>
 
-<body class="<?php $color = rand(0,4); echo("clr-".$color); ?>">
+<body class="login <?php $color = rand(0,4); echo("clr-".$color); ?>">
     <div id="bg" style="background-image: url('assets/img/bg/<?php if($seed == 0) {echo("space/");} else {echo("classic/");} echo(rand(0, 5)); ?>.jpg')"></div>
     <header>
         <h2 class="title">
@@ -36,13 +36,13 @@
     </header>
 
     <center>
-        <form action="admin.php" method="post" class="flex-column">
+        <form action="admin.php" method="post" class="flex">
             <input autofocus type="password" name="password" />
             <button type="submit">entra*</button>
-            <p>
-                <a href=".">Torna alla home</a>
-            </p>
         </form>
+        <p>
+            Oppure <a href=".">torna alla home</a>
+        </p>
 
     </center>
 

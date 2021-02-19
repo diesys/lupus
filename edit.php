@@ -98,7 +98,7 @@
         <?php if(isset($village['id']) and isset($village['nome'])) { ?>
             <li><a href="./?v=<?php echo($village['id']); ?>">
                 <img src="assets/img/icons/public-24px.svg" alt="·" height="28" width="28">    
-                Bacheca</a>
+                Bacheca <?php if(isset($village['nome'])) echo($village['nome']);?></a>
             </li>
             <li><a target="_blank" href="v/<?php echo($village['nome']); ?>.json" download>
                 <img src="assets/img/icons/download-24px.svg" alt="·" height="28" width="28">
@@ -109,16 +109,14 @@
                 <img src="assets/img/icons/logout-24px.svg" alt="·" height="28" width="28">
                 Logout</a>
             </li>
-            <!-- <li><a href="#players">Giocatori</a></li>
-            <li><a href="#events">Calendario</a></li> -->
         <?php } ?>
         </ul>
     </header>
 
     <center>
-        <h2 class="title">
-            <?php if(isset($village['nome'])) echo($village['nome']);?>
-        </h2>
+        <!-- <h2 class="title">
+            <?php// if(isset($village['nome'])) echo($village['nome']);?>
+        </h2> -->
     
     <?php if(isset($village) and $error == "") { ?>
         <form action="update.php?v=<?php echo($village['id']); ?>" method="post">
