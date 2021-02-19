@@ -2,6 +2,7 @@
     include 'assets/lupus.php';
 
     $error = "";
+    $village = NULL;
 
     // LOGIN
     if((isset($_POST) and isset($_POST['password']) and $_POST['password'] == $password) or (isset($_SESSION) and isset($_SESSION['logged_in']) and $_SESSION['logged_in'])) {
@@ -43,7 +44,7 @@
 </head>
 
 <body class="admin <?php $color = rand(0,4); echo("clr-".$color." bs-clr-".$color); ?>">
-    <div id="bg" style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')"></div>
+    <div id="bg" style="background-image: url('assets/img/bg/<?php if($seed == 0) {echo("space");} else {echo("classic");} echo("/".rand(0, 5)); ?>.jpg')"></div>
     <header>
         <h2 class="title">
             <a class="logo" href="."><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
