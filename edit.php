@@ -3,8 +3,9 @@
 
     // MAIN ///////////
     $error = "";
+    $village = NULL;
 
-    if ($_SESSION['logged_in'] == TRUE and isset($_GET) and isset($_GET['v']) and isset($villages)) {
+    if (isset($_SESSION) and isset($_SESSION['logged_in']) and $_SESSION['logged_in'] == TRUE and isset($_GET) and isset($_GET['v']) and isset($villages)) {
         if (array_key_exists($_GET['v'], $villages)) {
             $village = get_village($_GET['v'], $villages);
             $alive = get_alive($village);
@@ -18,7 +19,7 @@
 
     // update giocatori da populate.php$_POST['id_evento']
     // le chiavi sono della forma: key#n , con n ordinale
-    if($_SESSION['logged_in'] == TRUE and (isset($_POST) and isset($_POST['master']) and isset($_POST['username#0']) and !isset($_POST['new_name']))) {
+    if(isset($_SESSION) and isset($_SESSION['logged_in']) and $_SESSION['logged_in'] == TRUE and (isset($_POST) and isset($_POST['master']) and isset($_POST['username#0']) and !isset($_POST['new_name']))) {
         $giocatori = array(array());
         $village['master'] = $_POST['master'];
         unset($_POST['master']);
@@ -45,12 +46,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/favicon.ico" />
     <title>Gestisci <?php echo($village['nome']);?> | Lupus</title>
-    
     <link rel="stylesheet" href="assets/css/style.css">
-    <?php if($village['variante'] == "space") { ?>
-        <link rel="stylesheet" href="assets/css/space.css">
-    <?php } elseif($village['variante'] == "classic") { ?>
+    
+    <?php if($village != NULL and $village['variante'] == "classic") { ?>
         <link rel="stylesheet" href="assets/css/classic.css">
+    <?php } else { ?>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/space.css">
     <?php } ?>
 
     <script>
@@ -81,13 +84,14 @@
     </script>
 </head>
 
-<body style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')">
+<body class="edit <?php if($village == NULL) {echo("clr-");} else {echo("bs-clr-");} echo(rand(0,4)); ?>">
+    <div id="bg" style="background-image: url('assets/img/bg/<?php if($village) {echo($village['variante']);} else { echo("space");} echo("/".rand(0, 5)); ?>.jpg')"></div>
     <header>       
         <ul>
             <li><a href="#" class="logo"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a></li>
             <li><a href="admin.php">
                 <img src="assets/img/icons/view_list-24px.svg" alt="·" height="28" width="28">
-                Villaggi</a>
+                Lista partite</a>
             </li>
         <?php if(isset($village['id']) and isset($village['nome'])) { ?>
             <li><a href="./?v=<?php echo($village['id']); ?>">
@@ -236,7 +240,7 @@
 
 <!-- ERRORI -->
 <?php } elseif ($error != "") { ?>
-    <h2 class="error"><?php echo $error;?></h2>
+    <h3 class="error"><?php echo $error;?></h3>
 <?php } ?>
 
     </center>

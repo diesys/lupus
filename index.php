@@ -31,6 +31,8 @@
     <?php } elseif($village != NULL and $village['variante'] == "classic") { ?>
         <link rel="stylesheet" href="assets/css/classic.css">
     <?php } elseif($seed == 0) { ?>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="assets/css/space.css">
     <?php } else { ?>
         <link rel="stylesheet" href="assets/css/classic.css">
@@ -51,10 +53,11 @@
             <li><a href="#players">
                 <img src="assets/img/icons/people-24px.svg" alt="·" height="28" width="28">
                     <?php 
-                        if($village['variante'] == "space") 
-                            {echo("Colonia");}
-                        elseif($village['variante'] == "classic") 
-                            {echo("Villaggio");}
+                        echo($village['nome']);
+                        // if($village['variante'] == "space") 
+                            // {echo("Colonia");}
+                        // elseif($village['variante'] == "classic") 
+                            // {echo("Villaggio");}
                     ?>
                 </a>
             </li>
@@ -76,12 +79,13 @@
 
     
     <center>
+    <?php if($village == NULL) { ?>
         <h2 class="title">
-            <?php if($village == NULL) { ?>
-                <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
-            <?php } ?>
-                <?php if($village != NULL) {echo($village['nome']);} else { echo("Lupus");}?>
+            <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
+            Lupus
         </h2>
+    <?php } ?>
+
     <?php if($village != NULL) { ?>
         <span id="players">
             <h2>

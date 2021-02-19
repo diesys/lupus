@@ -32,6 +32,8 @@
     
     <link rel="stylesheet" href="assets/css/style.css">
     <?php if($village['variante'] == "space") { ?>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="assets/css/space.css">
     <?php } elseif($village['variante'] == "classic") { ?>
         <link rel="stylesheet" href="assets/css/classic.css">

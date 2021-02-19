@@ -91,6 +91,18 @@ center {
     max-width: 100%;
     padding: 2em 10%;
 }
+
+center form {
+    background: #0006;
+    box-shadow: 0 -10px 20px -10px #9997;
+    border-top: 1px solid #aaa9;
+    padding: 0 5% 3% 5%;
+    margin-bottom: 1em;
+}
+center form button {
+    margin-bottom: .8em;
+}
+
 .title {
     display: flex;
     align-items: center;
@@ -158,6 +170,7 @@ header h2 {
 
 header img, .title img {
     margin-right: .5em;
+    vertical-align: middle;
     /* margin-top: .5rem; */
 }
 header a {
@@ -210,7 +223,8 @@ header ul li a:not(.logo):active {
 }
 
 .error {
-    color: #fffd;
+    color: #fffd !important;
+    font-size: 1.5em !important;
 }
 
 form {
@@ -279,6 +293,12 @@ button {
 
 .half-width {
     width: 40%;
+}
+.half-flex {
+    margin: 1em;
+    flex: 0;
+    flex-direction: column;
+    flex-wrap: nowrap !important;
 }
 
 input:active,
@@ -384,6 +404,11 @@ button {
 #events_list .event .description {
     background: var(--dark-graybitalpha);
     box-shadow: var(--box-shadow);
+}
+
+/* admin */
+#select_village, #select_village h2 {
+    margin-bottom: 2.5rem;
 }
 
 @media (max-width: 700px) {
