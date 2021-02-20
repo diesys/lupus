@@ -45,11 +45,11 @@ button {
 }
 
 /* TEMI */
-body.clr-0>#bg, body.bs-clr-0>#bg {filter: blur(2px) hue-rotate(0deg);}
-body.clr-1>#bg, body.bs-clr-1>#bg {filter: blur(2px) hue-rotate(170deg);}
-body.clr-2>#bg, body.bs-clr-2>#bg {filter: blur(2px) hue-rotate(70deg);}
-body.clr-3>#bg, body.bs-clr-3>#bg {filter: blur(2px) hue-rotate(-70deg);}
-body.clr-4>#bg, body.bs-clr-4>#bg {filter: blur(2px) hue-rotate(-130deg);}
+body.clr-0>#bg, body.bs-clr-0>#bg {filter: blur(1px) hue-rotate(0deg);}
+body.clr-1>#bg, body.bs-clr-1>#bg {filter: blur(1px) hue-rotate(170deg);}
+body.clr-2>#bg, body.bs-clr-2>#bg {filter: blur(1px) hue-rotate(70deg);}
+body.clr-3>#bg, body.bs-clr-3>#bg {filter: blur(1px) hue-rotate(-70deg);}
+body.clr-4>#bg, body.bs-clr-4>#bg {filter: blur(1px) hue-rotate(-130deg);}
 
 a:not(.username), h1, h2, h3 {
     color: var(--color);
