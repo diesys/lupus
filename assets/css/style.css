@@ -80,7 +80,7 @@ body>#bg {
     background-size: cover !important;
     background-repeat: no-repeat !important;
     z-index: 0;
-    filter: blur(2px) hue-rotate(0deg);
+    filter: blur(1px) hue-rotate(0deg);
 }
 
 body>*:not(#bg) {
