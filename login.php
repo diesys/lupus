@@ -30,7 +30,7 @@
     <div id="bg" style="background-image: url('assets/img/bg/<?php if($seed == 0) {echo("space/");} else {echo("classic/");} echo(rand(0, 5)); ?>.jpg')"></div>
     <header>
         <h2 class="title">
-            <a href="."><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
+            <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
             Lupus login
         </h2>
     </header>
