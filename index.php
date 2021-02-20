@@ -76,17 +76,16 @@
                 Master</a>
             </li>
         </ul>
-    <?php } ?>
-    </header>
-
-    
-    <center>
-    <?php if($village == NULL) { ?>
+    <?php } else { ?>
         <h2 class="title">
             <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
             Lupus
         </h2>
     <?php } ?>
+    </header>
+
+    
+    <center>
 
     <?php if($village != NULL) { ?>
         <span id="players">
