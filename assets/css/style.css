@@ -49,9 +49,8 @@ header ul li a {
 html,
 body {
     /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-    /* font-family: 'Righteous', cursive !important; */
-    font-family: 'Londrina Solid', cursive !important;
-    font-weight: 300;
+    font-family: 'Economica', sans-serif;
+    /* font-weight: 300; */
     font-size: 1.1rem;
     min-height: 100vh;
     width: 100vw;
@@ -256,7 +255,7 @@ footer {
 .legend {
     font-style: italic;
     opacity: .8;
-    font-size: .8rem;
+    font-size: .9rem;
 }
 
 .legend .dot {
@@ -266,7 +265,7 @@ footer {
     border: 1px solid var(--border-light);
     box-shadow: var(--box-shadow);
     display: inline-block;
-    margin: .5em;
+    margin: .3em;
 }
 
 .player a,
@@ -292,7 +291,8 @@ option {
     outline: none !important;
     min-width: 8em;
     opacity: .8;
-    font-family: 'Londrina Solid', cursive !important;
+    /* font-family: 'Londrina Solid', cursive !important; */
+    font-family: 'Economica', sans-serif;
     font-size: 1rem;
 }
 
