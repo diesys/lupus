@@ -171,6 +171,7 @@ $roles = array(
             'I.A.' => 'replicanti',
             'virus' => 'replicanti',
             'replicante' => 'replicanti',
+            'traditore' => 'replicanti',
             
             // ribelli
             'cancellatore' => 'ribelli',
