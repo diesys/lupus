@@ -121,7 +121,7 @@
     <?php if(isset($village) and $error == "") { ?>
         <form action="update.php?v=<?php echo($village['id']); ?>" method="post">
             <h4 class="full-width">Aggiungi al calendario</h4>
-            <span>
+            <span class="half-flex">
                 <label for="type">Tipo</label>
                 <select onchange="fixSelect();" name="type" id="type_select" required>
                     <option value="comunicazione">Comunicazione</option>
@@ -131,7 +131,7 @@
                     <!-- <option value="votazione">Votazione</option> -->
                 </select>
             </span>
-            <span>
+            <span class="half-flex">
                 <label for="day">Giorno</label>
                 <select name="day" id="day_select" required>
                     <?php $n_days = count($days); 
@@ -140,7 +140,7 @@
                     } ?>
                 </select>
             </span>
-            <span>
+            <span class="half-flex">
                 <label for="player">Gicatore</label>
                 <select name="player" id="player_select" required disabled>
                     <?php foreach ($village['giocatori'] as $player) { if($player['in_vita'] == "true") {
@@ -148,8 +148,15 @@
                     }} ?>
                 </select>
             </span>
-            <textarea id="description" class="half-width" name="description" placeholder="descrizione (opzionale)" rows="2"></textarea>
-            <input type="text" id="poll_url" name="poll_url" value="" placeholder="URL poll">
+            <span class="half-flex">
+                <label for="description">Descrizione</label>
+                <textarea id="description" class="half-width" name="description" placeholder="descrizione (opzionale)" rows="2"></textarea>
+            </span>
+
+            <span class="half-flex">
+                <label for="poll_url">Poll</label>
+                <input type="text" id="poll_url" name="poll_url" value="" placeholder="URL poll">
+            </span>
             
             <button type="submit" formmethod="post">aggiungi</button>
         </form>

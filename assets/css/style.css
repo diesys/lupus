@@ -41,14 +41,12 @@ textarea,
 .player.dead {
     transition: opacity var(--dur);
 }
-/* color var(--dur), background var(--dur); */
 header ul li a {
     transition: background var(--dur), opacity var(--dur);
 }
 
 html,
 body {
-    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     font-family: 'Economica', sans-serif;
     /* font-weight: 300; */
     font-size: 1.1rem;
@@ -143,6 +141,10 @@ a:not(.username), h1, h2, h3 {
     color: var(--color);
     text-shadow: 0 1px 10px var(--color2);
 }
+h1, h2, h3, h4, h5, h6 {
+    margin: .6em 1em 1em 1em;
+    font-size: 1.2rem;
+}
 
 header,
 center,
@@ -154,7 +156,6 @@ form {
 }
 
 header {
-    /* font-size: 1rem; */
     position: fixed;
     flex-direction: column-reverse;
     background: linear-gradient(#000c, #0000);
@@ -172,7 +173,6 @@ header h2 {
     min-width: 40%;
     display: flex;
     align-items: center;
-    /* justify-content: space-evenly; */
     justify-content: center;
     padding: 1em .5em .5em .5em;
     margin: 0;
@@ -182,13 +182,11 @@ header h2 {
 header img, .title img {
     margin-right: .5em;
     vertical-align: middle;
-    /* margin-top: .5rem; */
 }
 header a {
     text-shadow: none !important;
 }
 header ul {
-    /* position: relative; */
     width: 100%;
     flex: 1;
     list-style: none;
@@ -272,7 +270,6 @@ footer {
 a.player,
 .event a {
     color: #fffd !important;
-    /* font-weight: bold; */
     font-weight: 400;
     text-decoration: none;
     cursor: pointer !important;
@@ -291,7 +288,6 @@ option {
     outline: none !important;
     min-width: 8em;
     opacity: .8;
-    /* font-family: 'Londrina Solid', cursive !important; */
     font-family: 'Economica', sans-serif;
     font-size: 1rem;
 }
