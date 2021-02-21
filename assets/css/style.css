@@ -139,7 +139,7 @@ center.regolamento section {
 center.regolamento section img {
     vertical-align: middle;
 }
-.link {cursor: pointer;}
+.link {cursor: pointer; user-select: none;}
 a:not(.username), h1, h2, h3, .link {
     color: var(--color);
     text-shadow: 0 1px 10px var(--color2);
@@ -248,7 +248,7 @@ form {
 table {
     display: table;
     background: #000c;
-    margin: 4%;
+    margin: 1em;
     border: 1px solid #ccc4;
     padding: 1.2em 1.5em;
 }

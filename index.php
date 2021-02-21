@@ -88,7 +88,7 @@
             </h2>
             <span>Vivi: <?php echo($alive[0]."/".intval($alive[0]+$alive[1]));?></span>
             <br>
-            <small class="link" onclick="document.querySelector('#roles').classList.toggle('hidden')">mostra ruoli</small>
+            <small class="link" onclick="document.querySelector('#roles').classList.toggle('hidden')">mostra/nascondi ruoli</small>
         </span>
 
         <table id="roles" class="hidden">

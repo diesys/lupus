@@ -7,35 +7,25 @@
         } elseif ($_GET['v'] == "classic") {
             $content = file_get_contents('regolamenti/classic.html');
         } $variant = $_GET['v'];
-    } else { $variant = "";}
+    } else { $variant = "space";}
 ?>
 
 <!DOCTYPE html>
 <html lang="it">
 
 <head>
-    <?php if($variant == "space") { ?>
+    <?php if($variant == "space") { echo(headerImport("space")); ?>
         <title>Regolamento | Lupus in Space</title>
-        <link rel="stylesheet" href="assets/css/space.css">
-    <?php } elseif($variant == "classic") { ?>
+    <?php } elseif($variant == "classic") { echo(headerImport("classic")); ?>
         <title>Regolamento | Classico</title>
-        <link rel="stylesheet" href="assets/css/classic.css">
-    <?php } else { ?>
+    <?php } else { echo(headerImport("space")); ?>
         <title>Regolamenti</title>
     <?php } ?>
-    
-    <?php if($village != NULL and $village['variante'] == "classic") { 
-        echo(headerImport("classic"));
-    } elseif(rand(0,1) == 1 and $village != NULL and $village['variante'] != "space") {
-        echo(headerImport("classic"));
-    } else { 
-        echo(headerImport("space"));
-    } ?>
 
 </head>
 
 <body class="<?php $color = rand(0,4); echo("clr-".$color); ?>">
-<?php if(isset($variant)) { ?>    
+<?php if($variant != "") { ?>    
     <div id="bg" style="background-image: url('assets/img/bg/<?php echo($variant."/".rand(0, 5)); ?>.jpg')"></div>
 <?php } else { ?>
     <div id="bg" style="background-image: url('assets/img/bg/<?php if($seed == 0) {echo("space/");} else {echo("classic/");} echo(rand(0, 5)); ?>.jpg')"></div>

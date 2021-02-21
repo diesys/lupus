@@ -55,28 +55,28 @@ body.clr-4>#bg, body.bs-clr-4>#bg {filter: blur(1px) hue-rotate(-130deg);}
     color: var(--color);
     text-shadow: 0 1px 10px var(--color2);
 }
-body.clr-0 .link, a:not(.username), body.clr-0 h1, body.clr-0 h2, body.clr-0 h3,
- body.bs-clr-0 .link, a:not(.username), body.bs-clr-0 h1, body.bs-clr-0 h2, body.bs-clr-0 h3 {
+body.clr-0 .link, body.clr-0 a:not(.username), body.clr-0 h1, body.clr-0 h2, body.clr-0 h3,
+ body.bs-clr-0 .link, body.bs-clr-0 a:not(.username), body.bs-clr-0 h1, body.bs-clr-0 h2, body.bs-clr-0 h3 {
     color: var(--color);
     text-shadow: 0 1px 10px var(--color2);
 }
-body.clr-1 .link, a:not(.username), body.clr-1 h1, body.clr-1 h2, body.clr-1 h3,
-body.bs-clr-1 .link, a:not(.username), body.bs-clr-1 h1, body.bs-clr-1 h2, body.bs-clr-1 h3 {
+body.clr-1 .link, body.clr-1 a:not(.username), body.clr-1 h1, body.clr-1 h2, body.clr-1 h3,
+body.bs-clr-1 .link, body.bs-clr-1 a:not(.username), body.bs-clr-1 h1, body.bs-clr-1 h2, body.bs-clr-1 h3 {
     color: var(--color4);
     text-shadow: 0 1px 10px var(--color4);
 }
-body.clr-2 .link, a:not(.username), body.clr-2 h1, body.clr-2 h2, body.clr-2 h3,
-body.bs-clr-2 .link, a:not(.username), body.bs-clr-2 h1, body.bs-clr-2 h2, body.bs-clr-2 h3 {
+body.clr-2 .link, body.clr-2 a:not(.username), body.clr-2 h1, body.clr-2 h2, body.clr-2 h3,
+body.bs-clr-2 .link, body.bs-clr-2 a:not(.username), body.bs-clr-2 h1, body.bs-clr-2 h2, body.bs-clr-2 h3 {
     color: var(--color5);
     text-shadow: 0 1px 10px var(--color5);
 }
-body.clr-3 .link, a:not(.username), body.clr-3 h1, body.clr-3 h2, body.clr-3 h3,
-body.bs-clr-3 .link, a:not(.username), body.bs-clr-3 h1, body.bs-clr-3 h2, body.bs-clr-3 h3 {
+body.clr-3 .link, body.clr-3 a:not(.username), body.clr-3 h1, body.clr-3 h2, body.clr-3 h3,
+body.bs-clr-3 .link, body.bs-clr-3 a:not(.username), body.bs-clr-3 h1, body.bs-clr-3 h2, body.bs-clr-3 h3 {
     color: var(--color6);
     text-shadow: 0 1px 10px var(--color6);
 }
-body.clr-4 .link, a:not(.username), body.clr-4 h1, body.clr-4 h2, body.clr-4 h3,
-body.bs-clr-4 .link, a:not(.username), body.bs-clr-4 h1, body.bs-clr-4 h2, body.bs-clr-4 h3 {
+body.clr-4 .link, body.clr-4 a:not(.username), body.clr-4 h1, body.clr-4 h2, body.clr-4 h3,
+body.bs-clr-4 .link, body.bs-clr-4 a:not(.username), body.bs-clr-4 h1, body.bs-clr-4 h2, body.bs-clr-4 h3 {
     color: var(--color3);
     text-shadow: 0 1px 10px var(--color3);
 }
