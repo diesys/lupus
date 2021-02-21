@@ -24,9 +24,9 @@
         <title>Regolamenti</title>
     <?php } ?>
     
-    <?php if($variant == "classic") { 
+    <?php if($village != NULL and $village['variante'] == "classic") { 
         echo(headerImport("classic"));
-    } elseif(rand(0,1) == 1) {
+    } elseif(rand(0,1) == 1 and $village != NULL and $village['variante'] != "space") {
         echo(headerImport("classic"));
     } else { 
         echo(headerImport("space"));

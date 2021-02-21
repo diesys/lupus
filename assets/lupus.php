@@ -32,6 +32,19 @@ function get_village($hash, $villages) {
 }
 
 function write_village($data) {
+    // specchietto ruoli in gioco per index
+    $lista_ruoli = array();
+    foreach($data['giocatori'] as $player) {
+        if(array_key_exists($player['fazione'], $lista_ruoli)) {
+            array_push($lista_ruoli[$player['fazione']], $player['ruolo']);
+        } else {
+            $lista_ruoli[$player['fazione']] = array($player['ruolo']);
+        }
+    }
+    foreach($lista_ruoli as $fazione => $array) {
+        $data['lista_ruoli'][$fazione] = array_count_values($array);
+    }
+
     $json = json_encode($data);
     file_put_contents('v/'.$data['nome'].'.json', $json);
 }

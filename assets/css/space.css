@@ -51,32 +51,32 @@ body.clr-2>#bg, body.bs-clr-2>#bg {filter: blur(1px) hue-rotate(70deg);}
 body.clr-3>#bg, body.bs-clr-3>#bg {filter: blur(1px) hue-rotate(-70deg);}
 body.clr-4>#bg, body.bs-clr-4>#bg {filter: blur(1px) hue-rotate(-130deg);}
 
-a:not(.username), h1, h2, h3 {
+.link, a:not(.username), h1, h2, h3 {
     color: var(--color);
     text-shadow: 0 1px 10px var(--color2);
 }
-body.clr-0 a:not(.username), body.clr-0 h1, body.clr-0 h2, body.clr-0 h3,
- body.bs-clr-0 a:not(.username), body.bs-clr-0 h1, body.bs-clr-0 h2, body.bs-clr-0 h3 {
+body.clr-0 .link, a:not(.username), body.clr-0 h1, body.clr-0 h2, body.clr-0 h3,
+ body.bs-clr-0 .link, a:not(.username), body.bs-clr-0 h1, body.bs-clr-0 h2, body.bs-clr-0 h3 {
     color: var(--color);
     text-shadow: 0 1px 10px var(--color2);
 }
-body.clr-1 a:not(.username), body.clr-1 h1, body.clr-1 h2, body.clr-1 h3,
-body.bs-clr-1 a:not(.username), body.bs-clr-1 h1, body.bs-clr-1 h2, body.bs-clr-1 h3 {
+body.clr-1 .link, a:not(.username), body.clr-1 h1, body.clr-1 h2, body.clr-1 h3,
+body.bs-clr-1 .link, a:not(.username), body.bs-clr-1 h1, body.bs-clr-1 h2, body.bs-clr-1 h3 {
     color: var(--color4);
     text-shadow: 0 1px 10px var(--color4);
 }
-body.clr-2 a:not(.username), body.clr-2 h1, body.clr-2 h2, body.clr-2 h3,
-body.bs-clr-2 a:not(.username), body.bs-clr-2 h1, body.bs-clr-2 h2, body.bs-clr-2 h3 {
+body.clr-2 .link, a:not(.username), body.clr-2 h1, body.clr-2 h2, body.clr-2 h3,
+body.bs-clr-2 .link, a:not(.username), body.bs-clr-2 h1, body.bs-clr-2 h2, body.bs-clr-2 h3 {
     color: var(--color5);
     text-shadow: 0 1px 10px var(--color5);
 }
-body.clr-3 a:not(.username), body.clr-3 h1, body.clr-3 h2, body.clr-3 h3,
-body.bs-clr-3 a:not(.username), body.bs-clr-3 h1, body.bs-clr-3 h2, body.bs-clr-3 h3 {
+body.clr-3 .link, a:not(.username), body.clr-3 h1, body.clr-3 h2, body.clr-3 h3,
+body.bs-clr-3 .link, a:not(.username), body.bs-clr-3 h1, body.bs-clr-3 h2, body.bs-clr-3 h3 {
     color: var(--color6);
     text-shadow: 0 1px 10px var(--color6);
 }
-body.clr-4 a:not(.username), body.clr-4 h1, body.clr-4 h2, body.clr-4 h3,
-body.bs-clr-4 a:not(.username), body.bs-clr-4 h1, body.bs-clr-4 h2, body.bs-clr-4 h3 {
+body.clr-4 .link, a:not(.username), body.clr-4 h1, body.clr-4 h2, body.clr-4 h3,
+body.bs-clr-4 .link, a:not(.username), body.bs-clr-4 h1, body.bs-clr-4 h2, body.bs-clr-4 h3 {
     color: var(--color3);
     text-shadow: 0 1px 10px var(--color3);
 }
@@ -97,12 +97,18 @@ body.clr-2 header ul, body.bs-clr-2 header ul {background: linear-gradient(130de
 body.clr-3 header ul, body.bs-clr-3 header ul {background: linear-gradient(130deg, var(--color6-alpha),var(--color5-alpha), #0000 95%);}
 body.clr-4 header ul, body.bs-clr-4 header ul {background: linear-gradient(130deg, var(--color3-alpha),var(--color6-alpha), #0000 95%);}
 
-/* only admin form class */
-body.bs-clr-0 center form {box-shadow: 0 -10px 20px -10px var(--color3-alpha) !important; border-color:var(--color3) !important;}
-body.bs-clr-1 center form {box-shadow: 0 -10px 20px -10px var(--color2-alpha) !important; border-color:var(--color2) !important;}
-body.bs-clr-2 center form {box-shadow: 0 -10px 20px -10px var(--color4-alpha) !important; border-color:var(--color4) !important;}
-body.bs-clr-3 center form {box-shadow: 0 -10px 20px -10px var(--color5-alpha) !important; border-color:var(--color5) !important;}
-body.bs-clr-4 center form {box-shadow: 0 -10px 20px -10px var(--color6-alpha) !important; border-color:var(--color6) !important;}
+/* only admin form class and roles list */
+body.bs-clr-0 center form, body.clr-0 table#roles {box-shadow: 0 -10px 20px -10px var(--color3-alpha) !important; border-color:var(--color3) !important;}
+body.bs-clr-1 center form, body.clr-1 table#roles {box-shadow: 0 -10px 20px -10px var(--color2-alpha) !important; border-color:var(--color2) !important;}
+body.bs-clr-2 center form, body.clr-2 table#roles {box-shadow: 0 -10px 20px -10px var(--color4-alpha) !important; border-color:var(--color4) !important;}
+body.bs-clr-3 center form, body.clr-3 table#roles {box-shadow: 0 -10px 20px -10px var(--color5-alpha) !important; border-color:var(--color5) !important;}
+body.bs-clr-4 center form, body.clr-4 table#roles {box-shadow: 0 -10px 20px -10px var(--color6-alpha) !important; border-color:var(--color6) !important;}
+
+body.clr-0 table#roles td {border-color:var(--color3-alpha) !important;}
+body.clr-1 table#roles td {border-color:var(--color2-alpha) !important;}
+body.clr-2 table#roles td {border-color:var(--color4-alpha) !important;}
+body.clr-3 table#roles td {border-color:var(--color5-alpha) !important;}
+body.clr-4 table#roles td {border-color:var(--color6-alpha) !important;}
 
 body.clr-0 .player, 
 body.clr-0 .legend .dot.giustiziato,

@@ -23,7 +23,7 @@
     
     <?php if($village != NULL and $village['variante'] == "classic") { 
         echo(headerImport("classic"));
-    } elseif(rand(0,1) == 1) {
+    } elseif(rand(0,1) == 1 and $village != NULL and $village['variante'] != "space") {
         echo(headerImport("classic"));
     } else { 
         echo(headerImport("space"));
@@ -87,7 +87,27 @@
                 ?>
             </h2>
             <span>Vivi: <?php echo($alive[0]."/".intval($alive[0]+$alive[1]));?></span>
+            <br>
+            <small class="link" onclick="document.querySelector('#roles').classList.toggle('hidden')">mostra ruoli</small>
         </span>
+
+        <table id="roles" class="hidden">
+            <tr>
+                <td><b>Ruolo</b></td>
+                <td><b>Fazione</b></td>
+                <td><b>#</b></td>
+            </tr>
+        <?php
+            foreach($village['lista_ruoli'] as $fazione => $ruolo) { 
+                foreach($ruolo as $nome => $quantita) {?>
+                <tr>
+                    <td><?php echo($nome);?></td>
+                    <td><?php echo($fazione);?></td>
+                    <td><?php echo($quantita);?></td>
+                </tr>
+        <?php }} ?>
+        </table>
+
         <div id="players_list">
             <?php foreach($village['giocatori'] as $giocatore) { ?>
                 <a target="_blank" href="https://t.me/<?php echo($giocatore['username']); ?>" class="player username <?php if($giocatore['in_vita'] != "true") {echo(" dead");} ?>">

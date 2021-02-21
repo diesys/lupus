@@ -139,8 +139,8 @@ center.regolamento section {
 center.regolamento section img {
     vertical-align: middle;
 }
-
-a:not(.username), h1, h2, h3 {
+.link {cursor: pointer;}
+a:not(.username), h1, h2, h3, .link {
     color: var(--color);
     text-shadow: 0 1px 10px var(--color2);
 }
@@ -243,6 +243,25 @@ header ul li a:not(.logo):active {
 form {
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+table {
+    display: table;
+    background: #000c;
+    margin: 4%;
+    border: 1px solid #ccc4;
+    padding: 1.2em 1.5em;
+}
+table td {
+    padding: 5px 10px;
+    border-bottom: 1px dotted #ccc4;
+}
+table tr:last-of-type td {
+    border-bottom: none;
+}
+
+table.hidden {
+    display: none;
 }
 
 footer {
