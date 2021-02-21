@@ -474,4 +474,8 @@ span.day {
         width: 100%;
         min-width: auto;
     }
+    center.regolamento {
+        padding: 1em 10%;
+    }
+
 }
