@@ -38,7 +38,7 @@
 <?php if(isset($village)) { ?>    
     <div id="bg" style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')"></div>
 <?php } else { ?>
-    <div id="bg" style="background-image: url('assets/img/bg/<?php if($seed == 0) {echo("space/");} else {echo("classic/");} echo(rand(0, 5)); ?>.jpg')"></div>
+    <div id="bg" style="background-image: url('assets/img/bg/space-<?php echo(rand(0, 5)); ?>.jpg')"></div>
 <?php } ?>
 
 <header>
@@ -73,6 +73,12 @@
 
 <?php if ($village != NULL and $error == "" and isset($_SESSION['logged_in']) and $_SESSION['logged_in'] == TRUE) { ?>
     <form action="edit.php?v=<?php echo($village['id']); ?>" method="post" name="populate_form" class="flex-column">
+
+        <?php if(isset($_POST['new_name'])) { ?>
+            <input style="display: none;" name="first_run" value="1" required>
+        <?php } ?>
+
+
         <div class='player_input'>
             <label for="master">Master</label>
             <input type="text" placeholder="master" name="master" placeholder="master" value="<?php if(isset($village['master'])) {echo($village['master']);} ?>" required>
