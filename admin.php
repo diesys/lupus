@@ -8,7 +8,7 @@
     if((isset($_POST) and isset($_POST['password']) and $_POST['password'] == $password) or (isset($_SESSION) and isset($_SESSION['logged_in']) and $_SESSION['logged_in'])) {
         $logged = TRUE;
     } else {
-        $error="Password errata o assente!";
+        $error="Password errata";
         $logged = FALSE;
     }
     $_SESSION['logged_in'] = $logged
@@ -19,11 +19,7 @@
 <head>
     <title>Lista partite | Lupus</title>
 
-    <?php if(rand(0,1) == 1) {
-        echo(headerImport("classic"));
-    } else { 
-        echo(headerImport("space"));
-    } ?>
+    <?php echo(headerImport("space")); ?>
 
     <script>
         function uncollapse() {
@@ -36,17 +32,19 @@
 </head>
 
 <body class="admin <?php $color = rand(0,4); echo("clr-".$color." bs-clr-".$color); ?>">
-    <div id="bg" style="background-image: url('assets/img/bg/<?php if($seed == 0) {echo("space");} else {echo("classic");} echo("/".rand(0, 5)); ?>.jpg')"></div>
+    <div id="bg" style="background-image: url('assets/img/bg/space/<?php echo(rand(0, 5)); ?>.jpg')"></div>
     <header>
         <h2 class="title">
-            <a class="logo" href="."><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
-            Lupus
+            <span>
+                <a class="logo" href="."><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
+                Lupus
+            </span>
         </h2>
     </header>
 
     <center class="admin">
     <?php if ($logged == TRUE) { ?> 
-        <h2>Benvenuto Master!</h2>
+        <h2>Benvenuto Master! <br> <a href="assets/logout.php">Logout?</a></h2>
 
         <form action="edit.php" id="select_village" method="get">
             <h4 class="half-flex">Modifica</h4>
@@ -90,7 +88,7 @@
         </form>  
 
     <?php } if ($error != "") { ?>
-        <h3 class="error"><?php echo($error);?>, torna alla pagina di <a href="login.php">login</a>?</h3>
+        <h3 class="error"><?php echo($error);?>, <a href="login.php">riprova</a></h3>
     <?php } ?>
     </center>
 

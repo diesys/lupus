@@ -11,15 +11,11 @@
 <head>
     <title>Login | Lupus</title>
     
-    <?php if(rand(0,1) == 1) {
-        echo(headerImport("classic"));
-    } else { 
-        echo(headerImport("space"));
-    } ?>
+    <?php echo(headerImport("space")); ?>
 </head>
 
 <body class="login <?php $color = rand(0,4); echo("clr-".$color); ?>">
-    <div id="bg" style="background-image: url('assets/img/bg/<?php if($seed == 0) {echo("space/");} else {echo("classic/");} echo(rand(0, 5)); ?>.jpg')"></div>
+    <div id="bg" style="background-image: url('assets/img/bg/space/<?php echo(rand(0, 5)); ?>.jpg')"></div>
     <header>
         <h2 class="title">
             <img height="40" width="40" src="assets/img/amarok.png" alt="logo">

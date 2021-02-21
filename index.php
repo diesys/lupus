@@ -153,9 +153,9 @@
         <?php } ?> 
 
         <!-- HOMEPAGE -->
-        <p>
-            In costruzione... sei un <a href="login.php">master</a>?
-        </p>
+        <h3>
+            Sei un <a href="login.php">master</a>?
+        </h3>
         <p>
             Vedi il regolamento della nuovissima variante <a href="regolamento.php?v=space">Lupus in Space</a> 
             <!-- o la <a href="regolamento.php?v=classic">Classica</a> -->
