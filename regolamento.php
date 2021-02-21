@@ -1,4 +1,6 @@
 <?php
+    include 'assets/lupus.php';
+
     if(isset($_GET) and isset($_GET['v'])) {
         if($_GET['v'] == "space") {
             $content = file_get_contents('regolamenti/lupusinspace.html');
@@ -12,9 +14,6 @@
 <html lang="it">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/img/favicon.ico" />
     <?php if($variant == "space") { ?>
         <title>Regolamento | Lupus in Space</title>
         <link rel="stylesheet" href="assets/css/space.css">
@@ -25,26 +24,19 @@
         <title>Regolamenti</title>
     <?php } ?>
     
-    <!-- general css -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet"> -->
-    <link href="https://fonts.googleapis.com/css2?family=Economica:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <?php if($variant == "classic") { 
+        echo(headerImport("classic"));
+    } elseif(rand(0,1) == 1) {
+        echo(headerImport("classic"));
+    } else { 
+        echo(headerImport("space"));
+    } ?>
 
-    <link rel="stylesheet" href="assets/css/style.css">
-    <?php if($variant == "classic") { ?>
-        <link rel="stylesheet" href="assets/css/classic.css">
-    <?php } elseif($variant == "space") { ?>
-        <link rel="stylesheet" href="assets/css/space.css">
-    <?php } elseif(rand(0,1) == 0) { ?>
-        <link rel="stylesheet" href="assets/css/classic.css">
-    <?php } else { ?>
-        <link rel="stylesheet" href="assets/css/space.css">
-    <?php } ?>
 </head>
 
 <body class="<?php $color = rand(0,4); echo("clr-".$color); ?>">
-<?php if(isset($village)) { ?>    
-    <div id="bg" style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')"></div>
+<?php if(isset($variant)) { ?>    
+    <div id="bg" style="background-image: url('assets/img/bg/<?php echo($variant."/".rand(0, 5)); ?>.jpg')"></div>
 <?php } else { ?>
     <div id="bg" style="background-image: url('assets/img/bg/<?php if($seed == 0) {echo("space/");} else {echo("classic/");} echo(rand(0, 5)); ?>.jpg')"></div>
 <?php } ?>

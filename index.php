@@ -19,26 +19,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/img/favicon.ico" />
     <title><?php if($village != NULL) {echo($village['nome']." | ");}?>Lupus</title>
     
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet"> -->
-    <link href="https://fonts.googleapis.com/css2?family=Economica:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="assets/css/style.css">
-    <?php $seed = rand(0,1);
-        if($village != NULL and $village['variante'] == "space") { ?>
-        <link rel="stylesheet" href="assets/css/space.css">
-    <?php } elseif($village != NULL and $village['variante'] == "classic") { ?>
-        <link rel="stylesheet" href="assets/css/classic.css">
-    <?php } elseif($seed == 0) { ?>
-        <link rel="stylesheet" href="assets/css/space.css">
-    <?php } else { ?>
-        <link rel="stylesheet" href="assets/css/classic.css">
-    <?php } ?>
+    <?php if($village != NULL and $village['variante'] == "classic") { 
+        echo(headerImport("classic"));
+    } elseif(rand(0,1) == 1) {
+        echo(headerImport("classic"));
+    } else { 
+        echo(headerImport("space"));
+    } ?>
 </head>
 
 <body class="<?php $color = rand(0,4); echo("clr-".$color); ?>">
