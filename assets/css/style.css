@@ -461,4 +461,11 @@ button {
         max-height: 24px;
         margin-right: 0;
     }
+    center {
+        padding: 1em;
+    }
+    span.day {
+        margin-top: 2em;
+        width: 100%;
+    }
 }
