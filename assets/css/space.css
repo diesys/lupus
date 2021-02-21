@@ -51,11 +51,11 @@ body.clr-2>#bg, body.bs-clr-2>#bg {filter: blur(1px) hue-rotate(70deg);}
 body.clr-3>#bg, body.bs-clr-3>#bg {filter: blur(1px) hue-rotate(-70deg);}
 body.clr-4>#bg, body.bs-clr-4>#bg {filter: blur(1px) hue-rotate(-130deg);}
 
-.link, a:not(.username), h1, h2, h3 {
+/* .link, a:not(.username), h1, h2, h3 {
     color: var(--color);
     text-shadow: 0 1px 10px var(--color2);
 }
-body.clr-0 .link, body.clr-0 a:not(.username), body.clr-0 h1, body.clr-0 h2, body.clr-0 h3,
+ body.clr-0 .link, body.clr-0 a:not(.username), body.clr-0 h1, body.clr-0 h2, body.clr-0 h3,
  body.bs-clr-0 .link, body.bs-clr-0 a:not(.username), body.bs-clr-0 h1, body.bs-clr-0 h2, body.bs-clr-0 h3 {
     color: var(--color);
     text-shadow: 0 1px 10px var(--color2);
@@ -79,8 +79,79 @@ body.clr-4 .link, body.clr-4 a:not(.username), body.clr-4 h1, body.clr-4 h2, bod
 body.bs-clr-4 .link, body.bs-clr-4 a:not(.username), body.bs-clr-4 h1, body.bs-clr-4 h2, body.bs-clr-4 h3 {
     color: var(--color3);
     text-shadow: 0 1px 10px var(--color3);
+} */
+.link, a:not(.username) {
+    color: var(--color);
+    text-shadow: 0 1px 10px var(--color2);
+}
+body.clr-0 .link, body.clr-0 a:not(.username),
+ body.bs-clr-0 .link, body.bs-clr-0 a:not(.username){
+    color: var(--color);
+    text-shadow: 0 1px 10px var(--color2);
+}
+body.clr-1 .link, body.clr-1 a:not(.username),
+body.bs-clr-1 .link, body.bs-clr-1 a:not(.username){
+    color: var(--color4);
+    text-shadow: 0 1px 10px var(--color4);
+}
+body.clr-2 .link, body.clr-2 a:not(.username),
+body.bs-clr-2 .link, body.bs-clr-2 a:not(.username){
+    color: var(--color5);
+    text-shadow: 0 1px 10px var(--color5);
+}
+body.clr-3 .link, body.clr-3 a:not(.username),
+body.bs-clr-3 .link, body.bs-clr-3 a:not(.username){
+    color: var(--color6);
+    text-shadow: 0 1px 10px var(--color6);
+}
+body.clr-4 .link, body.clr-4 a:not(.username),
+body.bs-clr-4 .link, body.bs-clr-4 a:not(.username){
+    color: var(--color3);
+    text-shadow: 0 1px 10px var(--color3);
 }
 
+body.clr-0 h1, body.clr-0 h2, body.clr-0 h3,
+body.bs-clr-0 h1, body.bs-clr-0 h2, body.bs-clr-0 h3 {
+    border-color: var(--color);
+    box-shadow: 0 -10px 2em -10px var(--color2);
+    text-shadow: 0 -0.1em .5em var(--color2);
+}
+body.clr-1 h1, body.clr-1 h2, body.clr-1 h3,
+body.bs-clr-1 h1, body.bs-clr-1 h2, body.bs-clr-1 h3 {
+    border-color: var(--color4);
+    box-shadow: 0 -10px 2em -10px var(--color4);
+    text-shadow: 0 -0.1em .5em var(--color4);
+}
+body.clr-2 h1, body.clr-2 h2, body.clr-2 h3,
+body.bs-clr-2 h1, body.bs-clr-2 h2, body.bs-clr-2 h3 {
+    border-color: var(--color5);
+    box-shadow: 0 -10px 2em -10px var(--color5);
+    text-shadow: 0 -0.1em .5em var(--color5);
+}
+body.clr-3 h1, body.clr-3 h2, body.clr-3 h3,
+body.bs-clr-3 h1, body.bs-clr-3 h2, body.bs-clr-3 h3 {
+    border-color: var(--color6);
+    box-shadow: 0 -10px 2em -10px var(--color6);
+    text-shadow: 0 -0.1em .5em var(--color6);
+}
+body.clr-4 h1, body.clr-4 h2, body.clr-4 h3,
+body.bs-clr-4 h1, body.bs-clr-4 h2, body.bs-clr-4 h3 {
+    border-color: var(--color3);
+    box-shadow: 0 -10px 2em -10px var(--color3);
+    text-shadow: 0 -0.1em .5em var(--color3);
+}
+body h1, body h2, body h3 {
+    color: #fffd;
+    border-bottom: 1px solid #fffd;
+    padding: .5em.8em;
+    margin-top: 2em;
+    background: #1115;
+    border-radius: 1em 0 1em 0;
+    text-transform: uppercase;
+    width: max-content;
+    font-size: 1.25rem;
+    min-width: 50%;
+}
 header ul {
     background: var(--color2-alpha);
     box-shadow: 50px 6px 30px 3px #000b;
@@ -110,6 +181,9 @@ body.clr-2 table#roles td {border-color:var(--color4-alpha) !important;}
 body.clr-3 table#roles td {border-color:var(--color5-alpha) !important;}
 body.clr-4 table#roles td {border-color:var(--color6-alpha) !important;}
 
+table#roles {
+    border-radius: 1.5em 0 1.5em 0;
+}
 body.clr-0 .player, 
 body.clr-0 .legend .dot.giustiziato,
 body.clr-0 #events_list .event.giustiziato .description {

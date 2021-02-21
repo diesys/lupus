@@ -381,6 +381,7 @@ button {
 #players_list>.player,
 #events_list .description {
     justify-content: space-around;
+    justify-content: space-evenly;
     display: flex;
     flex: 1;
     flex-wrap: wrap;
@@ -392,6 +393,10 @@ button {
     color: #fff;
     flex-direction: column;
     cursor: default;
+}
+
+span.day {
+    min-width: 300px;
 }
 #events_list .event .description small {
     margin-top: .9em;
@@ -467,5 +472,6 @@ button {
     span.day {
         margin-top: 2em;
         width: 100%;
+        min-width: auto;
     }
 }

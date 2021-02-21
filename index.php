@@ -77,7 +77,7 @@
     <center>
 
     <?php if($village != NULL) { ?>
-        <span id="players">
+        <span class="full-width" id="players">
             <h2>
                 <?php 
                     if($village['variante'] == "space") 
@@ -116,7 +116,7 @@
             <?php } ?>
         </div>
 
-        <span id="events">
+        <span class="full-width" id="events">
             <h2>Calendario</h2>
         </span>
         <div id="events_list">

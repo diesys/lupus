@@ -207,7 +207,7 @@
             <?php } ?>
         </div>
        
-        <span id="events">
+        <span class="full-width" id="events">
             <h2>Calendario</h2>
         </span>
         <p class="legend full-width">
