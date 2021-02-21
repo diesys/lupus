@@ -208,7 +208,7 @@
         </div>
        
         <span id="events">
-            <h2 class="full-width">Calendario</h2>
+            <h2>Calendario</h2>
         </span>
         <p class="legend full-width">
             <span class="dot assassinato">assassati di notte</span><span class="dot giustiziato">giustiziati di giorno</span>

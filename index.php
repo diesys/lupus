@@ -117,7 +117,7 @@
         </div>
 
         <span id="events">
-            <h2 class="full-width">Calendario</h2>
+            <h2>Calendario</h2>
         </span>
         <div id="events_list">
             <p class="legend full-width">
