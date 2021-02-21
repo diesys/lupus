@@ -28,14 +28,14 @@
 <?php if($variant != "") { ?>    
     <div id="bg" style="background-image: url('assets/img/bg/<?php echo($variant."/".rand(0, 5)); ?>.jpg')"></div>
 <?php } else { ?>
-    <div id="bg" style="background-image: url('assets/img/bg/<?php if($seed == 0) {echo("space/");} else {echo("classic/");} echo(rand(0, 5)); ?>.jpg')"></div>
+    <div id="bg" style="background-image: url('assets/img/bg/space<?php echo(rand(0, 5)); ?>.jpg')"></div>
 <?php } ?>
 
     <header>
         <ul>
             <li>
                 <a class="logo" href="."><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
-                <h2 class="no-padd-marg">Regolamento</h2>
+                <h2 class="title-header no-padd-marg">Regolamento</h2>
             </li>
             <li>
                 <?php if($variant == "space") { ?>

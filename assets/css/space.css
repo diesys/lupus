@@ -82,52 +82,57 @@ body.bs-clr-4 .link, body.bs-clr-4 a:not(.username){
     text-shadow: 0 1px 10px var(--color3);
 }
 
-body.clr-0 h1, body.clr-0 h2, body.clr-0 h3,
+body.clr-0 header ul li a, body.clr-0 h1, body.clr-0 h2, body.clr-0 h3,
 body.bs-clr-0 h1, body.bs-clr-0 h2, body.bs-clr-0 h3 {
     border-color: var(--color);
     box-shadow: 0 -10px 2em -10px var(--color2);
     text-shadow: 0 -0.1em .5em var(--color2);
 }
-body.clr-1 h1, body.clr-1 h2, body.clr-1 h3,
+body.clr-1 header ul li a, body.clr-1 h1, body.clr-1 h2, body.clr-1 h3,
 body.bs-clr-1 h1, body.bs-clr-1 h2, body.bs-clr-1 h3 {
     border-color: var(--color4);
     box-shadow: 0 -10px 2em -10px var(--color4);
     text-shadow: 0 -0.1em .5em var(--color4);
 }
-body.clr-2 h1, body.clr-2 h2, body.clr-2 h3,
+body.clr-2 header ul li a, body.clr-2 h1, body.clr-2 h2, body.clr-2 h3,
 body.bs-clr-2 h1, body.bs-clr-2 h2, body.bs-clr-2 h3 {
     border-color: var(--color5);
     box-shadow: 0 -10px 2em -10px var(--color5);
     text-shadow: 0 -0.1em .5em var(--color5);
 }
-body.clr-3 h1, body.clr-3 h2, body.clr-3 h3,
+body.clr-3 header ul li a, body.clr-3 h1, body.clr-3 h2, body.clr-3 h3,
 body.bs-clr-3 h1, body.bs-clr-3 h2, body.bs-clr-3 h3 {
     border-color: var(--color6);
     box-shadow: 0 -10px 2em -10px var(--color6);
     text-shadow: 0 -0.1em .5em var(--color6);
 }
-body.clr-4 h1, body.clr-4 h2, body.clr-4 h3,
+body.clr-4 header ul li a, body.clr-4 h1, body.clr-4 h2, body.clr-4 h3,
 body.bs-clr-4 h1, body.bs-clr-4 h2, body.bs-clr-4 h3 {
     border-color: var(--color3);
     box-shadow: 0 -10px 2em -10px var(--color3);
     text-shadow: 0 -0.1em .5em var(--color3);
 }
-body h1, body h2, body h3 {
+body h1, body h2, body h3,
+header ul li a:not(.logo) {
     color: #fffd;
     border-bottom: 1px solid #fffd;
-    padding: .5em.8em;
+    text-align: center;
+    text-transform: uppercase;
+}
+body h1, body h2, body h3 {
+    width: max-content;
     margin-top: 2em;
+    min-width: 50%;
+    font-size: 1.25rem;
+    padding: .5em.8em;  
+}
+body h1:not(.title-header), body h2:not(.title-header), body h3:not(.title-header) {
     background: #1115;
     border-radius: 1em 0 1em 0;
-    text-transform: uppercase;
-    width: max-content;
-    font-size: 1.25rem;
-    min-width: 50%;
-    text-align: center;
 }
 header ul {
     background: var(--color2-alpha);
-    box-shadow: 50px 6px 30px 3px #000b;
+    box-shadow: 0px 0px 30px -5px #000b;
     background: linear-gradient(130deg, var(--color2-alpha),var(--color3-alpha), #0000 95%);
 }
 header ul h2,
