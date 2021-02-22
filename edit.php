@@ -24,20 +24,24 @@
         $village['master'] = $_POST['master'];
         unset($_POST['master']);
         foreach($_POST as $key => $value) {
-            $chiave = explode('#', $key)[0];
-            $giocatore_n = explode('#', $key)[1];
-            $giocatori[$giocatore_n][$chiave] = $value;
-            // aggiorna le fazioni
-            if($chiave == "ruolo") {
-                $giocatori[$giocatore_n]['fazione'] = $roles[$village['variante']][$value];
+            if($key != "first_run") {
+
+                $chiave = explode('#', $key)[0];
+                $giocatore_n = explode('#', $key)[1];
+                $giocatori[$giocatore_n][$chiave] = $value;
+                // aggiorna le fazioni
+                if($chiave == "ruolo") {
+                    $giocatori[$giocatore_n]['fazione'] = $roles[$village['variante']][$value];
+                }
+                // $giocatori[explode('#', $key)[1]][explode('#', $key)[0]] = $value;
             }
-            // $giocatori[explode('#', $key)[1]][explode('#', $key)[0]] = $value;
         }
         $village['giocatori'] = $giocatori;
 
+        // var_dump($_POST);
 
         // x specchietto ruoli, primo avvio solamente?
-        if(isset($_POST['fist_run'])) {
+        if(isset($_POST) and isset($_POST['fist_run'])) {
             // specchietto ruoli in gioco per index
             $lista_ruoli = array();
             foreach($village['giocatori'] as $player) {

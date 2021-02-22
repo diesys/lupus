@@ -75,18 +75,18 @@
     <form action="edit.php?v=<?php echo($village['id']); ?>" method="post" name="populate_form" class="flex-column">
 
         <?php if(isset($_POST['new_name'])) { ?>
-            <input style="display: none;" name="first_run" value="1" required>
+            <input style="display: none;" id="first_run" name="first_run" value="1" required>
         <?php } ?>
 
 
         <div class='player_input'>
             <label for="master">Master</label>
-            <input type="text" placeholder="master" name="master" placeholder="master" value="<?php if(isset($village['master'])) {echo($village['master']);} ?>" required>
+            <input type="text" placeholder="master" name="master" pattern="[A-Za-z0-9_]{5,}" placeholder="master" value="<?php if(isset($village['master'])) {echo($village['master']);} ?>" required>
         </div>
         <h3>Giocatori</h3>
     <?php $i=0; foreach ($village['giocatori'] as $player) { ?>
         <span class='player_input'>
-            <input type="text" placeholder="username" name="username#<?php echo($i); ?>" value="<?php echo($player['username']); ?>" required>
+            <input type="text" placeholder="username" pattern="[A-Za-z0-9_]{5,}" name="username#<?php echo($i); ?>" value="<?php echo($player['username']); ?>" required>
             <select name="ruolo#<?php echo($i); ?>" required>
                 <?php foreach ($roles[$village['variante']] as $role => $faction) {
                     if(isset($player['ruolo']) and $player['ruolo'] == $role) {

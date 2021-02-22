@@ -62,9 +62,9 @@
             <h4 class="half-flex" id="titolo_crea">Crea partita</h4>
             
             <span class="half-flex">
-                <!-- <label for="variant">Variante</label> -->
+                <label for="variant">Variante</label>
                 <select onchange="uncollapse();" name="variant" id="variant" required>
-                    <option value="" disabled selected>variante</option>
+                    <option value="" disabled selected></option>
                     <option value="space">Lupus in Space</option>
                     <option value="classic">Classico</option>
                 </select>
@@ -77,7 +77,7 @@
             
             <span class="half-flex collapsed">
                 <label for="players">Giocatori</label>
-                <input name="players" type="number" placeholder="Giocatori" min="2" max="40" range="1" required />
+                <input name="players" type="number" placeholder="Giocatori" min="4" max="40" range="1" required />
             </span>
 
             <!-- <p class="legend">¹ alfanumerico senza spazi · ² 4-30 giocatori</p> -->

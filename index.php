@@ -88,9 +88,12 @@
             </h2>
             <span>Vivi: <?php echo($alive[0]."/".intval($alive[0]+$alive[1]));?></span>
             <br>
-            <small class="link" onclick="document.querySelector('#roles').classList.toggle('hidden')">mostra/nascondi ruoli</small>
+            <?php if(array_key_exists('lista_ruoli', $village)) { ?>
+                <small class="link" onclick="document.querySelector('#roles').classList.toggle('hidden')">mostra/nascondi ruoli</small>
+            <?php } ?>
         </span>
-
+     
+    <?php if(array_key_exists('lista_ruoli', $village)) { ?>
         <table id="roles" class="hidden">
             <tr>
                 <td><b>Ruolo</b></td>
@@ -107,6 +110,7 @@
                 </tr>
         <?php }} ?>
         </table>
+    <?php } ?>
 
         <div id="players_list">
             <?php foreach($village['giocatori'] as $giocatore) { ?>
