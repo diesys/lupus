@@ -74,11 +74,6 @@
 <?php if ($village != NULL and $error == "" and isset($_SESSION['logged_in']) and $_SESSION['logged_in'] == TRUE) { ?>
     <form action="edit.php?v=<?php echo($village['id']); ?>" method="post" name="populate_form" class="flex-column">
 
-        <?php if(isset($_POST['new_name'])) { ?>
-            <input style="display: none;" id="first_run" name="first_run" value="1" required>
-        <?php } ?>
-
-
         <div class='player_input'>
             <label for="master">Master</label>
             <input type="text" placeholder="master" name="master" pattern="[A-Za-z0-9_]{5,}" placeholder="master" value="<?php if(isset($village['master'])) {echo($village['master']);} ?>" required>
@@ -110,6 +105,12 @@
     <?php $i++;} ?>
         <br>
         <button class='full-width' formmethod='post' type='submit'>salva</button>
+
+        <!-- MUST BE THE LAST ONE! -->
+        <?php if(isset($_POST['new_name'])) { ?>
+            <input style="display: none;" id="first_run" name="first_run" value="1" required>
+        <?php } ?>
+
     </form>
 <?php } else {
     if ($error != "") { ?>
