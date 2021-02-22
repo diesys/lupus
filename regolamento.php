@@ -35,7 +35,7 @@
         <ul>
             <li>
                 <a class="logo" href="."><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a>
-                <h2 class="title-header no-padd-marg">Regolamento</h2>
+                <h2 class="title-header no-shadow no-padd-marg">Regolamento</h2>
             </li>
             <li>
                 <?php if($variant == "space") { ?>
