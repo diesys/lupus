@@ -14,7 +14,7 @@
             $error = "Villaggio non trovato!";
         }
     } else {
-        $error = "Sicuro di essere un <a href='login.php'>master</a> o che il villaggio <a href='admin.php'>esista</a>?";
+        $error = "Sicuro di essere un <a href='login.php'>master</a> o che la partita <a href='admin.php'>esista</a>?";
     }
 
     // update giocatori da populate.php$_POST['id_evento']
@@ -24,14 +24,27 @@
         $village['master'] = $_POST['master'];
         unset($_POST['master']);
         foreach($_POST as $key => $value) {
-            $chiave = explode('#', $key)[0];
-            $giocatore_n = explode('#', $key)[1];
-            $giocatori[$giocatore_n][$chiave] = $value;
-            // aggiorna le fazioni
-            if($chiave == "ruolo") {
-                $giocatori[$giocatore_n]['fazione'] = $roles[$village['variante']][$value];
+            if($key != "first_run") {
+                $chiave = explode('#', $key)[0];
+                $giocatore_n = explode('#', $key)[1];
+                $giocatori[$giocatore_n][$chiave] = $value;
+                // aggiorna le fazioni
+                if($chiave == "ruolo") {
+                    $giocatori[$giocatore_n]['fazione'] = $roles[$village['variante']][$value];
+                }
+            } else { // specchietto ruoli in gioco per index
+                $lista_ruoli = array();
+                foreach($giocatori as $player) {
+                    if(array_key_exists($player['fazione'], $lista_ruoli)) {
+                        array_push($lista_ruoli[$player['fazione']], $player['ruolo']);
+                    } else {
+                        $lista_ruoli[$player['fazione']] = array($player['ruolo']);
+                    }
+                }
+                foreach($lista_ruoli as $fazione => $array) {
+                    $village['lista_ruoli'][$fazione] = array_count_values($array);
+                }
             }
-            // $giocatori[explode('#', $key)[1]][explode('#', $key)[0]] = $value;
         }
         $village['giocatori'] = $giocatori;
         write_village($village);
