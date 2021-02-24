@@ -179,6 +179,7 @@ $roles = array(
             'hacker' => 'colonia',
             'ingegnere' => 'colonia',
             'panopticon' => 'colonia',
+            'paranoico' => 'colonia',
             'tecnochirurgo' => 'colonia',
             'sentinelle' => 'colonia',
             // amministrazione

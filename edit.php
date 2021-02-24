@@ -95,23 +95,23 @@
     <div id="bg" style="background-image: url('assets/img/bg/<?php if($village) {echo($village['variante']);} else { echo("space");} echo("/".rand(0, 5)); ?>.jpg')"></div>
     <header>       
         <ul>
-            <li><a href="#" class="logo"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a></li>
-            <li><a href="admin.php">
-                <img src="assets/img/icons/view_list-24px.svg" alt="·" height="28" width="28">
-                Lista partite</a>
-            </li>
+            <li><a href="admin.php" class="logo"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a></li>
+            <!-- <li><a href="admin.php">
+                <img src="assets/img/icons/view_list-24px.svg" alt="·" height="32" width="32">
+                Partite</a>
+            </li> -->
         <?php if(isset($village['id']) and isset($village['nome'])) { ?>
-            <li><a href="./?v=<?php echo($village['id']); ?>">
-                <img src="assets/img/icons/public-24px.svg" alt="·" height="28" width="28">    
-                Bacheca <?php if(isset($village['nome'])) echo($village['nome']);?></a>
+            <li><a class="name" href="./?v=<?php echo($village['id']); ?>">
+                <img src="assets/img/icons/public-24px.svg" alt="·" height="32" width="32">    
+                <?php if(isset($village['nome'])) echo($village['nome']);?></a>
             </li>
             <li><a target="_blank" href="v/<?php echo($village['nome']); ?>.json" download>
-                <img src="assets/img/icons/download-24px.svg" alt="·" height="28" width="28">
+                <img src="assets/img/icons/download-24px.svg" alt="·" height="32" width="32">
                 Download</a>
             </li>
             <!-- <li><a href="v/<?php// echo($village['nome']);?>.json" download>Carica</a></li> -->
             <li><a href="assets/logout.php">
-                <img src="assets/img/icons/logout-24px.svg" alt="·" height="28" width="28">
+                <img src="assets/img/icons/logout-24px.svg" alt="·" height="32" width="32">
                 Logout</a>
             </li>
         <?php } ?>

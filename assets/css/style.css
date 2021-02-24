@@ -34,16 +34,17 @@
     margin: 0 !important;
 }
 
+form,
 input,
 select,
 button,
 textarea,
 .event::after,
 .player.dead {
-    transition: opacity var(--dur);
+    transition: opacity var(--dur), background-color var(--dur);
 }
 header ul li a {
-    transition: background var(--dur), opacity var(--dur);
+    transition: background-color var(--dur), opacity var(--dur), transform var(--dur);
 }
 
 html,
@@ -168,7 +169,8 @@ header {
     z-index: 5 !important;
 }
 header + * {
-    margin-top: 8em;
+    transition: margin var(--dur);
+    margin-top: 4em;
 }
 
 header h2 {
@@ -246,11 +248,18 @@ form {
 }
 
 table {
-    display: table;
+    /* display: table; */
+    opacity: 1;
+
     background: #000c;
-    margin: 1em;
+    margin: 1em 1em 0 1em;
     border: 1px solid #ccc4;
     padding: 1.2em 1.5em;
+    position: relative;
+    z-index: 10;
+    /* flex: 1; */
+    /* max-height: max-content; */
+    transition: opacity var(--dur);
 }
 table td {
     padding: 5px 10px;
@@ -262,6 +271,17 @@ table tr:last-of-type td {
 
 table.hidden {
     display: none;
+    /* position: absolute; */
+    /* flex: 0; */
+    /* max-height: 0 !important; */
+    opacity: 0;
+    pointer-events: none;
+}
+
+#players {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 footer {
@@ -458,14 +478,24 @@ span.day {
 @media (max-width: 700px) {
     header ul li a {
         flex-direction: column;
-        font-size: .9rem;
-        padding: .5em;
+        font-size: .8rem;
+        padding: 2px;
+        margin: 0;
+    }
+    header ul li a.logo img {
+        transform: scale(.8);
+    }
+    header ul li a.name {
+        max-width: 20vw;
     }
     header a:not(.logo) img {
         max-width: 24px;
         max-height: 24px;
         margin-right: 0;
     }
+    /* header + * {
+        margin-top: 5em;
+    } */
     center {
         padding: 1em;
     }

@@ -40,12 +40,12 @@
             <li>
                 <?php if($variant == "space") { ?>
                     <a href="regolamenti/Regolamento_LupusInSpace.pdf" download="">
-                        <img src="assets/img/icons/download-24px.svg" alt="Scarica" height="28" width="28">
+                        <img src="assets/img/icons/download-24px.svg" alt="Scarica" height="32" width="32">
                         PDF
                     </a>
                 <?php } elseif($variant == "classic") { ?>
                     <a href="regolamenti/Regolamento_Classic.pdf" download="">
-                        <img src="assets/img/icons/download-24px.svg" alt="Scarica" height="28" width="28">
+                        <img src="assets/img/icons/download-24px.svg" alt="Scarica" height="32" width="32">
                         PDF
                     </a>
             </li>
