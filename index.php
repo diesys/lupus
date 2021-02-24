@@ -40,18 +40,21 @@
     <header>
     <?php if($village != NULL) { ?>
         <ul>
-            <li><a href="#" class="logo"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a></li>
-            <li><a href="#players" class="name">
-                <img src="assets/img/icons/people-24px.svg" alt="·" height="32" width="32">
+            <li><a href="#" class="logo"><img height="40" width="40" src="assets/img/amarok.png" alt="logo">
+                    <?php echo($village['nome']); ?>
+                </a>
+            </li>
+            <!-- <li><a href="#players" class="name"> -->
+                <!-- <img src="assets/img/icons/people-24px.svg" alt="·" height="32" width="32"> -->
                     <?php 
-                        echo($village['nome']);
+                        // echo($village['nome']);
                         // if($village['variante'] == "space") 
                             // {echo("Colonia");}
                         // elseif($village['variante'] == "classic") 
                             // {echo("Villaggio");}
                     ?>
-                </a>
-            </li>
+                <!-- </a> -->
+            <!-- </li> -->
             <li><a href="#events">
                 <img src="assets/img/icons/event-24px.svg" alt="·" height="32" width="32">
                 Calendario</a>
@@ -60,7 +63,7 @@
                 <img src="assets/img/icons/menu_book-24px.svg" alt="·" height="32" width="32">
                 Regolamento</a>
             </li>
-            <li><a target="_blank" href="https://t.me/<?php if(isset($village['master'])) {echo($village['master']);} ?>">
+            <li><a target="_blank" class="username" href="https://t.me/<?php if(isset($village['master'])) {echo($village['master']);} ?>">
                 <img src="assets/img/icons/chat-24px.svg" alt="·" height="32" width="32">
                 Master</a>
             </li>

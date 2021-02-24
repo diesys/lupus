@@ -238,7 +238,7 @@
                     <span class="event <?php echo($event['tipo']);?>" data-type="<?php echo("id: ".intval($n_days - $i).".".intval($j+1)." (".$event['tipo'].")");?>">
                         <span class="description">
                         <?php if(isset($event['giocatore'])) { ?>
-                            <a target="_blank" href="https://t.me/<?php echo($event['giocatore']); ?>">@<?php echo($event['giocatore']); }?></a>
+                            <a target="_blank" class="username" href="https://t.me/<?php echo($event['giocatore']); ?>">@<?php echo($event['giocatore']); }?></a>
                             <?php echo(" ".$event['descrizione']);?>
                             <?php if(isset($event['sondaggio']) and $event['sondaggio'] != "") { 
                                 echo("<small>(<a target='_blank' href='".$event['sondaggio']."'>voti</a>)</small>"); 

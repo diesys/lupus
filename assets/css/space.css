@@ -166,6 +166,10 @@ body.clr-4 table#roles td {border-color:var(--color6-alpha) !important;}
 table#roles {
     border-radius: 1.5em 0 1.5em 0;
 }
+a.username {
+    text-shadow: 0 0px 4px #eeeb !important;
+}
+
 body.clr-0 .player, 
 body.clr-0 .legend .dot.giustiziato,
 body.clr-0 #events_list .event.giustiziato .description {

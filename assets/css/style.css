@@ -188,6 +188,9 @@ header img, .title img {
     /* margin-right: .5em; */
     vertical-align: middle;
 }
+header a.logo img {
+    margin-right: .5em;
+}
 header a {
     text-shadow: none !important;
 }
@@ -480,20 +483,22 @@ span.day {
         padding: 1em;
         font-size: 1.3rem;
     }
-    header img {
+    header a img {
         margin-right: .5em;
     }
 }
 @media (max-width: 1000px) {
-    header ul li a {
+    header ul li a:not(.logo) {
         font-size: 1rem;
         flex-direction: column;
         padding: .5em;
     }
 }
-
+header a.logo {
+    font-size: 1.1rem !important;
+}
 @media (max-width: 700px) {
-    header ul li a {
+    header ul li a:not(.logo) {
         font-size: .8rem;
         /* padding: .4em; */
     }
@@ -525,7 +530,7 @@ span.day {
 }
 
 @media (max-width: 500px) {
-    header ul li a {
+    header ul li a:not(.logo) {
         font-size: .7rem;
         padding: .3em;
         font-weight: normal;
