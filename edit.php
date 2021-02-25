@@ -92,6 +92,8 @@
 </head>
 
 <body class="edit <?php if($village == NULL) {echo("clr-");} else {echo("bs-clr-");} echo(rand(0,4)); ?>">
+<?php themeSelector('edit.php?'.$_SERVER['QUERY_STRING']); ?>
+
     <div id="bg" style="background-image: url('assets/img/bg/<?php if($village) {echo($village['variante']);} else { echo("space");} echo("/".rand(0, 5)); ?>.jpg')"></div>
     <header>       
         <ul>

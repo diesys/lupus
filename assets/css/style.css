@@ -1,3 +1,8 @@
+@keyframes fade-in {
+    from {filter: brightness(0) blur(4px);}
+    to {filter: brightness(1) blur(0px);}
+  }
+
 :root {
     --footer-height: 2em;
     --border-light: #fff3;
@@ -84,6 +89,7 @@ body>#bg {
     background-repeat: no-repeat !important;
     z-index: 0;
     filter: blur(1px) hue-rotate(0deg);
+    animation: fade-in var(--dur);
 }
 
 body>*:not(#bg) {
@@ -477,6 +483,7 @@ span.day {
 #select_village, #select_village h2 {
     margin-bottom: 2.5rem;
 }
+
 @media (min-width: 1000px) {
     header ul li a {
         flex-direction: row;
@@ -493,9 +500,9 @@ span.day {
         flex-direction: column;
         padding: .5em;
     }
-}
-header a.logo {
-    font-size: 1.1rem !important;
+    header a.logo {
+        font-size: 1.1rem !important;
+    }
 }
 @media (max-width: 700px) {
     header ul li a:not(.logo) {

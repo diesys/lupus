@@ -122,21 +122,60 @@ function headerImport($variante = "space") {
     $head = "<meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <link rel='shortcut icon' href='assets/img/favicon.ico' />
-    <link rel='preconnect' href='https://fonts.gstatic.com'>
-
-    <!-- <link href='https://fonts.googleapis.com/css2?family=Righteous&display=swap' rel='stylesheet'> -->
-    <!-- <link href='https://fonts.googleapis.com/css2?family=Economica:ital,wght@0,400;0,700;1,400&display=swap' rel='stylesheet'> -->
-    <!-- <link href='https://fonts.googleapis.com/css2?family=Jura:wght@700&display=swap' rel='stylesheet'> -->
-    
+    <link rel='preconnect' href='https://fonts.gstatic.com'>    
     <link href='https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap' rel='stylesheet'>
-    <link rel='stylesheet' href='assets/css/style.css'>";
-
+    <link rel='stylesheet' href='assets/css/style.css'>
+    <script type='text/javascript' defer src='assets/js/lupus.js'></script>";
+    
     if($variante == "space") {
         $head .= "\n<link rel='stylesheet' href='assets/css/space.css'>";
     } elseif ($variante == "classic") {
         $head .= "\n<link rel='stylesheet' href='assets/css/classic.css'>";
     }
     return $head;
+}
+
+function themeSelector($redir_url) {
+    echo("<span onclick='document.querySelector(\"#theme_selector\").classList.toggle(\"active\")' class='link' id='theme_selector_toggle'><img src='assets/img/icons/palette-24px.svg' alt='·' height='32' width='32'></span>");
+    echo("<div id='theme_selector'>");
+    echo("  <ul id='colors_list'>");
+    if(intval($_SESSION['color']) == -1) {
+        $random = "selected";
+    } else {
+        $random = "";
+    } echo("    <li onclick='updateColor(-1);' class='selector_entry se-random $random'><img src='assets/img/icons/shuffle-24px.svg' alt='·' height='26' width='26'></span></li>");
+    for($i=0; $i<5; $i++) {
+        if(isset($_SESSION) and isset($_SESSION['color']) and intval($_SESSION['color']) == $i) {
+            $selected = "selected";
+        } else {
+            $selected = "";
+        } echo("    <li onclick='updateColor($i);' class='selector_entry se-$i $selected'><span class='primary'></span><span class='secondary'></li>");
+    }
+    echo("  </ul>");
+    echo("  <ul id='bgs_list'>");
+    if(intval($_SESSION['image']) == -1) {
+        $random = "selected";
+    } else {
+        $random = "";
+    } echo("    <li onclick='updateImage(-1);' class='selector_entry se-random $random'><img src='assets/img/icons/shuffle-24px.svg' alt='·' height='26' width='26'></span></li>");
+    for($i=0; $i<5; $i++) {
+        if(isset($_SESSION) and isset($_SESSION['color']) and intval($_SESSION['image']) == $i){
+            $selected = "selected";
+        } else {
+            $selected = "";
+        } echo("    <li onclick='updateImage($i);' class='selector_entry se-$i $selected'></span></li>");
+    }
+    echo("  </ul>");
+    echo("<button onclick='document.querySelector(\"#theme_form\").submit()' type='submit' value='salva'>salva</button>");
+    echo("</div>");
+    
+    // form
+    echo("<form action='assets/updateSession.php' id='theme_form' method='post' style='display: none;'>");
+    echo("<input id='theme_color' type='number' name='color' value='' hidden>");
+    echo("<input id='theme_image' type='number' name='image' value='' hidden>");
+    echo("<input id='theme_parent_url' name='parent_url' value='../$redir_url' hidden required>");
+    echo("</form>");
+
 }
 
 // MAIN ////////////////////////////////////////////////////////////////

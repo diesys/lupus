@@ -30,12 +30,26 @@
     } ?>
 </head>
 
-<body class="<?php $color = rand(0,4); echo("clr-".$color); ?>">
-<?php if(isset($village)) { ?>
-    <div id="bg" style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')"></div>
-<?php } else { ?>
-    <div id="bg" style="background-image: url('assets/img/bg/<?php if($seed == 0) {echo("space/");} else {echo("classic/");} echo(rand(0, 5)); ?>.jpg')"></div>
-<?php } ?>
+<body class="clr-<?php if(isset($_SESSION) and isset($_SESSION['color']) and intval($_SESSION['color']) != -1) {
+        echo($_SESSION['color']);
+    } else {
+        $color = rand(0,4); echo($color); 
+    }
+    ?>">
+
+<?php var_dump($_SESSION); themeSelector('./?'.$_SERVER['QUERY_STRING']); ?>
+
+    <div id="bg" style="background-image: url('assets/img/bg/<?php 
+        if(isset($village)) {
+            echo($village['variante']."/");
+        } else {
+            echo("space/");
+        }
+        if(isset($_SESSION) and isset($_SESSION['image']) and intval($_SESSION['image']) != -1) {
+            echo($_SESSION['image']);
+        } else {
+            echo(rand(0, 5)); 
+        } ?>.jpg')"></div>
 
     <header>
     <?php if($village != NULL) { ?>

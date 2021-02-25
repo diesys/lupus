@@ -35,6 +35,8 @@
 </head>
 
 <body class="<?php $color = rand(0,4); echo("clr-".$color); ?>">
+<?php themeSelector('populate.php?'.$_SERVER['QUERY_STRING']); ?>
+
 <?php if(isset($village)) { ?>    
     <div id="bg" style="background-image: url('assets/img/bg/<?php echo($village['variante']."/".rand(0, 5)); ?>.jpg')"></div>
 <?php } else { ?>

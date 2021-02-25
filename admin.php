@@ -31,8 +31,21 @@
     </script>
 </head>
 
-<body class="admin <?php $color = rand(0,4); echo("clr-".$color." bs-clr-".$color); ?>">
-    <div id="bg" style="background-image: url('assets/img/bg/space/<?php echo(rand(0, 5)); ?>.jpg')"></div>
+<body class="admin <?php
+    if(isset($_SESSION) and isset($_SESSION['color']) and intval($_SESSION['color']) != -1) {
+        $color = $_SESSION['color'];
+    } else {
+        $color = rand(0,4);
+    }
+    echo("clr-".$color." bs-clr-".$color); ?>">
+<?php themeSelector('admin.php'); ?>
+
+    <div id="bg" style="background-image: url('assets/img/bg/space/<?php 
+        if(isset($_SESSION) and isset($_SESSION['image']) and intval($_SESSION['image']) != -1) {
+            $image = $_SESSION['image'];
+        } else {
+            $image = rand(0, 5);
+        } echo($image);?>.jpg')"></div>
     <header>
         <h2 class="title">
             <span>

@@ -24,12 +24,25 @@
 
 </head>
 
-<body class="<?php $color = rand(0,4); echo("clr-".$color); ?>">
-<?php if($variant != "") { ?>    
-    <div id="bg" style="background-image: url('assets/img/bg/<?php echo($variant."/".rand(0, 5)); ?>.jpg')"></div>
-<?php } else { ?>
-    <div id="bg" style="background-image: url('assets/img/bg/space<?php echo(rand(0, 5)); ?>.jpg')"></div>
-<?php } ?>
+<body class="clr-<?php if(isset($_SESSION) and isset($_SESSION['color']) and intval($_SESSION['color']) != -1) {
+        echo($_SESSION['color']);
+    } else {
+        $color = rand(0,4); echo($color); 
+    }
+    ?>">
+<?php themeSelector('regolamento.php?'.$_SERVER['QUERY_STRING']); ?>
+
+    <div id="bg" style="background-image: url('assets/img/bg/<?php 
+        if($variant != "") {
+            echo($variant.'/');
+        } else {
+            echo("space/");
+        }
+        if(isset($_SESSION) and isset($_SESSION['image']) and intval($_SESSION['image']) != -1) {
+            echo($_SESSION['image']);
+        } else {
+            echo(rand(0, 5)); 
+        } ?>.jpg')"></div>
 
     <header>
         <ul>

@@ -14,8 +14,22 @@
     <?php echo(headerImport("space")); ?>
 </head>
 
-<body class="login <?php $color = rand(0,4); echo("clr-".$color); ?>">
-    <div id="bg" style="background-image: url('assets/img/bg/space/<?php echo(rand(0, 5)); ?>.jpg')"></div>
+<body class="login <?php
+    if(isset($_SESSION) and isset($_SESSION['color']) and intval($_SESSION['color']) != -1) {
+        $color = $_SESSION['color'];
+    } else {
+        $color = rand(0,4);
+    }
+    echo("clr-".$color." bs-clr-".$color); ?>">
+
+<?php themeSelector('login.php'); ?>
+    
+    <div id="bg" style="background-image: url('assets/img/bg/space/<?php 
+        if(isset($_SESSION) and isset($_SESSION['image']) and intval($_SESSION['image']) != -1) {
+            $image = $_SESSION['image'];
+        } else {
+            $image = rand(0, 5);
+        } echo($image);?>.jpg')"></div>
     <header>
         <h2 class="title">
             <img height="40" width="40" src="assets/img/amarok.png" alt="logo">
