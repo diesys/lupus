@@ -418,6 +418,7 @@ button {
     padding: .9em;
     margin: .5em;
     min-width: 100px;
+    min-width: max-content;
     border: 1px solid var(--border-light);
     color: #fff;
     flex-direction: column;
