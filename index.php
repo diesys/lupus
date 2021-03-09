@@ -66,17 +66,6 @@
                     <?php echo($village['nome']); ?>
                 </a>
             </li>
-            <!-- <li><a href="#players" class="name"> -->
-                <!-- <img src="assets/img/icons/people-24px.svg" alt="·" height="32" width="32"> -->
-                    <?php 
-                        // echo($village['nome']);
-                        // if($village['variante'] == "space") 
-                            // {echo("Colonia");}
-                        // elseif($village['variante'] == "classic") 
-                            // {echo("Villaggio");}
-                    ?>
-                <!-- </a> -->
-            <!-- </li> -->
             <li><a href="#events">
                 <img src="assets/img/icons/event-24px.svg" alt="·" height="32" width="32">
                 Calendario</a>
@@ -85,10 +74,12 @@
                 <img src="assets/img/icons/menu_book-24px.svg" alt="·" height="32" width="32">
                 Regolamento</a>
             </li>
-            <li><a target="_blank" class="username" href="<?php if($CONCLUSA) {echo("#");} else {echo("https://t.me/"); if(isset($village['master'])) {echo($village['master']);}} ?>">
-                <img src="assets/img/icons/chat-24px.svg" alt="·" height="32" width="32">
-                Master</a>
-            </li>
+            <?php if(!$CONCLUSA) { ?>
+                <li><a target="_blank" class="username" href="<?php if($CONCLUSA) {echo("#");} else {echo("https://t.me/"); if(isset($village['master'])) {echo($village['master']);}} ?>">
+                    <img src="assets/img/icons/chat-24px.svg" alt="·" height="32" width="32">
+                    Master</a>
+                </li>
+            <?php } ?>
         </ul>
     <?php } else { ?>
         <h2 class="title">
@@ -112,11 +103,11 @@
                 ?>
             </h2>
             <span>Vivi: <?php echo($alive[0]."/".intval($alive[0]+$alive[1]));?></span>
-            <?php if(array_key_exists('lista_ruoli', $village)) { ?>
+            <?php if(array_key_exists('lista_ruoli', $village) && !$CONCLUSA) { ?>
                 <small class="link" onclick="document.querySelector('#roles').classList.toggle('hidden')">mostra/nascondi ruoli</small>
             <?php } ?>
      
-    <?php if(array_key_exists('lista_ruoli', $village)) { ?>
+    <?php if(array_key_exists('lista_ruoli', $village) && !$CONCLUSA) { ?>
         <table id="roles" class="hidden">
             <tr>
                 <td><b>Ruolo</b></td>
@@ -136,12 +127,27 @@
     <?php } ?>
     </span>
 
-
         <div id="players_list">
+        <?php if($CONCLUSA) { ?>
+            <p class="legend full-width">
+            <?php if($village['variante'] == "space") { ?>
+                <span class="dot colonia">colonia</span>
+                <span class="dot ribelli">ribelli</span>
+                <span class="dot replicanti">replicanti</span>
+                <span class="dot simbionti">simbionti</span>
+                <span class="dot software">software</span>
+            <?php } else { ?>
+                <span class="dot umani">umani</span>
+                <span class="dot lupi">lupi</span>
+                <span class="dot criceti">criceti</span>
+            <?php } ?>
+            </p>
+        <?php } ?>
+
             <?php foreach($village['giocatori'] as $giocatore) { 
                 if($CONCLUSA) { ?>
                 <span class="player <?php echo($giocatore['ruolo']." ".$giocatore['fazione']); if($giocatore['in_vita'] != "true") {echo(" dead");} ?>">
-                    <a class="username" href="#"><?php echo($giocatore['username']); ?></a>
+                    <b class="username"><?php echo($giocatore['username']); ?></b>
                     <small class="role">(<?php echo($giocatore['ruolo']); ?>)</small>
                 </span>
             <?php } else { ?>

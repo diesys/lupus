@@ -52,7 +52,8 @@
 
     //// concludi partita
     if(array_key_exists('conclusa', $_POST)) {
-        $_POST['conclusa'] = $village['conclusa'];
+        $village['conclusa'] = $_POST['conclusa'];
+        write_village($village);
     }   
 
     header("Location: edit.php?v=".$village['id']);

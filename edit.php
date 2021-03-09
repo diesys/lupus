@@ -50,6 +50,11 @@
         write_village($village);
     }
 
+    if(array_key_exists('conclusa', $village) && intval($village['conclusa']) != 0) {
+        $CONCLUSA = TRUE;
+    } else {
+        $CONCLUSA = FALSE;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -142,10 +147,7 @@
     </header>
 
     <center>
-        <!-- <h2 class="title">
-            <?php// if(isset($village['nome'])) echo($village['nome']);?>
-        </h2> -->
-    
+
     <?php if(isset($village) and $error == "") { ?>
         <form action="update.php?v=<?php echo($village['id']); ?>" method="post">
             <h4 class="full-width">Aggiungi al calendario</h4>
@@ -208,8 +210,8 @@
         <form action="update.php?v=<?php echo($village['id']); ?>" method="post">
             <h4 class="full-width">Stato partita</h4>
             <select name="conclusa">
-                <option value="0" <?php if(intval($village['conclusa']) == 0) {echo("selected");} ?>>In corso</option>
-                <option value="1" <?php if(intval($village['conclusa']) == 1) {echo("selected");} ?>>Terminata</option>
+                <option value="0" <?php if(!$CONCLUSA) {echo("selected");} ?>>In corso</option>
+                <option value="1" <?php if($CONCLUSA) {echo("selected");} ?>>Terminata</option>
             </select>
             <button type="submit" formmethod="post">cambia</button>
         </form>
