@@ -60,6 +60,8 @@
         } ?>.jpg')"></div>
 
     <header>
+    <marquee><h4><?php if($CONCLUSA) { echo("PARTITA TERMINATA");}?></h4></marquee>
+
     <?php if($village != NULL) { ?>
         <ul>
             <li><a href="#" class="logo"><img height="40" width="40" src="assets/img/amarok.png" alt="logo">
@@ -89,7 +91,6 @@
     <?php } ?>
     </header>
 
-    
     <center>
 
     <?php if($village != NULL) { ?>
@@ -147,7 +148,7 @@
             <?php foreach($village['giocatori'] as $giocatore) { 
                 if($CONCLUSA) { ?>
                 <span class="player <?php echo($giocatore['ruolo']." ".$giocatore['fazione']); if($giocatore['in_vita'] != "true") {echo(" dead");} ?>">
-                    <b class="username"><?php echo($giocatore['username']); ?></b>
+                    <b class="username"><?php echo(substr($giocatore['username'], 0, 4)."***"); ?></b>
                     <small class="role">(<?php echo($giocatore['ruolo']); ?>)</small>
                 </span>
             <?php } else { ?>
