@@ -125,7 +125,16 @@ function headerImport($variante = "space") {
     <link rel='preconnect' href='https://fonts.gstatic.com'>    
     <link href='https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap' rel='stylesheet'>
     <link rel='stylesheet' href='assets/css/style.css'>
-    <script type='text/javascript' defer src='assets/js/lupus.js'></script>";
+    <script type='text/javascript' defer src='assets/js/lupus.js'></script>
+
+    <meta property='og:title' content='Lupus in Space'>
+    <meta property='og:description' content='Un semplice assistente per giocare a distanza a Lupus, con la una variante inedita con cyborg, replicanti, IA, CEO...'>
+    <meta property='og:image' content='assets/img/amarok.png'>
+    <meta property='og:url' content='https://flowin.space/lupus'>
+    <meta name='twitter:card' content='summary_large_image'>
+
+    <meta property='og:site_name' content='Lupus in Space'>
+    <meta name='twitter:image:alt' content='Lupus in Space'>";
     
     if($variante == "space") {
         $head .= "\n<link rel='stylesheet' href='assets/css/space.css'>";
@@ -139,7 +148,7 @@ function themeSelector($redir_url) {
     echo("<span onclick='document.querySelector(\"#theme_selector\").classList.toggle(\"active\")' class='link' id='theme_selector_toggle'><img src='assets/img/icons/palette-24px.svg' alt='·' height='32' width='32'></span>");
     echo("<div id='theme_selector'>");
     echo("  <ul id='colors_list'>");
-    if(intval($_SESSION['color']) == -1) {
+    if(isset($_SESSION) and isset($_SESSION['color']) and intval($_SESSION['color']) == -1) {
         $random = "selected";
     } else {
         $random = "";
@@ -153,13 +162,13 @@ function themeSelector($redir_url) {
     }
     echo("  </ul>");
     echo("  <ul id='bgs_list'>");
-    if(intval($_SESSION['image']) == -1) {
+    if(isset($_SESSION) and isset($_SESSION['image']) and intval($_SESSION['image']) == -1) {
         $random = "selected";
     } else {
         $random = "";
     } echo("    <li onclick='updateImage(-1);' class='selector_entry se-random $random'><img src='assets/img/icons/shuffle-24px.svg' alt='·' height='26' width='26'></span></li>");
     for($i=0; $i<5; $i++) {
-        if(isset($_SESSION) and isset($_SESSION['color']) and intval($_SESSION['image']) == $i){
+        if(isset($_SESSION) and isset($_SESSION['image']) and intval($_SESSION['image']) == $i){
             $selected = "selected";
         } else {
             $selected = "";
