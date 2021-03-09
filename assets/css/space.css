@@ -312,35 +312,35 @@ colonia e default */
 #players_list>.player.amministrazione {
     border: 1px solid #fff9;
 }
-.ribelli,
+.edit .ribelli,
 .dot.assassinato,
 #events_list .event.assassinato .description {
     background: var(--color2-alpha);
     box-shadow: var(--shadow-color2);
 }
-.ribelli a,
+.edit .ribelli a,
 #events_list .event.assassinato .description a {
     text-shadow: 0 1px 10px var(--color2);
 }
-.software {
+.edit .software {
     background: var(--color4-alpha);
     box-shadow: var(--shadow-color4);
 }
-.software a {
+.edit .software a {
     text-shadow: 0 1px 10px var(--color4);
 }
-.simbionti {
+.edit .simbionti {
     background: var(--color5-alpha);
     box-shadow: var(--shadow-color5);
 }
-.simbionti a {
+.edit .simbionti a {
     text-shadow: 0 1px 10px var(--color5);
 }
-.replicanti {
+.edit .replicanti {
     background: var(--color6-alpha);
     box-shadow: var(--shadow-color6);
 }
-.replicanti a {
+.edit .replicanti a {
     text-shadow: 0 1px 10px var(--color6);
 }
 
