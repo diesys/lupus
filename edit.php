@@ -91,10 +91,25 @@
     </script>
 </head>
 
-<body class="edit <?php if($village == NULL) {echo("clr-");} else {echo("bs-clr-");} echo(rand(0,4)); ?>">
-<?php themeSelector('edit.php?'.$_SERVER['QUERY_STRING']); ?>
+<body class="edit bs-clr-<?php if(isset($_SESSION) and isset($_SESSION['color']) and intval($_SESSION['color']) != -1) {
+        echo($_SESSION['color']);
+    } else {
+        $color = rand(0,4); echo($color); 
+    } ?>">
+    <?php themeSelector('edit.php?'.$_SERVER['QUERY_STRING']); ?>
 
-    <div id="bg" style="background-image: url('assets/img/bg/<?php if($village) {echo($village['variante']);} else { echo("space");} echo("/".rand(0, 5)); ?>.jpg')"></div>
+    <div id="bg" style="background-image: url('assets/img/bg/<?php 
+        if(isset($village)) {
+            echo($village['variante']."/");
+        } else {
+            echo("space/");
+        }
+        if(isset($_SESSION) and isset($_SESSION['image']) and intval($_SESSION['image']) != -1) {
+            echo($_SESSION['image']);
+        } else {
+            echo(rand(0, 5)); 
+        } ?>.jpg')"></div>
+    
     <header>       
         <ul>
             <li><a href="admin.php" class="logo"><img height="40" width="40" src="assets/img/amarok.png" alt="logo"></a></li>
