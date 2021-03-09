@@ -49,7 +49,11 @@
         }
         // notte come si fa? si puo' anche ignorare... unico problema coi voti e ballottaggio?
     }
-        
+
+    //// concludi partita
+    if(array_key_exists('conclusa', $_POST)) {
+        $_POST['conclusa'] = $village['conclusa'];
+    }   
 
     header("Location: edit.php?v=".$village['id']);
 ?>

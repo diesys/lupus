@@ -117,6 +117,12 @@
                 <img src="assets/img/icons/view_list-24px.svg" alt="·" height="32" width="32">
                 Partite</a>
             </li> -->
+            <li>
+                <a href="#players" class="name">
+                    <img src="assets/img/icons/people-24px.svg" alt="·" height="32" width="32">
+                    <?php if(isset($village['nome'])) echo($village['nome']);?></a>    
+                </a>
+            </li>
         <?php if(isset($village['id']) and isset($village['nome'])) { ?>
             <li><a class="name" href="./?v=<?php echo($village['id']); ?>">
                 <img src="assets/img/icons/public-24px.svg" alt="·" height="32" width="32">    
@@ -199,6 +205,14 @@
             <button type="submit" formmethod="post">elimina</button>
         </form>
 
+        <form action="update.php?v=<?php echo($village['id']); ?>" method="post">
+            <h4 class="full-width">Stato partita</h4>
+            <select name="conclusa">
+                <option value="0" <?php if(intval($village['conclusa']) == 0) {echo("selected");} ?>>In corso</option>
+                <option value="1" <?php if(intval($village['conclusa']) == 1) {echo("selected");} ?>>Terminata</option>
+            </select>
+            <button type="submit" formmethod="post">cambia</button>
+        </form>
 
         <span class="full-width" id="players">
             <h2>

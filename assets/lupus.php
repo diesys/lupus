@@ -39,7 +39,7 @@ function write_village($data) {
 function new_village($file_name, $hash, $variante) {
     $data = array(
         'nome' => $_POST['new_name'],
-        // 'telegram' => "",
+        'conclusa' => 0,
         'variante' => $variante,
         'giorni' => array(array()),
         'giocatori' => array_fill(0, $_POST['players'], array("username" => "", "ruolo" => "","fazione" => "", "in_vita" => TRUE)),

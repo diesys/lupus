@@ -27,10 +27,18 @@
         echo(headerImport("classic"));
     } else { 
         echo(headerImport("space"));
-    } ?>
+    } 
+    
+    if(array_key_exists('conclusa', $village) && $village['conclusa'] != "") {
+        $CONCLUSA = TRUE;
+    } else {
+        $CONCLUSA = FALSE;
+    }
+    
+    ?>
 </head>
 
-<body class="clr-<?php if(isset($_SESSION) and isset($_SESSION['color']) and intval($_SESSION['color']) != -1) {
+<body class="<?php if($CONCLUSA) {echo("edit bs-clr-");} else {echo("clr-");} ?><?php if(isset($_SESSION) and isset($_SESSION['color']) and intval($_SESSION['color']) != -1) {
         echo($_SESSION['color']);
     } else {
         $color = rand(0,4); echo($color); 
@@ -77,7 +85,7 @@
                 <img src="assets/img/icons/menu_book-24px.svg" alt="·" height="32" width="32">
                 Regolamento</a>
             </li>
-            <li><a target="_blank" class="username" href="https://t.me/<?php if(isset($village['master'])) {echo($village['master']);} ?>">
+            <li><a target="_blank" class="username" href="<?php if($CONCLUSA) {echo("#");} else {echo("https://t.me/"); if(isset($village['master'])) {echo($village['master']);}} ?>">
                 <img src="assets/img/icons/chat-24px.svg" alt="·" height="32" width="32">
                 Master</a>
             </li>
@@ -130,11 +138,17 @@
 
 
         <div id="players_list">
-            <?php foreach($village['giocatori'] as $giocatore) { ?>
+            <?php foreach($village['giocatori'] as $giocatore) { 
+                if($CONCLUSA) { ?>
+                <span class="player <?php echo($giocatore['ruolo']." ".$giocatore['fazione']); if($giocatore['in_vita'] != "true") {echo(" dead");} ?>">
+                    <a class="username" href="#"><?php echo($giocatore['username']); ?></a>
+                    <small class="role">(<?php echo($giocatore['ruolo']); ?>)</small>
+                </span>
+            <?php } else { ?>
                 <a target="_blank" href="https://t.me/<?php echo($giocatore['username']); ?>" class="player username <?php if($giocatore['in_vita'] != "true") {echo(" dead");} ?>">
                     @<?php echo($giocatore['username']); ?>
                 </a>
-            <?php } ?>
+            <?php }} ?>
         </div>
 
         <span class="full-width" id="events">
