@@ -77,7 +77,7 @@
                 Regolamento</a>
             </li>
             <?php if(!$CONCLUSA) { ?>
-                <li><a target="_blank" class="username" href="<?php if($CONCLUSA) {echo("#");} else {echo("https://t.me/"); if(isset($village['master'])) {echo($village['master']);}} ?>">
+                <li><a target="_blank" class="username" href="https://t.me/<?php if(isset($village['master'])) {echo($village['master']);} ?>">
                     <img src="assets/img/icons/chat-24px.svg" alt="·" height="32" width="32">
                     Master</a>
                 </li>
@@ -175,7 +175,11 @@
                     <span class="event <?php echo($event['tipo']);?>" data-type="<?php echo(" ".$event['tipo']);?>">
                         <span class="description">
                         <?php if(isset($event['giocatore'])) { ?>
-                            <a target="_blank" href="https://t.me/<?php echo($event['giocatore']); ?>">@<?php echo($event['giocatore']); }?></a>
+                            <?php if($CONCLUSA) { ?>
+                                <b class="username"><?php echo(substr($event['giocatore'], 0, 4)."***"); ?></b>
+                            <?php } else { ?>
+                                <a target="_blank" href="https://t.me/<?php echo($event['giocatore']); ?>">@<?php echo($event['giocatore']); }?></a>
+                            <?php } ?>
                             <?php echo(" ".$event['descrizione']);?>
                             <?php if(isset($event['sondaggio']) and $event['sondaggio'] != "") { 
                                 echo("<small><a target='_blank' href='".$event['sondaggio']."'>voti</a></small>"); 
